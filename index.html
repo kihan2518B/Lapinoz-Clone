@@ -21,20 +21,20 @@
 </head>
 
 <body>
+    <nav>
+        <ul>
+            <li><a class="active" href="#"><i class="fa-solid fa-people-carry-box"></i>Home</a></li>
+            <li><a href="#"><i class="ri-order-play-line"></i> Order online</a></li>
+            <li><a href="#"><i class="ri-map-pin-line"></i> Store Locator</a></li>
+            <li><a href="#"><i class="ri-customer-service-line"></i> Franchise Enquiry</a></li>
+            <li><a href="#"><i class="ri-hourglass-2-line"></i> Our Story</a></li>
+            <li><a href="#"><i class="ri-contacts-line"></i> Contact Us</a></li>
+        </ul>
+    </nav>
     <section class="hero-section">
         <!-- <div class="img">
             <img src="./Media/lapinoz-logo.png" alt="">
         </div> -->
-        <nav>
-            <ul>
-                <li><a class="active" href="#"><i class="fa-solid fa-people-carry-box"></i>Home</a></li>
-                <li><a href="#"><i class="ri-order-play-line"></i> Order online</a></li>
-                <li><a href="#"><i class="ri-map-pin-line"></i> Store Locator</a></li>
-                <li><a href="#"><i class="ri-customer-service-line"></i> Franchise Enquiry</a></li>
-                <li><a href="#"><i class="ri-hourglass-2-line"></i> Our Story</a></li>
-                <li><a href="#"><i class="ri-contacts-line"></i> Contact Us</a></li>
-            </ul>
-        </nav>
 
         <section class="delivrySection_container">
             <div class="delivrySection">
@@ -114,385 +114,393 @@
 
             </div>
         </section>
-        <style>
-            .hero-section {
-                background-color: #f0f0f0;
-                /* font-family: ; */
-                margin: 0;
-                padding: 10px 10px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100dvh;
-                background-image: url(./Media/home-background.jpeg);
-                background-size: cover;
-            }
+    </section>
 
-            nav {
-                z-index: 999;
-                position: fixed;
-                top: 40px;
-                border-radius: 30px 30px 30px 30px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                /* background-color: #33333380; */
-                backdrop-filter: blur(90px);
-                background-color: #f7f7f730;
-                color: white;
-                border: 2px #ff6347 solid;
-                height: 40px;
-            }
+    <style>
+        .main {
+            width: 100vw;
+            height: 100vh;
+        }
 
-            nav a {
-                color: #000;
-                text-decoration: none;
-                padding: 10px 15px;
-                cursor: pointer;
-            }
+        .hero-section {
+            background-color: #f0f0f0;
+            /* font-family: ; */
+            margin: 0;
+            padding: 10px 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100dvh;
+            background-image: url(./Media/home-background.jpeg);
+            background-size: cover;
+        }
 
-            nav ul {
-                margin: 0;
-                padding: 0;
-                list-style: none;
-                display: flex;
-                justify-self: center;
-                align-items: center;
-            }
+        nav {
+            z-index: 999;
+            position: fixed;
+            top: 40px;
+            margin-left: 15%;
+            border-radius: 30px 30px 30px 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* background-color: #33333380; */
+            backdrop-filter: blur(90px);
+            background-color: #f7f7f730;
+            color: white;
+            border: 2px #ff6347 solid;
+            height: 40px;
+        }
 
-            .active {
-                background-color: #ff6347;
-                color: #f7f7f7;
-                border-radius: 30px 30px 30px 30px;
-                transition: all 0.5s;
-            }
+        nav a {
+            color: #000;
+            text-decoration: none;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
 
-            .hero {
-                z-index: 999;
-                position: absolute;
-                top: 30%;
-                border-radius: 10px 10px 10px 10px;
-                background-color: rgb(255 255 255 / 90%);
-                /* backdrop-filter: blur(50px); */
-                height: auto;
-                padding: 20px 20px;
-                width: 80%;
-            }
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-self: center;
+            align-items: center;
+        }
 
-            .delivrySection_container {
-                height: 350px;
-                width: 50dvw;
-                display: flex;
-                justify-content: left;
-                position: relative;
-            }
+        .active {
+            background-color: #ff6347;
+            color: #f7f7f7;
+            border-radius: 30px 30px 30px 30px;
+            transition: all 0.5s;
+        }
 
-            .delivrySection {
-                height: 350px;
-                width: 50dvw;
-                border-radius: 10px;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-around;
-                position: relative;
-                /* top: 0; */
-                cursor: pointer;
-                transition: all 0.3s ease-out;
-                background-color: rgb(220, 217, 20);
-                z-index: 20;
-            }
+        .hero {
+            z-index: 999;
+            position: absolute;
+            top: 30%;
+            border-radius: 10px 10px 10px 10px;
+            background-color: rgb(255 255 255 / 90%);
+            /* backdrop-filter: blur(50px); */
+            height: auto;
+            padding: 20px 20px;
+            width: 80%;
+        }
 
-            .PickUp {
-                height: 350px;
-                width: 50dvw;
-                border-radius: 10px;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                position: absolute;
-                cursor: pointer;
-                background-color: rgb(220, 97, 20);
-                left: 35px;
-                z-index: 10;
-            }
+        .delivrySection_container {
+            height: 350px;
+            width: 50dvw;
+            display: flex;
+            justify-content: left;
+            position: relative;
+        }
 
-            .header {
-                height: 40px;
-                width: 30%;
-                font-size: x-large;
-                font-weight: bold;
-                border-bottom: 1px solid black;
-                display: flex;
-                justify-content: space-evenly;
-                align-items: center;
-            }
+        .delivrySection {
+            height: 350px;
+            width: 50dvw;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            position: relative;
+            /* top: 0; */
+            cursor: pointer;
+            transition: all 0.3s ease-out;
+            background-color: rgb(220, 217, 20);
+            z-index: 20;
+        }
 
-            .textArea {
-                height: 25%;
-                width: 95%;
-                font-weight: bold;
-                margin-left: 15px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
+        .PickUp {
+            height: 350px;
+            width: 50dvw;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: absolute;
+            cursor: pointer;
+            background-color: rgb(220, 97, 20);
+            left: 35px;
+            z-index: 10;
+        }
+
+        .header {
+            height: 40px;
+            width: 30%;
+            font-size: x-large;
+            font-weight: bold;
+            border-bottom: 1px solid black;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .textArea {
+            height: 25%;
+            width: 95%;
+            font-weight: bold;
+            margin-left: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .textArea p {
+            height: 40px;
+            width: 100%;
+            font-size: x-large;
+            display: flex;
+            align-items: center;
+            text-align: start;
+            margin: 0;
+        }
+
+        .SelectButtons {
+            height: 30%;
+            width: 95%;
+            display: flex;
+            align-items: center;
+            font-size: larger;
+            margin-left: 15px;
+        }
+
+        .location_button {
+            height: 50px;
+            width: 35%;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: #556B2F;
+        }
+
+        .OR {
+            height: 50px;
+            width: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .Select_buttons {
+            height: 50px;
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .city_buttons {
+            height: 100%;
+            width: 45%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .containt_section {
+            width: 100%;
+            height: 90%;
+            display: flex;
+            align-items: center;
+        }
+
+        .bag_image {
+            height: 100px;
+            width: 120px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .text_section {
+            height: 95%;
+            width: 85%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .pickup_text {
+            height: 30%;
+            width: 89%;
+            font-size: larger;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .pickup_buttons {
+            height: 30%;
+            width: 95%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        .pickup_button {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 45%;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        @media (max-width: 1300px) {
+            .SelectButtons {
+                font-size: medium;
             }
 
             .textArea p {
-                height: 40px;
-                width: 100%;
-                font-size: x-large;
-                display: flex;
-                align-items: center;
-                text-align: start;
-                margin: 0;
-            }
-
-            .SelectButtons {
-                height: 30%;
-                width: 95%;
-                display: flex;
-                align-items: center;
                 font-size: larger;
-                margin-left: 15px;
-            }
-
-            .location_button {
-                height: 50px;
-                width: 35%;
-                border-radius: 5px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                background-color: #556B2F;
-            }
-
-            .OR {
-                height: 50px;
-                width: 70px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .Select_buttons {
-                height: 50px;
-                width: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-            }
-
-            .city_buttons {
-                height: 100%;
-                width: 45%;
-                display: flex;
-                align-items: center;
-                justify-content: space-evenly;
-                text-align: center;
-                border-radius: 5px;
-            }
-
-            .containt_section {
-                width: 100%;
-                height: 90%;
-                display: flex;
-                align-items: center;
-            }
-
-            .bag_image {
-                height: 100px;
-                width: 120px;
-                display: flex;
-                justify-content: flex-end;
-                align-items: center;
             }
 
             .text_section {
-                height: 95%;
-                width: 85%;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-evenly;
-                align-items: center;
+                font-size: small;
+            }
+        }
+
+        @media (max-width: 1050px) {
+            .header {
+                width: 32%;
             }
 
-            .pickup_text {
-                height: 30%;
-                width: 89%;
-                font-size: larger;
-                border-radius: 10px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
+            .SelectButtons {
+                height: 45%;
+                flex-direction: column;
+            }
+
+            .Select_buttons {
+                width: 70%;
+            }
+
+            .location_button {
+                width: 70%;
             }
 
             .pickup_buttons {
-                height: 30%;
-                width: 95%;
-                display: flex;
-                align-items: center;
-                justify-content: space-evenly;
+                height: 35%;
+                flex-direction: column;
+                justify-content: space-between;
             }
 
             .pickup_button {
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 45%;
-                border-radius: 10px;
-                text-align: center;
+                height: 45%;
+                width: 100%;
+            }
+        }
+
+        @media (max-width:768px) {
+            .header {
+                font-size: larger;
+                width: 40%;
             }
 
-            @media (max-width: 1300px) {
-                .SelectButtons {
-                    font-size: medium;
-                }
+            .Select_buttons {
+                width: 100%;
+            }
 
-                .textArea p {
-                    font-size: larger;
-                }
+            .location_button {
+                width: 100%;
+            }
+        }
 
-                .text_section {
-                    font-size: small;
+        @media (max-width:600px) {
+            .header {
+                width: 50%;
+            }
+
+            .textArea {
+                width: 90%;
+            }
+
+            .SelectButtons {
+                width: 90%;
+            }
+
+            .city_buttons {
+                width: 50%;
+            }
+        }
+
+        @media (max-width:470px) {
+            .header {
+                width: 70%;
+            }
+
+            .textArea p {
+                font-size: medium;
+            }
+
+            .SelectButtons {
+                font-size: small;
+            }
+
+            .text_section {
+                font-size: small;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const deliverySection = document.querySelector('.delivrySection');
+            const deliveryContent = deliverySection.querySelectorAll('.textArea, .header, .SelectButtons'); // Select all content elements
+            const pickUpSection = document.querySelector('.PickUp');
+
+            function swapSections() {
+                const isDeliveryHidden = deliverySection.classList.contains('hidden'); // Check if deliverySection is hidden
+
+                if (isDeliveryHidden) {
+                    // Reverse animation (PickUp to front)
+                    gsap.to(pickUpSection, {
+                        duration: 1.5,
+                        zIndex: 10,
+                        onComplete: () => {
+                            // pickUpSection.style.zIndex = 10; // Set z-index of PickUp to 20 immediately
+                            deliverySection.classList.remove('hidden'); // Show deliverySection content
+                            deliveryContent.forEach(element => element.style.opacity = 100);
+
+                        }
+                    });
+
+                    gsap.to(deliverySection, {
+                        duration: 1.5,
+                        width: '50dvw', // Restore initial width
+
+                    });
+                } else {
+                    // Hide content before animation
+                    deliveryContent.forEach(element => element.style.opacity = 0);
+                    gsap.to(deliverySection, {
+                        duration: 1.5,
+                        width: '35px',
+                        onComplete: () => {
+                            deliverySection.classList.add('hidden'); // Hide deliverySection content after animation
+                        }
+                    });
+
+                    gsap.to(pickUpSection, {
+                        duration: 1.5,
+                        zIndex: 10,
+                    });
                 }
             }
 
-            @media (max-width: 1050px) {
-                .header {
-                    width: 32%;
-                }
+            deliverySection.addEventListener('click', swapSections);
+            pickUpSection.addEventListener('click', swapSections);
+        });
+    </script>
 
-                .SelectButtons {
-                    height: 45%;
-                    flex-direction: column;
-                }
-
-                .Select_buttons {
-                    width: 70%;
-                }
-
-                .location_button {
-                    width: 70%;
-                }
-
-                .pickup_buttons {
-                    height: 35%;
-                    flex-direction: column;
-                    justify-content: space-between;
-                }
-
-                .pickup_button {
-                    height: 45%;
-                    width: 100%;
-                }
-            }
-
-            @media (max-width:768px) {
-                .header {
-                    font-size: larger;
-                    width: 40%;
-                }
-
-                .Select_buttons {
-                    width: 100%;
-                }
-
-                .location_button {
-                    width: 100%;
-                }
-            }
-
-            @media (max-width:600px) {
-                .header {
-                    width: 50%;
-                }
-
-                .textArea {
-                    width: 90%;
-                }
-
-                .SelectButtons {
-                    width: 90%;
-                }
-
-                .city_buttons {
-                    width: 50%;
-                }
-            }
-
-            @media (max-width:470px) {
-                .header {
-                    width: 70%;
-                }
-
-                .textArea p {
-                    font-size: medium;
-                }
-
-                .SelectButtons {
-                    font-size: small;
-                }
-
-                .text_section {
-                    font-size: small;
-                }
-            }
-        </style>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const deliverySection = document.querySelector('.delivrySection');
-                const deliveryContent = deliverySection.querySelectorAll('.textArea, .header, .SelectButtons'); // Select all content elements
-                const pickUpSection = document.querySelector('.PickUp');
-
-                function swapSections() {
-                    const isDeliveryHidden = deliverySection.classList.contains('hidden'); // Check if deliverySection is hidden
-
-                    if (isDeliveryHidden) {
-                        // Reverse animation (PickUp to front)
-                        gsap.to(pickUpSection, {
-                            duration: 1.5,
-                            zIndex: 10,
-                            onComplete: () => {
-                                // pickUpSection.style.zIndex = 10; // Set z-index of PickUp to 20 immediately
-                                deliverySection.classList.remove('hidden'); // Show deliverySection content
-                                deliveryContent.forEach(element => element.style.opacity = 100);
-
-                            }
-                        });
-
-                        gsap.to(deliverySection, {
-                            duration: 1.5,
-                            width: '50dvw', // Restore initial width
-
-                        });
-                    } else {
-                        // Hide content before animation
-                        deliveryContent.forEach(element => element.style.opacity = 0);
-                        gsap.to(deliverySection, {
-                            duration: 1.5,
-                            width: '35px',
-                            onComplete: () => {
-                                deliverySection.classList.add('hidden'); // Hide deliverySection content after animation
-                            }
-                        });
-
-                        gsap.to(pickUpSection, {
-                            duration: 1.5,
-                            zIndex: 10,
-                        });
-                    }
-                }
-
-                deliverySection.addEventListener('click', swapSections);
-                pickUpSection.addEventListener('click', swapSections);
-            });
-        </script>
-
-    </section>
 
 
     <section class="deals-section">
@@ -521,7 +529,8 @@
                 </div>
                 <p class="bubble-text">
                     <span>The</span> <span>story</span> <span>of</span> <span>India's</span> <span>fastest</span>
-                    <span>growing</span> <span>pizza</span> <span>place</span> <span>started</span> <span>back</span>
+                    <span>growing</span> <span>pizza</span> <span>place</span> <span>started</span>
+                    <span>back</span>
                     <span>in</span> <span>2011</span> <span>when</span> <span>Sanam</span> <span>Kapoor</span>
                     <span>opened</span> <span>his</span> <span>very</span> <span>first</span> <span>pizzeria</span>
                     <span>in</span> <span>his</span> <span>hometown</span> <span>Chandigarh.</span>
@@ -531,15 +540,19 @@
                     <span>was</span> <span>a</span> <span>better</span> <span>way</span> <span>of</span>
                     <span>doing</span> <span>pizza</span> <span>–</span> <span>and</span> <span>business.</span>
                     <span>The</span> <span>last</span> <span>thing</span> <span>the</span> <span>world</span>
-                    <span>needed</span> <span>was</span> <span>another</span> <span>pizzeria,</span> <span>but</span>
+                    <span>needed</span> <span>was</span> <span>another</span> <span>pizzeria,</span>
+                    <span>but</span>
                     <span>maybe</span> <span>this</span> <span>one</span> <span>could</span> <span>be</span>
-                    <span>different</span> <span>and</span> <span>everyone</span> <span>could</span> <span>get</span>
+                    <span>different</span> <span>and</span> <span>everyone</span> <span>could</span>
+                    <span>get</span>
                     <span>exactly</span> <span>what</span> <span>they</span> <span>wanted,</span> <span>made</span>
                     <span>fresh</span> <span>on</span> <span>demand.</span> <span>It</span> <span>all</span>
-                    <span>started</span> <span>sounding</span> <span>pretty</span> <span>great,</span> <span>and</span>
+                    <span>started</span> <span>sounding</span> <span>pretty</span> <span>great,</span>
+                    <span>and</span>
                     <span>soon</span> <span>Sanam</span> <span>was</span> <span>opening</span> <span>the</span>
                     <span>first</span> <span>La</span> <span>Pino'z</span> <span>in</span> <span>his</span>
-                    <span>hometown</span> <span>Chandigarh</span> <span>and</span> <span>there</span> <span>was</span>
+                    <span>hometown</span> <span>Chandigarh</span> <span>and</span> <span>there</span>
+                    <span>was</span>
                     <span>no</span> <span>looking</span> <span>back.</span> <span>As</span> <span>of</span>
                     <span>today,</span> <span>La</span> <span>Pino'z</span> <span>has</span> <span>600+</span>
                     <span>outlets</span> <span>across</span> <span>India</span> <span>with</span> <span>the</span>
