@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -209,6 +209,252 @@ body {
   color: black;
   font-family: "MockFlowFont";   
   overflow: hidden;
+}
+  </style>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="explore-menu-box">
+    <div class="card">
+      <div class="imgBx">
+        <img src="./public/images/tacos.png">
+      </div>
+      <div class="contentBx">
+        <h2>Sides</h2>
+        <a href="#">Buy Now</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="explore-menu-box">
+    <div class="card">
+      <div class="imgBx">
+        <img src="./public/images/tacos.png">
+      </div>
+      <div class="contentBx">
+        <h2>Nike Shoes</h2>
+        <a href="#">Buy Now</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="explore-menu-box">
+    <div class="card">
+      <div class="imgBx">
+        <img src="./public/images/tacos.png">
+      </div>
+      <div class="contentBx">
+        <h2>Nike Shoes</h2>
+        <a href="#">Buy Now</a>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+*{
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #131313;
+}
+
+.explore-menu-box{
+  position: relative;
+  margin-inline: 10px;
+}
+
+.explore-menu-box .card{
+  position: relative;
+  width: 250px;
+  height: 360px;
+  background: #232323;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.explore-menu-box .card:before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #9bdc28;
+  clip-path: circle(135px at 80% 20%);
+  transition: 0.5s ease-in-out;
+}
+
+.explore-menu-box .card:hover:before{
+  clip-path: circle(300px at 80% -20%);
+}
+
+.explore-menu-box .card:after{
+  content: 'Lapinoz';
+  position: absolute;
+  top: 50%;
+  left: -20%;
+  font-size:55px;
+  font-weight: 800;
+  font-style: italic;
+  transform: translate(20%, 70%) rotate(25deg);
+  color: rgba(255,255,25,0.05)
+}
+
+.explore-menu-box .card .imgBx{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-60%);
+  z-index: 10000;
+  width: 100%;
+  height: 220px;
+  transition: 0.5s;
+}
+
+.explore-menu-box .card:hover .imgBx{
+  top: 0%;
+  transform: translateY(0%);
+    
+}
+
+.explore-menu-box .card .imgBx img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-25deg);
+  width: 270px;
+}
+
+.explore-menu-box .card .contentBx{
+  position: absolute;
+  bottom: -30;
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  transition: 1s;
+  z-index: 10;
+}
+
+.explore-menu-box .card:hover .contentBx{
+  height: 160px;
+}
+
+.explore-menu-box .card .contentBx h2{
+  position: relative;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #fff;
+  margin: 0;
+}
+
+/* .explore-menu-box .card .contentBx .size, .explore-menu-box .card .contentBx .color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 20px;
+  transition: 0.5s;opacity: 0;
+  visibility: hidden;
+  padding-top: 0;
+  padding-bottom: 0;
+} */
+
+/* .explore-menu-box .card:hover .contentBx .size{
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0.5s;
+}
+
+.explore-menu-box .card:hover .contentBx .color{
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0.6s;
+} */
+
+/* .explore-menu-box .card .contentBx .size h3, .explore-menu-box .card .contentBx .color h3{
+  color: #fff;
+  font-weight: 300;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-right: 10px;
+} */
+
+/* .explore-menu-box .card .contentBx .size span{
+  width: 26px;
+  height: 26px;
+  text-align: center;
+  line-height: 26px;
+  font-size: 14px;
+  display: inline-block;
+  color: #111;
+  background: #fff;
+  margin: 0 5px;
+  transition: 0.5s;
+  color: #111;
+  border-radius: 4px;
+  cursor: pointer;
+} */
+
+/* .explore-menu-box .card .contentBx .size span:hover{
+  background: #9bdc28;
+}
+
+.explore-menu-box .card .contentBx .color span{
+  width: 20px;
+  height: 20px;
+  background: #ff0;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.explore-menu-box .card .contentBx .color span:nth-child(2){
+  background: #9bdc28;
+}
+
+.explore-menu-box .card .contentBx .color span:nth-child(3){
+  background: #03a9f4;
+}
+
+.explore-menu-box .card .contentBx .color span:nth-child(4){
+  background: #e91e63;
+} */
+
+.explore-menu-box .card .contentBx a{
+  display: inline-block;
+  padding: 5px 20px;
+  background: #fff;
+  border-radius: 4px;
+  /* margin-top: 10px; */
+  text-decoration: none;
+  font-weight: 600;
+  color: #111;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.75s;
+  margin-top: 0;
+}
+
+.explore-menu-box .card:hover .contentBx a{
+  opacity: 1;
+  transform: translateY(0px);
+  transition-delay: 0.5s;
+  
 }
   </style>
 </body>
