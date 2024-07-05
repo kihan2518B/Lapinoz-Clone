@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="">
+  <ul class="bestseller_cards">
+    <li>
+      <a href="" class="bestseller__card">
+        <img src="https://static.uengage.in/uploads/5/image-711224-1715596629.png" class="bestseller__card__image" alt="" />
+        <div class="bestseller__card__overlay">        
+          <div class="bestseller__card__header">
+            <svg class="bestseller__card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
+            <div class="bestseller__card__header-text">
+              <h3 class="bestseller__card__title">Recommended</h3>            
+              <span class="bestseller__card__status">Farm Villa Pizza</span>
+            </div>
+          </div>
+          <p class="bestseller__card__description">Lorem ipsum dolor sit amet consectetur adipisicing</p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="" class="bestseller__card">
+        <img src="https://static.uengage.in/uploads/5/image-711224-1715596629.png" class="bestseller__card__image" alt="" />
+        <div class="bestseller__card__overlay">        
+          <div class="bestseller__card__header">
+            <svg class="bestseller__card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
+            <div class="bestseller__card__header-text">
+              <h3 class="bestseller__card__title">Recommended</h3>            
+              <span class="bestseller__card__status">Farm Villa Pizza</span>
+            </div>
+          </div>
+          <p class="bestseller__card__description">Lorem ipsum dolor sit amet consectetur adipisicing</p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="" class="bestseller__card">
+        <img src="https://static.uengage.in/uploads/5/image-711224-1715596629.png" class="bestseller__card__image" alt="" />
+        <div class="bestseller__card__overlay">        
+          <div class="bestseller__card__header">
+            <svg class="bestseller__card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
+            <div class="bestseller__card__header-text">
+              <h3 class="bestseller__card__title">Recommended</h3>            
+              <span class="bestseller__card__status">Farm Villa Pizza</span>
+            </div>
+          </div>
+          <p class="bestseller__card__description">Lorem ipsum dolor sit amet consectetur adipisicing</p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="" class="bestseller__card">
+        <img src="https://static.uengage.in/uploads/5/image-711224-1715596629.png" class="bestseller__card__image" alt="" />
+        <div class="bestseller__card__overlay">        
+          <div class="bestseller__card__header">
+            <svg class="bestseller__card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
+            <div class="bestseller__card__header-text">
+              <h3 class="bestseller__card__title">Recommended</h3>            
+              <span class="bestseller__card__status">Farm Villa Pizza</span>
+            </div>
+          </div>
+          <p class="bestseller__card__description">Lorem ipsum dolor sit amet consectetur adipisicing</p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="" class="bestseller__card">
+        <img src="https://static.uengage.in/uploads/5/image-711224-1715596629.png" class="bestseller__card__image" alt="" />
+        <div class="bestseller__card__overlay">        
+          <div class="bestseller__card__header">
+            <svg class="bestseller__card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
+            <div class="bestseller__card__header-text">
+              <h3 class="bestseller__card__title">Recommended</h3>            
+              <span class="bestseller__card__status">Farm Villa Pizza</span>
+            </div>
+          </div>
+          <p class="bestseller__card__description">Lorem ipsum dolor sit amet consectetur adipisicing</p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="" class="bestseller__card">
+        <img src="https://static.uengage.in/uploads/5/image-711224-1715596629.png" class="bestseller__card__image" alt="" />
+        <div class="bestseller__card__overlay">        
+          <div class="bestseller__card__header">
+            <svg class="bestseller__card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
+            <div class="bestseller__card__header-text">
+              <h3 class="bestseller__card__title">Recommended</h3>            
+              <span class="bestseller__card__status">Farm Villa Pizza</span>
+            </div>
+          </div>
+          <p class="bestseller__card__description">Lorem ipsum dolor sit amet consectetur adipisicing</p>
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>
+  <style>
+:root {
+  /* --surface-color: #fff; */
+  --curve: 40;
+}
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  /* background-color: #6A515E; */
+}
+
+.bestseller_cards {
+  display: flex;
+  gap: 3rem;
+  padding: 0;
+  list-style-type: none;
+  overflow-x: scroll;
+  height: 350px;
+  width: 90%;
+  margin-inline:auto ;
+  -ms-overflow-style: none;    /* IE and Edge */
+    scrollbar-width: none;    /* Firefox */
+}
+
+.bestseller_cards::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+}
+
+.bestseller__card {
+  position: relative;
+  display: block;
+  height: 310px;  
+  min-width: 300px;
+  border-radius: calc(var(--curve) * 1px);
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.bestseller__card__image {      
+  width: 100%;
+  height: 85%;
+  object-fit: cover;
+}
+
+.bestseller__card:hover .bestseller__card__image {
+  transition: all 1s ease;
+}
+
+.bestseller__card__overlay {
+  z-index: 1;      
+  border-radius: calc(var(--curve) * 1px);    
+  transition: .2s ease-in-out;
+  background-color: #ffe77a;
+}
+
+.bestseller__card:hover .bestseller__card__overlay {
+  transform: translateY(-73.7px);
+}
+
+.bestseller__card__header {
+  position: relative;
+    display: flex;
+    align-items: center;
+    color: #00572d;
+    background-color: #ffe77a;
+    height: 80px;
+    border-radius: calc(var(--curve)* 1px) 0 0 0;
+    transform: translateY(-45%);
+    transition: .2s ease-in-out;
+    justify-content: center;
+}
+
+.bestseller__card__arc {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  bottom: 99.5%;
+  right: 0;      
+  z-index: 1;
+}
+
+.bestseller__card__arc path {
+  fill:#ffe77a ;
+  d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+}       
+
+.bestseller__card:hover .bestseller__card__header {
+  transform: translateY(0);
+}
+
+.bestseller__card__title {
+  font-size: larger;
+  margin: 0 0 .3em;
+}
+
+
+.bestseller__card__status {
+  font-size:medium;
+  color: black;
+  font-weight:600;
+}
+
+.bestseller__card__description {
+  text-align: center;
+  margin: 0;
+  font-size:16.5px ;
+  color: black;
+  font-family: "MockFlowFont";   
+  overflow: hidden;
+}
+  </style>
+</body>
+</html>
