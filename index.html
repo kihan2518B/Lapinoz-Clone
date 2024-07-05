@@ -1652,12 +1652,12 @@ document.addEventListener('DOMContentLoaded', function () {
     <section class="bestseller-section">
         <div class="bestseller-heading">
             <div class="">
-                <h3 class="common-heading">Best Sellers</h3>
-                <div class="bottom-dots ">
-                    <span class="dot line-dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
+                <h3>Best Sellers</h3>
+                <div class="bestseller-bottom-dots">
+                    <span class="bestseller-dot bestseller-line-dot"></span>
+                    <span class="bestseller-dot"></span>
+                    <span class="bestseller-dot"></span>
+                    <span class="bestseller-dot"></span>
                 </div>
             </div>
         </div>
@@ -1758,39 +1758,68 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
               </a>
             </li>
+            <!-- <li class="visibility__hidden">
+                <a href="" class="bestseller__card ">
+                  <div class="veg-flag"><span></span></div>
+                  <div class="bestseller__card__overlay">        
+                    <div class="bestseller__card__header">
+                      <svg class="bestseller__card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
+                      <div class="bestseller__card__header-text">
+                        <h3 class="bestseller__card__title">Recommended</h3>            
+                        <span class="bestseller__card__status">Onions Pizza</span>
+                      </div>
+                    </div>
+                    <p class="bestseller__card__description">Onions on a cheesy base with in house sausce...</p>
+                  </div>
+                </a>
+              </li> -->
+              
           </ul>
     </section>
 
     <style>
         
         .bestseller-section {
-            padding-block: 5px;
+            padding-bottom: 70px;
             display: block;
+            /* width: 100%; */
             background-color: #f0f0f0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: background-image 0.5s ease-in-out;
         }
 
-        .bestseller-heading .bottom-dots {
-            padding-inline:1px;
+        .bestseller-bottom-dots {
+            padding: 1px 0;
         }
 
-        .bestseller-heading .bottom-dots .dots {
+        .bestseller-bottom-dots .bestseller-dot.bestseller-line-dot {
+            color: #f7f7f7;
+        }
+
+        .bestseller-bottom-dots .bestseller-dot.bestseller-line-dot {
+            border-right: 70px solid #f7f7f7;
+        }
+
+        .bestseller-bottom-dots .bestseller-dot {
             float: left;
             width: 3px;
             height: 2px;
             margin-right: 3px;
         }
 
-        .bestseller-heading .bottom-dots .dot.line-dot {
-            color: green;
+        .bestseller-bottom-dots .bestseller-dot {
+            border-right: 3px solid #f7f7f7;
         }
 
         .bestseller-section .bestseller-heading {
-            max-width: 1250px;
             width: 100%;
-            padding-right: 15px;
-            padding-left: 15px;
-            margin-right: auto;
-            margin-left: auto;
+            color: #f7f7f7;
+            font-size: 30px;
+            padding-left: 25px; 
+            padding-bottom: 35px;
+            padding-top: 35px;
         }
 
         :root {
@@ -1888,7 +1917,7 @@ document.addEventListener('DOMContentLoaded', function () {
   width: 80px;
   height: 80px;
   position: absolute;
-  bottom: 99.3%;
+  bottom: 98.9%;
   right: 0;      
   z-index: 1;
 }
@@ -1922,7 +1951,71 @@ document.addEventListener('DOMContentLoaded', function () {
   font-family: "MockFlowFont";   
   overflow: hidden;
 }
+
     </style>
+    <script>
+    //     document.addEventListener('DOMContentLoaded', function () {
+    // const bestsellerSection = document.querySelector('.bestseller-section');
+    // const bestsellerCards = document.querySelector('.bestseller_cards');
+    // const cards = bestsellerCards.querySelectorAll('li');
+
+    // function updateBackgroundImage() {
+    //     const cardWidth = cards[0].offsetWidth;
+    //     const scrollLeft = bestsellerCards.scrollLeft;
+    //     const secondCardIndex = Math.floor(scrollLeft / cardWidth) + 1;
+
+    //     if (secondCardIndex >= 0 && secondCardIndex < cards.length) {
+    //         const secondCardImage = cards[secondCardIndex].querySelector('.bestseller__card__image').src;
+
+    //         // Remove previous background classes
+    //         bestsellerSection.className = 'bestseller-section';
+            
+    //         // Add new background class
+    //         bestsellerSection.style.backgroundImage = `url(${secondCardImage})`;
+    //     }
+    // }
+
+    // // Attach the scroll event listener
+    // bestsellerCards.addEventListener('scroll', updateBackgroundImage);
+
+    // // Initial call to set the background image on page load
+    // updateBackgroundImage();
+// });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const bestsellerSection = document.querySelector('.bestseller-section');
+    const bestsellerCards = document.querySelector('.bestseller_cards');
+    const cards = bestsellerCards.querySelectorAll('li');
+
+    function updateBackgroundImage() {
+        const cardWidth = cards[0].offsetWidth;
+        const containerWidth = bestsellerCards.offsetWidth;
+        const scrollLeft = bestsellerCards.scrollLeft;
+        const thresholdPosition = containerWidth * 0.40;
+
+        // Calculate the index of the card near the 25% width of the container
+        const cardIndexAtThreshold = Math.floor((scrollLeft + thresholdPosition) / cardWidth);
+
+        if (cardIndexAtThreshold >= 0 && cardIndexAtThreshold < cards.length) {
+            const cardImage = cards[cardIndexAtThreshold].querySelector('.bestseller__card__image').src;
+
+            // Remove previous background classes
+            bestsellerSection.className = 'bestseller-section';
+            
+            // Add new background class
+            bestsellerSection.style.backgroundImage = `url(${cardImage})`;
+        }
+    }
+
+    // Attach the scroll event listener
+    bestsellerCards.addEventListener('scroll', updateBackgroundImage);
+
+    // Initial call to set the background image on page load
+    updateBackgroundImage();
+});
+
+
+    </script>
 
     <!-- Newly Launched Stores -->
     <section class="newly-launched">
