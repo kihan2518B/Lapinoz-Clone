@@ -1527,10 +1527,10 @@ document.addEventListener('DOMContentLoaded', function () {
                   <div class="explore-menu-box">
                     <div class="explore-menu-card">
                       <div class="imgBx">
-                        <img src="./public/images/tacos.png">
+                        <img src="./public/images/pizza.png">
                       </div>
                       <div class="contentBx">
-                        <h2 class="menu__name">Nike Shoes</h2>
+                        <h2 class="menu__name">Flat Out</h2>
                         <a href="#">Buy Now</a>
                       </div>
                     </div>
@@ -1539,10 +1539,10 @@ document.addEventListener('DOMContentLoaded', function () {
                   <div class="explore-menu-box">
                     <div class="explore-menu-card">
                       <div class="imgBx">
-                        <img src="./public/images/tacos.png">
+                        <img src="./public/images/pizza2.png">
                       </div>
                       <div class="contentBx">
-                        <h2 class="menu__name">Nike Shoes</h2>
+                        <h2 class="menu__name">Veg Pizza</h2>
                         <a href="#">Buy Now</a>
                       </div>
                     </div>
@@ -1554,7 +1554,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         <img src="./public/images/tacos.png">
                       </div>
                       <div class="contentBx">
-                        <h2 class="menu__name">Nike Shoes</h2>
+                        <h2 class="menu__name">Non-Veg Pizza</h2>
                         <a href="#">Buy Now</a>
                       </div>
                     </div>
@@ -1563,10 +1563,10 @@ document.addEventListener('DOMContentLoaded', function () {
                   <div class="explore-menu-box">
                     <div class="explore-menu-card">
                       <div class="imgBx">
-                        <img src="./public/images/tacos.png">
+                        <img src="./public/images/pizza box.png">
                       </div>
                       <div class="contentBx">
-                        <h2 class="menu__name">Nike Shoes</h2>
+                        <h2 class="menu__name">Classic Maniacs</h2>
                         <a href="#">Buy Now</a>
                       </div>
                     </div>
@@ -1575,10 +1575,10 @@ document.addEventListener('DOMContentLoaded', function () {
                   <div class="explore-menu-box">
                     <div class="explore-menu-card">
                       <div class="imgBx">
-                        <img src="./public/images/tacos.png">
+                        <img src="./public/images/coke.png">
                       </div>
                       <div class="contentBx">
-                        <h2 class="menu__name">Nike Shoes</h2>
+                        <h2 class="menu__name">Dessert & Beverages</h2>
                         <a href="#">Buy Now</a>
                       </div>
                     </div>
@@ -1596,6 +1596,7 @@ document.addEventListener('DOMContentLoaded', function () {
             margin-inline: auto;
             padding-right: 15px;
             padding-left: 15px;
+            color: #00572d;
         }
 
         .explore-menu {
@@ -1688,7 +1689,7 @@ document.addEventListener('DOMContentLoaded', function () {
   position: absolute;
   top: 50%;
   transform: translateY(-60%);
-  z-index: 10000;
+  /* z-index: 1; */
   width: 100%;
   height: 220px;
   transition: 0.5s;
@@ -1724,8 +1725,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 .explore-menu-box .explore-menu-card .contentBx .menu__name{
   position: relative;
-  font-weight: 600;
-  letter-spacing: 1px;
+  font-size: 25px;
   color: black;
   margin: 0;
 }
@@ -1903,11 +1903,64 @@ document.addEventListener('DOMContentLoaded', function () {
               </li> -->
               
           </ul>
+          <div class="img_holder">
+            <img class="img_holder_img" src="https://static.uengage.in/uploads/5/image-993211-1718099220.png" alt="">
+          </div>
     </section>
 
     <style>
+       .img_holder {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: auto;
+    width: 6%;
+    z-index: 0;
+    display: flex;
+    justify-content: flex-end;
+    max-width: 100%;
+    max-height: 100%;
+    clip-path: circle(80% at 90% 90%);
+    transition: width 0.5s ease-in-out, height 0.5s ease-in-out , clip-path 0.5s ease; 
+}
+.img_holder:hover{
+    width: 100%;
+    height: 100%;
+    clip-path: inset(0% 0% 0% 0%);;
+}
+
+.img_holder > .img_holder_img {
+    position: relative;
+    height: auto; 
+    width: auto;
+    z-index: 0;
+    object-fit: cover;
+}
+
+/*  .img_holder {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: auto;
+    width: 6%; 
+    z-index: 0;
+    display: flex;
+    justify-content: flex-end; 
+    max-width: 100%;
+    max-height: 100%;
+    clip-path: circle(80% at 90% 90%);
+    transform-origin: bottom right;
+    transition: transform 1.5s ease 0.5s, clip-path 10s ease-in-out 10s;
+}
+
+.img_holder:hover {
+    transform-origin: center;
+    transform: scale(16.67); 
+    clip-path: inset(0% 0% 0% 0%);
+} */
         
         .bestseller-section {
+            position: relative;
             padding-bottom: 70px;
             display: block;
             /* width: 100%; */
@@ -1917,6 +1970,16 @@ document.addEventListener('DOMContentLoaded', function () {
             background-repeat: no-repeat;
             transition: background-image 0.5s ease-in-out;
         }
+        .bestseller-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.47); /* Adjust the opacity to darken the image */
+      pointer-events: none; /* Ensures that the overlay doesn't interfere with interactions */
+    }
 
         .bestseller-bottom-dots {
             padding: 1px 0;
@@ -1942,12 +2005,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         .bestseller-section .bestseller-heading {
+            position: relative;
             width: 100%;
             color: #f7f7f7;
             font-size: 30px;
             padding-left: 25px; 
             padding-bottom: 35px;
             padding-top: 35px;
+            z-index: 10;
         }
 
         :root {
@@ -1980,6 +2045,7 @@ document.addEventListener('DOMContentLoaded', function () {
   border-radius: calc(var(--curve) * 1px);
   overflow: hidden;
   text-decoration: none;
+  z-index: 10;
 }
 
 .veg-flag {
@@ -2114,7 +2180,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const bestsellerSection = document.querySelector('.bestseller-section');
     const bestsellerCards = document.querySelector('.bestseller_cards');
     const cards = bestsellerCards.querySelectorAll('li');
-
+    const img_holder_img = document.querySelector(".img_holder_img");
     function updateBackgroundImage() {
         const cardWidth = cards[0].offsetWidth;
         const containerWidth = bestsellerCards.offsetWidth;
@@ -2126,10 +2192,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (cardIndexAtThreshold >= 0 && cardIndexAtThreshold < cards.length) {
             const cardImage = cards[cardIndexAtThreshold].querySelector('.bestseller__card__image').src;
-
+            const nextCardImg = cards[cardIndexAtThreshold+1].querySelector('.bestseller__card__image').src;
             // Remove previous background classes
             bestsellerSection.className = 'bestseller-section';
-            
+            img_holder_img.src = nextCardImg;
             // Add new background class
             bestsellerSection.style.backgroundImage = `url(${cardImage})`;
         }
