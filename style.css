@@ -4,28 +4,17 @@
     box-sizing: border-box;
 }
 
+#main {
+    height: auto;
+    width: auto;
+}
+
 body {
     background-color: #fff;
     color: #000;
 }
 
 
-
-.custom-class {
-    margin-bottom: 0px;
-    margin-top: 10px;
-    /* Adjust as needed */
-    padding-left: 15px;
-    /* Adjust as needed */
-    padding-right: 15px;
-    /* Adjust as needed */
-}
-
-@media (min-width: 768px) {
-    .custom-class {
-        margin-top: 0px;
-    }
-}
 
 .btns {
     display: flex;
@@ -70,213 +59,6 @@ select {
     cursor: pointer;
     font-size: 16px;
     /* Adjust font size as needed */
-}
-
-.deals-section {
-    display: flex;
-    gap: 10px;
-    cursor: pointer;
-    margin: 50px 50px;
-}
-
-.deals-section h1 {
-    font-size: xx-large;
-    font-weight: bold;
-}
-
-/* article {
-    margin: 70px 10px;
-    position: relative;
-    overflow: hidden;
-    width: 64px;
-    height: 500px;
-    border-radius: 36px;
-    display: flex;
-    align-items: flex-end;
-    opacity: 0.5;
-    transition: 0.5s;
-}
-
-article:hover {
-    opacity: 0.75;
-
-}
-
-article .active {
-    width: 400px;
-    opacity: 1;
-}
-
-article img {
-    position: relative;
-    z-index: 0;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
-    height: 150%;
-    filter: grayscale(0.6);
-} */
-
-.deals-section {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    height: 50vh;
-    width: 100%;
-    /* overflow-y: hidden; */
-    margin: 10px 0;
-}
-
-
-.deals-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    overflow-x: hidden;
-    width: 95%;
-    border-radius: 5px;
-    height: 100%;
-    margin: 0 auto 0 auto;
-    padding-bottom: 5px;
-}
-
-.deal {
-    position: relative;
-    flex: 0 0;
-    width: 10%;
-    border-radius: 10%;
-    height: 100%;
-    object-fit: cover;
-    transition: all .75s ease-in-out;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0), 0 2px 4px -2px rgb(0 0 0);
-}
-
-.deal:hover {
-    width: 100%;
-    transition: all .75s ease-in-out;
-    border-radius: 5px;
-}
-
-@media (max-width: 760px) {
-
-    .deals-container {
-        justify-content: space-between;
-        align-items: center;
-        overflow-x: scroll;
-    }
-
-    .deal {
-        object-fit: contain;
-        width: 60%;
-
-    }
-}
-
-/* Story section */
-.story {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-    /* cursor: url('./Media/1Cursor.png'), auto; */
-}
-
-.story>.story-content {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    max-width: 1028px;
-}
-
-.story>.story-content>.story-content-left>.story-content-upper {
-    font-size: 26px;
-    font-weight: 600;
-    margin-bottom: 15px;
-}
-
-.story>.story-content>.story-content-left {
-    font-size: 22px;
-    font-weight: 500;
-    text-align: justify;
-    opacity: 0;
-    height: 0%;
-    transition: all 1s ease-in-out;
-}
-
-.story>.story-content .story-content-upper h5 {
-    color: #556b2f;
-}
-
-.story>.story-content>.owner {
-    position: relative;
-    float: right;
-    width: 40%;
-    height: 40%;
-    border-radius: 50%;
-    background-color: #ff6347;
-    margin-left: 10px;
-    margin-bottom: 15px;
-    cursor: pointer;
-    shape-outside: circle(50%);
-    clip-path: circle(50%);
-    z-index: 10;
-    transform: translate(-60%);
-    transition: all 1s ease-in-out;
-}
-
-.story>.story-content>.owner>.owner-img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    display: block;
-}
-
-.story.show .owner {
-    transform: translate(0%);
-    transition: all 1s ease-in-out 1s;
-}
-
-.story.show .story-content-left {
-    opacity: 1;
-    height: 100%;
-    transform: translate3d(0%);
-    transition: all 1.3s ease-in-out 1.3s;
-}
-
-.bubble-text span {
-    display: inline-block;
-    transition: transform 0.3s ease-in-out;
-    cursor: pointer;
-}
-
-.bubble-text span:hover {
-    transform: translateY(-5px);
-    font-weight: 600;
-    transition: all 0.5s ease;
-    /* Optional: Change color on hover */
-}
-
-@media (min-width: 768px) {
-    .story {
-        flex-direction: row;
-        align-items: flex-start;
-    }
-
-    .owner {
-        width: 200px;
-        height: 200px;
-        margin-right: 25px;
-        /* Adjust the margin for larger screens */
-    }
-
-    .story-content-upper {
-        margin-bottom: 20px;
-    }
 }
 
 

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;600&display=swap');
+
+        html {
+            box-sizing: border-box;
+            font-size: 100%;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+
+        body {
+            -webkit-text-size-adjust: 100%;
+            font-variant-ligatures: none;
+            text-rendering: optimizeLegibility;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font-size: 100%;
+            font-family: 'Fira Sans', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-weight: 800;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            color: #1F1D42;
+        }
+
+        .card-hover {
+            width: 360px;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            border: 2px white solid;
+            border-radius: 5px;
+            background-color: #cfdfee;
+            box-shadow: 0 0 32px -10px rgba(0, 0, 0, 0.08);
+        }
+
+        /* .card-hover:has(.card-hover__link:hover) .card-hover__extra { */
+
+        .card-hover__extra.clicked {
+            transform: translateY(0);
+            transition: transform 0.35s;
+        }
+
+        .card-hover:hover .card-hover__content {
+            background-color: #eef9f3;
+            bottom: 100%;
+            transform: translateY(100%);
+            padding: 0px 10px;
+            transition: all 0.35s cubic-bezier(.1, .72, .4, .97);
+        }
+
+        .card-hover:hover .card-hover__link {
+            opacity: 1;
+            transform: translate(-50%, 0);
+            transition: tranform, opacity 0.3s 0.35s cubic-bezier(.1, .72, .4, .97) ease-in-out;
+        }
+
+        .card-hover:hover img {
+            transform: scale(1);
+            transition: 0.35s 0.1s transform cubic-bezier(.1, .72, .4, .97);
+        }
+
+        .card-hover__content {
+            width: 100%;
+            text-align: center;
+            background-color: #eef9f3;
+            padding: 0 0px 10px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transform: translateY(0);
+            transition: all 0.35s 0.35s cubic-bezier(.1, .72, .4, .97);
+            will-change: bottom, background-color, transform, padding;
+            z-index: 10;
+        }
+
+        .card-hover__content::before,
+        .card-hover__content::after {
+            content: '';
+            width: 100%;
+            height: 120px;
+            background-color: inherit;
+            position: absolute;
+            left: 0;
+            z-index: -1;
+        }
+
+        .card-hover__content::before {
+            top: -80px;
+            clip-path: ellipse(60% 80px at bottom center);
+        }
+
+        .card-hover__content::after {
+            bottom: -80px;
+            clip-path: ellipse(60% 80px at top center);
+        }
+
+        .card-hover__title {
+            position: relative;
+            font-size: 3.5rem;
+            font-weight: 100;
+        }
+
+        .card-hover__flat {
+            font-size: 1.2rem;
+            color: #000;
+            position: absolute;
+            top: 5%;
+            left: 20%;
+        }
+
+
+        .card-hover__text {
+            font-size: 1rem;
+            margin-top: 0;
+            margin-bottom: 2px;
+        }
+
+        .card-hover__link {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translate(-50%, 10%);
+            display: flex;
+            opacity: 0;
+            flex-wrap: wrap;
+            align-items: center;
+            text-decoration: none;
+            color: #2d7f0b;
+            opacity: 0;
+            padding: 10px;
+            transition: all 0.35s ease-in-out;
+        }
+
+        .card-hover__link:hover svg {
+            transform: translateX(4px);
+        }
+
+        .card-hover__link svg {
+            width: 18px;
+            margin-left: 4px;
+            transition: transform 0.3s;
+        }
+
+        .card-hover__extra {
+            height: 50%;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+            font-size: 1.5rem;
+            text-align: center;
+            background-color: #86b971;
+            padding: 80px;
+            bottom: 0;
+            z-index: 10;
+            color: #dee8c2;
+            transform: translateY(100%);
+            will-change: transform;
+            transition: transform 0.35s;
+        }
+
+        .card-hover__extra span {
+            color: #2d7f0b;
+        }
+
+        .card-hover img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: 0;
+            transform: scale(1.2);
+            transition: 0.35s 0.35s transform cubic-bezier(.1, .72, .4, .97);
+        }
+    </style>
+    <div class="card-hover">
+        <div class="card-hover__content">
+            <h3 class="card-hover__title">
+                <span class="card-hover__flat">FLAT</span>
+                $50<br />OFF
+            </h3>
+            <p class="card-hover__text">
+                ON ORDER ABOVE $299
+            </p>
+            <a href="#" class="card-hover__link">
+                <span>GET CODE</span>
+                <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+            </a>
+        </div>
+        <div class="card-hover__extra">
+            <h4>Learn <span>now</span> and get <span>40%</span> discount!</h4>
+        </div>
+        <img src="https://images.unsplash.com/photo-1586511925558-a4c6376fe65f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=60"
+            alt="">
+    </div>
+    <script>
+        const getCode = document.querySelector(".card-hover__link");
+        const cardHover__extra = document.querySelector(".card-hover__extra");
+        const cardHover = document.querySelector(".card-hover");
+
+        getCode.addEventListener("click", () => {
+            if (cardHover__extra.classList.contains("clicked")) {
+                cardHover__extra.classList.remove("clicked");
+            } else {
+                cardHover__extra.classList.add("clicked");
+            }
+        })
+        cardHover.addEventListener("mouseleave", () => {
+            cardHover__extra.classList.remove("clicked");
+
+        })
+
+    </script>
+</body>
+
+</html>
