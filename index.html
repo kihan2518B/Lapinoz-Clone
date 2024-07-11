@@ -36,9 +36,6 @@
         </nav>
 
         <style>
-            *{
-  font-family: 'Poppins', sans-serif;
-}
             .delivrySection_container {
                 height: 350px;
                 width: 50dvw;
@@ -1194,10 +1191,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         .quality-container {
             width: 100%;
-            padding-right: 15px;
-            padding-left: 15px;
-            margin-right: auto;
-            margin-left: auto;
+            padding-inline: 15px;
+            margin-inline: auto;
         }
 
         .common-heading {
@@ -1212,7 +1207,28 @@ document.addEventListener('DOMContentLoaded', function () {
             content: "";
         }
 
-        /* Fade-in and Slide-up Animation */
+/* @keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.three-cards-inner {
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: transform 1.5s ease-out, opacity 1.5s ease-out;
+}
+
+.three-cards-inner.animate {
+    opacity: 1;
+    transform: translateY(0);
+} */
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -1224,24 +1240,32 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 }
 
-/* Initial State for Animation */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .three-cards-inner {
     opacity: 0;
-    transform: translateY(-30px);
-    transition: transform 1.5s ease-out, opacity 1.5s ease-out;
+    transition: opacity 1.5s ease-out;
 }
 
-/* .three-cards-inner.reverse-animate {
-    opacity: 0;
-    transform: translateY(-30px);
-    transition: transform 1.0s ease-out, opacity 1.0s ease-out;
-} */
-
-/* Animation Triggered */
-.three-cards-inner.animate {
+.three-cards-inner.animate-up {
     opacity: 1;
-    transform: translateY(0);
+    animation: fadeInUp 1.5s forwards;
 }
+
+.three-cards-inner.animate-down {
+    opacity: 1;
+    animation: fadeInDown 1.5s forwards;
+}
+
 
 
 .three-cards-inner .icons img {
@@ -1319,7 +1343,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         </div>
                         <h5 class="pointer-heading">Safety and Quality Standards</h5>
                         <p class="common-para">
-                            Our kitchens follow the highest safety and quality standards,
+                            Our kitchens follow safety and quality standards,
                             which are fully compliant with fssai guidelines.
                         </p>
                     </div>
@@ -1401,7 +1425,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             .three-cards-inner {
                 flex: 0 0 33.333333%;
-                /* max-width: 33.333333%; */
             }
         }
 
@@ -1412,36 +1435,74 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     </style>
     <script>
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     const cards = document.querySelectorAll('.three-cards-inner');
+
+    //     const observerOptions = {
+    //         root: null,
+    //         rootMargin: '0px',
+    //         threshold: 0.1
+    //     };
+
+    //     const observer = new IntersectionObserver((entries) => {
+    //         entries.forEach(entry => {
+    //             const cardIndex = Array.from(cards).indexOf(entry.target);
+    //             if (entry.isIntersecting) {
+    //                 // When entering the viewport
+    //                 entry.target.style.transitionDelay = `${cardIndex * 1.0}s`;
+    //                 entry.target.classList.add('animate');
+    //                 entry.target.classList.remove('reverse-animate');
+    //             } else {
+    //                 // When leaving the viewport
+    //                 entry.target.style.transitionDelay = '0s'; // Reset delay for leaving
+    //                 entry.target.classList.add('reverse-animate');
+    //                 entry.target.classList.remove('animate');
+    //             }
+    //         });
+    //     }, observerOptions);
+
+    //     cards.forEach(card => {
+    //         observer.observe(card);
+    //     });
+    // });
+
     document.addEventListener('DOMContentLoaded', function() {
-        const cards = document.querySelectorAll('.three-cards-inner');
+    const cards = document.querySelectorAll('.three-cards-inner');
 
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.transitionDelay = '0s';
+                entry.target.classList.remove('reverse-animate');
+
+                // Apply different animations based on the card's index
                 const cardIndex = Array.from(cards).indexOf(entry.target);
-                if (entry.isIntersecting) {
-                    // When entering the viewport
-                    entry.target.style.transitionDelay = `${cardIndex * 1.0}s`;
-                    entry.target.classList.add('animate');
-                    entry.target.classList.remove('reverse-animate');
-                } else {
-                    // When leaving the viewport
-                    entry.target.style.transitionDelay = '0s'; // Reset delay for leaving
-                    entry.target.classList.add('reverse-animate');
-                    entry.target.classList.remove('animate');
+                if (cardIndex % 3 === 0) { // Left card
+                    entry.target.classList.add('animate-up');
+                } else if (cardIndex % 3 === 1) { // Middle card
+                    entry.target.classList.add('animate-down');
+                } else if (cardIndex % 3 === 2) { // Right card
+                    entry.target.classList.add('animate-up');
                 }
-            });
-        }, observerOptions);
-
-        cards.forEach(card => {
-            observer.observe(card);
+            } else {
+                entry.target.style.transitionDelay = '0s';
+                entry.target.classList.remove('animate-up', 'animate-down');
+                entry.target.classList.add('reverse-animate');
+            }
         });
+    }, observerOptions);
+
+    cards.forEach(card => {
+        observer.observe(card);
     });
+});
+
     </script>
 
     <section class="explore-menu">
@@ -1457,61 +1518,6 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
 
             <ul class="explore-menu-ul">
-                <!-- <div class="ul_box">
-                    <a href="https://lapinozpizza.in/online-order">
-                        <div class="menu-placeholder">
-                            <img src="https://static.uengage.in/uploads/5/image-592811-1715424060.png" alt="Sides" />
-                        </div>
-                        <h4 class="eplore-menu-title">Sides</h4>
-                    </a>
-                </div>
-                <div class="ul_box">
-                    <a href="https://lapinozpizza.in/online-order">
-                        <div class="menu-placeholder">
-                            <img src="https://static.uengage.in/uploads/5/image-128695-1686856721.png"
-                                alt="Dessert &amp; Beverages" />
-                        </div>
-                        <h4 class="eplore-menu-title">Dessert &amp; Beverages</h4>
-                    </a>
-                </div>
-                <div class="ul_box">
-                    <a href="https://lapinozpizza.in/online-order">
-                        <div class="menu-placeholder">
-                            <img src="https://static.uengage.in/uploads/5/image-838513-1701755987.png" alt="Flat Out" />
-                        </div>
-                        <h4 class="eplore-menu-title">Flat Out</h4>
-                    </a>
-                </div>
-                <div class="ul_box">
-                    <a href="https://lapinozpizza.in/online-order">
-                        <div class="menu-placeholder">
-                            <img src="https://static.uengage.in/uploads/5/image-814654-1715424611.png"
-                                alt="Veg Pizza" />
-                        </div>
-                        <h4 class="eplore-menu-title">Veg Pizza</h4>
-                    </a>
-                </div>
-                <div class="ul_box">
-                    <a href="https://lapinozpizza.in/online-order">
-                        <div class="menu-placeholder">
-                            <img src="https://static.uengage.in/uploads/5/image-342663-1715424500.png"
-                                alt="Non-veg Pizza" />
-                        </div>
-                        <h4 class="eplore-menu-title">Non-veg Pizza</h4>
-                    </a>
-                </div>
-                <div class="ul_box">
-                    <a href="https://lapinozpizza.in/online-order">
-                        <div class="menu-placeholder">
-                            <img src="https://static.uengage.in/uploads/5/image-659842-1686856722.png"
-                                alt="Classic Pizzas For Classic Maniacs" />
-                        </div>
-                        <h4 class="eplore-menu-title">
-                            Classic Pizzas For Classic Maniacs
-                        </h4>
-                    </a>
-                </div> -->
-
                 <div class="explore-menu-box">
                     <div class="explore-menu-card">
                       <div class="imgBx">
@@ -1551,7 +1557,7 @@ document.addEventListener('DOMContentLoaded', function () {
                   <div class="explore-menu-box">
                     <div class="explore-menu-card">
                       <div class="imgBx">
-                        <img src="./public/images/tacos.png">
+                        <img src="./public/images/non-veg_pizza.png">
                       </div>
                       <div class="contentBx">
                         <h2 class="menu__name">Non-Veg Pizza</h2>
@@ -1903,13 +1909,13 @@ document.addEventListener('DOMContentLoaded', function () {
               </li> -->
               
           </ul>
-          <div class="img_holder">
-            <img class="img_holder_img" src="https://static.uengage.in/uploads/5/image-993211-1718099220.png" alt="">
-          </div>
+          <!-- <div class="img_holder">
+            <img class="" src="https://static.uengage.in/uploads/5/image-993211-1718099220.png" alt="">
+          </div> -->
     </section>
 
     <style>
-       .img_holder {
+       /* .img_holder {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -1935,9 +1941,9 @@ document.addEventListener('DOMContentLoaded', function () {
     width: auto;
     z-index: 0;
     object-fit: cover;
-}
+} */
 
-/*  .img_holder {
+ .img_holder {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -1957,7 +1963,7 @@ document.addEventListener('DOMContentLoaded', function () {
     transform-origin: center;
     transform: scale(16.67); 
     clip-path: inset(0% 0% 0% 0%);
-} */
+}
         
         .bestseller-section {
             position: relative;
@@ -2148,56 +2154,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
     </style>
     <script>
-    //     document.addEventListener('DOMContentLoaded', function () {
-    // const bestsellerSection = document.querySelector('.bestseller-section');
-    // const bestsellerCards = document.querySelector('.bestseller_cards');
-    // const cards = bestsellerCards.querySelectorAll('li');
-
-    // function updateBackgroundImage() {
-    //     const cardWidth = cards[0].offsetWidth;
-    //     const scrollLeft = bestsellerCards.scrollLeft;
-    //     const secondCardIndex = Math.floor(scrollLeft / cardWidth) + 1;
-
-    //     if (secondCardIndex >= 0 && secondCardIndex < cards.length) {
-    //         const secondCardImage = cards[secondCardIndex].querySelector('.bestseller__card__image').src;
-
-    //         // Remove previous background classes
-    //         bestsellerSection.className = 'bestseller-section';
-            
-    //         // Add new background class
-    //         bestsellerSection.style.backgroundImage = `url(${secondCardImage})`;
-    //     }
-    // }
-
-    // // Attach the scroll event listener
-    // bestsellerCards.addEventListener('scroll', updateBackgroundImage);
-
-    // // Initial call to set the background image on page load
-    // updateBackgroundImage();
-// });
-
-document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function () {
     const bestsellerSection = document.querySelector('.bestseller-section');
     const bestsellerCards = document.querySelector('.bestseller_cards');
     const cards = bestsellerCards.querySelectorAll('li');
-    const img_holder_img = document.querySelector(".img_holder_img");
+
     function updateBackgroundImage() {
         const cardWidth = cards[0].offsetWidth;
-        const containerWidth = bestsellerCards.offsetWidth;
         const scrollLeft = bestsellerCards.scrollLeft;
-        const thresholdPosition = containerWidth * 0.40;
+        const secondCardIndex = Math.floor(scrollLeft / cardWidth) + 1;
 
-        // Calculate the index of the card near the 25% width of the container
-        const cardIndexAtThreshold = Math.floor((scrollLeft + thresholdPosition) / cardWidth);
+        if (secondCardIndex >= 0 && secondCardIndex < cards.length) {
+            const secondCardImage = cards[secondCardIndex].querySelector('.bestseller__card__image').src;
 
-        if (cardIndexAtThreshold >= 0 && cardIndexAtThreshold < cards.length) {
-            const cardImage = cards[cardIndexAtThreshold].querySelector('.bestseller__card__image').src;
-            const nextCardImg = cards[cardIndexAtThreshold+1].querySelector('.bestseller__card__image').src;
             // Remove previous background classes
             bestsellerSection.className = 'bestseller-section';
-            img_holder_img.src = nextCardImg;
+            
             // Add new background class
-            bestsellerSection.style.backgroundImage = `url(${cardImage})`;
+            bestsellerSection.style.backgroundImage = `url(${secondCardImage})`;
         }
     }
 
@@ -2207,6 +2181,38 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initial call to set the background image on page load
     updateBackgroundImage();
 });
+
+// document.addEventListener('DOMContentLoaded', function () {
+//     const bestsellerSection = document.querySelector('.bestseller-section');
+//     const bestsellerCards = document.querySelector('.bestseller_cards');
+//     const cards = bestsellerCards.querySelectorAll('li');
+//     const img_holder_img = document.querySelector(".img_holder_img");
+//     function updateBackgroundImage() {
+//         const cardWidth = cards[0].offsetWidth;
+//         const containerWidth = bestsellerCards.offsetWidth;
+//         const scrollLeft = bestsellerCards.scrollLeft;
+//         const thresholdPosition = containerWidth * 0.40;
+
+//         // Calculate the index of the card near the 25% width of the container
+//         const cardIndexAtThreshold = Math.floor((scrollLeft + thresholdPosition) / cardWidth);
+
+//         if (cardIndexAtThreshold >= 0 && cardIndexAtThreshold < cards.length) {
+//             const cardImage = cards[cardIndexAtThreshold].querySelector('.bestseller__card__image').src;
+//             const nextCardImg = cards[cardIndexAtThreshold+1].querySelector('.bestseller__card__image').src;
+//             // Remove previous background classes
+//             bestsellerSection.className = 'bestseller-section';
+//             img_holder_img.src = nextCardImg;
+//             // Add new background class
+//             bestsellerSection.style.backgroundImage = `url(${cardImage})`;
+//         }
+//     }
+
+//     // Attach the scroll event listener
+//     bestsellerCards.addEventListener('scroll', updateBackgroundImage);
+
+//     // Initial call to set the background image on page load
+//     updateBackgroundImage();
+// });
 
 
     </script>
@@ -2693,9 +2699,8 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
             <div class="reviews-section-slider">
                 <div class="reviews-section-list">
-                    <div class="reviews-section-track">
-                        <div>
-                            <div class="reviews-section-slide">
+                   
+                            <!-- <div class="reviews-section-slide">
                                 <div class="bubble reviews-section-para">
                                     <blockquote class="blockquote">
                                         I was blown away by the flavors, the pizzas were amazing.
@@ -2730,141 +2735,493 @@ document.addEventListener('DOMContentLoaded', function () {
                                     <div></div>
                                     <cite>Rahul Singla</cite>
                                 </div>
+                            </div> -->
+
+                            <!-- <div class="reviews__card" style="height: 230px; width: 450px; background-image: url(./public/images/R_image-1.png); background-size: cover; background-position: center;  background-color: #ffe77a; color: #f7f7f7; display: flex; flex-direction: column; justify-content: space-evenly; border-radius: 20px;">
+                                <div class="reviews__text" style="height: 160px; width: 90%; display: flex; align-items: center; margin-inline: auto; font-size: large; text-align: left;"> Where do I start. I don't usually do reviews of
+                                    restaurants but I feel that this place really deserves
+                                    one. They have a wide range of menu options on BOGO offer.
+                                    We chose to try 2 different Pizzas, and wow. 10/10 and
+                                    would recommend everyone to order from this place at least
+                                    once.</div>
+                                    <div class="reviews__header" style="height: 40px; width: 43%; display: flex; align-items: center; justify-content: space-between; margin-left: 23px;">
+                                        <div class="reviews__header__image" style="width: 40px; height: 40px; border-radius: 50%; background-image: url(./public/images/sanam-kapoor.jpg); background-size: contain;" ></div>
+                                        <div class="reviews__header__name" style=" font-size:x-large; font-weight: 600;">Rahul Singla</div>
+                                    </div>
+                            </div> -->
+                            <div class="reviews__top__slider">
+                                <div class="reviews__slider__bg"></div>
+                                <div class="reviews__top__card" style="background-image: url(./public/images/R_image-1.png);">
+                                    <div class="reviews__text">
+                                        I was blown away by the flavors, the pizzas were amazing. Can't wait to order again. Highly recommended. Tastiest dinner I've had since pandemic happened.
+                                    </div>
+                                    <div class="reviews__header">
+                                        <div class="reviews__header__image"></div>
+                                        <div class="reviews__header__name">Uday Panchal</div>
+                                    </div>
+                                </div>
+                                <div class="reviews__top__card" style="background-image: url(./public/images/R_image-2.png);">
+                                    <div class="reviews__text">
+                                        Absolutely fantastic! The flavors were out of this world and the BOGO offer made it even better. The Margherita and Pepperoni pizzas were our favorites. Highly recommend!
+                                    </div>
+                                    <div class="reviews__header">
+                                        <div class="reviews__header__image"></div>
+                                        <div class="reviews__header__name">Kishan Meghani</div>
+                                    </div>
+                                </div>
+                                <div class="reviews__top__card" style="background-image: url(./public/images/R_image-3.png);">
+                                    <div class="reviews__text">
+                                        Great experience from start to finish. The staff was friendly and the food was delicious. The BBQ Chicken pizza is a must-try!
+                                    </div>
+                                    <div class="reviews__header">
+                                        <div class="reviews__header__image"></div>
+                                        <div class="reviews__header__name">Nilax Modi</div>
+                                    </div>
+                                </div>
+                                <div class="reviews__top__card" style="background-image: url(./public/images/R_image-4.png);">
+                                    <div class="reviews__text">
+                                        Lapinoz never disappoints. Tried the Veggie Supreme and it was loaded with fresh toppings. The crust was perfectly crispy. Will definitely be back.
+                                    </div>
+                                    <div class="reviews__header">
+                                        <div class="reviews__header__image"></div>
+                                        <div class="reviews__header__name">Swetang Pandit</div>
+                                    </div>
+                                </div>
+                                <div class="reviews__top__card" style="background-image: url(./public/images/R_image-5.png);">
+                                    <div class="reviews__text">
+                                        First time trying Lapinoz and it won’t be the last. The Hawaiian pizza was a delightful surprise. Perfect balance of sweet and savory.
+                                    </div>
+                                    <div class="reviews__header">
+                                        <div class="reviews__header__image"></div>
+                                        <div class="reviews__header__name">Mohak Shah</div>
+                                    </div>
+                                </div>
+                                <div class="reviews__top__card" style="background-image: url(./public/images/R_image-6.png);">
+                                    <div class="reviews__text">
+                                        Outstanding service and even better food. The Spicy Italian pizza had just the right amount of kick. Can’t wait to come back!
+                                    </div>
+                                    <div class="reviews__header">
+                                        <div class="reviews__header__image"></div>
+                                        <div class="reviews__header__name">Krish Patel</div>
+                                    </div>
+                                </div>
+                                <div class="reviews__top__card" style="background-image: url(./public/images/R_image-7.png);">
+                                    <div class="reviews__text">
+                                        A gem of a place. The Four Cheese pizza was creamy and delicious. The BOGO offer is a fantastic deal. Highly recommended.
+                                    </div>
+                                    <div class="reviews__header">
+                                        <div class="reviews__header__image"></div>
+                                        <div class="reviews__header__name">Deep Chaudhary</div>
+                                    </div>
+                                </div>
+                                <div class="reviews__top__card" style="background-image: url(./public/images/R_image-8.png);">
+                                    <div class="reviews__text">
+                                        Had a wonderful dining experience. The Classic Margherita was simple yet flavorful. The atmosphere was cozy and welcoming.
+                                    </div>
+                                    <div class="reviews__header">
+                                        <div class="reviews__header__image"></div>
+                                        <div class="reviews__header__name">Dhruv Patel</div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+
+                            <div class="reviews__bottom__slider">
+                                <div class="reviews__bottom__card" style="background-image: url(./public/images/R_image-9.png);">
+                                    <div class="reviews__text">
+                                        The best pizza place in town. The Meat Lovers pizza was packed with delicious meats. Great value for money with their offers.
+                                    </div>
+                                    <div class="reviews__header">
+                                        <div class="reviews__header__image"></div>
+                                        <div class="reviews__header__name">Abhi Jeshani</div>
+                                    </div>
+                                </div>
+                                <div class="reviews__bottom__card" style="background-image: url(./public/images/R_image-10.png);">
+                                    <div class="reviews__text">
+                                        Impressed with the quality and taste. The Pesto Chicken pizza was unique and flavorful. Great spot for a casual meal.
+                                    </div>
+                                    <div class="reviews__header">
+                                        <div class="reviews__header__image"></div>
+                                        <div class="reviews__header__name">Meet Jeshani</div>
+                                    </div>
+                                </div>
+                                <div class="reviews__bottom__card" style="background-image: url(./public/images/R_image-11.png);">
+                                    <div class="reviews__text">
+                                        Lapinoz has become our go-to pizza place. The Buffalo Chicken pizza was spicy and tangy. Perfect for a weekend treat.
+                                    </div>
+                                    <div class="reviews__header">
+                                        <div class="reviews__header__image"></div>
+                                        <div class="reviews__header__name">Kalp Patel</div>
+                                    </div>
+                                </div>
+                                <div class="reviews__bottom__card" style="background-image: url(./public/images/R_image-12.png);">
+                                    <div class="reviews__text">
+                                        Amazing pizza and great service. The Mushroom and Spinach pizza was fresh and tasty. Loved the crust and the overall experience.
+                                    </div>
+                                    <div class="reviews__header">
+                                        <div class="reviews__header__image"></div>
+                                        <div class="reviews__header__name">Mahir Patel</div>
+                                    </div>
+                                </div>
+                                <div class="reviews__bottom__card" style="background-image: url(./public/images/R_image-13.png);">
+                                    <div class="reviews__text">
+                                        Tried the Veggie Deluxe and it was superb. Fresh ingredients and generous toppings. The BOGO offer made it even better.
+                                    </div>
+                                    <div class="reviews__header">
+                                        <div class="reviews__header__image"></div>
+                                        <div class="reviews__header__name">Ashok Kumar</div>
+                                    </div>
+                                </div>
+                                <div class="reviews__bottom__card" style="background-image: url(./public/images/R_image-14.png);">
+                                    <div class="reviews__text">
+                                        One of the best pizza places I’ve been to. The Sausage and Peppers pizza was flavorful and satisfying. Great for family dinners.
+                                    </div>
+                                    <div class="reviews__header">
+                                        <div class="reviews__header__image"></div>
+                                        <div class="reviews__header__name">Parth Darji</div>
+                                    </div>
+                                </div>
+                                <div class="reviews__bottom__card" style="background-image: url(./public/images/R_image-15.png);">
+                                    <div class="reviews__text">
+                                        Delicious pizza and excellent service. The BBQ Chicken and Bacon pizza was a hit. Highly recommend giving Lapinoz a try.
+                                    </div>
+                                    <div class="reviews__header">
+                                        <div class="reviews__header__image"></div>
+                                        <div class="reviews__header__name">Ayush Dubey</div>
+                                    </div>
+                                </div>
+                                <div class="reviews__bottom__card" style="background-image: url(./public/images/R_image-16.png);">
+                                    <div class="reviews__text">
+                                        Wow! Lapino’z is hands down the BEST pizza place in town. From the fast delivery service to all the types of pizza, pasta, and garlic bread your heart desires.
+                                    </div>
+                                    <div class="reviews__header">
+                                        <div class="reviews__header__image"></div>
+                                        <div class="reviews__header__name">Daksh Mistry</div>
+                                    </div>
+                                </div>
+                            </div>
                 </div>
             </div>
         </div>
     </section>
     <style>
         .reviews-section {
-            margin: 30px 0;
+            margin: 20px 0;
             padding: 30px 0;
+            height: fit-content;
+            background-color:  rgba(0, 0, 0);
         }
 
-        .testimonials-sec {
-            background-image: url(https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/testimonial-banner.jpg);
-            background-size: cover;
-            background-position: top center;
-        }
-
+        /* .testimonials-sec::before{
+        } */
+        
         .reviews-section-container {
             width: 100%;
-            max-width: 1250px;
-            padding-right: 15px;
-            padding-left: 15px;
-            margin-right: auto;
-            margin-left: auto;
+            padding-inline: 15px;
+            margin-inline: auto;
+            /* background-color: #e3e3e3; */
         }
-
+        
         .reviews-section-heading {
-            font-size: 26px;
+            font-size: 35px;
             display: flex;
             flex-direction: column;
+            align-items: start;
             font-weight: 700;
-            color: #fff !important;
+            color: #f7f7f7 !important;
             text-align: center !important;
-            font-size: 1.618em;
             font-weight: 500;
         }
-
+        
         .reviews-section-container .bottom-dot {
             display: flex;
-            justify-content: center;
+            justify-content: start;
             height: 30px;
         }
-
+        
         .reviews-section-container .bottom-dot .dot {
             position: relative;
             display: block;
             float: left;
-            width: 3px;
-            height: 2px;
-            border-right: 3px solid white;
-            margin-right: 3px;
+            width: 15px;
+            height: 4px;
+            border-right: 3px solid #f7f7f7;
         }
-
+        
         .reviews-section-container .bottom-dot .line-dot {
-            border-right: 40px solid white;
+            border-right: 80px solid #f7f7f7;
         }
-
+        
         .reviews-section-slider {
             position: relative;
             display: block;
             box-sizing: border-box;
         }
-
+        
         .reviews-section-list {
             position: relative;
-            height: 235px;
+            height: 500px;
+            width: 100%;            
             display: flex;
-            margin: 0;
-            padding: 0;
+            flex-direction: column;
+            justify-content: space-between;
+            
         }
-
-        .reviews-section-list>.reviews-section-track {
-            overflow-y: auto;
-        }
-
-        .reviews-section-slide {
-            display: flex;
-            width: 100%;
-            float: left;
+        
+        .reviews__top__slider, .reviews__bottom__slider, .reviews__slider__bg{
+            gap: 25px;
             height: 100%;
-            min-height: 1px;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .reviews-section-para {
-            margin-bottom: 5px;
-            font-size: 15px;
-            font-weight: 500;
-            color: #201c1d;
             width: 100%;
+            display: flex;
+            overflow-x: auto;
+            scrollbar-width: none;
         }
-
-        .bubble {
-            background-color: #fff;
-            width: 100%;
-            /* max-width: 950px; */
-            /* margin: 0 auto; */
-            padding: 35px 30px 25px 30px;
-            box-shadow: 0 10px 15px -5px rgb(9 31 67 / 10%);
-            border-radius: 5px;
-            /* margin-top: 30px; */
-            position: relative;
-        }
-
-        .blockquote {
-            display: block;
-            margin-block-start: 1em;
-            margin-block-end: 1em;
-            margin-inline-start: 40px;
-            margin-inline-end: 40px;
-            unicode-bidi: isolate;
-        }
-
-        .bubble cite {
-            font-size: 16px;
-            font-weight: 600;
-            color: #201c1d;
-        }
-
-        .bubble:before {
-            content: "";
-            background-image: url(https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/quotetestimonial.png);
-            top: -10px;
-            left: 20px;
-            width: 80px;
-            height: 80px;
+        
+        .reviews__slider__bg{
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.9), transparent, transparent, transparent, transparent, transparent, rgba(0, 0, 0, 0.9));
+            z-index: 10;
             position: absolute;
-            background-repeat: no-repeat;
-            z-index: 1;
-            background-size: 70%;
+
         }
+        
+        /* For Webkit browsers (Chrome, Safari) */
+        .reviews__top__slider::-webkit-scrollbar, .reviews__bottom__slider::-webkit-scrollbar {
+            height: 0px;
+        }
+        
+    .reviews__top__card, .reviews__bottom__card {
+    position: relative;
+    height: 230px;
+    /* width: 450px; */
+    min-width: 450px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    color: #f7f7f7;
+    overflow: hidden;
+}
+
+.reviews__top__card::before, .reviews__bottom__card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+    border-radius: 20px;
+}
+
+.reviews__text {
+    position: relative;
+    z-index: 2;
+    height: 160px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    margin-inline: auto;
+    font-size: large;
+    text-align: left;
+}
+
+.reviews__header {
+    position: relative;
+    z-index: 2;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    margin-left: 23px;
+    margin-bottom: 5px;
+}
+
+.reviews__header__image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-image: url(./public/images/sanam-kapoor.jpg);
+    background-size: cover;
+}
+
+.reviews__header__name {
+    font-size: x-large;
+    font-weight: 500;
+    margin-left: 10px;
+}
+
     </style>
+
+<script>
+    // const container = document.querySelector('.reviews-section-list');
+    // // Set the interval (in milliseconds)
+    // const scrollInterval = 5; // Adjust as needed for smoother animation
+    // const scrollStep = 1; // Number of pixels to scroll in each step
+    // let scrollDirection = 1; // 1 for scrolling to the right, -1 for scrolling to the left
+
+    // function scrollImages() {
+    // container.scrollLeft += scrollStep * scrollDirection;
+    // // Check if we have reached the end of the container
+    // if (scrollDirection === 1 && container.scrollLeft >= container.scrollWidth - container.clientWidth) {
+    // // Change direction to scroll to the left
+    // scrollDirection = -1;
+    // } else if (scrollDirection === -1 && container.scrollLeft <= 0) {
+    // // Change direction to scroll to the right
+    // scrollDirection = 1;
+    // }
+    // }
+    // // Scroll the container continuously
+    // setInterval(scrollImages, scrollInterval);
+
+    // document.addEventListener('DOMContentLoaded', function () {
+    //     const container = document.querySelector('.reviews-section-list');
+    //     const scrollInterval = 10; // Adjust as needed for smoother animation
+    //     const scrollStep = 1; // Number of pixels to scroll in each step
+    //     let scrollDirection = 1; // 1 for scrolling to the right, -1 for scrolling to the left
+
+    //     function scrollImages() {
+    //         container.scrollLeft += scrollStep * scrollDirection;
+    //         // Check if we have reached the end of the container
+    //         if (scrollDirection === 1 && container.scrollLeft >= container.scrollWidth - container.clientWidth) {
+    //             // Change direction to scroll to the left
+    //             scrollDirection = -1;
+    //         } else if (scrollDirection === -1 && container.scrollLeft <= 0) {
+    //             // Change direction to scroll to the right
+    //             scrollDirection = 1;
+    //         }
+    //     }
+
+    //     // Scroll the container continuously
+    //     setInterval(scrollImages, scrollInterval);
+    // });
+
+    // document.addEventListener('DOMContentLoaded', function () {
+    //         const top_container = document.querySelector('.reviews__top__slider');
+    //         const bottom_container = document.querySelector('.reviews__bottom__slider');
+    //         const cards = document.querySelectorAll('.reviews__card');
+    //         const scrollInterval = 5; // Adjust as needed for smoother animation
+    //         const scrollStep = 1; // Number of pixels to scroll in each step
+
+    //         // Clone cards and append them to the top_container to create the illusion of an infinite scroll
+    //         cards.forEach(card => {
+    //             const clone = card.cloneNode(true);
+    //             top_container.appendChild(clone);
+    //         });
+
+    //         cards.forEach(card => {
+    //             const clone = card.cloneNode(true);
+    //             bottom_Container.appendChild(clone);
+    //         });
+
+    //         function scrollImages() {
+    //             top_container.scrollLeft += scrollStep;
+    //             bottom_container.scrollLeft -= scrollStep;
+
+
+    //             // When the original set of cards has fully scrolled, reset to the start
+    //             if (top_container.scrollLeft >= top_container.scrollWidth / 2 ) {
+    //                 top_container.scrollLeft = 0;
+    //             }
+    //             if (bottom_container.scrollLeft <= 0) {
+    //                 bottom_container.scrollLeft = bottom_container.scrollWidth / 2;
+    //             }
+    //         }
+
+    //         // Scroll the container continuously
+    //         setInterval(scrollImages, scrollInterval);
+    //     });
+
+
+//     document.addEventListener('DOMContentLoaded', function () {
+//     const topContainer = document.querySelector('.reviews__top__slider');
+//     const bottomContainer = document.querySelector('.reviews__bottom__slider');
+//     const cards = document.querySelectorAll('.reviews__top__card');
+    
+//     const scrollInterval = 15; // Adjust as needed for smoother animation
+//     const scrollStep = 1; // Number of pixels to scroll in each step
+
+//     // Clone cards and append them to the topContainer to create the illusion of an infinite scroll
+//     cards.forEach(card => {
+//         const topClone = card.cloneNode(true);
+//         topContainer.appendChild(topClone);
+        
+//         const bottomClone = card.cloneNode(true);
+//         bottomContainer.appendChild(topClone);
+//     });
+
+//     // // Clone cards and append them to the bottomContainer to ensure the same structure
+//     // cards.forEach(card => {
+//     //     const clone = card.cloneNode(true);
+//     // });
+
+//     function scrollImages() {
+//         topContainer.scrollLeft += scrollStep;
+//         bottomContainer.scrollLeft -= scrollStep;
+
+//         // When the original set of cards has fully scrolled, reset to the start
+//         if (topContainer.scrollLeft >= topContainer.scrollWidth / 2) {
+//             topContainer.scrollLeft = 0;
+//         }
+
+//         // When the bottom container has fully scrolled back to the start, reset its position
+//         if (bottomContainer.scrollLeft <= 0) {
+//             bottomContainer.scrollLeft = bottomContainer.scrollWidth / 2;
+//         }
+//     }
+
+//     // Scroll the container continuously
+//     setInterval(scrollImages, scrollInterval);
+// });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const topContainer = document.querySelector('.reviews__top__slider');
+    const bottomContainer = document.querySelector('.reviews__bottom__slider');
+    const cards = document.querySelectorAll('.reviews__top__card');
+    
+    const topScrollInterval = 10; // Interval for the top container
+    const bottomScrollInterval = 19; // Interval for the bottom container (adjust as needed)
+    const scrollStep = 1; // Number of pixels to scroll in each step
+
+    // Clone cards and append them to both containers to create the illusion of an infinite scroll
+    cards.forEach(card => {
+        const topClone = card.cloneNode(true);
+        topContainer.appendChild(topClone);
+        
+        const bottomClone = card.cloneNode(true);
+        bottomContainer.appendChild(bottomClone);
+    });
+
+    function scrollTopContainer() {
+        topContainer.scrollLeft += scrollStep;
+
+        // When the original set of cards has fully scrolled, reset to the start
+        if (topContainer.scrollLeft >= topContainer.scrollWidth / 2) {
+            topContainer.scrollLeft = 0;
+        }
+    }
+
+    function scrollBottomContainer() {
+        bottomContainer.scrollLeft -= scrollStep;
+
+        // When the bottom container has fully scrolled back to the start, reset its position
+        if (bottomContainer.scrollLeft <= 0) {
+            bottomContainer.scrollLeft = bottomContainer.scrollWidth / 2;
+        }
+    }
+
+    // Scroll the top container continuously
+    setInterval(scrollTopContainer, topScrollInterval);
+
+    // Scroll the bottom container continuously
+    setInterval(scrollBottomContainer, bottomScrollInterval);
+});
+
+
+
+
+</script>
 
     <section class="lapinoz-outlet">
         <div class="lapinoz-outlet-container">

@@ -1,461 +1,306 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <div class="">
-  <ul class="bestseller_cards">
-    <li>
-      <a href="" class="bestseller__card">
-        <img src="https://static.uengage.in/uploads/5/image-711224-1715596629.png" class="bestseller__card__image" alt="" />
-        <div class="bestseller__card__overlay">        
-          <div class="bestseller__card__header">
-            <svg class="bestseller__card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
-            <div class="bestseller__card__header-text">
-              <h3 class="bestseller__card__title">Recommended</h3>            
-              <span class="bestseller__card__status">Farm Villa Pizza</span>
-            </div>
-          </div>
-          <p class="bestseller__card__description">Lorem ipsum dolor sit amet consectetur adipisicing</p>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a href="" class="bestseller__card">
-        <img src="https://static.uengage.in/uploads/5/image-711224-1715596629.png" class="bestseller__card__image" alt="" />
-        <div class="bestseller__card__overlay">        
-          <div class="bestseller__card__header">
-            <svg class="bestseller__card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
-            <div class="bestseller__card__header-text">
-              <h3 class="bestseller__card__title">Recommended</h3>            
-              <span class="bestseller__card__status">Farm Villa Pizza</span>
-            </div>
-          </div>
-          <p class="bestseller__card__description">Lorem ipsum dolor sit amet consectetur adipisicing</p>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a href="" class="bestseller__card">
-        <img src="https://static.uengage.in/uploads/5/image-711224-1715596629.png" class="bestseller__card__image" alt="" />
-        <div class="bestseller__card__overlay">        
-          <div class="bestseller__card__header">
-            <svg class="bestseller__card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
-            <div class="bestseller__card__header-text">
-              <h3 class="bestseller__card__title">Recommended</h3>            
-              <span class="bestseller__card__status">Farm Villa Pizza</span>
-            </div>
-          </div>
-          <p class="bestseller__card__description">Lorem ipsum dolor sit amet consectetur adipisicing</p>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a href="" class="bestseller__card">
-        <img src="https://static.uengage.in/uploads/5/image-711224-1715596629.png" class="bestseller__card__image" alt="" />
-        <div class="bestseller__card__overlay">        
-          <div class="bestseller__card__header">
-            <svg class="bestseller__card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
-            <div class="bestseller__card__header-text">
-              <h3 class="bestseller__card__title">Recommended</h3>            
-              <span class="bestseller__card__status">Farm Villa Pizza</span>
-            </div>
-          </div>
-          <p class="bestseller__card__description">Lorem ipsum dolor sit amet consectetur adipisicing</p>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a href="" class="bestseller__card">
-        <img src="https://static.uengage.in/uploads/5/image-711224-1715596629.png" class="bestseller__card__image" alt="" />
-        <div class="bestseller__card__overlay">        
-          <div class="bestseller__card__header">
-            <svg class="bestseller__card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
-            <div class="bestseller__card__header-text">
-              <h3 class="bestseller__card__title">Recommended</h3>            
-              <span class="bestseller__card__status">Farm Villa Pizza</span>
-            </div>
-          </div>
-          <p class="bestseller__card__description">Lorem ipsum dolor sit amet consectetur adipisicing</p>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a href="" class="bestseller__card">
-        <img src="https://static.uengage.in/uploads/5/image-711224-1715596629.png" class="bestseller__card__image" alt="" />
-        <div class="bestseller__card__overlay">        
-          <div class="bestseller__card__header">
-            <svg class="bestseller__card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
-            <div class="bestseller__card__header-text">
-              <h3 class="bestseller__card__title">Recommended</h3>            
-              <span class="bestseller__card__status">Farm Villa Pizza</span>
-            </div>
-          </div>
-          <p class="bestseller__card__description">Lorem ipsum dolor sit amet consectetur adipisicing</p>
-        </div>
-      </a>
-    </li>
-  </ul>
-</div>
-  <style>
+<!DOCTYPE html>
+   <html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <title>Landscape responsive card - Bedimcode</title>
+      <style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
 :root {
-  /* --surface-color: #fff; */
-  --curve: 40;
+  --first-color: hsl(82, 60%, 28%);
+  --title-color: hsl(0, 0%, 15%);
+  --text-color: hsl(0, 0%, 35%);
+  --body-color: hsl(0, 0%, 95%);
+  --container-color: hsl(0, 0%, 100%);
+
+  --body-font: "Poppins", sans-serif;
+  --h2-font-size: 1.25rem;
+  --small-font-size: .813rem;
+}
+
+@media screen and (min-width: 1120px) {
+  :root {
+    --h2-font-size: 1.5rem;
+    --small-font-size: .875rem;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 body {
-  font-family: 'Noto Sans JP', sans-serif;
-  /* background-color: #6A515E; */
+  font-family: var(--body-font);
+  background-color: var(--body-color);
+  color: var(--text-color);
 }
 
-.bestseller_cards {
-  display: flex;
-  gap: 3rem;
-  padding: 0;
-  list-style-type: none;
-  overflow-x: scroll;
-  height: 350px;
-  width: 90%;
-  margin-inline:auto ;
-  -ms-overflow-style: none;    /* IE and Edge */
-    scrollbar-width: none;    /* Firefox */
-}
-
-.bestseller_cards::-webkit-scrollbar {
-    display: none; /* Chrome, Safari and Opera */
-}
-
-.bestseller__card {
-  position: relative;
+img {
   display: block;
-  height: 310px;  
-  min-width: 300px;
-  border-radius: calc(var(--curve) * 1px);
-  overflow: hidden;
-  text-decoration: none;
+  max-width: 100%;
+  height: auto;
 }
 
-.bestseller__card__image {      
-  width: 100%;
-  height: 85%;
-  object-fit: cover;
-}
-
-.bestseller__card:hover .bestseller__card__image {
-  transition: all 1s ease;
-}
-
-.bestseller__card__overlay {
-  z-index: 1;      
-  border-radius: calc(var(--curve) * 1px);    
-  transition: .2s ease-in-out;
-  background-color: #ffe77a;
-}
-
-.bestseller__card:hover .bestseller__card__overlay {
-  transform: translateY(-73.7px);
-}
-
-.bestseller__card__header {
-  position: relative;
-    display: flex;
-    align-items: center;
-    color: #00572d;
-    background-color: #ffe77a;
-    height: 80px;
-    border-radius: calc(var(--curve)* 1px) 0 0 0;
-    transform: translateY(-45%);
-    transition: .2s ease-in-out;
-    justify-content: center;
-}
-
-.bestseller__card__arc {
-  width: 80px;
-  height: 80px;
-  position: absolute;
-  bottom: 99.5%;
-  right: 0;      
-  z-index: 1;
-}
-
-.bestseller__card__arc path {
-  fill:#ffe77a ;
-  d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
-}       
-
-.bestseller__card:hover .bestseller__card__header {
-  transform: translateY(0);
-}
-
-.bestseller__card__title {
-  font-size: larger;
-  margin: 0 0 .3em;
-}
-
-
-.bestseller__card__status {
-  font-size:medium;
-  color: black;
-  font-weight:600;
-}
-
-.bestseller__card__description {
-  text-align: center;
-  margin: 0;
-  font-size:16.5px ;
-  color: black;
-  font-family: "MockFlowFont";   
-  overflow: hidden;
-}
-  </style>
-</body>
-</html> -->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <div class="explore-menu-box">
-    <div class="card">
-      <div class="imgBx">
-        <img src="./public/images/tacos.png">
-      </div>
-      <div class="contentBx">
-        <h2>Sides</h2>
-        <a href="#">Buy Now</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="explore-menu-box">
-    <div class="card">
-      <div class="imgBx">
-        <img src="./public/images/tacos.png">
-      </div>
-      <div class="contentBx">
-        <h2>Nike Shoes</h2>
-        <a href="#">Buy Now</a>
-      </div>
-    </div>
-  </div>
-  
-  <div class="explore-menu-box">
-    <div class="card">
-      <div class="imgBx">
-        <img src="./public/images/tacos.png">
-      </div>
-      <div class="contentBx">
-        <h2>Nike Shoes</h2>
-        <a href="#">Buy Now</a>
-      </div>
-    </div>
-  </div>
-
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-
-*{
-  font-family: 'Poppins', sans-serif;
-}
-
-body{
+.container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  min-height: 100vh;
-  background: #131313;
+  margin-inline: 1.5rem;
+  padding-block: 5rem;
 }
 
-.explore-menu-box{
-  position: relative;
-  margin-inline: 10px;
+.card__container {
+  display: grid;
+  row-gap: 3.5rem;
 }
 
-.explore-menu-box .card{
+.card__article {
   position: relative;
-  width: 250px;
-  height: 360px;
-  background: #232323;
-  border-radius: 20px;
   overflow: hidden;
 }
 
-.explore-menu-box .card:before{
-  content: '';
+.card__img {
+  width: 328px;
+  border-radius: 1.5rem;
+}
+
+.card__data {
+  width: 280px;
+  background-color: var(--container-color);
+  padding: 1.5rem 2rem;
+  box-shadow: 0 8px 24px hsla(0, 0%, 0%, .15);
+  border-radius: 1rem;
   position: absolute;
-  top: 0;
+  bottom: -9rem;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: #9bdc28;
-  clip-path: circle(135px at 80% 20%);
-  transition: 0.5s ease-in-out;
-}
-
-.explore-menu-box .card:hover:before{
-  clip-path: circle(300px at 80% -20%);
-}
-
-.explore-menu-box .card:after{
-  content: 'Lapinoz';
-  position: absolute;
-  top: 50%;
-  left: -20%;
-  font-size:55px;
-  font-weight: 800;
-  font-style: italic;
-  transform: translate(20%, 70%) rotate(25deg);
-  color: rgba(255,255,25,0.05)
-}
-
-.explore-menu-box .card .imgBx{
-  position: absolute;
-  top: 50%;
-  transform: translateY(-60%);
-  z-index: 10000;
-  width: 100%;
-  height: 220px;
-  transition: 0.5s;
-}
-
-.explore-menu-box .card:hover .imgBx{
-  top: 0%;
-  transform: translateY(0%);
-    
-}
-
-.explore-menu-box .card .imgBx img{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-25deg);
-  width: 270px;
-}
-
-.explore-menu-box .card .contentBx{
-  position: absolute;
-  bottom: -30;
-  width: 100%;
-  height: 100px;
-  text-align: center;
-  transition: 1s;
-  z-index: 10;
-}
-
-.explore-menu-box .card:hover .contentBx{
-  height: 160px;
-}
-
-.explore-menu-box .card .contentBx h2{
-  position: relative;
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: #fff;
-  margin: 0;
-}
-
-/* .explore-menu-box .card .contentBx .size, .explore-menu-box .card .contentBx .color {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 20px;
-  transition: 0.5s;opacity: 0;
-  visibility: hidden;
-  padding-top: 0;
-  padding-bottom: 0;
-} */
-
-/* .explore-menu-box .card:hover .contentBx .size{
-  opacity: 1;
-  visibility: visible;
-  transition-delay: 0.5s;
-}
-
-.explore-menu-box .card:hover .contentBx .color{
-  opacity: 1;
-  visibility: visible;
-  transition-delay: 0.6s;
-} */
-
-/* .explore-menu-box .card .contentBx .size h3, .explore-menu-box .card .contentBx .color h3{
-  color: #fff;
-  font-weight: 300;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-right: 10px;
-} */
-
-/* .explore-menu-box .card .contentBx .size span{
-  width: 26px;
-  height: 26px;
-  text-align: center;
-  line-height: 26px;
-  font-size: 14px;
-  display: inline-block;
-  color: #111;
-  background: #fff;
-  margin: 0 5px;
-  transition: 0.5s;
-  color: #111;
-  border-radius: 4px;
-  cursor: pointer;
-} */
-
-/* .explore-menu-box .card .contentBx .size span:hover{
-  background: #9bdc28;
-}
-
-.explore-menu-box .card .contentBx .color span{
-  width: 20px;
-  height: 20px;
-  background: #ff0;
-  border-radius: 50%;
-  margin: 0 5px;
-  cursor: pointer;
-}
-
-.explore-menu-box .card .contentBx .color span:nth-child(2){
-  background: #9bdc28;
-}
-
-.explore-menu-box .card .contentBx .color span:nth-child(3){
-  background: #03a9f4;
-}
-
-.explore-menu-box .card .contentBx .color span:nth-child(4){
-  background: #e91e63;
-} */
-
-.explore-menu-box .card .contentBx a{
-  display: inline-block;
-  padding: 5px 20px;
-  background: #fff;
-  border-radius: 4px;
-  /* margin-top: 10px; */
-  text-decoration: none;
-  font-weight: 600;
-  color: #111;
+  right: 0;
+  margin-inline: auto;
   opacity: 0;
-  transform: translateY(10px);
-  transition: 0.75s;
-  margin-top: 0;
+  transition: opacity 1s 1s;
 }
 
-.explore-menu-box .card:hover .contentBx a{
-  opacity: 1;
-  transform: translateY(0px);
-  transition-delay: 0.5s;
-  
+.card__description {
+  display: block;
+  font-size: var(--small-font-size);
+  margin-bottom: .25rem;
 }
-  </style>
-</body>
+
+.card__title {
+  font-size: var(--h2-font-size);
+  font-weight: 500;
+  color: var(--title-color);
+  margin-bottom: .75rem;
+}
+
+.card__button {
+  text-decoration: none;
+  font-size: var(--small-font-size);
+  font-weight: 500;
+  color: var(--first-color);
+}
+
+.card__button:hover {
+  text-decoration: underline;
+}
+
+.card__article:hover .card__data {
+  animation: show-data 1s forwards;
+  opacity: 1;
+  transition: opacity .3s;
+}
+
+.card__article:hover {
+  animation: remove-overflow 2s forwards;
+}
+
+.card__article:not(:hover) {
+  animation: show-overflow 2s forwards;
+}
+
+.card__article:not(:hover) .card__data {
+  animation: remove-data 1s forwards;
+}
+
+@keyframes show-data {
+  50% {
+    transform: translateY(-10rem);
+  }
+  100% {
+    transform: translateY(-7rem);
+  }
+}
+
+@keyframes remove-overflow {
+  to {
+    overflow: initial;
+  }
+}
+
+@keyframes remove-data {
+  0% {
+    transform: translateY(-7rem);
+  }
+  50% {
+    transform: translateY(-10rem);
+  }
+  100% {
+    transform: translateY(.5rem);
+  }
+}
+
+@keyframes show-overflow {
+  0% {
+    overflow: initial;
+    pointer-events: none;
+  }
+  50% {
+    overflow: hidden;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .container {
+    margin-inline: 1rem;
+  }
+
+  .card__data {
+    width: 250px;
+    padding: 1rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .card__container {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1120px) {
+  .container {
+    height: 100vh;
+  }
+
+  .card__container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .card__img {
+    width: 300px;
+  }
+  .card__data {
+    width: 280px;
+    padding-inline: 2.5rem;
+  }
+}
+      </style>
+   </head>
+   <body>
+      <div class="container">
+         <div class="card__container">
+            <article class="card__article">
+               <img src="./public/images/sanam-kapoor.jpg" alt="image" class="card__img">
+
+               <div class="card__data">
+                  <span class="card__description">Vancouver Mountains, Canada</span>
+                  <h2 class="card__title">The Great Path</h2>
+                  <a href="#" class="card__button">Read More</a>
+               </div>
+            </article>
+
+            <article class="card__article ">
+               <img src="./public/images/sanam-kapoor.jpg" alt="image" class="card__img">
+
+               <div class="card__data">
+                  <span class="card__description">Poon Hill, Nepal</span>
+                  <h2 class="card__title">Starry Night</h2>
+                  <a href="#" class="card__button">Read More</a>
+               </div>
+            </article>
+
+            <article class="card__article">
+               <img src="./public/images/sanam-kapoor.jpg" alt="image" class="card__img">
+
+               <div class="card__data">
+                  <span class="card__description">Bojcin Forest, Serbia</span>
+                  <h2 class="card__title">Path Of Peace</h2>
+                  <a href="#" class="card__button">Read More</a>
+               </div>
+            </article>
+
+            <article class="card__article">
+              <img src="./public/images/sanam-kapoor.jpg" alt="image" class="card__img">
+
+              <div class="card__data">
+                 <span class="card__description">Bojcin Forest, Serbia</span>
+                 <h2 class="card__title">Path Of Peace</h2>
+                 <a href="#" class="card__button">Read More</a>
+              </div>
+           </article>
+
+           <article class="card__article">
+            <img src="./public/images/sanam-kapoor.jpg" alt="image" class="card__img">
+
+            <div class="card__data">
+               <span class="card__description">Bojcin Forest, Serbia</span>
+               <h2 class="card__title">Path Of Peace</h2>
+               <a href="#" class="card__button">Read More</a>
+            </div>
+         </article>
+
+         <article class="card__article">
+          <img src="./public/images/sanam-kapoor.jpg" alt="image" class="card__img">
+
+          <div class="card__data">
+             <span class="card__description">Bojcin Forest, Serbia</span>
+             <h2 class="card__title">Path Of Peace</h2>
+             <a href="#" class="card__button">Read More</a>
+          </div>
+       </article>
+
+       <article class="card__article">
+        <img src="./public/images/sanam-kapoor.jpg" alt="image" class="card__img">
+
+        <div class="card__data">
+           <span class="card__description">Bojcin Forest, Serbia</span>
+           <h2 class="card__title">Path Of Peace</h2>
+           <a href="#" class="card__button">Read More</a>
+        </div>
+     </article>
+
+     <article class="card__article">
+      <img src="./public/images/sanam-kapoor.jpg" alt="image" class="card__img">
+
+      <div class="card__data">
+         <span class="card__description">Bojcin Forest, Serbia</span>
+         <h2 class="card__title">Path Of Peace</h2>
+         <a href="#" class="card__button">Read More</a>
+      </div>
+   </article>
+
+   <article class="card__article">
+    <img src="./public/images/sanam-kapoor.jpg" alt="image" class="card__img">
+
+    <div class="card__data">
+       <span class="card__description">Bojcin Forest, Serbia</span>
+       <h2 class="card__title">Path Of Peace</h2>
+       <a href="#" class="card__button">Read More</a>
+    </div>
+ </article>
+
+ <article class="card__article">
+  <img src="./public/images/sanam-kapoor.jpg" alt="image" class="card__img">
+
+  <div class="card__data">
+     <span class="card__description">Bojcin Forest, Serbia</span>
+     <h2 class="card__title">Path Of Peace</h2>
+     <a href="#" class="card__button">Read More</a>
+  </div>
+</article>
+         </div>
+      </div>
+   </body>
 </html>
