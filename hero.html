@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hero-section</title>
+</head>
+
+<body>
+    <style>
+        body {
+            height: 100%;
+            width: 100vw;
+
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .hero-section {
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        body::-webkit-scrollbar {
+            height: 0;
+            width: 0;
+            display: none;
+        }
+
+        nav {
+            z-index: 999;
+            position: relative;
+            border-radius: 30px 30px 30px 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* background-color: #33333380; */
+            backdrop-filter: blur(90px);
+            background-color: #f7f7f730;
+            color: white;
+            /* border: 2px #ff6347 solid; */
+            height: 40px;
+        }
+
+        .nav__container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 10rem;
+            justify-content: space-around;
+        }
+
+        nav a {
+            color: #000;
+            text-decoration: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-self: center;
+            align-items: center;
+        }
+
+        .active {
+            position: relative;
+            color: #ff6347;
+            transition: color 0.5s ease-in-out;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            bottom: 3px;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 2px;
+            width: 0%;
+            background-color: #ff6347;
+            transition: width 0.5s ease;
+        }
+
+        .opacity50 {
+            opacity: 50%;
+        }
+
+        nav a.active::after {
+            width: 80%;
+        }
+
+
+        .nav_elements {
+            width: 80%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            max-width: 100px;
+            width: 15%;
+            margin-top: 5px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .login_btn>p {
+            color: #00572D;
+            background-color: #FFE77A;
+            padding: 12px 30px;
+            border-radius: 14px;
+            font-weight: 300;
+        }
+
+        .green_bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: -10;
+            height: 500px;
+            width: 400px;
+            object-fit: cover;
+        }
+
+        .hero__content {
+            width: 100%;
+            height: calc(100vh - 60px);
+            display: flex;
+            justify-content: center;
+            overflow: visible;
+            position: relative;
+        }
+
+        .hero__content_left {
+            position: relative;
+            flex-grow: 0;
+            width: 50%;
+            height: 100%;
+            padding-left: 30px;
+            overflow: visible;
+            text-align: left;
+        }
+
+        .text {
+            color: #ff6347;
+            position: relative;
+            height: 100%;
+            width: 100%;
+            white-space: nowrap;
+            overflow: visible;
+            font-size: 7rem;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .text>span {
+            color: #00572D;
+        }
+
+        .hero__content_right {
+            position: relative;
+            width: 50%;
+            height: 100%;
+            overflow: visible;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Added to center content vertically */
+        }
+
+        .hero_img_container {
+            top: -20%;
+            right: 15%;
+            position: absolute;
+            height: 450px;
+            width: 450px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            z-index: 100;
+            animation: upDown 5s infinite ease-in-out;
+        }
+
+        .hero_img {
+            position: relative;
+            object-fit: contain;
+            width: 90%;
+            z-index: 100;
+            transition: transform 0.1s ease-out;
+            /* height: 100%; */
+            /* Ensuring the image scales correctly */
+        }
+
+        @keyframes upDown {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media only screen and (max-width: 768px) {
+            /* Styles for screens smaller than 768px */
+
+            .nav__container {
+                flex-direction: column;
+                /* Stack navigation elements vertically */
+                align-items: flex-start;
+                /* Align navigation to the left */
+            }
+
+            .nav_elements {
+                width: 100%;
+                /* Navigation elements take full width */
+                justify-content: space-between;
+                /* Space navigation elements between */
+            }
+
+            .logo {
+                margin: 10px auto;
+                /* Center logo on smaller screens */
+            }
+
+            .hero__content {
+                flex-direction: column;
+                /* Stack hero content vertically */
+            }
+
+            .hero__content_left,
+            .hero__content_right {
+                width: 100%;
+                /* Hero content takes full width */
+                padding: 10px;
+                /* Add padding on smaller screens */
+            }
+
+            .text {
+                font-size: 4rem;
+                /* Adjust font size for better readability */
+            }
+
+            .hero_img_container {
+                width: 70%;
+                /* Reduce image size */
+                height: auto;
+                /* Allow image to adapt to height */
+            }
+
+            .hero_img {
+                width: 100%;
+                /* Image takes full width of container */
+            }
+        }
+    </style>
+    <section class="hero-section">
+        <img class="green_bg" src="./Media/Ellipse 1Hero_BG.svg" alt="">
+        <div class="nav__container">
+            <img class="logo" src="./Media/download.png" alt="">
+            <div class="nav_elements">
+                <nav>
+                    <ul>
+                        <li><a class="active" href="#"><i class="fa-solid fa-people-carry-box"></i>Home</a></li>
+                        <li><a href="#"><i class="ri-order-play-line"></i> Order online</a></li>
+                        <li><a href="#"><i class="ri-map-pin-line"></i> Store Locator</a></li>
+                        <li><a href="#"><i class="ri-customer-service-line"></i> Franchise Enquiry</a></li>
+                        <li><a href="#"><i class="ri-hourglass-2-line"></i> Our Story</a></li>
+                        <li><a href="#"><i class="ri-contacts-line"></i> Contact Us</a></li>
+                    </ul>
+                </nav>
+                <div class="login_btn">
+                    <p>Login</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="hero__content">
+            <div class="hero__content_left">
+                <div class="text">
+                    The <br> Giant <br>
+                    <span> PIZZA SLICE</span>
+                </div>
+            </div>
+            <div class="hero__content_right">
+                <div class="hero_img_container">
+                    <img class="hero_img" src="./Media/—Pngtree—italian pizza slice cheese sausage_13137251.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        // const image = document.querySelector('.hero_img');
+        // const container = document.querySelector('.hero_img_container');
+
+        // container.addEventListener('mousemove', (e) => {
+        //     const rect = container.getBoundingClientRect();
+        //     const mouseX = e.clientX - rect.left;
+        //     const mouseY = e.clientY - rect.top;
+
+        //     const limitX = rect.width - image.offsetWidth;
+        //     const limitY = rect.height - image.offsetHeight;
+
+        //     const posX = Math.max(0, Math.min(mouseX - (image.offsetWidth / 2), limitX));
+        //     const posY = Math.max(0, Math.min(mouseY - (image.offsetHeight / 2), limitY));
+
+        //     const currentPosX = parseFloat(getComputedStyle(image).transform.split(',')[4]) || 0;
+        //     const currentPosY = parseFloat(getComputedStyle(image).transform.split(',')[5]) || 0;
+
+        //     const newX = currentPosX + (posX - currentPosX) * 0.1;
+        //     const newY = currentPosY + (posY - currentPosY) * 0.1;
+
+        //     image.style.transform = `translate(${newX}px, ${newY}px)`;
+        // });
+
+        // container.addEventListener('mouseleave', () => {
+        //     image.style.transform = 'translate(0, 0)';
+        // });
+
+        const links = document.querySelectorAll('nav ul li a');
+
+        links.forEach(link => {
+            links.forEach(link => {
+                link.addEventListener('mouseenter', function () {
+                    links.forEach(otherLink => {
+                        if (otherLink !== this) {
+                            otherLink.classList.add('opacity50');
+                        }
+                    });
+                });
+
+                link.addEventListener('mouseleave', function () {
+                    links.forEach(otherLink => {
+                        if (otherLink !== this) {
+                            otherLink.classList.remove('opacity50');
+                        }
+                    });
+                });
+            });
+            link.addEventListener('click', function (event) {
+                links.forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+
+
+        const image = document.querySelector('.hero_img');
+        const container = document.querySelector('.hero_img_container');
+
+        let animationFrame;
+        let targetX = 0;
+        let targetY = 0;
+        let currentX = 0;
+        let currentY = 0;
+
+        function animate() {
+            currentX += (targetX - currentX) * 0.1;
+            currentY += (targetY - currentY) * 0.1;
+
+            image.style.transform = `translate(${currentX}px, ${currentY}px)`;
+
+            animationFrame = requestAnimationFrame(animate);
+        }
+
+        container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            targetX = (mouseX - centerX) * 0.1;
+            targetY = (mouseY - centerY) * 0.1;
+
+            if (!animationFrame) {
+                animate();
+            }
+        });
+
+        container.addEventListener('mouseleave', () => {
+            cancelAnimationFrame(animationFrame);
+            animationFrame = null;
+            targetX = 0;
+            targetY = 0;
+            animate();  // Smoothly return to the center
+        });
+
+    </script>
+</body>
+
+</html>

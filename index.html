@@ -17,6 +17,8 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="./style.css">
 
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
+
     <!-- <link rel="stylesheet" href="https://unpkg.com/locomotive-scroll/dist/locomotive-scroll.min.css"> -->
     <!-- <script src="https://unpkg.com/locomotive-scroll/dist/locomotive-scroll.min.js"></script> -->
 
@@ -25,43 +27,706 @@
 
 <body>
     <div class="main">
-        <nav>
-            <ul>
-                <li><a class="active" href="#"><i class="fa-solid fa-people-carry-box"></i>Home</a></li>
-                <li><a href="#"><i class="ri-order-play-line"></i> Order online</a></li>
-                <li><a href="#"><i class="ri-map-pin-line"></i> Store Locator</a></li>
-                <li><a href="#"><i class="ri-customer-service-line"></i> Franchise Enquiry</a></li>
-                <li><a href="#"><i class="ri-hourglass-2-line"></i> Our Story</a></li>
-                <li><a href="#"><i class="ri-contacts-line"></i> Contact Us</a></li>
-            </ul>
-        </nav>
-        <section class="hero-section">
-            <!-- <div class="img">
-            <img src="./Media/lapinoz-logo.png" alt="">
-        </div> -->
 
+        <section class="hero-section">
+            <img class="green_bg" src="./Media/Ellipse 1Hero_BG.svg" alt="">
+            <div class="nav__container">
+                <img class="logo" src="./Media/lapinoz_logo.png" alt="">
+                <div class="nav_elements">
+                    <nav>
+                        <ul>
+                            <li><a class="active" href="#">Home</a></li>
+                            <li><a href="#">Order online</a></li>
+                            <li><a href="#"> Store Locator</a></li>
+                            <li><a href="#">Franchise Enquiry</a></li>
+                            <li><a href="#">Our Story</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Login</a></li>
+                        </ul>
+                    </nav>
+
+                </div>
+
+            </div>
+
+            <div class="hero__content">
+                <div class="hero__content_left">
+                    <div class="text">
+                        The <br> Giant <br>
+                        <span> PIZZA SLICE</span>
+                    </div>
+                </div>
+                <div class="hero__content_right">
+                    <div class="hero_img_container">
+                        <img class="hero_img" src="./Media/—Pngtree—italian pizza slice cheese sausage_13137251.png"
+                            alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <style>
+            .hero-section {
+                position: relative;
+                height: fit-content;
+                width: 100%;
+                overflow: hidden;
+                padding-bottom: 30px;
+
+                @media screen and (max-width: 1413px) {
+                    max-height: 100vh;
+                }
+
+            }
+
+            .hero-section::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-image: url(./Media/lapinoz_logo.png);
+                background-repeat: no-repeat;
+                background-position: 50% 100px;
+                opacity: 0.1;
+                transform: rotate(30deg);
+                /* Adjust the opacity value as needed */
+                z-index: -1;
+            }
+
+            body::-webkit-scrollbar {
+                height: 0;
+                width: 0;
+                display: none;
+            }
+
+            nav {
+                z-index: 999;
+                position: relative;
+                border-radius: 30px 30px 30px 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                /* background-color: #33333380; */
+                backdrop-filter: blur(90px);
+                background-color: #f7f7f730;
+                color: white;
+                height: 40px;
+            }
+
+            .nav__container {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                height: 6rem;
+                justify-content: space-around;
+            }
+
+            nav a {
+                color: #000;
+                text-decoration: none;
+                padding: 5px 10px;
+                cursor: pointer;
+                position: relative;
+            }
+
+            nav ul {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            nav ul li {
+                display: flex;
+                justify-self: center;
+                align-items: center;
+            }
+
+            .active {
+                position: relative;
+                color: #ff6347;
+                transition: color 0.5s ease-in-out;
+            }
+
+            nav a::after {
+                content: "";
+                position: absolute;
+                bottom: 3px;
+                left: 50%;
+                transform: translateX(-50%);
+                height: 2px;
+                width: 0%;
+                background-color: #ff6347;
+                transition: width 0.5s ease;
+            }
+
+            .opacity50 {
+                opacity: 50%;
+            }
+
+            nav a.active::after {
+                width: 90%;
+            }
+
+
+            .nav_elements {
+                width: 90%;
+                flex-shrink: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                max-width: 1200px;
+                margin: 0 5px;
+            }
+
+            .logo {
+                max-width: 100px;
+                width: 15%;
+                margin-top: 5px;
+                height: auto;
+                object-fit: contain;
+            }
+
+            .login_btn>p {
+                color: #00572D;
+                background-color: #FFE77A;
+                padding: 12px 30px;
+                border-radius: 14px;
+                font-weight: 300;
+            }
+
+            .green_bg {
+                position: absolute;
+                top: 0;
+                right: 0;
+                z-index: -10;
+                width: 35%;
+                object-fit: contain;
+            }
+
+            .hero__content {
+                width: 100%;
+                height: calc(100vh - 60px);
+                display: flex;
+                justify-content: center;
+                overflow: visible;
+                position: relative;
+            }
+
+            .hero__content_left {
+                position: relative;
+                flex-grow: 0;
+                width: 50%;
+                height: 100%;
+                padding-left: 30px;
+                overflow: visible;
+                text-align: left;
+            }
+
+            .text {
+                color: #ff6347;
+                position: relative;
+                height: 100%;
+                width: 100%;
+                white-space: nowrap;
+                overflow: visible;
+                font-size: 7rem;
+                font-weight: normal;
+                line-height: 1;
+                mix-blend-mode: color-burn;
+                font-family: 'Irish Grover';
+            }
+
+            .text>span {
+                font-family: 'Irish Grover';
+
+                color: #00572D;
+                mix-blend-mode: initial;
+            }
+
+            .hero__content_right {
+                position: relative;
+                width: 50%;
+                height: 100%;
+                overflow: visible;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                /* Added to center content vertically */
+            }
+
+            .hero_img_container {
+                top: -15%;
+                right: 15%;
+                position: absolute;
+                height: 90%;
+                width: 90%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                z-index: 100;
+                animation: upDown 5s infinite ease-in-out;
+            }
+
+            .hero_img {
+                position: relative;
+                object-fit: contain;
+                width: 90%;
+                z-index: 100;
+                transition: transform 0.1s ease-out;
+                /* height: 100%; */
+                /* Ensuring the image scales correctly */
+            }
+
+            @keyframes upDown {
+
+                0%,
+                100% {
+                    transform: translateY(0);
+                }
+
+                50% {
+                    transform: translateY(-10px);
+                }
+            }
+
+            @media (min-width:1440px) {
+                .hero__content {
+                    height: calc(100vh - 200px);
+
+                }
+
+                nav {
+                    width: 100%;
+                }
+
+                .text {
+                    font-size: 11rem;
+                }
+
+                .hero_img_container {
+                    height: 100%;
+                    width: 95%;
+                    right: 5%;
+                }
+            }
+
+            @media (max-width:950px) {
+                .hero_img_container {
+                    top: -35%;
+                }
+
+                .nav_elements {
+                    display: none;
+                }
+
+                .nav__container {
+                    justify-content: start;
+                }
+            }
+
+            @media only screen and (max-width: 331px) {
+                .text {
+                    font-size: 2.5rem;
+                }
+
+                .hero__content {
+                    height: 30vh;
+                }
+            }
+
+            @media only screen and (min-width: 331px) and (max-width: 431px) {
+                .text {
+                    font-size: 3.3rem;
+                }
+
+                .hero__content {
+                    height: 25vh;
+                }
+            }
+
+            @media only screen and (min-width: 431px) and (max-width: 518px) {
+                .text {
+                    font-size: 4rem;
+                }
+
+                .hero__content {
+                    height: 40vh;
+                }
+            }
+
+            @media only screen and (min-width: 519px) and (max-width: 599px) {
+                .text {
+                    font-size: 5rem;
+                }
+
+                .hero__content {
+                    height: 50vh;
+                }
+
+                .hero_img_container {
+                    width: 100%;
+                }
+            }
+
+            @media only screen and (min-width: 600px) and (max-width: 768px) {
+
+                /* Styles for screens smaller than 768px */
+                .hero__content_left,
+                .hero__content_right {
+                    padding: 10px;
+                }
+
+                .text {
+                    font-size: 6rem;
+                    /* Adjust font size for better readability */
+                }
+
+                .green_bg {
+                    width: 40%;
+                }
+
+                .hero_img_container {
+                    width: 85%;
+                    right: 30%;
+                    /* Reduce image size */
+                    height: auto;
+                    /* Allow image to adapt to height */
+                }
+
+                .hero_img {
+                    width: 100%;
+                    /* Image takes full width of container */
+                }
+            }
+        </style>
+
+        <section class="second-section">
+            <style>
+                * {
+                    font-family: 'Poppins', sans-serif;
+                }
+
+                .second-section {
+                    background-color: #f0f0f0;
+                    /* font-family: ; */
+                    margin: 0;
+                    padding: 10px 10px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100dvh;
+                    background-image: url(./Media/home-background.jpeg);
+                    background-size: cover;
+                }
+
+                .delivrySection_container {
+                    height: 350px;
+                    width: 50dvw;
+                    display: flex;
+                    justify-content: left;
+                    position: relative;
+                }
+
+                .delivrySection {
+                    height: 350px;
+                    width: 100%;
+                    border-radius: 10px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    position: absolute;
+                    /* top: 0; */
+                    cursor: pointer;
+                    transition: all 0.3s ease-out;
+                    background-color: #00572dd0;
+                    z-index: 20;
+                }
+
+                .PickUp {
+                    height: 350px;
+                    width: 100%;
+                    border-radius: 10px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    /* background-color: #f7f7f7f3; */
+                    position: absolute;
+                    cursor: pointer;
+                    left: 35px;
+                    z-index: 10;
+                }
+
+                .bg-color-white {
+                    background-color: #f7f7f7f3;
+                }
+
+                .delivrySection__header {
+                    height: 40px;
+                    width: 20%;
+                    font-size: x-large;
+                    font-weight: bold;
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    transition: opacity 500ms ease-in-out;
+                }
+
+                .delivrySection__textArea {
+                    height: 25%;
+                    width: 95%;
+                    font-weight: 900;
+                    /* font-family: 'Arial Narrow', Arial, sans-serif; */
+                    margin-left: 15px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    transition: opacity 500ms ease-in-out;
+                }
+
+                .delivrySection__textArea p {
+                    height: 40px;
+                    width: 100%;
+                    font-size: x-large;
+                    display: flex;
+                    align-items: center;
+                    text-align: start;
+                    margin: 0;
+                }
+
+                .SelectButtons {
+                    height: 30%;
+                    width: 95%;
+                    display: flex;
+                    align-items: center;
+                    font-size: larger;
+                    margin-left: 15px;
+                    transition: opacity 500ms ease-in-out;
+                }
+
+                .location_button {
+                    height: 48px;
+                    width: 35%;
+                    border-radius: 5px;
+                    border: 2px solid #00572d;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    background-color: rgb(247, 247, 247);
+                }
+
+                .OR {
+                    height: 50px;
+                    width: 70px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .Select_buttons {
+                    height: 50px;
+                    width: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+
+                .city_buttons {
+                    height: 100%;
+                    width: 45%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-evenly;
+                    text-align: center;
+                    border-radius: 5px;
+                    border: 2px solid #00572d;
+                    background-color: rgb(247, 247, 247);
+                }
+
+                .containt_section {
+                    width: 100%;
+                    height: 90%;
+                    display: flex;
+                    align-items: center;
+                }
+
+                .bag_image {
+                    height: 100px;
+                    width: 120px;
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                }
+
+                .text_section {
+                    height: 95%;
+                    width: 85%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-evenly;
+                    align-items: center;
+                }
+
+                .pickup_text {
+                    height: 30%;
+                    width: 89%;
+                    font-size: larger;
+                    border-radius: 10px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    color: #00572d;
+                }
+
+                .pickup_buttons {
+                    height: 30%;
+                    width: 95%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-evenly;
+                }
+
+                .pickup_button {
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 45%;
+                    border-radius: 10px;
+                    text-align: center;
+                }
+
+                @media (max-width: 1300px) {
+                    .SelectButtons {
+                        font-size: medium;
+                    }
+
+                    .delivrySection__textArea p {
+                        font-size: x-large;
+                    }
+
+                    .text_section {
+                        font-size: medium;
+                    }
+                }
+
+                @media (max-width: 1050px) {
+                    .delivrySection__header {
+                        width: 32%;
+                    }
+
+                    .SelectButtons {
+                        height: 45%;
+                        font-size: larger;
+                        flex-direction: column;
+                    }
+
+                    .delivrySection_container {
+                        width: 70%;
+                    }
+
+                    .delivrySection,
+                    .PickUp {
+                        width: 100%;
+                    }
+
+                    .Select_buttons {
+                        width: 70%;
+                    }
+
+                    .location_button {
+                        width: 70%;
+                    }
+
+                    .pickup_buttons {
+                        height: 35%;
+                        flex-direction: column;
+                        justify-content: space-between;
+                    }
+
+                    .pickup_button {
+                        height: 45%;
+                        width: 93.5%;
+                    }
+                }
+
+                @media (max-width:768px) {
+                    .delivrySection__header {
+                        font-size: larger;
+                        width: 40%;
+                    }
+
+                    .delivrySection_container {
+                        width: 80%;
+                    }
+
+                    .Select_buttons {
+                        width: 100%;
+                    }
+
+                    .location_button {
+                        width: 100%;
+                    }
+                }
+
+                @media (max-width:600px) {
+                    .delivrySection__header {
+                        width: 50%;
+                    }
+
+                    .delivrySection__textArea p {
+                        width: 90%;
+                        font-size: larger;
+                    }
+
+                    .SelectButtons {
+                        width: 90%;
+                    }
+
+                    .city_buttons {
+                        width: 50%;
+                    }
+                }
+
+                @media (max-width:470px) {
+                    .delivrySection__header {
+                        width: 70%;
+                    }
+
+                    .SelectButtons {
+                        font-size: large;
+                    }
+                }
+            </style>
             <section class="delivrySection_container">
                 <div class="delivrySection">
-                    <div class="header">
+                    <div class="delivrySection__header" style="color:#f7f7f7; border-bottom: 2px solid #f7f7f7;">
                         <i class="ri-riding-line" style="font-weight: lighter"></i>
-                        <p style="color: #556B2F">Delivery</p>
+                        <p>Delivery</p>
                     </div>
-                    <div class="textArea">
-                        <p style="color: #556B2F;">Let's Get Ordering On La Pino'z Pizza</p>
-                        <p style="color: black;">Select Your Nearest Outlet</p>
+                    <div class="delivrySection__textArea">
+                        <p style="color: #f7f7f7">Let's Get Ordering On La Pino'z Pizza</p>
+                        <p style="color: #f7f7f7">Select Your Nearest Outlet</p>
                     </div>
                     <div class="SelectButtons">
                         <div class="location_button">
-                            <i class="ri-map-pin-line"></i>
+                            <i class="ri-map-pin-line" style="color: #00572d;"></i>
                             Use my current location
                         </div>
-                        <p class="OR">OR</p>
+                        <p class="OR" style="color: rgb(58, 58, 58);">OR</p>
                         <div class="Select_buttons">
-                            <div class="city_buttons" style="background-color: #556B2F; ">
+                            <div class="city_buttons">
                                 <p>Select City</p>
                                 <i class="fa-solid fa-angle-down"></i>
                             </div>
-                            <div class="city_buttons" style="background-color: pink;">
+                            <div class="city_buttons">
                                 <p>Select Outlet</p>
                                 <i class="fa-solid fa-angle-down"></i>
                             </div>
@@ -69,11 +734,11 @@
                     </div>
                 </div>
                 <div class="PickUp">
-                    <div class="header">
+                    <div class="delivrySection__header" style="color: #00572d; border-bottom: 2px solid #00572d;">
                         <i class="fa-solid fa-people-carry-box"></i>
-                        <p style="color: #556B2F">Pick Up</p>
+                        <p>Pick Up</p>
                     </div>
-                    <div class="containt_section">
+                    <div class="containt_section hidden">
                         <div class="bag_image">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                 version="1.0" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512"
@@ -98,15 +763,14 @@
                             </svg>
                         </div>
                         <div class="text_section">
-                            <div class="pickup_text" style="border: 1px solid khaki;">
+                            <div class="pickup_text" style="border: 1px solid rgb(58, 58, 58);">
                                 <p>You have to collect the order from the outlet.</p>
                             </div>
-                            <div class="pickup_text"
-                                style="border: 1px solid khaki; background-color: rgba(255, 0, 0, 0.2);">
+                            <div class="pickup_text" style="border: 1px solid rgb(58, 58, 58);">
                                 <p>Delivery partners are not assigned for pickup orders.</p>
                             </div>
                             <div class="pickup_buttons">
-                                <div class="pickup_button" style="background-color: #556B2F;">
+                                <div class="pickup_button" style="background-color: #00572d;">
                                     <p>GET DELIVERY INSTEAD</p>
                                 </div>
                                 <div class="pickup_button" style="background-color: pink;">
@@ -118,518 +782,164 @@
 
                 </div>
             </section>
-        </section>
+            <script>
+                // document.addEventListener('DOMContentLoaded', function () {
+                //     const pickUpSection = document.querySelector('.PickUp');
+                // const deliverySection = document.querySelector('.delivrySection');
+                // const deliveryContent = deliverySection.querySelectorAll('.delivrySection__textArea, .delivrySection__header, .SelectButtons'); // Select all content elements
 
-        <style>
-            .main {
-                width: 100vw;
-                height: 100vh;
-            }
+                // function swapSections() {
+                //     const isDeliveryHidden = deliverySection.classList.contains('hidden'); // Check if deliverySection is hidden
 
-            .hero-section {
-                background-color: #f0f0f0;
-                /* font-family: ; */
-                margin: 0;
-                padding: 10px 10px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                height: 100dvh;
-                background-image: url(./Media/home-background.jpeg);
-                background-size: cover;
-            }
+                //     if (isDeliveryHidden) {
+                //     // Reverse animation (PickUp to front)
+                //     gsap.to(pickUpSection, {
+                //         duration: 0.8,
+                //         zIndex:10,
+                //         onComplete: () => {
+                //         // pickUpSection.style.zIndex = 10; // Set z-index of PickUp to 20 immediately
+                //         deliverySection.classList.remove('hidden'); // Show deliverySection content
+                //         deliveryContent.forEach(element => element.style.opacity = 1);                        
+                //         }
+                //     });
 
-            nav {
-                z-index: 999;
-                position: fixed;
-                top: 40px;
-                margin-left: 15%;
-                border-radius: 30px 30px 30px 30px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                /* background-color: #33333380; */
-                backdrop-filter: blur(90px);
-                background-color: #f7f7f730;
-                color: white;
-                border: 2px #ff6347 solid;
-                height: 40px;
-            }
+                //     gsap.to(deliverySection, {
+                //         duration: 0.8,
+                //         width: '100%', // Restore initial width
 
-            nav a {
-                color: #000;
-                text-decoration: none;
-                padding: 10px 15px;
-                cursor: pointer;
-            }
+                //     });
+                //     } else {
+                //     // Hide content before animation
+                //     deliveryContent.forEach(element => element.style.opacity = 0);
+                //     gsap.to(deliverySection, {
+                //         duration: 0.8,
+                //         width: '35px',
+                //         onComplete: () => {
+                //         deliverySection.classList.add('hidden'); // Hide deliverySection content after animation
+                //         }
+                //     });
 
-            nav ul {
-                margin: 0;
-                padding: 0;
-                list-style: none;
-                display: flex;
-                justify-self: center;
-                align-items: center;
-            }
+                //     gsap.to(pickUpSection, {
+                //         duration: 0.8,
+                //         zIndex: 10,
+                //     });
+                //     }
+                // }
 
-            .active {
-                background-color: #ff6347;
-                color: #f7f7f7;
-                border-radius: 30px 30px 30px 30px;
-                transition: all 0.5s;
-            }
+                // deliverySection.addEventListener('click', swapSections);
+                // pickUpSection.addEventListener('click', swapSections);
+                // });
 
-            .hero {
-                z-index: 999;
-                position: absolute;
-                top: 30%;
-                border-radius: 10px 10px 10px 10px;
-                background-color: rgb(255 255 255 / 90%);
-                /* backdrop-filter: blur(50px); */
-                height: auto;
-                padding: 20px 20px;
-                width: 80%;
-            }
+                //             document.addEventListener('DOMContentLoaded', function () {
+                //     const pickUpSection = document.querySelector('.PickUp');
+                //     const deliverySection = document.querySelector('.delivrySection');
+                //     const deliveryContent = deliverySection.querySelectorAll('.textArea, .header, .SelectButtons'); // Select all content elements for Delivery
+                //     const pickUpContent = pickUpSection.querySelectorAll('.header, .containt_section'); // Select all content elements for PickUp
 
-            .delivrySection_container {
-                height: 350px;
-                width: 50dvw;
-                display: flex;
-                justify-content: left;
-                position: relative;
-            }
+                //     function swapSections() {
+                //         const isDeliveryHidden = deliverySection.classList.contains('hidden'); // Check if deliverySection is hidden
 
-            .delivrySection {
-                height: 350px;
-                width: 50dvw;
-                border-radius: 10px;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-around;
-                position: relative;
-                /* top: 0; */
-                cursor: pointer;
-                transition: all 0.3s ease-out;
-                background-color: rgb(220, 217, 20);
-                z-index: 20;
-            }
+                //         if (isDeliveryHidden) {
+                //             // Reverse animation (PickUp to front)
+                //             gsap.to(pickUpSection, {
+                //                 duration: 1.5,
+                //                 zIndex: 10,
+                //                 onComplete: () => {
+                //                     deliverySection.classList.remove('hidden'); // Show deliverySection content
+                //                     deliveryContent.forEach(element => element.style.opacity = 1);                        
+                //                     pickUpContent.forEach(element => element.style.opacity = 0); // Hide PickUp content
+                //                     // pickUpSection.classList.add('hidden'); // Hide PickUp section
+                //                 }
+                //             });
 
-            .PickUp {
-                height: 350px;
-                width: 50dvw;
-                border-radius: 10px;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                position: absolute;
-                cursor: pointer;
-                background-color: rgb(220, 97, 20);
-                left: 35px;
-                z-index: 10;
-            }
+                //             gsap.to(deliverySection, {
+                //                 duration: 1.5,
+                //                 width: '100%', // Restore initial width
+                //             });
+                //         } else {
+                //             // Hide content before animation
+                //             deliveryContent.forEach(element => element.style.opacity = 0);
+                //             gsap.to(deliverySection, {
+                //                 duration: 1.5,
+                //                 width: '35px',
+                //                 onComplete: () => {
+                //                     deliverySection.classList.add('hidden'); // Hide deliverySection content after animation
+                //                     pickUpSection.classList.remove('hidden'); // Show PickUp section
+                //                     pickUpContent.forEach(element => element.style.opacity = 1); // Show PickUp content
+                //                 }
+                //             });
 
-            .header {
-                height: 40px;
-                width: 30%;
-                font-size: x-large;
-                font-weight: bold;
-                border-bottom: 1px solid black;
-                display: flex;
-                justify-content: space-evenly;
-                align-items: center;
-            }
+                //             gsap.to(pickUpSection, {
+                //                 duration: 1.5,
+                //                 zIndex: 10,
+                //             });
+                //         }
+                //     }
 
-            .textArea {
-                height: 25%;
-                width: 95%;
-                font-weight: bold;
-                margin-left: 15px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
+                //     deliverySection.addEventListener('click', swapSections);
+                //     pickUpSection.addEventListener('click', swapSections);
+                // });
 
-            .textArea p {
-                height: 40px;
-                width: 100%;
-                font-size: x-large;
-                display: flex;
-                align-items: center;
-                text-align: start;
-                margin: 0;
-            }
+                document.addEventListener('DOMContentLoaded', function () {
+                    const pickUpSection = document.querySelector('.PickUp');
+                    const deliverySection = document.querySelector('.delivrySection');
+                    const deliveryContent = deliverySection.querySelectorAll('.delivrySection__textArea, .delivrySection__header, .SelectButtons'); // Select all content elements
 
-            .SelectButtons {
-                height: 30%;
-                width: 95%;
-                display: flex;
-                align-items: center;
-                font-size: larger;
-                margin-left: 15px;
-            }
+                    const pickUpContent = pickUpSection.querySelectorAll('.delivrySection__header, .containt_section, .PickUp'); // Select all content elements for PickUp
 
-            .location_button {
-                height: 50px;
-                width: 35%;
-                border-radius: 5px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                background-color: #556B2F;
-            }
+                    // Initially hide PickUp content
+                    pickUpContent.forEach(element => element.style.opacity = 0);
 
-            .OR {
-                height: 50px;
-                width: 70px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
+                    function swapSections() {
+                        const isDeliveryHidden = deliverySection.classList.contains('hidden'); // Check if deliverySection is hidden
 
-            .Select_buttons {
-                height: 50px;
-                width: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-            }
+                        if (isDeliveryHidden) {
+                            // Reverse animation (PickUp to front)
+                            gsap.to(pickUpSection, {
+                                duration: 1.5,
+                                zIndex: 10,
+                                onComplete: () => {
+                                    deliverySection.classList.remove('hidden'); // Show deliverySection content
+                                    pickUpSection.classList.remove('bg-color-white')
 
-            .city_buttons {
-                height: 100%;
-                width: 45%;
-                display: flex;
-                align-items: center;
-                justify-content: space-evenly;
-                text-align: center;
-                border-radius: 5px;
-            }
+                                    deliveryContent.forEach(element => element.style.opacity = 1);
+                                    pickUpContent.forEach(element => element.style.opacity = 0); // Hide PickUp content
+                                }
+                            });
 
-            .containt_section {
-                width: 100%;
-                height: 90%;
-                display: flex;
-                align-items: center;
-            }
+                            gsap.to(deliverySection, {
+                                duration: 1.5,
+                                width: '100%', // Restore initial width
+                            });
+                        } else {
+                            // Hide content before animation
+                            deliveryContent.forEach(element => element.style.opacity = 0);
+                            gsap.to(deliverySection, {
+                                duration: 1.5,
+                                width: '35px',
+                                onComplete: () => {
+                                    deliverySection.classList.add('hidden'); // Hide deliverySection content after animation
+                                    pickUpContent.forEach(element => element.style.opacity = 1); // Show PickUp content
+                                    pickUpSection.classList.add('bg-color-white')
+                                }
+                            });
 
-            .bag_image {
-                height: 100px;
-                width: 120px;
-                display: flex;
-                justify-content: flex-end;
-                align-items: center;
-            }
-
-            .text_section {
-                height: 95%;
-                width: 85%;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-evenly;
-                align-items: center;
-            }
-
-            .pickup_text {
-                height: 30%;
-                width: 89%;
-                font-size: larger;
-                border-radius: 10px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-            }
-
-            .pickup_buttons {
-                height: 30%;
-                width: 95%;
-                display: flex;
-                align-items: center;
-                justify-content: space-evenly;
-            }
-
-            .pickup_button {
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 45%;
-                border-radius: 10px;
-                text-align: center;
-            }
-
-            @media (max-width: 1300px) {
-                .SelectButtons {
-                    font-size: medium;
-                }
-
-                .textArea p {
-                    font-size: larger;
-                }
-
-                .text_section {
-                    font-size: small;
-                }
-            }
-
-            @media (max-width: 1050px) {
-                .header {
-                    width: 32%;
-                }
-
-                .SelectButtons {
-                    height: 45%;
-                    flex-direction: column;
-                }
-
-                .Select_buttons {
-                    width: 70%;
-                }
-
-                .location_button {
-                    width: 70%;
-                }
-
-                .pickup_buttons {
-                    height: 35%;
-                    flex-direction: column;
-                    justify-content: space-between;
-                }
-
-                .pickup_button {
-                    height: 45%;
-                    width: 100%;
-                }
-            }
-
-            @media (max-width:768px) {
-                .header {
-                    font-size: larger;
-                    width: 40%;
-                }
-
-                .Select_buttons {
-                    width: 100%;
-                }
-
-                .location_button {
-                    width: 100%;
-                }
-            }
-
-            @media (max-width:600px) {
-                .header {
-                    width: 50%;
-                }
-
-                .textArea {
-                    width: 90%;
-                }
-
-                .SelectButtons {
-                    width: 90%;
-                }
-
-                .city_buttons {
-                    width: 50%;
-                }
-            }
-
-            @media (max-width:470px) {
-                .header {
-                    width: 70%;
-                }
-
-                .textArea p {
-                    font-size: medium;
-                }
-
-                .SelectButtons {
-                    font-size: small;
-                }
-
-                .text_section {
-                    font-size: small;
-                }
-            }
-        </style>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const deliverySection = document.querySelector('.delivrySection');
-                const deliveryContent = deliverySection.querySelectorAll('.textArea, .header, .SelectButtons'); // Select all content elements
-                const pickUpSection = document.querySelector('.PickUp');
-
-                function swapSections() {
-                    const isDeliveryHidden = deliverySection.classList.contains('hidden'); // Check if deliverySection is hidden
-
-                    if (isDeliveryHidden) {
-                        // Reverse animation (PickUp to front)
-                        gsap.to(pickUpSection, {
-                            duration: 1.5,
-                            zIndex: 10,
-                            onComplete: () => {
-                                // pickUpSection.style.zIndex = 10; // Set z-index of PickUp to 20 immediately
-                                deliverySection.classList.remove('hidden'); // Show deliverySection content
-                                deliveryContent.forEach(element => element.style.opacity = 100);
-
-                            }
-                        });
-
-                        gsap.to(deliverySection, {
-                            duration: 1.5,
-                            width: '50dvw', // Restore initial width
-
-                        });
-                    } else {
-                        // Hide content before animation
-                        deliveryContent.forEach(element => element.style.opacity = 0);
-                        gsap.to(deliverySection, {
-                            duration: 1.5,
-                            width: '35px',
-                            onComplete: () => {
-                                deliverySection.classList.add('hidden'); // Hide deliverySection content after animation
-                            }
-                        });
-
-                        gsap.to(pickUpSection, {
-                            duration: 1.5,
-                            zIndex: 10,
-                        });
+                            gsap.to(pickUpSection, {
+                                duration: 1.5,
+                                zIndex: 10,
+                            });
+                        }
                     }
-                }
 
-                deliverySection.addEventListener('click', swapSections);
-                pickUpSection.addEventListener('click', swapSections);
-            });
-        </script>
+                    deliverySection.addEventListener('click', swapSections);
+                    pickUpSection.addEventListener('click', swapSections);
+                });
 
-        <!-- <section class="deals-section">
-            <h1>Deals and Offers</h1>
-            <div class="deals-container">
-                <img class="deal" src="./Media/Offer3.jpeg" alt="">
-                <img class="deal" src="./Media/Offer2.jpeg" alt="">
-                <img class="deal" src="./Media/Offer3.jpeg" alt="">
-                <img class="deal" src="./Media/Offer4.jpeg" alt="">
-                <img class="deal" src="./Media/Offer5.jpeg" alt="">
-                <img class="deal" src="./Media/Offer6.jpg" alt="">
-                <img class="deal" src="./Media/offer7.jpg" alt="">
-            </div>
+
+            </script>
+
         </section>
 
-        <style>
-            .deals-section {
-                display: flex;
-                gap: 10px;
-                cursor: pointer;
-                margin: 50px 50px;
-            }
-
-            .deals-section h1 {
-                font-size: xx-large;
-                font-weight: bold;
-            }
-
-            .deal {
-                width: 30%;
-                height: 100%;
-                object-fit: cover;
-                -webkit-box-reflect: below 2px linear-gradient(transparent, transparent, #0004);
-                transform-origin: center;
-                transform: perspective(800px) rotateY(25deg);
-                transition: 0.5s;
-            }
-
-            .deals-container:hover .deal {
-                opacity: 0.3;
-            }
-
-            .deals-container .deal:hover {
-                transform: perspective(800px) rotateY(0deg);
-                opacity: 1;
-            }
-
-            .deals-section {
-                display: flex;
-                flex-direction: column;
-                position: relative;
-                height: 250px;
-                width: 100%;
-                margin: 10px 0;
-            }
-
-
-            .deals-container {
-                position: relative;
-                display: flex;
-                justify-content: space-evenly;
-                align-items: start;
-                gap: 20px;
-                overflow-x: auto;
-                width: 95%;
-                border-radius: 5px;
-                height: 70%;
-                margin: 0 auto 0 auto;
-                padding-bottom: 5px;
-            }
-
-            .deal {
-                position: relative;
-                flex: 0 0;
-                width: 30%;
-                height: auto;
-                object-fit: contain;
-                transition: all .75s ease-in-out;
-                flex: 0 0 auto;
-                margin-top: 5px;
-                box-shadow: 0 4px 6px -1px rgb(0 0 0), 0 2px 4px -2px rgb(0 0 0);
-            }
-
-            .deals-container::-webkit-scrollbar {
-                width: 0;
-                height: 0;
-            }
-
-
-            @media (min-width:800px) {
-                .deal {
-                    width: 25%;
-
-                }
-
-                .deals-container {
-                    height: 80%;
-                }
-
-            }
-
-            @media (min-width:1000px) {
-                .deal {
-                    width: 20%;
-
-                }
-
-                .deals-container {
-                    height: 100%;
-                }
-
-            }
-
-            @media (max-width:600px) {
-                .deal {
-                    width: 40%;
-                }
-
-            }
-
-            @media (max-width: 470px) {
-
-                .deal {
-                    width: 50%;
-                }
-            }
-        </style> -->
         <section class="deals-section">
             <h1>Deals and Offers</h1>
             <div class="deals__container">
