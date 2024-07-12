@@ -14,6 +14,22 @@
 //     });
 // });
 //Hero Sections
+
+document.addEventListener("DOMContentLoaded", function () {
+    var closeButton = document.querySelector(".close");
+    var outsideContent = document.querySelector(".outside");
+    var bars = document.querySelectorAll(".bar");
+
+    closeButton.addEventListener("click", function () {
+        outsideContent.classList.toggle("in");
+        bars.forEach(function (bar) {
+            bar.classList.toggle("active");
+        });
+        closeButton.classList.toggle("is-showing");
+    });
+});
+
+
 const links = document.querySelectorAll('nav ul li a');
 
 links.forEach(link => {
