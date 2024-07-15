@@ -23,11 +23,12 @@
     <!-- <script src="https://unpkg.com/locomotive-scroll/dist/locomotive-scroll.min.js"></script> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@beta/bundled/locomotive-scroll.min.js"></script>
 </head>
 
 <body>
     <img src="./Media/Cursor.png" alt="Custom Cursor" class="custom-cursor" id="customCursor">
-    <div class="main">
+    <div class="main" data-scroll-container>
         <style>
             .custom-cursor {
                 position: absolute;
@@ -1152,103 +1153,6 @@
                 </div>
             </section>
             <script>
-                // document.addEventListener('DOMContentLoaded', function () {
-                //     const pickUpSection = document.querySelector('.PickUp');
-                // const deliverySection = document.querySelector('.delivrySection');
-                // const deliveryContent = deliverySection.querySelectorAll('.delivrySection__textArea, .delivrySection__header, .SelectButtons'); // Select all content elements
-
-                // function swapSections() {
-                //     const isDeliveryHidden = deliverySection.classList.contains('hidden'); // Check if deliverySection is hidden
-
-                //     if (isDeliveryHidden) {
-                //     // Reverse animation (PickUp to front)
-                //     gsap.to(pickUpSection, {
-                //         duration: 0.8,
-                //         zIndex:10,
-                //         onComplete: () => {
-                //         // pickUpSection.style.zIndex = 10; // Set z-index of PickUp to 20 immediately
-                //         deliverySection.classList.remove('hidden'); // Show deliverySection content
-                //         deliveryContent.forEach(element => element.style.opacity = 1);                        
-                //         }
-                //     });
-
-                //     gsap.to(deliverySection, {
-                //         duration: 0.8,
-                //         width: '100%', // Restore initial width
-
-                //     });
-                //     } else {
-                //     // Hide content before animation
-                //     deliveryContent.forEach(element => element.style.opacity = 0);
-                //     gsap.to(deliverySection, {
-                //         duration: 0.8,
-                //         width: '35px',
-                //         onComplete: () => {
-                //         deliverySection.classList.add('hidden'); // Hide deliverySection content after animation
-                //         }
-                //     });
-
-                //     gsap.to(pickUpSection, {
-                //         duration: 0.8,
-                //         zIndex: 10,
-                //     });
-                //     }
-                // }
-
-                // deliverySection.addEventListener('click', swapSections);
-                // pickUpSection.addEventListener('click', swapSections);
-                // });
-
-                //             document.addEventListener('DOMContentLoaded', function () {
-                //     const pickUpSection = document.querySelector('.PickUp');
-                //     const deliverySection = document.querySelector('.delivrySection');
-                //     const deliveryContent = deliverySection.querySelectorAll('.textArea, .header, .SelectButtons'); // Select all content elements for Delivery
-                //     const pickUpContent = pickUpSection.querySelectorAll('.header, .containt_section'); // Select all content elements for PickUp
-
-                //     function swapSections() {
-                //         const isDeliveryHidden = deliverySection.classList.contains('hidden'); // Check if deliverySection is hidden
-
-                //         if (isDeliveryHidden) {
-                //             // Reverse animation (PickUp to front)
-                //             gsap.to(pickUpSection, {
-                //                 duration: 1.5,
-                //                 zIndex: 10,
-                //                 onComplete: () => {
-                //                     deliverySection.classList.remove('hidden'); // Show deliverySection content
-                //                     deliveryContent.forEach(element => element.style.opacity = 1);                        
-                //                     pickUpContent.forEach(element => element.style.opacity = 0); // Hide PickUp content
-                //                     // pickUpSection.classList.add('hidden'); // Hide PickUp section
-                //                 }
-                //             });
-
-                //             gsap.to(deliverySection, {
-                //                 duration: 1.5,
-                //                 width: '100%', // Restore initial width
-                //             });
-                //         } else {
-                //             // Hide content before animation
-                //             deliveryContent.forEach(element => element.style.opacity = 0);
-                //             gsap.to(deliverySection, {
-                //                 duration: 1.5,
-                //                 width: '35px',
-                //                 onComplete: () => {
-                //                     deliverySection.classList.add('hidden'); // Hide deliverySection content after animation
-                //                     pickUpSection.classList.remove('hidden'); // Show PickUp section
-                //                     pickUpContent.forEach(element => element.style.opacity = 1); // Show PickUp content
-                //                 }
-                //             });
-
-                //             gsap.to(pickUpSection, {
-                //                 duration: 1.5,
-                //                 zIndex: 10,
-                //             });
-                //         }
-                //     }
-
-                //     deliverySection.addEventListener('click', swapSections);
-                //     pickUpSection.addEventListener('click', swapSections);
-                // });
-
                 document.addEventListener('DOMContentLoaded', function () {
                     const pickUpSection = document.querySelector('.PickUp');
                     const deliverySection = document.querySelector('.delivrySection');
@@ -1791,13 +1695,13 @@
         </script>
 
         <!-- Story Section -->
-        <section class="story">
+        <section class="story" data-scroll-section>
             <div class="story-content">
                 <div class="owner">
                     <img class="owner-img" src="./Media/sanam-kapoor.jpg" alt="Owner">
                 </div>
                 <div class="story-content-left">
-                    <div class="story-content-upper">
+                    <div class="story-content-upper" data-scroll data-scroll-call="title">
                         <h5>About Us</h5>
                         <p>The Story of La Pino'z Pizza</p>
                         <hr>
@@ -1987,9 +1891,9 @@
             }
         </style>
 
-        <section class="single-banner">
+        <section class="single-banner" data-scroll-section>
             <div class="single-banner-container">
-                <picture>
+                <picture data-scroll data-scroll-speed="0.5">
                     <a href="https://lordpetrickindia.com/franchise-enquiry">
                         <img class="franchise-Image" src="./Media/Franchise_inquiry.jpeg" alt="Franchise">
                     </a>
@@ -1998,6 +1902,8 @@
         </section>
         <style>
             .single-banner-container {
+                position: sticky;
+                top: 20px;
                 width: 100%;
                 height: 15rem;
                 display: flex;
@@ -2025,11 +1931,12 @@
 
         <!-- Journey Section -->
 
-        <section class="Journey">
+        <section class="Journey" data-scroll-section>
             <div class="Journer-container">
                 <div class="Journer-container-content">
                     <div class="Journer-container-content-col">
-                        <h3 class="common-heading Journey-heading">
+                        <h3 class="common-heading Journey-heading" data-scroll-call="title" data-scroll-speed="0.1"
+                            data-scroll>
                             <div style="color:#00572d;
                         ">
                                 La Pino'z Pizza
@@ -2038,7 +1945,7 @@
                         </h3>
 
                         <ul class="timeline-ul">
-                            <li>
+                            <li data-scroll data-scroll-speed="0.8" data-scroll-direction="vertical">
                                 <div>
                                     <h4 class="">2011</h4>
                                 </div>
@@ -2053,7 +1960,7 @@
                                     </p>
                                 </div>
                             </li>
-                            <li>
+                            <li data-scroll data-scroll-speed="0.8" data-scroll-direction="vertical">
                                 <div>
                                     <h4 class="">2013</h4>
                                 </div>
@@ -2068,7 +1975,7 @@
                                     </p>
                                 </div>
                             </li>
-                            <li>
+                            <li data-scroll data-scroll-speed="0.8" data-scroll-direction="vertical">
                                 <div>
                                     <h4 class="">2017</h4>
                                 </div>
@@ -2084,7 +1991,7 @@
                                     </p>
                                 </div>
                             </li>
-                            <li>
+                            <li data-scroll data-scroll-speed="0.8" data-scroll-direction="vertical">
                                 <div>
                                     <h4 class="">2019</h4>
                                 </div>
@@ -2100,7 +2007,7 @@
                                     </p>
                                 </div>
                             </li>
-                            <li>
+                            <li data-scroll data-scroll-speed="0.8" data-scroll-direction="vertical">
                                 <div>
                                     <h4 class="">2021</h4>
                                 </div>
@@ -2116,7 +2023,7 @@
                                     </p>
                                 </div>
                             </li>
-                            <li>
+                            <li data-scroll data-scroll-speed="0.8" data-scroll-direction="vertical">
                                 <div>
                                     <h4 class="">2022</h4>
                                 </div>
@@ -2135,7 +2042,7 @@
                         </ul>
                     </div>
                     <div class="Journer-container-content-col">
-                        <div class="right-img">
+                        <div class="right-img" data-scroll data-scroll-speed="0.001">
                             <img class="pizza-img" src="./Media/Pizza.png" width="536" height="536"
                                 alt="Lapinonz Pizza Round Image" id="js-logo" />
                         </div>
@@ -2273,6 +2180,8 @@
             }
 
             .right-img {
+                position: sticky;
+                top: 20px;
                 max-width: 600px;
                 height: auto;
                 width: 100%;
@@ -2327,7 +2236,7 @@
 
         <!-- Countries Section -->
         <!-- Countries Section -->
-        <section class="countries-section">
+        <section class="countries-section" data-scroll-section>
             <div class="container">
                 <h3 class="countries-section-heading">Loved Across India <span
                         style="margin-bottom: 0px; margin-top: 7px;">Now Launching In Over 10 Countries</span>
@@ -2341,7 +2250,8 @@
 
                 <div class="country-slider-client">
                     <div class="country-slider-list">
-                        <div class="country-slider-track">
+                        <div class="country-slider-track" data-scroll data-scroll-speed="2"
+                            data-scroll-direction="horizontal">
                             <div class="slide text-center">
                                 <div class="slide-img">
                                     <img src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/tanzania.jpg"
@@ -2536,7 +2446,6 @@
         </style>
 
 
-        <!-- Quality Assured Section -->
         <section class="quality-section">
             <div class="quality-container">
                 <h3 class="quality-container-heading">
@@ -2638,10 +2547,8 @@
 
             .quality-container {
                 width: 100%;
-                padding-right: 15px;
-                padding-left: 15px;
-                margin-right: auto;
-                margin-left: auto;
+                padding-inline: 15px;
+                margin-inline: auto;
             }
 
             .common-heading {
@@ -2656,7 +2563,28 @@
                 content: "";
             }
 
-            /* Fade-in and Slide-up Animation */
+            /* @keyframes fadeInUp {
+from {
+    opacity: 0;
+    transform: translateY(30px);
+}
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+
+.three-cards-inner {
+opacity: 0;
+transform: translateY(-30px);
+transition: transform 1.5s ease-out, opacity 1.5s ease-out;
+}
+
+.three-cards-inner.animate {
+opacity: 1;
+transform: translateY(0);
+} */
+
             @keyframes fadeInUp {
                 from {
                     opacity: 0;
@@ -2669,18 +2597,33 @@
                 }
             }
 
-            /* Initial State for Animation */
-            .three-cards-inner {
-                opacity: 0;
-                transform: translateY(-30px);
-                transition: transform 2.0s ease-out, opacity 2.0s ease-out;
+            @keyframes fadeInDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-30px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
             }
 
-            /* Animation Triggered */
-            .three-cards-inner.animate {
-                opacity: 1;
-                transform: translateY(0);
+            .three-cards-inner {
+                opacity: 0;
+                transition: opacity 1.5s ease-out;
             }
+
+            .three-cards-inner.animate-up {
+                opacity: 1;
+                animation: fadeInUp 1.5s forwards;
+            }
+
+            .three-cards-inner.animate-down {
+                opacity: 1;
+                animation: fadeInDown 1.5s forwards;
+            }
+
 
 
             .three-cards-inner .icons img {
@@ -2760,7 +2703,7 @@
                             </div>
                             <h5 class="pointer-heading">Safety and Quality Standards</h5>
                             <p class="common-para">
-                                Our kitchens follow the highest safety and quality standards,
+                                Our kitchens follow safety and quality standards,
                                 which are fully compliant with fssai guidelines.
                             </p>
                         </div>
@@ -2842,7 +2785,6 @@
 
                 .three-cards-inner {
                     flex: 0 0 33.333333%;
-                    /* max-width: 33.333333%; */
                 }
             }
 
@@ -2853,6 +2795,37 @@
             }
         </style>
         <script>
+            // document.addEventListener('DOMContentLoaded', function() {
+            //     const cards = document.querySelectorAll('.three-cards-inner');
+
+            //     const observerOptions = {
+            //         root: null,
+            //         rootMargin: '0px',
+            //         threshold: 0.1
+            //     };
+
+            //     const observer = new IntersectionObserver((entries) => {
+            //         entries.forEach(entry => {
+            //             const cardIndex = Array.from(cards).indexOf(entry.target);
+            //             if (entry.isIntersecting) {
+            //                 // When entering the viewport
+            //                 entry.target.style.transitionDelay = `${cardIndex * 1.0}s`;
+            //                 entry.target.classList.add('animate');
+            //                 entry.target.classList.remove('reverse-animate');
+            //             } else {
+            //                 // When leaving the viewport
+            //                 entry.target.style.transitionDelay = '0s'; // Reset delay for leaving
+            //                 entry.target.classList.add('reverse-animate');
+            //                 entry.target.classList.remove('animate');
+            //             }
+            //         });
+            //     }, observerOptions);
+
+            //     cards.forEach(card => {
+            //         observer.observe(card);
+            //     });
+            // });
+
             document.addEventListener('DOMContentLoaded', function () {
                 const cards = document.querySelectorAll('.three-cards-inner');
 
@@ -2864,17 +2837,23 @@
 
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
-                        const cardIndex = Array.from(cards).indexOf(entry.target);
                         if (entry.isIntersecting) {
-                            // When entering the viewport
-                            entry.target.style.transitionDelay = `${cardIndex * 1.0}s`;
-                            entry.target.classList.add('animate');
+                            entry.target.style.transitionDelay = '0s';
                             entry.target.classList.remove('reverse-animate');
+
+                            // Apply different animations based on the card's index
+                            const cardIndex = Array.from(cards).indexOf(entry.target);
+                            if (cardIndex % 3 === 0) { // Left card
+                                entry.target.classList.add('animate-up');
+                            } else if (cardIndex % 3 === 1) { // Middle card
+                                entry.target.classList.add('animate-down');
+                            } else if (cardIndex % 3 === 2) { // Right card
+                                entry.target.classList.add('animate-up');
+                            }
                         } else {
-                            // When leaving the viewport
-                            entry.target.style.transitionDelay = '0s'; // Reset delay for leaving
+                            entry.target.style.transitionDelay = '0s';
+                            entry.target.classList.remove('animate-up', 'animate-down');
                             entry.target.classList.add('reverse-animate');
-                            entry.target.classList.remove('animate');
                         }
                     });
                 }, observerOptions);
@@ -2883,11 +2862,11 @@
                     observer.observe(card);
                 });
             });
+
         </script>
 
-        <!-- Explore Section -->
-        <section class="explore-menu">
-            <div class="exploreSection-heading">
+        <section class="explore-menu" data-scroll-section>
+            <div class="exploreSection-heading" data-scroll-speed="0.08" data-scroll>
                 <div class="upper-heading">
                     <h3 class="common-heading">Explore</h3>
                     <div class="bottom-dots clearfix">
@@ -2898,62 +2877,77 @@
                     </div>
                 </div>
 
-                <ul class="explore-menu-ul">
-                    <div class="ul_box">
-                        <a href="https://lapinozpizza.in/online-order">
-                            <div class="menu-placeholder">
-                                <img src="https://static.uengage.in/uploads/5/image-592811-1715424060.png"
-                                    alt="Sides" />
+                <ul class="explore-menu-ul" data-scroll data-scroll-speed="0.01">
+                    <div class="explore-menu-box" data-scroll data-scroll-direction="vertical" data-scroll-speed=" 0.5">
+                        <div class="explore-menu-card">
+                            <div class="imgBx">
+                                <img src="./public/images/tacos.png">
                             </div>
-                            <h4 class="eplore-menu-title">Sides</h4>
-                        </a>
+                            <div class="contentBx">
+                                <h2 class="menu__name">Sides</h2>
+                                <a href="#">Buy Now</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="ul_box">
-                        <a href="https://lapinozpizza.in/online-order">
-                            <div class="menu-placeholder">
-                                <img src="https://static.uengage.in/uploads/5/image-128695-1686856721.png"
-                                    alt="Dessert &amp; Beverages" />
+
+                    <div class="explore-menu-box" data-scroll-direction="vertical" data-scroll-speed="0.5" data-scroll>
+                        <div class="explore-menu-card">
+                            <div class="imgBx">
+                                <img src="./public/images/pizza.png">
                             </div>
-                            <h4 class="eplore-menu-title">Dessert &amp; Beverages</h4>
-                        </a>
+                            <div class="contentBx">
+                                <h2 class="menu__name">Flat Out</h2>
+                                <a href="#">Buy Now</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="ul_box">
-                        <a href="https://lapinozpizza.in/online-order">
-                            <div class="menu-placeholder">
-                                <img src="https://static.uengage.in/uploads/5/image-838513-1701755987.png"
-                                    alt="Flat Out" />
+
+                    <div class="explore-menu-box" data-scroll-direction="vertical" data-scroll-speed="0.5" data-scroll>
+                        <div class="explore-menu-card">
+                            <div class="imgBx">
+                                <img src="./public/images/pizza2.png">
                             </div>
-                            <h4 class="eplore-menu-title">Flat Out</h4>
-                        </a>
+                            <div class="contentBx">
+                                <h2 class="menu__name">Veg Pizza</h2>
+                                <a href="#">Buy Now</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="ul_box">
-                        <a href="https://lapinozpizza.in/online-order">
-                            <div class="menu-placeholder">
-                                <img src="https://static.uengage.in/uploads/5/image-814654-1715424611.png"
-                                    alt="Veg Pizza" />
+
+                    <div class="explore-menu-box" data-scroll-direction="vertical" data-scroll-speed="0.5" data-scroll>
+                        <div class="explore-menu-card">
+                            <div class="imgBx">
+                                <img src="./public/images/non-veg_pizza.png">
                             </div>
-                            <h4 class="eplore-menu-title">Veg Pizza</h4>
-                        </a>
+                            <div class="contentBx">
+                                <h2 class="menu__name">Non-Veg Pizza</h2>
+                                <a href="#">Buy Now</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="ul_box">
-                        <a href="https://lapinozpizza.in/online-order">
-                            <div class="menu-placeholder">
-                                <img src="https://static.uengage.in/uploads/5/image-342663-1715424500.png"
-                                    alt="Non-veg Pizza" />
+
+                    <div class="explore-menu-box" data-scroll-direction="vertical" data-scroll-speed="0.5" data-scroll>
+                        <div class="explore-menu-card">
+                            <div class="imgBx">
+                                <img src="./public/images/pizza box.png">
                             </div>
-                            <h4 class="eplore-menu-title">Non-veg Pizza</h4>
-                        </a>
+                            <div class="contentBx">
+                                <h2 class="menu__name">Classic Maniacs</h2>
+                                <a href="#">Buy Now</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="ul_box">
-                        <a href="https://lapinozpizza.in/online-order">
-                            <div class="menu-placeholder">
-                                <img src="https://static.uengage.in/uploads/5/image-659842-1686856722.png"
-                                    alt="Classic Pizzas For Classic Maniacs" />
+
+                    <div class="explore-menu-box" data-scroll-direction="vertical" data-scroll-speed="0.5" data-scroll>
+                        <div class="explore-menu-card">
+                            <div class="imgBx">
+                                <img src="./public/images/coke.png">
                             </div>
-                            <h4 class="eplore-menu-title">
-                                Classic Pizzas For Classic Maniacs
-                            </h4>
-                        </a>
+                            <div class="contentBx">
+                                <h2 class="menu__name">Dessert & Beverages</h2>
+                                <a href="#">Buy Now</a>
+                            </div>
+                        </div>
                     </div>
                 </ul>
             </div>
@@ -2968,6 +2962,7 @@
                 margin-inline: auto;
                 padding-right: 15px;
                 padding-left: 15px;
+                color: #00572d;
             }
 
             .explore-menu {
@@ -2996,80 +2991,134 @@
 
             .explore-menu-ul {
                 padding: 0px;
-                margin: 0px;
+                /* margin: 0px; */
                 display: flex;
-                list-style-type: none;
-                width: 100%;
-                flex-wrap: wrap;
+                width: 93%;
+                margin-inline: auto;
+                /* list-style-type: none; */
                 gap: 10px;
                 justify-content: space-evenly;
+                margin-bottom: 30px;
+                overflow-x: scroll;
+                -ms-overflow-style: none;
+                /* IE and Edge */
+                scrollbar-width: none;
+                /* Firefox */
             }
 
-            .ul_box {
-                height: 225px;
-                width: 220px;
-                /* border: 1px solid teal; */
-                display: flex;
-                justify-content: center;
-                align-items: center;
+            .explore-menu-ul::-webkit-scrollbar {
+                display: none;
+                /* Chrome, Safari and Opera */
             }
 
-            .menu-placeholder {
-                width: 100%;
-                max-width: 167px;
-                height: 167px;
-                border-radius: 5px;
+
+            .explore-menu-box {
+                position: relative;
+                margin-inline: 10px;
+            }
+
+            .explore-menu-box .explore-menu-card {
+                position: relative;
+                width: 250px;
+                height: 360px;
+                background: #f7f7f7;
+                border-radius: 20px;
                 overflow: hidden;
-                margin: 0 auto;
-                margin-bottom: 20px;
             }
 
-            .explore-menu-ul .eplore-menu-title {
-                margin: 0px;
+            .explore-menu-box .explore-menu-card:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: #ffe77a;
+                clip-path: circle(135px at 80% 20%);
+                transition: 0.5s ease-in-out;
+            }
+
+            .explore-menu-box .explore-menu-card:hover:before {
+                clip-path: circle(300px at 80% -20%);
+            }
+
+            .explore-menu-box .explore-menu-card:after {
+                content: 'Lapinoz';
+                position: absolute;
+                top: 50%;
+                left: -20%;
+                font-size: 55px;
+                font-weight: 900;
+                font-style: italic;
+                transform: translate(15%, 30%) rotate(15deg);
+                color: #00572d1a
+            }
+
+            .explore-menu-box .explore-menu-card .imgBx {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-60%);
+                /* z-index: 1; */
+                width: 100%;
+                height: 220px;
+                transition: 0.5s;
+            }
+
+            .explore-menu-box .explore-menu-card:hover .imgBx {
+                top: 0%;
+                transform: translateY(-5%);
+
+            }
+
+            .explore-menu-box .explore-menu-card .imgBx img {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(-25deg);
+                width: 270px;
+            }
+
+            .explore-menu-box .explore-menu-card .contentBx {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 70px;
                 text-align: center;
-                width: 100%;
-                font-size: 15px;
-                color: #201c1d;
-                font-weight: 500;
+                transition: 1s;
+                z-index: 10;
             }
 
-            .menu-placeholder img {
-                width: 100%;
-                max-width: 100%;
-                height: 100%;
-                /* object-fit: cover; */
-                /* backface-visibility: hidden; */
-                /* display: inline-block; */
-                /* vertical-align: middle; */
-                /* border-style: none; */
+            .explore-menu-box .explore-menu-card:hover .contentBx {
+                height: 120px;
             }
 
+            .explore-menu-box .explore-menu-card .contentBx .menu__name {
+                position: relative;
+                font-size: 25px;
+                color: black;
+                margin: 0;
+            }
 
-            .explore-menu-ul div {
+            .explore-menu-box .explore-menu-card .contentBx a {
+                display: inline-block;
+                padding: 5px 15px;
+                background: #00572d53;
+                border-radius: 4px;
+                /* margin-top: 10px; */
+                text-decoration: none;
+                font-weight: 600;
+                color: #111;
                 opacity: 0;
-                transform: translateY(20px);
-                transition: opacity 1.0s ease-out, transform 0.8s ease-out;
+                transform: translateY(10px);
+                transition: 0.75s;
+                margin-top: 15px;
             }
 
-            .explore-menu-ul div.visible {
+            .explore-menu-box .explore-menu-card:hover .contentBx a {
                 opacity: 1;
-                transform: translateY(0);
-            }
+                transform: translateY(0px);
+                transition-delay: 0.5s;
 
-            .menu-placeholder img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                transition: transform 0.3s ease;
-            }
-
-            .eplore-menu-title {
-                transition: transform 0.3s ease;
-            }
-
-            .menu-placeholder:hover img {
-                transform: scale(1.2) translateY(10px)
-                    /* Enlarge image */
             }
         </style>
 
@@ -3095,315 +3144,282 @@
             });
         </script>
 
-        <!-- Best Seller section -->
-
+        <!-- Best seller section -->
         <section class="bestseller-section">
             <div class="bestseller-heading">
                 <div class="">
-                    <h3 class="common-heading">Best Sellers</h3>
-                    <div class="bottom-dots ">
-                        <span class="dot line-dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
+                    <h3>Best Sellers</h3>
+                    <div class="bestseller-bottom-dots">
+                        <span class="bestseller-dot bestseller-line-dot"></span>
+                        <span class="bestseller-dot"></span>
+                        <span class="bestseller-dot"></span>
+                        <span class="bestseller-dot"></span>
                     </div>
                 </div>
             </div>
-            <div class="bestseller-container">
-                <div class="bestseller-slider">
-                    <div class="item-outer" style="visibility: hidden;">
-                        <a href="https://lapinozpizza.in/online-order">
-                            <div class="item-placeholder">
-                                <img src="https://static.uengage.in/uploads/5/image-711224-1715596629.png"
-                                    alt="Farm Villa Pizza">
-                                <div class="veg-flag"><span></span></div>
-                            </div>
-                            <div class="item-details">
-                                <span class="recommended"><i class="las la-star"></i> Recommended</span>
-                                <h4 class="item-title">Farm Villa Pizza</h4>
-                                <p class="heading-customize mb-0">The freshness of capsicum, tomatoes...</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="item-outer">
-                        <a href="https://lapinozpizza.in/online-order">
-                            <div class="item-placeholder">
-                                <img src="https://static.uengage.in/uploads/5/image-711224-1715596629.png"
-                                    alt="Farm Villa Pizza">
-                                <div class="veg-flag"><span></span></div>
-                            </div>
-                            <div class="item-details">
-                                <span class="recommended"><i class="las la-star"></i> Recommended</span>
-                                <h4 class="item-title">Farm Villa Pizza</h4>
-                                <p class="heading-customize mb-0">The freshness of capsicum, tomatoes...</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="item-outer">
-                        <a href="https://lapinozpizza.in/online-order">
-                            <div class="item-placeholder">
-                                <img src="https://static.uengage.in/uploads/5/image-916317-1715596630.png"
-                                    alt="Burn To Hell Pizza">
-                                <div class="veg-flag"><span></span></div>
-                            </div>
-                            <div class="item-details">
-                                <span class="recommended"><i class="las la-star"></i> Recommended</span>
-                                <h4 class="item-title">Burn To Hell Pizza</h4>
-                                <p class="heading-customize mb-0">A fiery and lethal combination of h...</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="item-outer">
-                        <a href="https://lapinozpizza.in/online-order">
-                            <div class="item-placeholder">
-                                <img src="https://static.uengage.in/uploads/5/image-462226-1715686799.png"
-                                    alt="Bestseller Placeholder" class="bestseller-placeholder">
-                                <div class="veg-flag">
-                                    <span></span>
+            <ul class="bestseller_cards">
+                <li>
+                    <a href="" class="bestseller__card">
+                        <img src="https://static.uengage.in/uploads/5/image-711224-1715596629.png"
+                            class="bestseller__card__image" alt="" />
+                        <div class="veg-flag"><span></span></div>
+                        <div class="bestseller__card__overlay">
+                            <div class="bestseller__card__header">
+                                <svg class="bestseller__card__arc" xmlns="http://www.w3.org/2000/svg">
+                                    <path />
+                                </svg>
+                                <div class="bestseller__card__header-text">
+                                    <h3 class="bestseller__card__title">Recommended</h3>
+                                    <span class="bestseller__card__status">Farm Villa Pizza</span>
                                 </div>
                             </div>
-                        </a>
-                        <div class="item-details">
-                            <a href="https://lapinozpizza.in/online-order" tabindex="-1">
-                                <span class="recommended"><i class="las la-star"></i> Recommended</span>
-                                <div class="item-heading">
-                                    <div>
-                                        <div class="flag"><span></span></div>
-                                    </div>
-                                    <div>
-                                        <h4 class="item-title">Cheezy-7 Pizza</h4>
-                                    </div>
-                                </div>
-                                <p class="heading-customize mb-0">Exotic Combination of White Mozz...</p>
-                            </a>
+                            <p class="bestseller__card__description">The freshness of capsicum, tomatoes with flavour...
+                            </p>
                         </div>
-                    </div>
-
-                    <div class="item-outer">
-                        <a href="https://lapinozpizza.in/online-order" tabindex="-1">
-                            <div class="item-placeholder">
-                                <img src="https://static.uengage.in/uploads/5/image-183435-1715686808.png"
-                                    alt="Bestseller Placeholder" class="bestseller-placeholder">
-                                <!-- <p class="item-analytics"><img src="https://lapinozpizza.in/assets/wla_new/lapinoz/img/new/up-arrow.png" alt="up-arrow"> 500+ people have ordered this recently</p> -->
-
-                                <div class="veg-flag">
-                                    <span></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="bestseller__card">
+                        <img src="https://static.uengage.in/uploads/5/image-916317-1715596630.png"
+                            class="bestseller__card__image" alt="" />
+                        <div class="veg-flag"><span></span></div>
+                        <div class="bestseller__card__overlay">
+                            <div class="bestseller__card__header">
+                                <svg class="bestseller__card__arc" xmlns="http://www.w3.org/2000/svg">
+                                    <path />
+                                </svg>
+                                <div class="bestseller__card__header-text">
+                                    <h3 class="bestseller__card__title">Recommended</h3>
+                                    <span class="bestseller__card__status">Burn To Hell Pizza</span>
                                 </div>
                             </div>
-                        </a>
-                        <div class="item-details">
-                            <a href="https://lapinozpizza.in/online-order" tabindex="-1">
-                                <span class="recommended"><i class="las la-star"></i> Recommended</span>
-                                <div class="item-heading">
-                                    <div>
-                                        <div class="flag"><span></span></div>
-                                    </div>
-                                    <div>
-                                        <h4 class="item-title">Cheese Lover Pizza</h4>
-                                    </div>
-                                </div>
-                                <p class="heading-customize mb-0">Cheese Dip, Jalapenos Dip, Onion...</p>
-                            </a>
+                            <p class="bestseller__card__description">A Fiery and lethal combination of hot and garlic
+                                dip...</p>
                         </div>
-                    </div>
-                    <div class="item-outer">
-                        <a href="https://lapinozpizza.in/online-order" tabindex="-1">
-                            <div class="item-placeholder">
-                                <img src="https://static.uengage.in/uploads/5/image-795561-1715596629.png"
-                                    alt="Bestseller Placeholder" class="bestseller-placeholder">
-                                <!-- <p class="item-analytics"><img src="https://lapinozpizza.in/assets/wla_new/lapinoz/img/new/up-arrow.png" alt="up-arrow"> 500+ people have ordered this recently</p> -->
-
-                                <div class="veg-flag">
-                                    <span></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="bestseller__card">
+                        <img src="https://static.uengage.in/uploads/5/image-462226-1715686799.png"
+                            class="bestseller__card__image" alt="" />
+                        <div class="veg-flag"><span></span></div>
+                        <div class="bestseller__card__overlay">
+                            <div class="bestseller__card__header">
+                                <svg class="bestseller__card__arc" xmlns="http://www.w3.org/2000/svg">
+                                    <path />
+                                </svg>
+                                <div class="bestseller__card__header-text">
+                                    <h3 class="bestseller__card__title">Recommended</h3>
+                                    <span class="bestseller__card__status">Cheezy-7 Pizza</span>
                                 </div>
                             </div>
-                        </a>
-                        <div class="item-details">
-                            <a href="https://lapinozpizza.in/online-order" tabindex="-1">
-                                <span class="recommended"><i class="las la-star"></i> Recommended</span>
-                                <div class="item-heading">
-                                    <div>
-                                        <div class="flag"><span></span></div>
-                                    </div>
-                                    <div>
-                                        <h4 class="item-title">Peri Peri Veg Pizza</h4>
-                                    </div>
-                                </div>
-                                <p class="heading-customize mb-0">Milder, but just as tasty. Onion, C...</p>
-                            </a>
+                            <p class="bestseller__card__description">An Exotic combination of white Mozzarilla...</p>
                         </div>
-                    </div>
-                    <div class="item-outer">
-                        <a href="https://lapinozpizza.in/online-order" tabindex="-1">
-                            <div class="item-placeholder">
-                                <img src="https://static.uengage.in/uploads/5/image-191979-1715686806.png"
-                                    alt="Bestseller Placeholder" class="bestseller-placeholder">
-                                <!-- <p class="item-analytics"><img src="https://lapinozpizza.in/assets/wla_new/lapinoz/img/new/up-arrow.png" alt="up-arrow"> 500+ people have ordered this recently</p> -->
-
-                                <div class="veg-flag">
-                                    <span></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="bestseller__card">
+                        <img src="https://static.uengage.in/uploads/5/image-183435-1715686808.png"
+                            class="bestseller__card__image" alt="" />
+                        <div class="veg-flag"><span></span></div>
+                        <div class="bestseller__card__overlay">
+                            <div class="bestseller__card__header">
+                                <svg class="bestseller__card__arc" xmlns="http://www.w3.org/2000/svg">
+                                    <path />
+                                </svg>
+                                <div class="bestseller__card__header-text">
+                                    <h3 class="bestseller__card__title">Recommended</h3>
+                                    <span class="bestseller__card__status">Cheese Lover Pizza</span>
                                 </div>
                             </div>
-                        </a>
-                        <div class="item-details">
-                            <a href="https://lapinozpizza.in/online-order" tabindex="-1">
-                                <span class="recommended">
-                                    <i class="las la-star"></i> Recommended</span>
-                                <div class="item-heading">
-                                    <div>
-                                        <div class="flag"><span></span></div>
-                                    </div>
-                                    <div>
-                                        <h4 class="item-title">Onions Pizza</h4>
-                                    </div>
-                                </div>
-                                <p class="heading-customize mb-0">Onions on a cheesy base with in hou...</p>
-                            </a>
+                            <p class="bestseller__card__description">Chesse Dip, Jalapenous Dip, Onion Capsicum...</p>
                         </div>
-                    </div>
-                    <div class="item-outer" style="visibility: hidden;">
-                        <a href="https://lapinozpizza.in/online-order" tabindex="-1">
-                            <div class="item-placeholder">
-                                <img src="https://static.uengage.in/uploads/5/image-191979-1715686806.png"
-                                    alt="Bestseller Placeholder" class="bestseller-placeholder">
-                                <!-- <p class="item-analytics"><img src="https://lapinozpizza.in/assets/wla_new/lapinoz/img/new/up-arrow.png" alt="up-arrow"> 500+ people have ordered this recently</p> -->
-
-                                <div class="veg-flag">
-                                    <span></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="bestseller__card">
+                        <img src="https://static.uengage.in/uploads/5/image-795561-1715596629.png"
+                            class="bestseller__card__image" alt="" />
+                        <div class="veg-flag"><span></span></div>
+                        <div class="bestseller__card__overlay">
+                            <div class="bestseller__card__header">
+                                <svg class="bestseller__card__arc" xmlns="http://www.w3.org/2000/svg">
+                                    <path />
+                                </svg>
+                                <div class="bestseller__card__header-text">
+                                    <h3 class="bestseller__card__title">Recommended</h3>
+                                    <span class="bestseller__card__status">Peri Peri Veg Pizza</span>
                                 </div>
                             </div>
-                        </a>
-                        <div class="item-details">
-                            <a href="https://lapinozpizza.in/online-order" tabindex="-1">
-                                <span class="recommended">
-                                    <i class="las la-star"></i> Recommended</span>
-                                <div class="item-heading">
-                                    <div>
-                                        <div class="flag"><span></span></div>
-                                    </div>
-                                    <div>
-                                        <h4 class="item-title">Onions Pizza</h4>
-                                    </div>
-                                </div>
-                                <p class="heading-customize mb-0">Onions on a cheesy base with in hou...</p>
-                            </a>
+                            <p class="bestseller__card__description">Milder, but just as tasty. Onion, Capsicum...</p>
                         </div>
-                    </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="bestseller__card">
+                        <img src="https://static.uengage.in/uploads/5/image-993211-1718099220.png"
+                            class="bestseller__card__image" alt="" />
+                        <div class="veg-flag"><span></span></div>
+                        <div class="bestseller__card__overlay">
+                            <div class="bestseller__card__header">
+                                <svg class="bestseller__card__arc" xmlns="http://www.w3.org/2000/svg">
+                                    <path />
+                                </svg>
+                                <div class="bestseller__card__header-text">
+                                    <h3 class="bestseller__card__title">Recommended</h3>
+                                    <span class="bestseller__card__status">Onions Pizza</span>
+                                </div>
+                            </div>
+                            <p class="bestseller__card__description">Onions on a cheesy base with in house sausce...</p>
+                        </div>
+                    </a>
+                </li>
+                <!-- <li class="visibility__hidden">
+            <a href="" class="bestseller__card ">
+              <div class="veg-flag"><span></span></div>
+              <div class="bestseller__card__overlay">        
+                <div class="bestseller__card__header">
+                  <svg class="bestseller__card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
+                  <div class="bestseller__card__header-text">
+                    <h3 class="bestseller__card__title">Recommended</h3>            
+                    <span class="bestseller__card__status">Onions Pizza</span>
+                  </div>
                 </div>
-            </div>
+                <p class="bestseller__card__description">Onions on a cheesy base with in house sausce...</p>
+              </div>
+            </a>
+          </li> -->
+
+            </ul>
+            <!-- <div class="img_holder">
+        <img class="" src="https://static.uengage.in/uploads/5/image-993211-1718099220.png" alt="">
+      </div> -->
         </section>
 
         <style>
+            .img_holder {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                height: auto;
+                width: 6%;
+                z-index: 0;
+                display: flex;
+                justify-content: flex-end;
+                max-width: 100%;
+                max-height: 100%;
+                clip-path: circle(80% at 90% 90%);
+                transform-origin: bottom right;
+                transition: transform 1.5s ease 0.5s, clip-path 10s ease-in-out 10s;
+            }
+
+            .img_holder:hover {
+                transform-origin: center;
+                transform: scale(16.67);
+                clip-path: inset(0% 0% 0% 0%);
+            }
+
             .bestseller-section {
-                background: url("https://static.uengage.in/uploads/5/image-711224-1715596629.png");
+                position: relative;
+                padding-bottom: 70px;
+                display: block;
+                /* width: 100%; */
+                background-color: #f0f0f0;
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
-                padding-block: 5px;
-                display: block;
-                background-color: #f0f0f0;
+                transition: background-image 0.5s ease-in-out;
             }
 
-            .bestseller-heading .bottom-dots {
-                padding-inline: 1px;
+            .bestseller-section::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.47);
+                /* Adjust the opacity to darken the image */
+                pointer-events: none;
+                /* Ensures that the overlay doesn't interfere with interactions */
             }
 
-            .bestseller-heading .bottom-dots .dots {
+            .bestseller-bottom-dots {
+                padding: 1px 0;
+            }
+
+            .bestseller-bottom-dots .bestseller-dot.bestseller-line-dot {
+                color: #f7f7f7;
+            }
+
+            .bestseller-bottom-dots .bestseller-dot.bestseller-line-dot {
+                border-right: 70px solid #f7f7f7;
+            }
+
+            .bestseller-bottom-dots .bestseller-dot {
                 float: left;
                 width: 3px;
                 height: 2px;
                 margin-right: 3px;
             }
 
-            .bestseller-heading .bottom-dots .dot.line-dot {
-                color: green;
+            .bestseller-bottom-dots .bestseller-dot {
+                border-right: 3px solid #f7f7f7;
             }
 
             .bestseller-section .bestseller-heading {
-                max-width: 1250px;
+                position: relative;
                 width: 100%;
-                padding-right: 15px;
-                padding-left: 15px;
-                margin-right: auto;
-                margin-left: auto;
+                color: #f7f7f7;
+                font-size: 30px;
+                padding-left: 25px;
+                padding-bottom: 35px;
+                padding-top: 35px;
+                z-index: 10;
             }
 
-            .bestseller-container {
-                padding-right: 15px;
-                padding-left: 15px;
-                max-width: 1300px;
-                margin-inline: auto;
-                /* border: 1px solid black; */
-
+            :root {
+                /* --surface-color: #fff; */
+                --curve: 40;
             }
 
-            .bestseller-slider {
-                margin-bottom: 20px;
+            .bestseller_cards {
                 display: flex;
-                gap: 20px;
-                justify-content: flex-start;
-                align-items: center;
-                overflow-x: auto;
-                /* scroll-snap-type: x mandatory; */
-                padding: 10px;
+                gap: 3rem;
+                padding: 0;
+                list-style-type: none;
+                overflow-x: scroll;
+                height: 350px;
+                width: 90%;
+                margin-inline: auto;
+                -ms-overflow-style: none;
+                /* IE and Edge */
+                scrollbar-width: none;
+                /* Firefox */
             }
 
-            .bestseller-slider::-webkit-scrollbar {
+            .bestseller_cards::-webkit-scrollbar {
                 display: none;
+                /* Chrome, Safari and Opera */
             }
 
-            .item-outer {
-                background-color: white;
-                border-radius: 10px;
-                flex: 0 0 auto;
-                width: 300px;
-                height: 280px;
-                scroll-snap-align: start;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.489);
-                transition: transform 1.0s ease-out;
+            .bestseller__card {
                 position: relative;
+                display: block;
+                height: 310px;
+                min-width: 300px;
+                border-radius: calc(var(--curve) * 1px);
                 overflow: hidden;
-            }
-
-            .item-outer.scaled {
-                transform: scale(1);
-                height: 200px;
-            }
-
-            .item-placeholder {
-                position: relative;
-                width: 100%;
-                height: 200px;
-                overflow: hidden;
-                border-radius: 5px;
-            }
-
-            .item-placeholder img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                transition: transform 0.6s ease-out;
-            }
-
-            .item-outer.scaled .item-placeholder img {
-                transform: scale(1.2);
-                /* Scale up the image for divs with scale 0.7 */
-            }
-
-            .item-placeholder img:hover {
-                transform: scale(1.2);
-                transition: all 1s ease;
+                text-decoration: none;
+                z-index: 10;
             }
 
             .veg-flag {
                 position: absolute;
-                top: 10px;
-                left: 10px;
-                width: 13px;
-                height: 13px;
+                top: 20px;
+                left: 20px;
+                width: 15px;
+                height: 15px;
                 border: 1px solid #3DA66E;
                 background-color: #fff;
                 margin-right: 7px;
@@ -3422,75 +3438,142 @@
                 position: absolute;
             }
 
-            .item-details {
-                height: fit-content;
-                padding-bottom: 15px;
+            .bestseller__card__image {
+                width: 100%;
+                height: 85%;
+                object-fit: cover;
+            }
+
+            /* .bestseller__card:hover .bestseller__card__image {
+transition: all 1.5s ease;
+} */
+
+            .bestseller__card__overlay {
+                z-index: 1;
+                border-radius: calc(var(--curve) * 1px);
+                transition: .4s ease-in-out;
+                background-color: #ffe77a;
+            }
+
+            .bestseller__card:hover .bestseller__card__overlay {
+                transform: translateY(-80px);
+                border: none;
+            }
+
+            .bestseller__card__header {
+                position: relative;
+                display: flex;
+                align-items: center;
+                color: #00572d;
+                background-color: #ffe77a;
+                height: 70px;
+                border-radius: calc(var(--curve)* 1px) 0 0 0;
+                transform: translateY(-50%);
+                transition: .4s ease-in-out;
+                justify-content: center;
+            }
+
+            .bestseller__card__arc {
+                width: 80px;
+                height: 80px;
+                position: absolute;
+                bottom: 98.9%;
+                right: 0;
+                z-index: 1;
+            }
+
+            .bestseller__card__arc path {
+                fill: #ffe77a;
+                d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+            }
+
+            .bestseller__card:hover .bestseller__card__header {
+                transform: translateY(0);
+            }
+
+            .bestseller__card__title {
+                font-size: larger;
+                margin: 0 0 .3em;
+            }
+
+
+            .bestseller__card__status {
+                font-size: medium;
+                color: black;
+                font-weight: 600;
+            }
+
+            .bestseller__card__description {
                 text-align: center;
-                margin-top: 10px;
+                margin: 0;
+                font-size: 18px;
+                color: black;
+                font-family: "MockFlowFont";
                 overflow: hidden;
-                display: -webkit-box;
-                -webkit-line-clamp: 3;
-                -webkit-box-orient: vertical;
-                opacity: 1;
-                transition: opacity 1.0s ease-out, visibility 1.0s ease-out;
-            }
-
-            .recommended {
-                color: green;
-                display: inline-block;
-                margin-bottom: 5px;
-            }
-
-            @media (max-width: 768px) {
-                .bestseller-slider {
-                    gap: 10px;
-                    padding: 5px;
-                }
-
-                .item-outer {
-                    width: 250px;
-                }
-
-                .item-outer.scaled {
-                    height: 200px;
-                }
-            }
-
-            @media (max-width: 480px) {
-                .item-outer {
-                    width: 300px;
-                }
             }
         </style>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-                const items = document.querySelectorAll('.item-outer');
-                const slider = document.querySelector('.bestseller-slider');
+                const bestsellerSection = document.querySelector('.bestseller-section');
+                const bestsellerCards = document.querySelector('.bestseller_cards');
+                const cards = bestsellerCards.querySelectorAll('li');
 
-                function updateItemStyles() {
-                    const sliderRect = slider.getBoundingClientRect();
-                    const sectionWidth = sliderRect.width;
-                    const partWidth = sectionWidth / 3;
-                    const centerStart = sliderRect.left + partWidth;
-                    const centerEnd = sliderRect.left + (2 * partWidth);
+                function updateBackgroundImage() {
+                    const cardWidth = cards[0].offsetWidth;
+                    const scrollLeft = bestsellerCards.scrollLeft;
+                    const secondCardIndex = Math.floor(scrollLeft / cardWidth) + 1;
 
-                    items.forEach((item, index) => {
-                        const itemRect = item.getBoundingClientRect();
-                        const itemCenter = (itemRect.left + itemRect.right) / 2;
+                    if (secondCardIndex >= 0 && secondCardIndex < cards.length) {
+                        const secondCardImage = cards[secondCardIndex].querySelector('.bestseller__card__image').src;
 
-                        if (itemCenter >= centerStart && itemCenter <= centerEnd) {
-                            item.classList.remove('scaled');
-                        } else {
-                            item.classList.add('scaled');
-                        }
-                    });
+                        // Remove previous background classes
+                        bestsellerSection.className = 'bestseller-section';
+
+                        // Add new background class
+                        bestsellerSection.style.backgroundImage = `url(${secondCardImage})`;
+                    }
                 }
 
-                slider.addEventListener('scroll', updateItemStyles);
+                // Attach the scroll event listener
+                bestsellerCards.addEventListener('scroll', updateBackgroundImage);
 
-                // Initial call to set the correct scaling
-                updateItemStyles();
+                // Initial call to set the background image on page load
+                updateBackgroundImage();
             });
+
+            // document.addEventListener('DOMContentLoaded', function () {
+            //     const bestsellerSection = document.querySelector('.bestseller-section');
+            //     const bestsellerCards = document.querySelector('.bestseller_cards');
+            //     const cards = bestsellerCards.querySelectorAll('li');
+            //     const img_holder_img = document.querySelector(".img_holder_img");
+            //     function updateBackgroundImage() {
+            //         const cardWidth = cards[0].offsetWidth;
+            //         const containerWidth = bestsellerCards.offsetWidth;
+            //         const scrollLeft = bestsellerCards.scrollLeft;
+            //         const thresholdPosition = containerWidth * 0.40;
+
+            //         // Calculate the index of the card near the 25% width of the container
+            //         const cardIndexAtThreshold = Math.floor((scrollLeft + thresholdPosition) / cardWidth);
+
+            //         if (cardIndexAtThreshold >= 0 && cardIndexAtThreshold < cards.length) {
+            //             const cardImage = cards[cardIndexAtThreshold].querySelector('.bestseller__card__image').src;
+            //             const nextCardImg = cards[cardIndexAtThreshold+1].querySelector('.bestseller__card__image').src;
+            //             // Remove previous background classes
+            //             bestsellerSection.className = 'bestseller-section';
+            //             img_holder_img.src = nextCardImg;
+            //             // Add new background class
+            //             bestsellerSection.style.backgroundImage = `url(${cardImage})`;
+            //         }
+            //     }
+
+            //     // Attach the scroll event listener
+            //     bestsellerCards.addEventListener('scroll', updateBackgroundImage);
+
+            //     // Initial call to set the background image on page load
+            //     updateBackgroundImage();
+            // });
+
+
         </script>
 
         <!-- Newly Launched Stores -->

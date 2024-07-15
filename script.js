@@ -14,6 +14,94 @@
 //     });
 // });
 
+// Locomotive
+const main = document.querySelector(".main");
+const storySection = document.querySelector(".story"),
+    singleBanner = document.querySelector(".single-banner"),
+    Journey = document.querySelector(".Journey"),
+    countriesSection = document.querySelector(".countries-section");
+
+const storyUpper = document.querySelector(".story-content-upper");
+const picture = document.querySelector(".single-banner picture");
+const journeyHeading = document.querySelector(".Journey-heading");
+
+const rightImage = document.querySelector('.right-img');
+const journeySection = document.querySelector('.Journey');
+
+init = () => {
+    gsap.set([storyUpper, journeyHeading, picture], { y: '100%' });
+}
+
+home = () => {
+    const scroll = new LocomotiveScroll({
+        el: document.querySelector('[data-scroll-container]'),
+        smooth: true,
+        lerp: 0.08
+    });
+
+    if (!scroll) {
+        console.error("Locomotive Scroll not initialized correctly");
+        return;
+    }
+
+    onScrollBy = (e) => {
+        const id = e.currentTarget.id; // Use currentTarget
+        const selector = document.querySelector('.' + id);
+        if (selector) scroll.scrollTo(selector);
+    }
+
+    // scroll.on('call', (value) => {
+    //     if (value === 'storySection') {
+    //         gsap.to(storyUpper, {
+    //             duration: 1.4,
+    //             y: 0,
+    //             ease: 'expo.inOut',
+    //         });
+    //     }
+    //     if (value === 'storyUpper') {
+    //         gsap.to(storyUpper, {
+    //             duration: 1.4,
+    //             y: 0,
+    //             ease: 'expo.inOut',
+    //         });
+    //     }
+    //     if (value === 'Journey') {
+    //         gsap.to(journeyHeading, {
+    //             duration: 1.4,
+    //             y: 0,
+    //             ease: 'expo.inOut',
+    //         });
+    //     }
+    // })
+
+    scroll.on('scroll', (obj) => {
+        const scrollTop = obj.scroll.y;
+        const sectionHeight = journeySection.clientHeight;
+
+        if (scrollTop < (sectionHeight - window.innerHeight)) {
+            rightImage.style.position = 'sticky';
+            rightImage.style.top = '20px';
+        } else {
+            rightImage.style.position = 'absolute';
+            rightImage.style.top = `${sectionHeight - rightImage.offsetHeight}px`;
+        }
+    });
+}
+
+addEventListeners = () => {
+    storySection.addEventListener('click', onScrollBy);
+    singleBanner.addEventListener('click', onScrollBy);
+    Journey.addEventListener('click', onScrollBy);
+    countriesSection.addEventListener('click', onScrollBy);
+}
+
+window.onload = () => {
+    init();
+    home();
+    addEventListeners();
+}
+
+
 // Cursor
 document.addEventListener('DOMContentLoaded', () => {
     const customCursor = document.getElementById('customCursor');
