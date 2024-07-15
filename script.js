@@ -13,6 +13,34 @@
 //         alwaysShowTracks: true 
 //     });
 // });
+
+// Cursor
+document.addEventListener('DOMContentLoaded', () => {
+    const customCursor = document.getElementById('customCursor');
+    let posX = 0, posY = 0;
+    let mouseX = 0, mouseY = 0;
+
+    const updateCursor = () => {
+        posX += (mouseX - posX) * 0.1; // Smooth transition
+        posY += (mouseY - posY) * 0.1; // Smooth transition
+
+        customCursor.style.transform = `translate(${posX}px, ${posY + window.scrollY}px)`; // Adjust for scroll
+
+        requestAnimationFrame(updateCursor);
+    };
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY; // Track mouse position
+    });
+
+    // Initialize animation
+    requestAnimationFrame(updateCursor);
+});
+
+
+
+
 //Hero Sections
 
 document.addEventListener("DOMContentLoaded", function () {

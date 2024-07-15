@@ -26,8 +26,24 @@
 </head>
 
 <body>
+    <img src="./Media/Cursor.png" alt="Custom Cursor" class="custom-cursor" id="customCursor">
     <div class="main">
+        <style>
+            .custom-cursor {
+                position: absolute;
+                width: 32px;
+                height: 32px;
+                pointer-events: none;
+                z-index: 99999;
+                transform: translate(-50%, -50%);
+                transition: transform 0.1s ease-in-out;
+                display: none;
 
+                @media (min-width:769px) {
+                    display: block;
+                }
+            }
+        </style>
         <section class="hero-section">
             <img class="green_bg" src="./Media/Ellipse 1Hero_BG.svg" alt="">
             <div class="nav__container">
