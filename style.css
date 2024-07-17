@@ -150,7 +150,7 @@ body {
     }
 }
 
-p {
+/* p {
     transform: translate(-60px);
     transition: all 1s ease-in-out;
 }
@@ -159,7 +159,7 @@ p {
     opacity: 1;
     transform: translate(0);
     transition: all 1s ease-in-out;
-}
+} */
 
 .hide {
     /* transform: translate(-40px); */

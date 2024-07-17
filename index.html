@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Scroll Animation</title>
+
 
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
@@ -19,11 +20,9 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
 
-    <!-- <link rel="stylesheet" href="https://unpkg.com/locomotive-scroll/dist/locomotive-scroll.min.css"> -->
-    <!-- <script src="https://unpkg.com/locomotive-scroll/dist/locomotive-scroll.min.js"></script> -->
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@beta/bundled/locomotive-scroll.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -45,7 +44,8 @@
                 }
             }
         </style>
-        <section class="hero-section">
+        <!-- Hero section -->
+        <section class="hero-section" data-scroll-section data-scroll>
             <img class="green_bg" src="./Media/Ellipse 1Hero_BG.svg" alt="">
             <div class="nav__container">
                 <img class="logo" src="./Media/lapinoz_logo.png" alt="">
@@ -323,16 +323,16 @@
             }
 
             .hero_img_container {
-                top: -15%;
+                top: -7%;
                 right: 15%;
                 position: absolute;
                 height: 90%;
-                width: 90%;
+                width: 75%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 border-radius: 50%;
-                z-index: 100;
+                z-index: 1;
                 animation: upDown 5s infinite ease-in-out;
             }
 
@@ -340,7 +340,7 @@
                 position: relative;
                 object-fit: contain;
                 width: 90%;
-                z-index: 100;
+                z-index: 1;
                 transition: transform 0.1s ease-out;
                 /* height: 100%; */
                 /* Ensuring the image scales correctly */
@@ -548,18 +548,6 @@
                 margin-top: 5px;
                 height: auto;
                 object-fit: contain;
-            }
-
-            @keyframes upDown {
-
-                0%,
-                100% {
-                    transform: translateY(0);
-                }
-
-                50% {
-                    transform: translateY(-10px);
-                }
             }
 
             @media (min-width:1440px) {
@@ -775,8 +763,8 @@
                 }
             }
         </style>
-
-        <section class="second-section">
+        <!-- Second section -->
+        <section class="second-section" data-scroll-section>
             <style>
                 * {
                     font-family: 'Poppins', sans-serif;
@@ -1075,8 +1063,8 @@
                     }
                 }
             </style>
-            <section class="delivrySection_container">
-                <div class="delivrySection">
+            <section class="delivrySection_container" data-scroll="">
+                <div class="delivrySection" data-scroll="">
                     <div class="delivrySection__header" style="color:#f7f7f7; border-bottom: 2px solid #f7f7f7;">
                         <i class="ri-riding-line" style="font-weight: lighter"></i>
                         <p>Delivery</p>
@@ -1213,7 +1201,7 @@
 
         </section>
 
-        <section class="deals-section">
+        <section class="deals-section" data-scroll-section>
             <h1>Deals and Offers</h1>
             <div class="deals__container">
                 <div class="card-hover">
@@ -1695,7 +1683,7 @@
         </script>
 
         <!-- Story Section -->
-        <section class="story" data-scroll-section>
+        <section class="story" data-scroll-call="show" data-scroll-section>
             <div class="story-content">
                 <div class="owner">
                     <img class="owner-img" src="./Media/sanam-kapoor.jpg" alt="Owner">
@@ -1707,14 +1695,17 @@
                         <hr>
                     </div>
                     <p class="bubble-text">
-                        <span>The</span> <span>story</span> <span>of</span> <span>India's</span> <span>fastest</span>
+                        <span>The</span> <span>story</span> <span>of</span> <span>India's</span>
+                        <span>fastest</span>
                         <span>growing</span> <span>pizza</span> <span>place</span> <span>started</span>
                         <span>back</span>
                         <span>in</span> <span>2011</span> <span>when</span> <span>Sanam</span> <span>Kapoor</span>
-                        <span>opened</span> <span>his</span> <span>very</span> <span>first</span> <span>pizzeria</span>
+                        <span>opened</span> <span>his</span> <span>very</span> <span>first</span>
+                        <span>pizzeria</span>
                         <span>in</span> <span>his</span> <span>hometown</span> <span>Chandigarh.</span>
                         <span>Inspired</span> <span>by</span> <span>his</span> <span>own</span> <span>search</span>
-                        <span>for</span> <span>delicious</span> <span>pizza</span> <span>options,</span> <span>he</span>
+                        <span>for</span> <span>delicious</span> <span>pizza</span> <span>options,</span>
+                        <span>he</span>
                         <span>started</span> <span>to</span> <span>wonder</span> <span>if</span> <span>there</span>
                         <span>was</span> <span>a</span> <span>better</span> <span>way</span> <span>of</span>
                         <span>doing</span> <span>pizza</span> <span>–</span> <span>and</span> <span>business.</span>
@@ -1724,7 +1715,8 @@
                         <span>maybe</span> <span>this</span> <span>one</span> <span>could</span> <span>be</span>
                         <span>different</span> <span>and</span> <span>everyone</span> <span>could</span>
                         <span>get</span>
-                        <span>exactly</span> <span>what</span> <span>they</span> <span>wanted,</span> <span>made</span>
+                        <span>exactly</span> <span>what</span> <span>they</span> <span>wanted,</span>
+                        <span>made</span>
                         <span>fresh</span> <span>on</span> <span>demand.</span> <span>It</span> <span>all</span>
                         <span>started</span> <span>sounding</span> <span>pretty</span> <span>great,</span>
                         <span>and</span>
@@ -1734,8 +1726,10 @@
                         <span>was</span>
                         <span>no</span> <span>looking</span> <span>back.</span> <span>As</span> <span>of</span>
                         <span>today,</span> <span>La</span> <span>Pino'z</span> <span>has</span> <span>600+</span>
-                        <span>outlets</span> <span>across</span> <span>India</span> <span>with</span> <span>the</span>
-                        <span>recent</span> <span>one</span> <span>opening</span> <span>in</span> <span>London.</span>
+                        <span>outlets</span> <span>across</span> <span>India</span> <span>with</span>
+                        <span>the</span>
+                        <span>recent</span> <span>one</span> <span>opening</span> <span>in</span>
+                        <span>London.</span>
                     </p>
                 </div>
             </div>
@@ -1929,23 +1923,19 @@
             }
         </style>
 
-        <!-- Journey Section -->
+        <!-- Journey section -->
 
-        <section class="Journey" data-scroll-section>
+        <section class="Journey" data-scroll-section="">
             <div class="Journer-container">
                 <div class="Journer-container-content">
                     <div class="Journer-container-content-col">
-                        <h3 class="common-heading Journey-heading" data-scroll-call="title" data-scroll-speed="0.1"
-                            data-scroll>
-                            <div style="color:#00572d;
-                        ">
-                                La Pino'z Pizza
-                            </div>
+                        <h3 class="common-heading Journey-heading">
+                            <div style="color:#00572d;">La Pino'z Pizza</div>
                             Growth Journey
                         </h3>
 
                         <ul class="timeline-ul">
-                            <li data-scroll data-scroll-speed="0.8" data-scroll-direction="vertical">
+                            <li data-image="./media/R_image-15.png">
                                 <div>
                                     <h4 class="">2011</h4>
                                 </div>
@@ -1955,12 +1945,10 @@
                                         alt="Timeline One" width="25" height="25" />
                                 </div>
                                 <div class="position-relative">
-                                    <p class="common-para mb-0 bg-para">
-                                        Launched the 1st Outlet in Chandigarh
-                                    </p>
+                                    <p class="common-para mb-0 bg-para">Launched the 1st Outlet in Chandigarh</p>
                                 </div>
                             </li>
-                            <li data-scroll data-scroll-speed="0.8" data-scroll-direction="vertical">
+                            <li data-image="./media/R_image-12.png">
                                 <div>
                                     <h4 class="">2013</h4>
                                 </div>
@@ -1970,12 +1958,10 @@
                                         alt="Timeline One" width="25" height="25" />
                                 </div>
                                 <div class="position-relative">
-                                    <p class="common-para mb-0 bg-para">
-                                        Launched the 1st Franchise Outlet
-                                    </p>
+                                    <p class="common-para mb-0 bg-para">Launched the 1st Franchise Outlet</p>
                                 </div>
                             </li>
-                            <li data-scroll data-scroll-speed="0.8" data-scroll-direction="vertical">
+                            <li data-image="./media/R_image-10.png">
                                 <div>
                                     <h4 class="">2017</h4>
                                 </div>
@@ -1985,13 +1971,12 @@
                                         alt="Timeline One" width="25" height="25" />
                                 </div>
                                 <div class="position-relative">
-                                    <!-- <div class="timeline-circle"></div> -->
                                     <p class="common-para mb-0 bg-para">
                                         Crossed 100 Outlets All Over India
                                     </p>
                                 </div>
                             </li>
-                            <li data-scroll data-scroll-speed="0.8" data-scroll-direction="vertical">
+                            <li data-image="./media/R_image-6.png">
                                 <div>
                                     <h4 class="">2019</h4>
                                 </div>
@@ -2001,13 +1986,12 @@
                                         alt="Timeline One" width="25" height="25" />
                                 </div>
                                 <div class="position-relative">
-                                    <!-- <div class="timeline-circle"></div> -->
                                     <p class="common-para mb-0 bg-para">
                                         Crossed 200 Outlets All Over India
                                     </p>
                                 </div>
                             </li>
-                            <li data-scroll data-scroll-speed="0.8" data-scroll-direction="vertical">
+                            <li data-image="./media/R_image-3.png">
                                 <div>
                                     <h4 class="">2021</h4>
                                 </div>
@@ -2017,13 +2001,12 @@
                                         alt="Timeline One" width="25" height="25" />
                                 </div>
                                 <div class="position-relative">
-                                    <!-- <div class="timeline-circle"></div> -->
                                     <p class="common-para mb-0 bg-para">
                                         Crossed 300 Outlets All Over India
                                     </p>
                                 </div>
                             </li>
-                            <li data-scroll data-scroll-speed="0.8" data-scroll-direction="vertical">
+                            <li data-image="./media/R_image-1.png">
                                 <div>
                                     <h4 class="">2022</h4>
                                 </div>
@@ -2033,7 +2016,6 @@
                                         alt="Timeline One" width="25" height="25" />
                                 </div>
                                 <div class="position-relative">
-                                    <!-- <div class="timeline-circle"></div> -->
                                     <p class="common-para mb-0 bg-para">
                                         La Pino’z Goes International
                                     </p>
@@ -2042,8 +2024,8 @@
                         </ul>
                     </div>
                     <div class="Journer-container-content-col">
-                        <div class="right-img" data-scroll data-scroll-speed="0.001">
-                            <img class="pizza-img" src="./Media/Pizza.png" width="536" height="536"
+                        <div class="right-img">
+                            <img class="pizza-img" src="./media/R_image-14.png" width="700" height="700"
                                 alt="Lapinonz Pizza Round Image" id="js-logo" />
                         </div>
                     </div>
@@ -2054,6 +2036,7 @@
             .Journey {
                 padding: 30px 0;
                 display: block;
+                overflow: hidden;
             }
 
             .Journer>.Journer-container {
@@ -2080,8 +2063,6 @@
                 max-width: 100%;
                 position: relative;
                 width: 100%;
-                /* padding-right: 15px;
-            padding-left: 15px; */
                 font-weight: 400;
             }
 
@@ -2119,17 +2100,6 @@
             .timeline-icon {
                 position: relative;
                 z-index: 1;
-            }
-
-            .timeline-ul>li::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 83px;
-                z-index: 0;
-                height: 100%;
-                width: 4px;
-                background: #e3e3e3;
             }
 
             .timeline-ul li>div:nth-child(2) {
@@ -2170,24 +2140,12 @@
                 border-right: 0.5rem solid #e3e3e3;
             }
 
-            .timeline-ul li .common-para {
-                font-weight: 600;
-                background: #e3e3e3;
-                padding: 10px 15px;
-                border-radius: 5px;
-                position: relative;
-                font-size: 15px;
-            }
-
             .right-img {
-                position: sticky;
-                top: 20px;
                 max-width: 600px;
                 height: auto;
                 width: 100%;
                 height: 400px;
                 border-radius: 50%;
-                /* overflow: hidden; */
                 margin: 0 auto;
             }
 
@@ -2232,162 +2190,295 @@
                     max-width: 540px;
                 }
             }
+
+            .timeline-ul li .common-para {
+                font-weight: 600;
+                background: #e3e3e3;
+                padding: 10px 15px;
+                border-radius: 5px;
+                position: relative;
+                font-size: 15px;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            }
+
+            .timeline-ul li.show .common-para {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .timeline-ul>li::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 83px;
+                z-index: 0;
+                height: 100%;
+                width: 4px;
+                background: #e3e3e3;
+                transition: background-color 1s ease-in-out;
+            }
+
+            .timeline-ul li.show::before {
+                background: #00572d;
+            }
+
+            .right-img {
+                position: relative;
+                max-width: 600px;
+                height: auto;
+                width: 100%;
+                height: 450px;
+                margin: 0 auto;
+            }
+
+            .right-img .pizza-img {
+                position: absolute;
+                top: 50px;
+                left: 0;
+                right: 0;
+                margin: auto;
+                vertical-align: middle;
+                height: 100%;
+                width: 100%;
+                transform: translateY(-30px);
+                transition: transform 1s ease-in-out;
+                z-index: 0;
+            }
+
+            .right-img .pizza-img.active {
+                transform: translateY(-570px);
+                z-index: 1;
+            }
+
+            .right-img .pizza-img.hidden {
+                transform: translateY(-30px);
+                z-index: 0;
+            }
         </style>
 
-        <!-- Countries Section -->
-        <!-- Countries Section -->
-        <section class="countries-section" data-scroll-section>
-            <div class="container">
-                <h3 class="countries-section-heading">Loved Across India <span
-                        style="margin-bottom: 0px; margin-top: 7px;">Now Launching In Over 10 Countries</span>
-                </h3>
-                <div class="bottom-dots">
-                    <span class="dot line-dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                </div>
+        <!-- <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const timelineItems = document.querySelectorAll('.timeline-ul li');
+                const imgElementContainer = document.querySelector('.right-img');
+                let currentImgElement = null;
 
-                <div class="country-slider-client">
-                    <div class="country-slider-list">
-                        <div class="country-slider-track" data-scroll data-scroll-speed="2"
-                            data-scroll-direction="horizontal">
-                            <div class="slide text-center">
-                                <div class="slide-img">
-                                    <img src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/tanzania.jpg"
-                                        alt="lapinoz pizza tanzania" width="200" height="200">
-                                </div>
-                                <h5>Tanzania</h5>
-                            </div>
-                            <div class="slide text-center">
-                                <div class="slide-img">
-                                    <img src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/usa.jpg"
-                                        alt="lapinoz pizza USA" width="200" height="200">
-                                </div>
-                                <h5>USA</h5>
-                            </div>
-                            <div class="slide text-center">
-                                <div class="slide-img">
-                                    <img src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/thailand.jpg"
-                                        alt="lapinoz pizza Thailand" width="200" height="200">
-                                </div>
-                                <h5>Thailand</h5>
-                            </div>
-                            <div class="slide text-center">
-                                <div class="slide-img">
-                                    <img src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/nepal.jpg"
-                                        alt="lapinoz pizza Nepal" width="200" height="200">
-                                </div>
-                                <h5>Nepal</h5>
-                            </div>
-                            <div class="slide text-center">
-                                <div class="slide-img">
-                                    <img src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/switzerland.jpg"
-                                        alt="lapinoz pizza Switzerland" width="200" height="200">
-                                </div>
-                                <h5>Switzerland</h5>
-                            </div>
-                            <div class="slide text-center">
-                                <div class="slide-img">
-                                    <img src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/india.jpg"
-                                        alt="lapinoz pizza India" width="200" height="200">
-                                </div>
-                                <h5>India</h5>
-                            </div>
-                            <div class="slide text-center">
-                                <div class="slide-img">
-                                    <img src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/uk.jpg"
-                                        alt="lapinoz pizza United Kingdom" width="200" height="200">
-                                </div>
-                                <h5>UK</h5>
-                            </div>
-                            <div class="slide text-center">
-                                <div class="slide-img">
-                                    <img src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/canada.jpg"
-                                        alt="lapinoz pizza Canada" width="200" height="200">
-                                </div>
-                                <h5>Canada</h5>
-                            </div>
-                            <div class="slide text-center">
-                                <div class="slide-img">
-                                    <img src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/australia.jpg"
-                                        alt="lapinoz pizza Australia" width="200" height="200">
-                                </div>
-                                <h5>Australia</h5>
-                            </div>
-                            <div class="slide text-center">
-                                <div class="slide-img">
-                                    <img src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/dubai.jpg"
-                                        alt="lapinoz pizza Dubai" width="200" height="200">
-                                </div>
-                                <h5>Dubai</h5>
-                            </div>
+                // Initialize IntersectionObserver
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            document.querySelector('.Journey').classList.add('show');
+                            animateTimelineItems();
+                        } else {
+                            document.querySelector('.Journey').classList.remove('show');
+                            deactivateItems();
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                // Observe the section
+                const Journeysection = document.querySelector('.Journey');
+                observer.observe(Journeysection);
+
+                // Function to handle the animation of timeline items
+                const animateTimelineItems = () => {
+                    timelineItems.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.add('show');
+                            const newImgElement = document.createElement('img');
+                            newImgElement.src = item.dataset.image;
+                            newImgElement.className = 'pizza-img active';
+                            imgElementContainer.appendChild(newImgElement);
+                            if (currentImgElement) {
+                                currentImgElement.classList.add('hidden');
+                                setTimeout(() => {
+                                    currentImgElement.remove();
+                                }, 2500); // Match the duration of CSS transition
+                            }
+                            currentImgElement = newImgElement;
+                        }, index * 500); // Delay each item's activation by 0.3 seconds
+                    });
+                };
+
+                // Function to handle deactivation of timeline items
+                const deactivateItems = () => {
+                    timelineItems.forEach((item) => {
+                        item.classList.remove('show');
+                    });
+                    const images = imgElementContainer.querySelectorAll('.pizza-img');
+                    images.forEach((img) => {
+                        img.classList.add('hidden');
+                        setTimeout(() => {
+                            img.remove();
+                        }, 1000); // Match the duration of CSS transition
+                    });
+                    currentImgElement = null;
+                };
+            });
+        </script> -->
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+
+            });
+        </script>
+
+        <!-- Country Scroll Section -->
+        <section class="country-scroll-section" data-scroll-section>
+            <div class="country-text-container" data-scroll data-scroll-speed="1">
+                <h1 class="scroll-text rotate-left" data-scroll data-scroll-direction="horizontal"
+                    data-scroll-speed="8">
+                    LOVED ACROSS INDIA
+                </h1>
+                <h2 class="scroll-text rotate-right" data-scroll data-scroll-direction="horizontal"
+                    data-scroll-speed="-8">
+                    NOW LAUNCHING IN 10 MORE COUNTRIES
+                </h2>
+            </div>
+
+            <div class="country-slider-container" data-scroll data-scroll-sticky data-scroll-target="#sticky-target">
+                <div class="country-slider-track" data-scroll data-scroll-direction="horizontal" data-scroll-speed="20"
+                    id="sticky-target">
+                    <div class="slide text-center">
+                        <div class="slide-img">
+                            <img src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/tanzania.jpg"
+                                alt="lapinoz pizza tanzania" width="200" height="200">
                         </div>
+                        <h5>Tanzania</h5>
+                    </div>
+                    <div class="slide text-center">
+                        <div class="slide-img">
+                            <img src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/usa.jpg"
+                                alt="lapinoz pizza USA" width="200" height="200">
+                        </div>
+                        <h5>USA</h5>
+                    </div>
+                    <div class="slide text-center">
+                        <div class="slide-img">
+                            <img src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/thailand.jpg"
+                                alt="lapinoz pizza Thailand" width="200" height="200">
+                        </div>
+                        <h5>Thailand</h5>
+                    </div>
+                    <div class="slide text-center">
+                        <div class="slide-img">
+                            <img src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/nepal.jpg"
+                                alt="lapinoz pizza Nepal" width="200" height="200">
+                        </div>
+                        <h5>Nepal</h5>
+                    </div>
+                    <div class="slide text-center">
+                        <div class="slide-img">
+                            <img src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/switzerland.jpg"
+                                alt="lapinoz pizza Switzerland" width="200" height="200">
+                        </div>
+                        <h5>Switzerland</h5>
+                    </div>
+                    <div class="slide text-center">
+                        <div class="slide-img">
+                            <img src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/india.jpg"
+                                alt="lapinoz pizza India" width="200" height="200">
+                        </div>
+                        <h5>India</h5>
+                    </div>
+                    <div class="slide text-center">
+                        <div class="slide-img">
+                            <img src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/uk.jpg"
+                                alt="lapinoz pizza United Kingdom" width="200" height="200">
+                        </div>
+                        <h5>UK</h5>
+                    </div>
+                    <div class="slide text-center">
+                        <div class="slide-img">
+                            <img src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/canada.jpg"
+                                alt="lapinoz pizza Canada" width="200" height="200">
+                        </div>
+                        <h5>Canada</h5>
+                    </div>
+                    <div class="slide text-center">
+                        <div class="slide-img">
+                            <img src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/australia.jpg"
+                                alt="lapinoz pizza Australia" width="200" height="200">
+                        </div>
+                        <h5>Australia</h5>
+                    </div>
+                    <div class="slide text-center">
+                        <div class="slide-img">
+                            <img src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/dubai.jpg"
+                                alt="lapinoz pizza Dubai" width="200" height="200">
+                        </div>
+                        <h5>Dubai</h5>
                     </div>
                 </div>
-
             </div>
         </section>
 
         <style>
-            .countries-section {
-                padding: 30px 0;
-                display: block;
+            body {
+                margin: 0;
+                overflow: hidden;
+                background: #fff;
             }
 
-            .countries-section>.container {
-                max-width: 1250px;
-                width: 100%;
-                padding-right: 15px;
-                padding-left: 15px;
-                margin-right: auto;
-                margin-left: auto;
-            }
-
-            .countries-section>.container>.countries-section-heading {
-                font-size: 26px;
-                font-weight: 600;
-                text-align: center;
-                color: #201C1D;
-                margin: 0 0 .5407911001em;
-            }
-
-            .countries-section>.container>.countries-section-heading>span {
-                display: block;
-                font-weight: 500;
-                font-size: 22px;
-                color: #00572d;
-            }
-
-            .countries-section>.container>.bottom-dots {
-                display: flex;
-                justify-content: center;
-                margin-bottom: 0.5rem;
-            }
-
-            .countries-section>.container>.bottom-dots .dot {
+            .country-scroll-section {
+                height: 100vh;
                 position: relative;
-                display: block;
-                float: left;
-                width: 3px;
-                height: 2px;
-                border-right: 3px solid #00572d;
-                margin-right: 3px;
             }
 
-            .countries-section>.container>.bottom-dots .dot.line-dot {
-                border-right: 40px solid #00572d;
-
-            }
-
-            .country-slider-client {
+            .country-text-container {
+                position: relative;
                 width: 100%;
-                margin: 0 auto;
+                height: 50vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 50px;
+            }
+
+            .scroll-text {
+                font-size: 3rem;
+                font-weight: bold;
+                color: #fff;
+                -webkit-text-stroke: 2px #201C1D;
+                background-color: #f4f4f4;
+                height: 70px;
+                width: 100%;
+                text-align: center;
+                position: relative;
+                margin: 20px 0;
+            }
+
+            .rotate-right {
+                rotate: -20deg;
+            }
+
+            .rotate-left {
+                rotate: 20deg;
+            }
+
+            .country-slider-container {
+                position: sticky;
+                top: 100vh;
+                width: 100%;
+            }
+
+            .country-slider-track {
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                overflow-x: visible;
+                width: 100%;
+                padding: 20px 0;
             }
 
             .slide {
                 padding: 10px;
                 text-align: center;
+                flex: 0 0 auto;
+                width: 200px;
             }
 
             .slide img {
@@ -2395,59 +2486,10 @@
                 width: 100%;
                 height: auto;
             }
-
-            .country-slider-list {
-                overflow: hidden;
-            }
-
-            .country-slider-track {
-                display: flex;
-            }
-
-            .slick-slide {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex: 1 0 auto;
-            }
-
-            @media (max-width: 1200px) {
-
-                .countries-section>.container {
-                    max-width: 1140px;
-                }
-            }
-
-            @media (max-width: 992px) {
-
-                .countries-section>.container {
-                    max-width: 960px;
-                }
-            }
-
-            @media (min-width: 768px) {
-                .countries-section>.container>.bottom-dots {
-                    margin-bottom: 1.5rem;
-                }
-            }
-
-            @media (max-width: 768px) {
-                .countries-section>.container {
-                    max-width: 720px;
-                }
-            }
-
-            @media (max-width: 576px) {
-
-                .countries-section>.container {
-                    max-width: 540px;
-                }
-            }
         </style>
 
-
-        <section class="quality-section">
-            <div class="quality-container">
+        <section class="quality-section" data-scroll-section>
+            <div class="quality-container" data-scroll>
                 <h3 class="quality-container-heading">
                     Quality Assured
                 </h3>
@@ -2563,28 +2605,6 @@
                 content: "";
             }
 
-            /* @keyframes fadeInUp {
-from {
-    opacity: 0;
-    transform: translateY(30px);
-}
-to {
-    opacity: 1;
-    transform: translateY(0);
-}
-}
-
-.three-cards-inner {
-opacity: 0;
-transform: translateY(-30px);
-transition: transform 1.5s ease-out, opacity 1.5s ease-out;
-}
-
-.three-cards-inner.animate {
-opacity: 1;
-transform: translateY(0);
-} */
-
             @keyframes fadeInUp {
                 from {
                     opacity: 0;
@@ -2670,7 +2690,7 @@ transform: translateY(0);
             }
         </style>
 
-        <section class="outer-card-dv">
+        <section class="outer-card-dv" data-scroll-section>
             <div class="container">
                 <div class="three-cards">
                     <div class="three-cards-container">
@@ -2795,37 +2815,6 @@ transform: translateY(0);
             }
         </style>
         <script>
-            // document.addEventListener('DOMContentLoaded', function() {
-            //     const cards = document.querySelectorAll('.three-cards-inner');
-
-            //     const observerOptions = {
-            //         root: null,
-            //         rootMargin: '0px',
-            //         threshold: 0.1
-            //     };
-
-            //     const observer = new IntersectionObserver((entries) => {
-            //         entries.forEach(entry => {
-            //             const cardIndex = Array.from(cards).indexOf(entry.target);
-            //             if (entry.isIntersecting) {
-            //                 // When entering the viewport
-            //                 entry.target.style.transitionDelay = `${cardIndex * 1.0}s`;
-            //                 entry.target.classList.add('animate');
-            //                 entry.target.classList.remove('reverse-animate');
-            //             } else {
-            //                 // When leaving the viewport
-            //                 entry.target.style.transitionDelay = '0s'; // Reset delay for leaving
-            //                 entry.target.classList.add('reverse-animate');
-            //                 entry.target.classList.remove('animate');
-            //             }
-            //         });
-            //     }, observerOptions);
-
-            //     cards.forEach(card => {
-            //         observer.observe(card);
-            //     });
-            // });
-
             document.addEventListener('DOMContentLoaded', function () {
                 const cards = document.querySelectorAll('.three-cards-inner');
 
@@ -2865,6 +2854,7 @@ transform: translateY(0);
 
         </script>
 
+        <!-- Explore section -->
         <section class="explore-menu" data-scroll-section>
             <div class="exploreSection-heading" data-scroll-speed="0.08" data-scroll>
                 <div class="upper-heading">
@@ -2881,7 +2871,7 @@ transform: translateY(0);
                     <div class="explore-menu-box" data-scroll data-scroll-direction="vertical" data-scroll-speed=" 0.5">
                         <div class="explore-menu-card">
                             <div class="imgBx">
-                                <img src="./public/images/tacos.png">
+                                <img src="./media/tacos.png">
                             </div>
                             <div class="contentBx">
                                 <h2 class="menu__name">Sides</h2>
@@ -2893,7 +2883,7 @@ transform: translateY(0);
                     <div class="explore-menu-box" data-scroll-direction="vertical" data-scroll-speed="0.5" data-scroll>
                         <div class="explore-menu-card">
                             <div class="imgBx">
-                                <img src="./public/images/pizza.png">
+                                <img src="./media/pizza.png">
                             </div>
                             <div class="contentBx">
                                 <h2 class="menu__name">Flat Out</h2>
@@ -2905,7 +2895,7 @@ transform: translateY(0);
                     <div class="explore-menu-box" data-scroll-direction="vertical" data-scroll-speed="0.5" data-scroll>
                         <div class="explore-menu-card">
                             <div class="imgBx">
-                                <img src="./public/images/pizza2.png">
+                                <img src="./media/pizza2.png">
                             </div>
                             <div class="contentBx">
                                 <h2 class="menu__name">Veg Pizza</h2>
@@ -2917,7 +2907,7 @@ transform: translateY(0);
                     <div class="explore-menu-box" data-scroll-direction="vertical" data-scroll-speed="0.5" data-scroll>
                         <div class="explore-menu-card">
                             <div class="imgBx">
-                                <img src="./public/images/non-veg_pizza.png">
+                                <img src="./media/non-veg_pizza.png">
                             </div>
                             <div class="contentBx">
                                 <h2 class="menu__name">Non-Veg Pizza</h2>
@@ -2929,7 +2919,7 @@ transform: translateY(0);
                     <div class="explore-menu-box" data-scroll-direction="vertical" data-scroll-speed="0.5" data-scroll>
                         <div class="explore-menu-card">
                             <div class="imgBx">
-                                <img src="./public/images/pizza box.png">
+                                <img src="./media/pizza box.png">
                             </div>
                             <div class="contentBx">
                                 <h2 class="menu__name">Classic Maniacs</h2>
@@ -2941,7 +2931,7 @@ transform: translateY(0);
                     <div class="explore-menu-box" data-scroll-direction="vertical" data-scroll-speed="0.5" data-scroll>
                         <div class="explore-menu-card">
                             <div class="imgBx">
-                                <img src="./public/images/coke.png">
+                                <img src="./media/coke.png">
                             </div>
                             <div class="contentBx">
                                 <h2 class="menu__name">Dessert & Beverages</h2>
@@ -3145,7 +3135,7 @@ transform: translateY(0);
         </script>
 
         <!-- Best seller section -->
-        <section class="bestseller-section">
+        <section class="bestseller-section" data-scroll-section>
             <div class="bestseller-heading">
                 <div class="">
                     <h3>Best Sellers</h3>
@@ -3274,26 +3264,7 @@ transform: translateY(0);
                         </div>
                     </a>
                 </li>
-                <!-- <li class="visibility__hidden">
-            <a href="" class="bestseller__card ">
-              <div class="veg-flag"><span></span></div>
-              <div class="bestseller__card__overlay">        
-                <div class="bestseller__card__header">
-                  <svg class="bestseller__card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
-                  <div class="bestseller__card__header-text">
-                    <h3 class="bestseller__card__title">Recommended</h3>            
-                    <span class="bestseller__card__status">Onions Pizza</span>
-                  </div>
-                </div>
-                <p class="bestseller__card__description">Onions on a cheesy base with in house sausce...</p>
-              </div>
-            </a>
-          </li> -->
-
             </ul>
-            <!-- <div class="img_holder">
-        <img class="" src="https://static.uengage.in/uploads/5/image-993211-1718099220.png" alt="">
-      </div> -->
         </section>
 
         <style>
@@ -3444,10 +3415,6 @@ transform: translateY(0);
                 object-fit: cover;
             }
 
-            /* .bestseller__card:hover .bestseller__card__image {
-transition: all 1.5s ease;
-} */
-
             .bestseller__card__overlay {
                 z-index: 1;
                 border-radius: calc(var(--curve) * 1px);
@@ -3541,44 +3508,11 @@ transition: all 1.5s ease;
                 updateBackgroundImage();
             });
 
-            // document.addEventListener('DOMContentLoaded', function () {
-            //     const bestsellerSection = document.querySelector('.bestseller-section');
-            //     const bestsellerCards = document.querySelector('.bestseller_cards');
-            //     const cards = bestsellerCards.querySelectorAll('li');
-            //     const img_holder_img = document.querySelector(".img_holder_img");
-            //     function updateBackgroundImage() {
-            //         const cardWidth = cards[0].offsetWidth;
-            //         const containerWidth = bestsellerCards.offsetWidth;
-            //         const scrollLeft = bestsellerCards.scrollLeft;
-            //         const thresholdPosition = containerWidth * 0.40;
-
-            //         // Calculate the index of the card near the 25% width of the container
-            //         const cardIndexAtThreshold = Math.floor((scrollLeft + thresholdPosition) / cardWidth);
-
-            //         if (cardIndexAtThreshold >= 0 && cardIndexAtThreshold < cards.length) {
-            //             const cardImage = cards[cardIndexAtThreshold].querySelector('.bestseller__card__image').src;
-            //             const nextCardImg = cards[cardIndexAtThreshold+1].querySelector('.bestseller__card__image').src;
-            //             // Remove previous background classes
-            //             bestsellerSection.className = 'bestseller-section';
-            //             img_holder_img.src = nextCardImg;
-            //             // Add new background class
-            //             bestsellerSection.style.backgroundImage = `url(${cardImage})`;
-            //         }
-            //     }
-
-            //     // Attach the scroll event listener
-            //     bestsellerCards.addEventListener('scroll', updateBackgroundImage);
-
-            //     // Initial call to set the background image on page load
-            //     updateBackgroundImage();
-            // });
-
-
         </script>
 
         <!-- Newly Launched Stores -->
 
-        <section class="newly-launched">
+        <section class="newly-launched" data-scroll-section>
             <div class="newly-launched-container">
                 <div class="newly-launched-upper-heading">
                     <h3 class="newly-launched-heading">Newly Launched Stores</h3>
@@ -4031,47 +3965,228 @@ transition: all 1.5s ease;
             });
         </script>
 
-
-        <section class="single-banner">
-            <div class="single-banner-container">
-                <div class="banner-slide-nw">
-                    <a href="https://lapinozpizza.in/franchise-enquiry">
-                        <picture>
-                            <source srcset="
-                https://lapinozpizza.in/assets/wla_new/lapinoz/img/Franchise-web.png
-              " media="(min-width: 768px)" />
-                            <img srcset="
-                https://lapinozpizza.in/assets/wla_new/lapinoz/img/Franchise-mobile.png
-              " alt="Placeholder Image" />
-                        </picture>
-                    </a>
+        <!-- Banner section -->
+        <section class="banner__section" data-scroll-section>
+            <div class="overlay"></div>
+            <div class="top__Bpart">
+                <div class="top__Bpart_textarea">
+                    <div class="first__Bpart_textarea">La Pino'z Pizza</div>
+                    <div class="second__Bpart_textarea" id="number_counter"></div>
+                </div>
+                <div class="banner_image_container">
+                    <img class="banner_image" src="./Media/banner_section_image.jpg" alt="Banner Image">
                 </div>
             </div>
+            <div class="third__Bpart_textarea">Outlets Across The World</div>
         </section>
 
         <style>
-            /* .single-banner-container {
-        max-width: 1250px;
-        margin: 0 auto;
-        padding: 10px 15px;
-        border-radius: 10px;
-    } */
-
-            .banner-slide-nw a {
-                display: block;
+            .banner__section {
                 width: 100%;
+                margin-inline: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-evenly;
+                position: relative;
             }
 
-            .banner-slide-nw img {
-                height: 100%;
-                width: 100%;
-                border-radius: 12px;
-                box-shadow: 0px 3px 6px #00000029;
+            .top__Bpart {
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                text-align: center;
+            }
+
+            .top__Bpart_textarea {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                text-align: center;
+            }
+
+            .first__Bpart_textarea,
+            .second__Bpart_textarea,
+            .third__Bpart_textarea {
+                color: transparent;
+                -webkit-text-stroke-width: 3px;
+                -webkit-text-stroke-color: #00572d;
+                color: white;
+                text-align: center;
+            }
+
+            .second__Bpart_textarea {
+                display: inline;
+            }
+
+            .banner_image {
+                animation: upDown 4s infinite;
+            }
+
+            @keyframes upDown {
+
+                0%,
+                100% {
+                    transform: translateY(0);
+                }
+
+                50% {
+                    transform: translateY(-15px);
+                }
+            }
+
+            @media (min-width: 769px) {
+                .banner__section {
+                    height: 500px;
+                }
+
+                .top__Bpart {
+                    height: 75%;
+                    width: 98%;
+                    flex-direction: row;
+
+                }
+
+                .top__Bpart_textarea {
+                    height: 90%;
+                    width: 65%;
+                    margin-block: auto;
+                    text-align: left;
+                }
+
+                .banner_image_container {
+                    height: 100%;
+                    width: 35%;
+                }
+
+                .banner_image {
+                    height: 135%;
+                    width: 105%;
+                    object-fit: contain;
+                }
+
+                .third__Bpart_textarea {
+                    height: 20%;
+                    width: 98%;
+                    z-index: 1;
+                    -webkit-text-stroke-width: 3px;
+                    -webkit-text-stroke-color: #00572d;
+                }
+
+                .first__Bpart_textarea {
+                    font-size: clamp(3rem, 10vw, 6.5rem);
+                }
+
+                .second__Bpart_textarea {
+                    font-size: clamp(3rem, 10vw, 6.5rem);
+                }
+
+                .third__Bpart_textarea {
+                    font-size: clamp(3rem, 8vw, 6.5rem);
+                }
+            }
+
+            @media (max-width: 768px) {
+                .banner__section {
+                    height: 99vh;
+                    background: url('./Media/banner_section_image.jpg') no-repeat center center;
+                    background-size: cover;
+                    justify-content: center;
+                }
+
+                .overlay {
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    background-color: rgba(0, 0, 0, 0.6);
+                }
+
+                .top__Bpart {
+                    height: fit-content;
+                    width: 100%;
+                    flex-direction: column;
+                    z-index: 1;
+                }
+
+                .top__Bpart_textarea {
+                    width: 80%;
+                }
+
+                .banner_image_container {
+                    display: none;
+                }
+
+                .third__Bpart_textarea {
+                    z-index: 1;
+                }
+
+                .first__Bpart_textarea {
+                    font-size: clamp(4rem, 15vw, 5rem);
+                    /* Adjusted to ensure it fills the section */
+                }
+
+                .second__Bpart_textarea {
+                    font-size: clamp(4rem, 12vw, 5rem);
+                    /* Adjusted to ensure it fills the section */
+                }
+
+                .third__Bpart_textarea {
+                    font-size: clamp(4rem, 10vw, 10rem);
+                    /* Adjusted to ensure it fills the section */
+                    text-align: center;
+                    width: 100%;
+                }
             }
         </style>
 
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const counterElement = document.getElementById('number_counter');
+                const targetNumber = 600;
+                const interval = 25; // Increment in bunches of 50
+                const duration = 500; // 2 seconds
+                let isAnimating = false;
+
+                // Initialize IntersectionObserver
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            if (!isAnimating) {
+                                animateCounter(counterElement, targetNumber, duration, interval);
+                            }
+                        } else {
+                            resetCounter(counterElement);
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                // Observe the section
+                const section = document.querySelector('.banner__section');
+                observer.observe(section);
+            });
+
+            function animateCounter(element, target, duration, interval) {
+                let currentNumber = 0;
+                isAnimating = true;
+                const stepTime = Math.abs(Math.floor(duration / (target / interval)));
+                const timer = setInterval(() => {
+                    currentNumber += interval;
+                    element.textContent = `Over ${currentNumber}+`;
+                    if (currentNumber >= target) {
+                        clearInterval(timer);
+                        isAnimating = false;
+                    }
+                }, stepTime);
+            }
+
+            function resetCounter(element) {
+                element.textContent = "Over 0+";
+                isAnimating = false;
+            }
+        </script>
+
         <!-- Reviews Section -->
-        <section class="reviews-section testimonials-sec">
+        <section class="reviews-section testimonials-sec" data-scroll-section>
             <div class="reviews-section-container">
                 <h3 class="reviews-section-heading">
                     <span>Happy Customers Around the Globe</span> More than 8 Million
@@ -4085,43 +4200,171 @@ transition: all 1.5s ease;
                 </div>
                 <div class="reviews-section-slider">
                     <div class="reviews-section-list">
-                        <div class="reviews-section-track">
-                            <div>
-                                <div class="reviews-section-slide">
-                                    <div class="bubble reviews-section-para">
-                                        <blockquote class="blockquote">
-                                            I was blown away by the flavors, the pizzas were amazing.
-                                            Can't wait to order again. Highly recommended. Tastiest
-                                            dinner I've had since pandemic happened.
-                                        </blockquote>
-                                        <div></div>
-                                        <cite>Shreya Thakur</cite>
-                                    </div>
+
+                        <div class="reviews__top__slider">
+                            <div class="reviews__slider__bg"></div>
+                            <div class="reviews__top__card" style="background-image: url(./Media/R_image-1.png);">
+                                <div class="reviews__text">
+                                    I was blown away by the flavors, the pizzas were amazing. Can't wait to order again.
+                                    Highly recommended. Tastiest dinner I've had since pandemic happened.
                                 </div>
-                                <div class="reviews-section-slide">
-                                    <div class="bubble reviews-section-para">
-                                        <blockquote class="blockquote">
-                                            Wow! Lapino’z is hands down the BEST pizza place in town.
-                                            From the fast delivery service to all the types of pizza,
-                                            pasta, and garlic bread your heart desires.
-                                        </blockquote>
-                                        <div></div>
-                                        <cite>Sahil Sood</cite>
-                                    </div>
+                                <div class="reviews__header">
+                                    <div class="reviews__header__image"></div>
+                                    <div class="reviews__header__name">Uday Panchal</div>
                                 </div>
-                                <div class="reviews-section-slide">
-                                    <div class="bubble reviews-section-para">
-                                        <blockquote class="blockquote">
-                                            Where do I start. I don't usually do reviews of
-                                            restaurants but I feel that this place really deserves
-                                            one. They have a wide range of menu options on BOGO offer.
-                                            We chose to try 2 different Pizzas, and wow. 10/10 and
-                                            would recommend everyone to order from this place at least
-                                            once.
-                                        </blockquote>
-                                        <div></div>
-                                        <cite>Rahul Singla</cite>
-                                    </div>
+                            </div>
+                            <div class="reviews__top__card" style="background-image: url(./Media/R_image-2.png);">
+                                <div class="reviews__text">
+                                    Absolutely fantastic! The flavors were out of this world and the BOGO offer made it
+                                    even better. The Margherita and Pepperoni pizzas were our favorites. Highly
+                                    recommend!
+                                </div>
+                                <div class="reviews__header">
+                                    <div class="reviews__header__image"></div>
+                                    <div class="reviews__header__name">Kishan Meghani</div>
+                                </div>
+                            </div>
+                            <div class="reviews__top__card" style="background-image: url(./Media/R_image-3.png);">
+                                <div class="reviews__text">
+                                    Great experience from start to finish. The staff was friendly and the food was
+                                    delicious. The BBQ Chicken pizza is a must-try!
+                                </div>
+                                <div class="reviews__header">
+                                    <div class="reviews__header__image"></div>
+                                    <div class="reviews__header__name">Nilax Modi</div>
+                                </div>
+                            </div>
+                            <div class="reviews__top__card" style="background-image: url(./Media/R_image-4.png);">
+                                <div class="reviews__text">
+                                    Lapinoz never disappoints. Tried the Veggie Supreme and it was loaded with fresh
+                                    toppings. The crust was perfectly crispy. Will definitely be back.
+                                </div>
+                                <div class="reviews__header">
+                                    <div class="reviews__header__image"></div>
+                                    <div class="reviews__header__name">Swetang Pandit</div>
+                                </div>
+                            </div>
+                            <div class="reviews__top__card" style="background-image: url(./Media/R_image-5.png);">
+                                <div class="reviews__text">
+                                    First time trying Lapinoz and it won’t be the last. The Hawaiian pizza was a
+                                    delightful surprise. Perfect balance of sweet and savory.
+                                </div>
+                                <div class="reviews__header">
+                                    <div class="reviews__header__image"></div>
+                                    <div class="reviews__header__name">Mohak Shah</div>
+                                </div>
+                            </div>
+                            <div class="reviews__top__card" style="background-image: url(./Media/R_image-6.png);">
+                                <div class="reviews__text">
+                                    Outstanding service and even better food. The Spicy Italian pizza had just the right
+                                    amount of kick. Can’t wait to come back!
+                                </div>
+                                <div class="reviews__header">
+                                    <div class="reviews__header__image"></div>
+                                    <div class="reviews__header__name">Krish Patel</div>
+                                </div>
+                            </div>
+                            <div class="reviews__top__card" style="background-image: url(./Media/R_image-7.png);">
+                                <div class="reviews__text">
+                                    A gem of a place. The Four Cheese pizza was creamy and delicious. The BOGO offer is
+                                    a fantastic deal. Highly recommended.
+                                </div>
+                                <div class="reviews__header">
+                                    <div class="reviews__header__image"></div>
+                                    <div class="reviews__header__name">Deep Chaudhary</div>
+                                </div>
+                            </div>
+                            <div class="reviews__top__card" style="background-image: url(./Media/R_image-8.png);">
+                                <div class="reviews__text">
+                                    Had a wonderful dining experience. The Classic Margherita was simple yet flavorful.
+                                    The atmosphere was cozy and welcoming.
+                                </div>
+                                <div class="reviews__header">
+                                    <div class="reviews__header__image"></div>
+                                    <div class="reviews__header__name">Dhruv Patel</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="reviews__bottom__slider">
+                            <div class="reviews__bottom__card" style="background-image: url(./Media/R_image-9.png);">
+                                <div class="reviews__text">
+                                    The best pizza place in town. The Meat Lovers pizza was packed with delicious meats.
+                                    Great value for money with their offers.
+                                </div>
+                                <div class="reviews__header">
+                                    <div class="reviews__header__image"></div>
+                                    <div class="reviews__header__name">Abhi Jeshani</div>
+                                </div>
+                            </div>
+                            <div class="reviews__bottom__card" style="background-image: url(./Media/R_image-10.png);">
+                                <div class="reviews__text">
+                                    Impressed with the quality and taste. The Pesto Chicken pizza was unique and
+                                    flavorful. Great spot for a casual meal.
+                                </div>
+                                <div class="reviews__header">
+                                    <div class="reviews__header__image"></div>
+                                    <div class="reviews__header__name">Meet Jeshani</div>
+                                </div>
+                            </div>
+                            <div class="reviews__bottom__card" style="background-image: url(./Media/R_image-11.png);">
+                                <div class="reviews__text">
+                                    Lapinoz has become our go-to pizza place. The Buffalo Chicken pizza was spicy and
+                                    tangy. Perfect for a weekend treat.
+                                </div>
+                                <div class="reviews__header">
+                                    <div class="reviews__header__image"></div>
+                                    <div class="reviews__header__name">Kalp Patel</div>
+                                </div>
+                            </div>
+                            <div class="reviews__bottom__card" style="background-image: url(./Media/R_image-12.png);">
+                                <div class="reviews__text">
+                                    Amazing pizza and great service. The Mushroom and Spinach pizza was fresh and tasty.
+                                    Loved the crust and the overall experience.
+                                </div>
+                                <div class="reviews__header">
+                                    <div class="reviews__header__image"></div>
+                                    <div class="reviews__header__name">Mahir Patel</div>
+                                </div>
+                            </div>
+                            <div class="reviews__bottom__card" style="background-image: url(./Media/R_image-13.png);">
+                                <div class="reviews__text">
+                                    Tried the Veggie Deluxe and it was superb. Fresh ingredients and generous toppings.
+                                    The BOGO offer made it even better.
+                                </div>
+                                <div class="reviews__header">
+                                    <div class="reviews__header__image"></div>
+                                    <div class="reviews__header__name">Ashok Kumar</div>
+                                </div>
+                            </div>
+                            <div class="reviews__bottom__card" style="background-image: url(./Media/R_image-14.png);">
+                                <div class="reviews__text">
+                                    One of the best pizza places I’ve been to. The Sausage and Peppers pizza was
+                                    flavorful and satisfying. Great for family dinners.
+                                </div>
+                                <div class="reviews__header">
+                                    <div class="reviews__header__image"></div>
+                                    <div class="reviews__header__name">Parth Darji</div>
+                                </div>
+                            </div>
+                            <div class="reviews__bottom__card" style="background-image: url(./Media/R_image-15.png);">
+                                <div class="reviews__text">
+                                    Delicious pizza and excellent service. The BBQ Chicken and Bacon pizza was a hit.
+                                    Highly recommend giving Lapinoz a try.
+                                </div>
+                                <div class="reviews__header">
+                                    <div class="reviews__header__image"></div>
+                                    <div class="reviews__header__name">Ayush Dubey</div>
+                                </div>
+                            </div>
+                            <div class="reviews__bottom__card" style="background-image: url(./Media/R_image-16.png);">
+                                <div class="reviews__text">
+                                    Wow! Lapino’z is hands down the BEST pizza place in town. From the fast delivery
+                                    service to all the types of pizza, pasta, and garlic bread your heart desires.
+                                </div>
+                                <div class="reviews__header">
+                                    <div class="reviews__header__image"></div>
+                                    <div class="reviews__header__name">Daksh Mistry</div>
                                 </div>
                             </div>
                         </div>
@@ -4131,39 +4374,33 @@ transition: all 1.5s ease;
         </section>
         <style>
             .reviews-section {
-                margin: 30px 0;
+                margin: 20px 0;
                 padding: 30px 0;
-            }
-
-            .testimonials-sec {
-                background-image: url(https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/testimonial-banner.jpg);
-                background-size: cover;
-                background-position: top center;
+                height: fit-content;
+                background-color: rgba(0, 0, 0);
             }
 
             .reviews-section-container {
                 width: 100%;
-                max-width: 1250px;
-                padding-right: 15px;
-                padding-left: 15px;
-                margin-right: auto;
-                margin-left: auto;
+                padding-inline: 15px;
+                margin-inline: auto;
+                /* background-color: #e3e3e3; */
             }
 
             .reviews-section-heading {
-                font-size: 26px;
+                font-size: 35px;
                 display: flex;
                 flex-direction: column;
+                align-items: start;
                 font-weight: 700;
-                color: #fff !important;
+                color: #f7f7f7 !important;
                 text-align: center !important;
-                font-size: 1.618em;
                 font-weight: 500;
             }
 
             .reviews-section-container .bottom-dot {
                 display: flex;
-                justify-content: center;
+                justify-content: start;
                 height: 30px;
             }
 
@@ -4171,14 +4408,13 @@ transition: all 1.5s ease;
                 position: relative;
                 display: block;
                 float: left;
-                width: 3px;
-                height: 2px;
-                border-right: 3px solid white;
-                margin-right: 3px;
+                width: 15px;
+                height: 4px;
+                border-right: 3px solid #f7f7f7;
             }
 
             .reviews-section-container .bottom-dot .line-dot {
-                border-right: 40px solid white;
+                border-right: 80px solid #f7f7f7;
             }
 
             .reviews-section-slider {
@@ -4189,77 +4425,151 @@ transition: all 1.5s ease;
 
             .reviews-section-list {
                 position: relative;
-                height: 235px;
-                display: flex;
-                margin: 0;
-                padding: 0;
-            }
-
-            .reviews-section-list>.reviews-section-track {
-                overflow-y: auto;
-            }
-
-            .reviews-section-slide {
-                display: flex;
+                height: 500px;
                 width: 100%;
-                float: left;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+            }
+
+            .reviews__top__slider,
+            .reviews__bottom__slider,
+            .reviews__slider__bg {
+                gap: 25px;
                 height: 100%;
-                min-height: 1px;
-                justify-content: center;
-                align-items: center;
-            }
-
-            .reviews-section-para {
-                margin-bottom: 5px;
-                font-size: 15px;
-                font-weight: 500;
-                color: #201c1d;
                 width: 100%;
+                display: flex;
+                overflow-x: auto;
+                scrollbar-width: none;
             }
 
-            .bubble {
-                background-color: #fff;
-                width: 100%;
-                /* max-width: 950px; */
-                /* margin: 0 auto; */
-                padding: 35px 30px 25px 30px;
-                box-shadow: 0 10px 15px -5px rgb(9 31 67 / 10%);
-                border-radius: 5px;
-                /* margin-top: 30px; */
-                position: relative;
-            }
-
-            .blockquote {
-                display: block;
-                margin-block-start: 1em;
-                margin-block-end: 1em;
-                margin-inline-start: 40px;
-                margin-inline-end: 40px;
-                unicode-bidi: isolate;
-            }
-
-            .bubble cite {
-                font-size: 16px;
-                font-weight: 600;
-                color: #201c1d;
-            }
-
-            .bubble:before {
-                content: "";
-                background-image: url(https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/quotetestimonial.png);
-                top: -10px;
-                left: 20px;
-                width: 80px;
-                height: 80px;
+            .reviews__slider__bg {
+                background: linear-gradient(to right, rgba(0, 0, 0, 0.9), transparent, transparent, transparent, transparent, transparent, rgba(0, 0, 0, 0.9));
+                z-index: 10;
                 position: absolute;
-                background-repeat: no-repeat;
-                z-index: 1;
-                background-size: 70%;
+
+            }
+
+            /* For Webkit browsers (Chrome, Safari) */
+            .reviews__top__slider::-webkit-scrollbar,
+            .reviews__bottom__slider::-webkit-scrollbar {
+                height: 0px;
+            }
+
+            .reviews__top__card,
+            .reviews__bottom__card {
+                position: relative;
+                height: 230px;
+                /* width: 450px; */
+                min-width: 450px;
+                background-size: cover;
+                background-position: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                border-radius: 20px;
+                color: #f7f7f7;
+                overflow: hidden;
+            }
+
+            .reviews__top__card::before,
+            .reviews__bottom__card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+                border-radius: 20px;
+            }
+
+            .reviews__text {
+                position: relative;
+                z-index: 2;
+                height: 160px;
+                width: 90%;
+                display: flex;
+                align-items: center;
+                margin-inline: auto;
+                font-size: large;
+                text-align: left;
+            }
+
+            .reviews__header {
+                position: relative;
+                z-index: 2;
+                height: 40px;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                /* justify-content: space-between; */
+                margin-left: 23px;
+                margin-bottom: 5px;
+            }
+
+            .reviews__header__image {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-image: url(./Media/sanam-kapoor.jpg);
+                background-size: cover;
+            }
+
+            .reviews__header__name {
+                font-size: x-large;
+                font-weight: 500;
+                margin-left: 10px;
             }
         </style>
 
-        <!-- Outlet  -->
-        <section class="lapinoz-outlet">
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const topContainer = document.querySelector('.reviews__top__slider');
+                const bottomContainer = document.querySelector('.reviews__bottom__slider');
+                const cards = document.querySelectorAll('.reviews__top__card');
+
+                const topScrollInterval = 10; // Interval for the top container
+                const bottomScrollInterval = 19; // Interval for the bottom container (adjust as needed)
+                const scrollStep = 1; // Number of pixels to scroll in each step
+
+                // Clone cards and append them to both containers to create the illusion of an infinite scroll
+                cards.forEach(card => {
+                    const topClone = card.cloneNode(true);
+                    topContainer.appendChild(topClone);
+
+                    const bottomClone = card.cloneNode(true);
+                    bottomContainer.appendChild(bottomClone);
+                });
+
+                function scrollTopContainer() {
+                    topContainer.scrollLeft += scrollStep;
+
+                    // When the original set of cards has fully scrolled, reset to the start
+                    if (topContainer.scrollLeft >= topContainer.scrollWidth / 2) {
+                        topContainer.scrollLeft = 0;
+                    }
+                }
+
+                function scrollBottomContainer() {
+                    bottomContainer.scrollLeft -= scrollStep;
+
+                    // When the bottom container has fully scrolled back to the start, reset its position
+                    if (bottomContainer.scrollLeft <= 0) {
+                        bottomContainer.scrollLeft = bottomContainer.scrollWidth / 2;
+                    }
+                }
+
+                // Scroll the top container continuously
+                setInterval(scrollTopContainer, topScrollInterval);
+
+                // Scroll the bottom container continuously
+                setInterval(scrollBottomContainer, bottomScrollInterval);
+            });
+        </script>
+
+        <section class="lapinoz-outlet" data-scroll-section>
             <div class="lapinoz-outlet-container">
                 <div class="lapinoz-outlet-upper-heading">
                     <h3 class="lapinoz-outlet-common-heading">FIND LA PINO'Z LOCATION NEAR YOU</h3>
@@ -5933,8 +6243,7 @@ transition: all 1.5s ease;
         </script>
 
         <!-- Footer -->
-        <!-- Footer -->
-        <footer class="site-footer">
+        <footer class="site-footer" data-scroll-section>
             <div class="footer-top">
                 <div class="footer-container">
                     <div class="footer-row">
@@ -5987,11 +6296,11 @@ transition: all 1.5s ease;
                                         <span>Customer Support: </span>
                                         <a class="d-inline d-md-block" href="mailto:support@lapinozpizza.in">
                                             <svg id="Capa_1" style="
-                          enable-background: new 0 0 512 512;
-                          height: auto;
-                          width: 100%;
-                          max-width: 15px;
-                        " version="1.1" viewBox="0 0 512 512" x="0px" xml:space="preserve"
+                      enable-background: new 0 0 512 512;
+                      height: auto;
+                      width: 100%;
+                      max-width: 15px;
+                    " version="1.1" viewBox="0 0 512 512" x="0px" xml:space="preserve"
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
                                                 <g>
@@ -6008,11 +6317,11 @@ transition: all 1.5s ease;
                                         <span>Franchise Enquiry: </span>
                                         <a class="d-inline d-md-block" href="mailto:info@lapinozpizza.in"><svg
                                                 id="Capa_1" style="
-                          enable-background: new 0 0 512 512;
-                          height: auto;
-                          width: 100%;
-                          max-width: 15px;
-                        " version="1.1" viewBox="0 0 512 512" x="0px" xml:space="preserve"
+                      enable-background: new 0 0 512 512;
+                      height: auto;
+                      width: 100%;
+                      max-width: 15px;
+                    " version="1.1" viewBox="0 0 512 512" x="0px" xml:space="preserve"
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
                                                 <g>
@@ -6187,55 +6496,10 @@ transition: all 1.5s ease;
                 border-radius: 50%;
             }
         </style>
-    </div>
 
-    <script src="./script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-    <!-- <script>
-        $(document).ready(function () {
-            $('.country-slider-track').slick({
-
-                infinite: true,
-                slidesToShow: 4,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 2000,
-                responsive: [{
-
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 1,
-                        infinite: true,
-                        dots: true
-                    }
-                }
-
-                    ,
-                {
-
-                    breakpoint: 600,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 1
-                    }
-                }
-
-                    ,
-                {
-
-                    breakpoint: 480,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }
-
-                ]
-            });
-        });
-    </script> -->
+        <script src="./script.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 </body>
 
 </html>

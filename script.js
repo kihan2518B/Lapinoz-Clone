@@ -15,91 +15,113 @@
 // });
 
 // Locomotive
-const main = document.querySelector(".main");
-const storySection = document.querySelector(".story"),
-    singleBanner = document.querySelector(".single-banner"),
-    Journey = document.querySelector(".Journey"),
-    countriesSection = document.querySelector(".countries-section");
+document.addEventListener('DOMContentLoaded', () => {
+    const scrollContainer = document.querySelector("[data-scroll-container]");
 
-const storyUpper = document.querySelector(".story-content-upper");
-const picture = document.querySelector(".single-banner picture");
-const journeyHeading = document.querySelector(".Journey-heading");
-
-const rightImage = document.querySelector('.right-img');
-const journeySection = document.querySelector('.Journey');
-
-init = () => {
-    gsap.set([storyUpper, journeyHeading, picture], { y: '100%' });
-}
-
-home = () => {
     const scroll = new LocomotiveScroll({
-        el: document.querySelector('[data-scroll-container]'),
+        el: scrollContainer,
         smooth: true,
-        lerp: 0.08
+        lerp: 0.1,
+        smartphone: {
+            smooth: true
+        },
+        tablet: {
+            smooth: true
+        },
+
     });
 
-    if (!scroll) {
-        console.error("Locomotive Scroll not initialized correctly");
-        return;
-    }
+    gsap.from('.hero-section .text', {
+        opacity: 0,
+        x: -50,
+        duration: 1.5,
+        ease: 'power4.out',
+        delay: 1
+    });
 
-    onScrollBy = (e) => {
-        const id = e.currentTarget.id; // Use currentTarget
-        const selector = document.querySelector('.' + id);
-        if (selector) scroll.scrollTo(selector);
-    }
+    gsap.from('.nav__container', {
+        opacity: 0,
+        y: -50,
+        duration: 1.5,
+        ease: 'power4.out',
+        delay: 1.2
+    });
 
-    // scroll.on('call', (value) => {
-    //     if (value === 'storySection') {
-    //         gsap.to(storyUpper, {
-    //             duration: 1.4,
-    //             y: 0,
-    //             ease: 'expo.inOut',
-    //         });
-    //     }
-    //     if (value === 'storyUpper') {
-    //         gsap.to(storyUpper, {
-    //             duration: 1.4,
-    //             y: 0,
-    //             ease: 'expo.inOut',
-    //         });
-    //     }
-    //     if (value === 'Journey') {
-    //         gsap.to(journeyHeading, {
-    //             duration: 1.4,
-    //             y: 0,
-    //             ease: 'expo.inOut',
-    //         });
-    //     }
-    // })
+    gsap.from('.hero_img', {
+        opacity: 0,
+        scale: 0.9,
+        duration: 1.5,
+        ease: 'power4.out',
+        delay: 1.8
+    });
+    gsap.from('.green_bg', {
+        opacity: 0,
+        scale: 0.9,
+        duration: 1.5,
+        ease: 'power4.out',
+        delay: 0
+    });
 
-    scroll.on('scroll', (obj) => {
-        const scrollTop = obj.scroll.y;
-        const sectionHeight = journeySection.clientHeight;
 
-        if (scrollTop < (sectionHeight - window.innerHeight)) {
-            rightImage.style.position = 'sticky';
-            rightImage.style.top = '20px';
-        } else {
-            rightImage.style.position = 'absolute';
-            rightImage.style.top = `${sectionHeight - rightImage.offsetHeight}px`;
+    const timelineItems = document.querySelectorAll('.timeline-ul li');
+    const imgElementContainer = document.querySelector('.right-img');
+    let currentImgElement = null;
+
+    // scroll.on('scroll', (instance) => {
+    //     timelineItems.forEach((item, index) => {
+    //         if (isInViewport(item)) {
+    //             setTimeout(() => {
+    //                 item.classList.add('show');
+    //                 const newImgElement = document.createElement('img');
+    //                 newImgElement.src = item.dataset.image;
+    //                 newImgElement.className = 'pizza-img active';
+    //                 imgElementContainer.appendChild(newImgElement);
+    //                 if (currentImgElement) {
+    //                     currentImgElement.classList.add('hidden');
+    //                     setTimeout(() => {
+    //                         currentImgElement.remove();
+    //                     }, 2500); // Match the duration of CSS transition
+    //                 }
+    //                 currentImgElement = newImgElement;
+    //             }, index * 500); // Delay each item's activation by 0.3 seconds
+    //         } else {
+    //             item.classList.remove('show');
+    //             const images = imgElementContainer.querySelectorAll('.pizza-img');
+    //             images.forEach((img) => {
+    //                 img.classList.add('hidden');
+    //                 setTimeout(() => {
+    //                     img.remove();
+    //                 }, 1000); // Match the duration of CSS transition
+    //             });
+    //             currentImgElement = null;
+    //         }
+    //     });
+    // });
+
+    scroll.on('call', (value, way, obj) => {
+        if (value === 'animate') {
+            if (way === 'enter') {
+                obj.el.classList.add('show');
+                animateTimelineItems();
+            } else {
+                obj.el.classList.remove('show');
+                deactivateItems();
+            }
         }
     });
-}
 
-addEventListeners = () => {
-    storySection.addEventListener('click', onScrollBy);
-    singleBanner.addEventListener('click', onScrollBy);
-    Journey.addEventListener('click', onScrollBy);
-    countriesSection.addEventListener('click', onScrollBy);
-}
+    // Helper function to check if an element is in the viewport
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
 
-window.onload = () => {
-    init();
-    home();
-    addEventListeners();
-}
+});
 
 
 // Cursor
@@ -215,31 +237,4 @@ container.addEventListener('mouseleave', () => {
     targetX = 0;
     targetY = 0;
     animate();  // Smoothly return to the center
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    console.log("Loaded")
-    const options = {
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('show');
-            } else {
-                entry.target.classList.remove('show');
-            }
-        });
-    }, options);
-
-    const sections = document.querySelectorAll('section');
-    const Paras = document.querySelectorAll("p");
-    Paras.forEach((Para) => {
-        observer.observe(Para)
-    })
-
-    sections.forEach((section) => {
-        observer.observe(section);
-    });
 });
