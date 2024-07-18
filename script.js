@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         el: scrollContainer,
         smooth: true,
         lerp: 0.1,
+        multiplier: 0.5,
         smartphone: {
             smooth: true
         },
@@ -31,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
+    // Hero section animations
     gsap.from('.hero-section .text', {
         opacity: 0,
         x: -50,
@@ -98,6 +100,26 @@ document.addEventListener('DOMContentLoaded', () => {
     //     });
     // });
 
+    scroll.on('scroll', (args) => {
+        const elements = args.currentElements;
+        const pizzaImages = document.querySelectorAll('.right-img img');
+
+        for (const key in elements) {
+            if (elements[key].el.classList.contains('is-inview')) {
+                const imageUrl = elements[key].el.getAttribute('data-image');
+                if (imageUrl) {
+                    pizzaImages.forEach(img => {
+                        if (img.getAttribute('src') === imageUrl) {
+                            img.classList.add('is-visible');
+                        } else {
+                            img.classList.remove('is-visible');
+                        }
+                    });
+                }
+            }
+        }
+    });
+
     scroll.on('call', (value, way, obj) => {
         if (value === 'animate') {
             if (way === 'enter') {
@@ -121,6 +143,67 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     }
 
+});
+
+
+// for Journey section 
+document.addEventListener('DOMContentLoaded', () => {
+    const timelineItems = document.querySelectorAll('.timeline-ul li');
+    const imgElementContainer = document.querySelector('.right-img');
+    let currentImgElement = null;
+
+    // Initialize IntersectionObserver
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                document.querySelector('.Journey').classList.add('show');
+                animateTimelineItems();
+            } else {
+                document.querySelector('.Journey').classList.remove('show');
+                deactivateItems();
+            }
+        });
+    }, { threshold: 0.5 });
+
+
+    // Animation for Journey Section
+    const section = document.querySelector('.Journey');
+    observer.observe(section);
+
+    // Function to handle the animation of timeline items
+    const animateTimelineItems = () => {
+        timelineItems.forEach((item, index) => {
+            setTimeout(() => {
+                item.classList.add('show');
+                const newImgElement = document.createElement('img');
+                newImgElement.src = item.dataset.image;
+                newImgElement.className = 'pizza-img active';
+                imgElementContainer.appendChild(newImgElement);
+                if (currentImgElement) {
+                    currentImgElement.classList.add('hidden');
+                    setTimeout(() => {
+                        currentImgElement.remove();
+                    }, 2500); // Match the duration of CSS transition
+                }
+                currentImgElement = newImgElement;
+            }, index * 500); // Delay each item's activation by 0.3 seconds
+        });
+    };
+
+    // Function to handle deactivation of timeline items
+    const deactivateItems = () => {
+        timelineItems.forEach((item) => {
+            item.classList.remove('show');
+        });
+        const images = imgElementContainer.querySelectorAll('.pizza-img');
+        images.forEach((img) => {
+            img.classList.add('hidden');
+            setTimeout(() => {
+                img.remove();
+            }, 1000); // Match the duration of CSS transition
+        });
+        currentImgElement = null;
+    };
 });
 
 

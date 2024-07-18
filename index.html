@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scroll Animation</title>
+    <title>Lapinoz Pizza</title>
 
 
     <link rel="stylesheet" type="text/css"
@@ -20,7 +20,13 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
 
+    <!-- Gsap -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <!-- Scroll Trigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+        integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- locomotive -->
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -29,6 +35,12 @@
     <img src="./Media/Cursor.png" alt="Custom Cursor" class="custom-cursor" id="customCursor">
     <div class="main" data-scroll-container>
         <style>
+            body {
+                margin: 0;
+                overflow: hidden;
+                background: #fff;
+            }
+
             .custom-cursor {
                 position: absolute;
                 width: 20px;
@@ -1201,10 +1213,11 @@
 
         </section>
 
+        <!-- Deals Section -->
         <section class="deals-section" data-scroll-section>
             <h1>Deals and Offers</h1>
             <div class="deals__container">
-                <div class="card-hover">
+                <div class="card-hover " data-scroll-repeat="true" data-scroll data-scroll-class="is-inview">
                     <div class="card-hover__content">
                         <h3 class="card-hover__title">
                             <span class="card-hover__flat">FLAT</span>
@@ -1232,7 +1245,7 @@
                     <img src="./Media/pngwingcoupon_pizza.png" alt="">
                 </div>
 
-                <div class="card-hover">
+                <div class="card-hover " data-scroll-repeat="true" data-scroll data-scroll-class="is-inview">
                     <div class="card-hover__content">
                         <h3 class="card-hover__title">
                             <span class="card-hover__flat">FLAT</span>
@@ -1260,7 +1273,7 @@
                     <img src="./Media/pngwingcoupon_pizza.png" alt="">
                 </div>
 
-                <div class="card-hover">
+                <div class="card-hover " data-scroll-repeat="true" data-scroll data-scroll-class="is-inview">
                     <div class="card-hover__content">
                         <h3 class="card-hover__title">
                             <span class="card-hover__flat">FLAT</span>
@@ -1288,7 +1301,7 @@
                     <img src="./Media/pngwingcoupon_pizza.png" alt="">
                 </div>
 
-                <div class="card-hover">
+                <div class="card-hover " data-scroll-repeat="true" data-scroll data-scroll-class="is-inview">
                     <div class="card-hover__content">
                         <h3 class="card-hover__title">
                             <span class="card-hover__flat">FLAT</span>
@@ -1316,7 +1329,7 @@
                     <img src="./Media/pngwingcoupon_pizza.png" alt="">
                 </div>
 
-                <div class="card-hover">
+                <div class="card-hover " data-scroll-repeat="true" data-scroll data-scroll-class="is-inview">
                     <div class="card-hover__content">
                         <h3 class="card-hover__title">
                             <span class="card-hover__flat">FLAT</span>
@@ -1344,7 +1357,7 @@
                     <img src="./Media/pngwingcoupon_pizza.png" alt="">
                 </div>
 
-                <div class="card-hover">
+                <div class="card-hover " data-scroll-repeat="true" data-scroll data-scroll-class="is-inview">
                     <div class="card-hover__content">
                         <h3 class="card-hover__title">
                             <span class="card-hover__flat">FLAT</span>
@@ -1372,7 +1385,7 @@
                     <img src="./Media/pngwingcoupon_pizza.png" alt="">
                 </div>
 
-                <div class="card-hover">
+                <div class="card-hover " data-scroll-repeat="true" data-scroll data-scroll-class="is-inview">
                     <div class="card-hover__content">
                         <h3 class="card-hover__title">
                             <span class="card-hover__flat">FLAT</span>
@@ -1450,6 +1463,14 @@
                 background-color: #cfdfee;
                 box-shadow: 0 0 32px -10px rgba(0, 0, 0, 0.08);
                 z-index: 20;
+                opacity: 0;
+                transform: translateY(-50px);
+                transition: transform 0.5s 0.5s ease-in-out, opacity 0.5s 0.5s ease-in-out;
+            }
+
+            .card-hover.is-inview {
+                opacity: 1;
+                transform: translateY(0);
             }
 
             .card-hover__extra.clicked {
@@ -1679,11 +1700,10 @@
                 });
             });
 
-
         </script>
 
         <!-- Story Section -->
-        <section class="story" data-scroll-call="show" data-scroll-section>
+        <section class="story" data-scroll data-scroll-repeat="true" data-scroll-call="is-inview" data-scroll-section>
             <div class="story-content">
                 <div class="owner">
                     <img class="owner-img" src="./Media/sanam-kapoor.jpg" alt="Owner">
@@ -1783,7 +1803,7 @@
                 shape-outside: circle(50%);
                 clip-path: circle(50%);
                 z-index: 10;
-                transform: translate(-60%);
+                transform: translate(-60%) scale(0.5);
                 transition: all 1s ease-in-out;
             }
 
@@ -1794,12 +1814,12 @@
                 display: block;
             }
 
-            .story.show .owner {
-                transform: translate(0%);
-                transition: all 1s ease-in-out 1s;
+            .story.is-inview .owner {
+                transform: translate(0%) scale(1);
+                transition: all 1s 1s ease-in-out;
             }
 
-            .story.show .story-content-left {
+            .story.is-inview .story-content-left {
                 opacity: 1;
                 height: 100%;
                 transform: translate3d(0%);
@@ -1925,113 +1945,6 @@
 
         <!-- Journey section -->
 
-        <section class="Journey" data-scroll-section="">
-            <div class="Journer-container">
-                <div class="Journer-container-content">
-                    <div class="Journer-container-content-col">
-                        <h3 class="common-heading Journey-heading">
-                            <div style="color:#00572d;">La Pino'z Pizza</div>
-                            Growth Journey
-                        </h3>
-
-                        <ul class="timeline-ul">
-                            <li data-image="./media/R_image-15.png">
-                                <div>
-                                    <h4 class="">2011</h4>
-                                </div>
-                                <div>
-                                    <img class="timeline-icon"
-                                        src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-one.svg"
-                                        alt="Timeline One" width="25" height="25" />
-                                </div>
-                                <div class="position-relative">
-                                    <p class="common-para mb-0 bg-para">Launched the 1st Outlet in Chandigarh</p>
-                                </div>
-                            </li>
-                            <li data-image="./media/R_image-12.png">
-                                <div>
-                                    <h4 class="">2013</h4>
-                                </div>
-                                <div>
-                                    <img class="timeline-icon"
-                                        src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-two.svg"
-                                        alt="Timeline One" width="25" height="25" />
-                                </div>
-                                <div class="position-relative">
-                                    <p class="common-para mb-0 bg-para">Launched the 1st Franchise Outlet</p>
-                                </div>
-                            </li>
-                            <li data-image="./media/R_image-10.png">
-                                <div>
-                                    <h4 class="">2017</h4>
-                                </div>
-                                <div>
-                                    <img class="timeline-icon"
-                                        src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-three.svg"
-                                        alt="Timeline One" width="25" height="25" />
-                                </div>
-                                <div class="position-relative">
-                                    <p class="common-para mb-0 bg-para">
-                                        Crossed 100 Outlets All Over India
-                                    </p>
-                                </div>
-                            </li>
-                            <li data-image="./media/R_image-6.png">
-                                <div>
-                                    <h4 class="">2019</h4>
-                                </div>
-                                <div>
-                                    <img class="timeline-icon"
-                                        src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-four.svg"
-                                        alt="Timeline One" width="25" height="25" />
-                                </div>
-                                <div class="position-relative">
-                                    <p class="common-para mb-0 bg-para">
-                                        Crossed 200 Outlets All Over India
-                                    </p>
-                                </div>
-                            </li>
-                            <li data-image="./media/R_image-3.png">
-                                <div>
-                                    <h4 class="">2021</h4>
-                                </div>
-                                <div>
-                                    <img class="timeline-icon"
-                                        src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-five.svg"
-                                        alt="Timeline One" width="25" height="25" />
-                                </div>
-                                <div class="position-relative">
-                                    <p class="common-para mb-0 bg-para">
-                                        Crossed 300 Outlets All Over India
-                                    </p>
-                                </div>
-                            </li>
-                            <li data-image="./media/R_image-1.png">
-                                <div>
-                                    <h4 class="">2022</h4>
-                                </div>
-                                <div>
-                                    <img class="timeline-icon"
-                                        src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-six.svg"
-                                        alt="Timeline One" width="25" height="25" />
-                                </div>
-                                <div class="position-relative">
-                                    <p class="common-para mb-0 bg-para">
-                                        La Pino’z Goes International
-                                    </p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="Journer-container-content-col">
-                        <div class="right-img">
-                            <img class="pizza-img" src="./media/R_image-14.png" width="700" height="700"
-                                alt="Lapinonz Pizza Round Image" id="js-logo" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
         <style>
             .Journey {
                 padding: 30px 0;
@@ -2064,13 +1977,15 @@
                 position: relative;
                 width: 100%;
                 font-weight: 400;
+
+
             }
 
             .Journey-heading {
                 display: flex;
                 justify-content: center;
                 line-height: 1.2;
-                font-size: 1.17em;
+                font-size: clamp(1em, 1.17vw, 1.5em);
                 margin-block-start: 1em;
                 margin-block-end: 1em;
                 margin-inline-start: 0px;
@@ -2147,6 +2062,10 @@
                 height: 400px;
                 border-radius: 50%;
                 margin: 0 auto;
+
+                @media (max-width:768px) {
+                    display: none;
+                }
             }
 
             .right-img .pizza-img {
@@ -2258,71 +2177,113 @@
             }
         </style>
 
-        <!-- <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const timelineItems = document.querySelectorAll('.timeline-ul li');
-                const imgElementContainer = document.querySelector('.right-img');
-                let currentImgElement = null;
+        <section class="Journey" data-scroll-section data-scroll-speed="1.5">
+            <div class="Journer-container">
+                <div class="Journer-container-content">
+                    <div class="Journer-container-content-col">
+                        <h3 class="Journey-heading">
+                            <div style="color:#00572d;">La Pino'z Pizza</div>
+                            Growth Journey
+                        </h3>
 
-                // Initialize IntersectionObserver
-                const observer = new IntersectionObserver(entries => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            document.querySelector('.Journey').classList.add('show');
-                            animateTimelineItems();
-                        } else {
-                            document.querySelector('.Journey').classList.remove('show');
-                            deactivateItems();
-                        }
-                    });
-                }, { threshold: 0.5 });
-
-                // Observe the section
-                const Journeysection = document.querySelector('.Journey');
-                observer.observe(Journeysection);
-
-                // Function to handle the animation of timeline items
-                const animateTimelineItems = () => {
-                    timelineItems.forEach((item, index) => {
-                        setTimeout(() => {
-                            item.classList.add('show');
-                            const newImgElement = document.createElement('img');
-                            newImgElement.src = item.dataset.image;
-                            newImgElement.className = 'pizza-img active';
-                            imgElementContainer.appendChild(newImgElement);
-                            if (currentImgElement) {
-                                currentImgElement.classList.add('hidden');
-                                setTimeout(() => {
-                                    currentImgElement.remove();
-                                }, 2500); // Match the duration of CSS transition
-                            }
-                            currentImgElement = newImgElement;
-                        }, index * 500); // Delay each item's activation by 0.3 seconds
-                    });
-                };
-
-                // Function to handle deactivation of timeline items
-                const deactivateItems = () => {
-                    timelineItems.forEach((item) => {
-                        item.classList.remove('show');
-                    });
-                    const images = imgElementContainer.querySelectorAll('.pizza-img');
-                    images.forEach((img) => {
-                        img.classList.add('hidden');
-                        setTimeout(() => {
-                            img.remove();
-                        }, 1000); // Match the duration of CSS transition
-                    });
-                    currentImgElement = null;
-                };
-            });
-        </script> -->
-
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-
-            });
-        </script>
+                        <ul class="timeline-ul">
+                            <li data-image="./media/R_image-15.png">
+                                <div>
+                                    <h4 class="">2011</h4>
+                                </div>
+                                <div>
+                                    <img class="timeline-icon"
+                                        src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-one.svg"
+                                        alt="Timeline One" width="25" height="25" />
+                                </div>
+                                <div class="position-relative">
+                                    <p class="common-para mb-0 bg-para">Launched the 1st Outlet in Chandigarh</p>
+                                </div>
+                            </li>
+                            <li data-image="./media/R_image-12.png">
+                                <div>
+                                    <h4 class="">2013</h4>
+                                </div>
+                                <div>
+                                    <img class="timeline-icon"
+                                        src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-two.svg"
+                                        alt="Timeline One" width="25" height="25" />
+                                </div>
+                                <div class="position-relative">
+                                    <p class="common-para mb-0 bg-para">Launched the 1st Franchise Outlet</p>
+                                </div>
+                            </li>
+                            <li data-image="./media/R_image-10.png">
+                                <div>
+                                    <h4 class="">2017</h4>
+                                </div>
+                                <div>
+                                    <img class="timeline-icon"
+                                        src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-three.svg"
+                                        alt="Timeline One" width="25" height="25" />
+                                </div>
+                                <div class="position-relative">
+                                    <p class="common-para mb-0 bg-para">
+                                        Crossed 100 Outlets All Over India
+                                    </p>
+                                </div>
+                            </li>
+                            <li data-image="./media/R_image-6.png">
+                                <div>
+                                    <h4 class="">2019</h4>
+                                </div>
+                                <div>
+                                    <img class="timeline-icon"
+                                        src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-four.svg"
+                                        alt="Timeline One" width="25" height="25" />
+                                </div>
+                                <div class="position-relative">
+                                    <p class="common-para mb-0 bg-para">
+                                        Crossed 200 Outlets All Over India
+                                    </p>
+                                </div>
+                            </li>
+                            <li data-image="./media/R_image-3.png">
+                                <div>
+                                    <h4 class="">2021</h4>
+                                </div>
+                                <div>
+                                    <img class="timeline-icon"
+                                        src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-five.svg"
+                                        alt="Timeline One" width="25" height="25" />
+                                </div>
+                                <div class="position-relative">
+                                    <p class="common-para mb-0 bg-para">
+                                        Crossed 300 Outlets All Over India
+                                    </p>
+                                </div>
+                            </li>
+                            <li data-image="./media/R_image-1.png">
+                                <div>
+                                    <h4 class="">2022</h4>
+                                </div>
+                                <div>
+                                    <img class="timeline-icon"
+                                        src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-six.svg"
+                                        alt="Timeline One" width="25" height="25" />
+                                </div>
+                                <div class="position-relative">
+                                    <p class="common-para mb-0 bg-para">
+                                        La Pino’z Goes International
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="Journer-container-content-col">
+                        <div class="right-img">
+                            <img class="pizza-img" src="./media/R_image-14.png" width="700" height="700"
+                                alt="Lapinonz Pizza Round Image" id="js-logo" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Country Scroll Section -->
         <section class="country-scroll-section" data-scroll-section>
@@ -2415,12 +2376,6 @@
         </section>
 
         <style>
-            body {
-                margin: 0;
-                overflow: hidden;
-                background: #fff;
-            }
-
             .country-scroll-section {
                 height: 100vh;
                 position: relative;
@@ -4061,7 +4016,7 @@
 
                 .banner_image {
                     height: 135%;
-                    width: 105%;
+                    width: 100%;
                     object-fit: contain;
                 }
 
@@ -4143,7 +4098,7 @@
             document.addEventListener('DOMContentLoaded', () => {
                 const counterElement = document.getElementById('number_counter');
                 const targetNumber = 600;
-                const interval = 25; // Increment in bunches of 50
+                const interval = 20; // Increment in bunches of 50
                 const duration = 500; // 2 seconds
                 let isAnimating = false;
 
