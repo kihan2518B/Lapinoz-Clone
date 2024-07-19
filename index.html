@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhZGOUhnHTM_W5YHmBKkZ5Gu5u6cZDhfw&callback=initMap" async defer></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhZGOUhnHTM_W5YHmBKkZ5Gu5u6cZDhfw&callback=initMap" async defer></script>
 </head>
 
 <body>
@@ -4875,17 +4875,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   window.addEventListener('load', initMap);
 </script> -->
-
-
     
-        
-    
-        
         
 
     <!-- Footer -->
     <footer class="site-footer">
-        <div class="footer__bubbles" id="bubbles-container"></div>
         <div class="footer-top">
             <div class="footer-container">
                 <div class="footer-row">
@@ -5042,22 +5036,7 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
     </footer>
 
-    <script>
-// Generate bubbles dynamically
-const bubblesContainer = document.querySelector('.site-footer .footer__bubbles');
-        for (let i = 0; i < 128; i++) {
-            const bubble = document.createElement('div');
-            bubble.className = 'bubble';
-            bubble.style.setProperty('--size', `${2 + Math.random() * 4}rem`);
-            bubble.style.setProperty('--distance', `${6 + Math.random() * 4}rem`);
-            bubble.style.setProperty('--position', `${-5 + Math.random() * 110}%`);
-            bubble.style.setProperty('--time', `${2 + Math.random() * 2}s`);
-            bubble.style.setProperty('--delay', `${-1 * (2 + Math.random() * 2)}s`);
-            bubblesContainer.appendChild(bubble);
-        }
 
-
-    </script>
 
 
     <style>
@@ -5067,37 +5046,8 @@ const bubblesContainer = document.querySelector('.site-footer .footer__bubbles')
             height: 100%;
             z-index: 1;
             position: relative;
-            z-index: 1;
-            display: grid;
-            position: relative;
-            grid-area: footer;
-            min-height: 12rem;
-            --footer-background: #ED5565;
         }
 
-
-        .footer {
-        }
-
-        .site-footer .footer__bubbles{
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1rem;
-            background: var(--footer-background);
-            filter: url("#blob");
-        }
-
-        .site-footer .footer__bubbles .bubble {
-            position: absolute;
-            left: var(--position, 50%);
-            background: var(--footer-background);
-            border-radius: 100%;
-            animation: bubble-size var(--time, 4s) ease-in infinite var(--delay, 0s),
-                bubble-move var(--time, 4s) ease-in infinite var(--delay, 0s);
-            transform: translate(-50%, 100%);
-        }
 
 
        ul.Follow-Us-section {
