@@ -26,19 +26,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
         integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- locomotive -->
-    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <img src="./Media/Cursor.png" alt="Custom Cursor" class="custom-cursor" id="customCursor">
-    <div class="main" data-scroll-container>
+    <div id="main">
         <style>
             body {
                 margin: 0;
                 overflow: hidden;
                 background: #fff;
+                transition: background-color 0.5s ease;
+            }
+
+            body.dark-bg {
+                background-color: #000;
             }
 
             .custom-cursor {
@@ -80,7 +84,7 @@
             </div>
 
             <div class="hero__content">
-                <div class="hero__content_left">
+                <div class="hero__content_left" data-scroll data-scroll-speed="-1" data-scroll-speed-mobile>
                     <div class="text">
                         The <br> Giant <br>
                         <span> PIZZA SLICE</span>
@@ -346,6 +350,10 @@
                 border-radius: 50%;
                 z-index: 1;
                 animation: upDown 5s infinite ease-in-out;
+
+                @media (min-width:1220px) {
+                    top: 0%;
+                }
             }
 
             .hero_img {
@@ -1075,7 +1083,7 @@
                     }
                 }
             </style>
-            <section class="delivrySection_container" data-scroll="">
+            <section class="delivrySection_container" data-scroll data-scroll-speed="-1">
                 <div class="delivrySection" data-scroll="">
                     <div class="delivrySection__header" style="color:#f7f7f7; border-bottom: 2px solid #f7f7f7;">
                         <i class="ri-riding-line" style="font-weight: lighter"></i>
@@ -1216,7 +1224,7 @@
         <!-- Deals Section -->
         <section class="deals-section" data-scroll-section>
             <h1>Deals and Offers</h1>
-            <div class="deals__container">
+            <div class="deals__container" data-scroll data-scroll-speed="-0.2">
                 <div class="card-hover " data-scroll-repeat="true" data-scroll data-scroll-class="is-inview">
                     <div class="card-hover__content">
                         <h3 class="card-hover__title">
@@ -1708,7 +1716,7 @@
                 <div class="owner">
                     <img class="owner-img" src="./Media/sanam-kapoor.jpg" alt="Owner">
                 </div>
-                <div class="story-content-left">
+                <div class="story-content-left" data-scroll-direction="vertical" data-scroll-speed="2">
                     <div class="story-content-upper" data-scroll data-scroll-call="title">
                         <h5>About Us</h5>
                         <p>The Story of La Pino'z Pizza</p>
@@ -1907,7 +1915,7 @@
 
         <section class="single-banner" data-scroll-section>
             <div class="single-banner-container">
-                <picture data-scroll data-scroll-speed="0.5">
+                <picture data-scroll data-scroll-speed="1.01" data-scroll-direction="horizontal">
                     <a href="https://lordpetrickindia.com/franchise-enquiry">
                         <img class="franchise-Image" src="./Media/Franchise_inquiry.jpeg" alt="Franchise">
                     </a>
@@ -1940,6 +1948,10 @@
                 height: 100%;
                 object-fit: contain;
                 border-radius: 6%;
+
+                @media (min-width:468px) {
+                    margin-left: 20px;
+                }
             }
         </style>
 
@@ -1952,8 +1964,8 @@
                 overflow: hidden;
             }
 
-            .Journer>.Journer-container {
-                max-width: 1250;
+            .journey>.journey-container {
+                max-width: 1250px;
                 width: 100%;
                 padding-right: 15px;
                 padding-left: 15px;
@@ -1961,7 +1973,7 @@
                 margin-left: auto;
             }
 
-            .Journer-container-content {
+            .journey-container-content {
                 display: flex;
                 flex-direction: column;
                 width: 100%;
@@ -1971,25 +1983,30 @@
                 align-items: center;
             }
 
-            .Journer-container-content-col {
+            .journey-container-content-col {
                 flex: 0 0 50%;
                 max-width: 100%;
                 position: relative;
                 width: 100%;
                 font-weight: 400;
-
-
             }
 
             .Journey-heading {
                 display: flex;
                 justify-content: center;
                 line-height: 1.2;
-                font-size: clamp(1em, 1.17vw, 1.5em);
+                font-size: 2em;
                 margin-block-start: 1em;
                 margin-block-end: 1em;
                 margin-inline-start: 0px;
                 margin-inline-end: 0px;
+            }
+
+            @media (max-width:500px) {
+                .Journey-heading {
+                    font-size: 1.5em;
+                    margin-inline-start: 18px;
+                }
             }
 
             .timeline-ul {
@@ -2021,7 +2038,6 @@
                 width: 100%;
                 max-width: 50px;
                 text-align: center;
-
             }
 
             .timeline-ul li>div:first-child {
@@ -2059,27 +2075,44 @@
                 max-width: 600px;
                 height: auto;
                 width: 100%;
-                height: 400px;
-                border-radius: 50%;
+                height: 450px;
                 margin: 0 auto;
-
-                @media (max-width:768px) {
-                    display: none;
-                }
+                position: relative;
             }
 
             .right-img .pizza-img {
+                position: absolute;
+                top: 50px;
+                left: 0;
+                right: 0;
+                margin: auto;
                 vertical-align: middle;
                 height: 100%;
                 width: 100%;
+                opacity: 0;
+                transform: translateY(30px);
+                transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+                z-index: 0;
+            }
+
+            .right-img .pizza-img.active {
+                opacity: 1;
+                transform: translateY(0);
+                z-index: 1;
+            }
+
+            .right-img .pizza-img.hidden {
+                opacity: 0;
+                transform: translateY(30px);
+                z-index: 0;
             }
 
             @media (min-width: 768px) {
-                .Journer-container-content-col {
+                .journey-container-content-col {
                     max-width: 50%;
                 }
 
-                .Journer-container-content {
+                .journey-container-content {
                     flex-direction: row;
                 }
 
@@ -2087,25 +2120,25 @@
                     padding-bottom: 1rem !important;
                 }
 
-                .Journer>.Journer-container {
+                .journey>.journey-container {
                     max-width: 720px;
                 }
             }
 
             @media (min-width: 992px) {
-                .Journer>.Journer-container {
+                .journey>.journey-container {
                     max-width: 960px;
                 }
             }
 
             @media (min-width: 1200px) {
-                .Journer>.Journer-container {
+                .journey>.journey-container {
                     max-width: 1140px;
                 }
             }
 
             @media (min-width:576px) {
-                .Journer>.Journer-container {
+                .journey>.journey-container {
                     max-width: 540px;
                 }
             }
@@ -2142,52 +2175,21 @@
             .timeline-ul li.show::before {
                 background: #00572d;
             }
-
-            .right-img {
-                position: relative;
-                max-width: 600px;
-                height: auto;
-                width: 100%;
-                height: 450px;
-                margin: 0 auto;
-            }
-
-            .right-img .pizza-img {
-                position: absolute;
-                top: 50px;
-                left: 0;
-                right: 0;
-                margin: auto;
-                vertical-align: middle;
-                height: 100%;
-                width: 100%;
-                transform: translateY(-30px);
-                transition: transform 1s ease-in-out;
-                z-index: 0;
-            }
-
-            .right-img .pizza-img.active {
-                transform: translateY(-570px);
-                z-index: 1;
-            }
-
-            .right-img .pizza-img.hidden {
-                transform: translateY(-30px);
-                z-index: 0;
-            }
         </style>
 
-        <section class="Journey" data-scroll-section data-scroll-speed="1.5">
-            <div class="Journer-container">
-                <div class="Journer-container-content">
-                    <div class="Journer-container-content-col">
-                        <h3 class="Journey-heading">
+        <section class="Journey" data-scroll-section>
+            <div class="journey-container" data-scroll-speed="-0.5" data-scroll>
+                <div class="journey-container-content">
+                    <div class="journey-container-content-col">
+                        <h3 class="Journey-heading" data-scroll data-scroll-direction="vertical"
+                            data-scroll-speed="0.5">
                             <div style="color:#00572d;">La Pino'z Pizza</div>
                             Growth Journey
                         </h3>
 
-                        <ul class="timeline-ul">
-                            <li data-image="./media/R_image-15.png">
+                        <ul class="timeline-ul" data-scroll data-scroll-direction="vertical" data-scroll-speed="1.5">
+                            <li data-scroll data-scroll-speed="-0.89" data-scroll-direction="vertical"
+                                data-image="./media/journey10.png">
                                 <div>
                                     <h4 class="">2011</h4>
                                 </div>
@@ -2200,7 +2202,7 @@
                                     <p class="common-para mb-0 bg-para">Launched the 1st Outlet in Chandigarh</p>
                                 </div>
                             </li>
-                            <li data-image="./media/R_image-12.png">
+                            <li data-scroll data-scroll-speed="-0.89" data-scroll-direction="vertical" data-image="">
                                 <div>
                                     <h4 class="">2013</h4>
                                 </div>
@@ -2213,7 +2215,8 @@
                                     <p class="common-para mb-0 bg-para">Launched the 1st Franchise Outlet</p>
                                 </div>
                             </li>
-                            <li data-image="./media/R_image-10.png">
+                            <li data-scroll data-scroll-speed="-0.89" data-scroll-direction="vertical"
+                                data-image="./media/journey2.png">
                                 <div>
                                     <h4 class="">2017</h4>
                                 </div>
@@ -2228,7 +2231,7 @@
                                     </p>
                                 </div>
                             </li>
-                            <li data-image="./media/R_image-6.png">
+                            <li data-scroll data-scroll-speed="-0.89" data-scroll-direction="vertical">
                                 <div>
                                     <h4 class="">2019</h4>
                                 </div>
@@ -2243,7 +2246,8 @@
                                     </p>
                                 </div>
                             </li>
-                            <li data-image="./media/R_image-3.png">
+                            <li data-scroll data-scroll-speed="-0.89" data-scroll-direction="vertical"
+                                data-image="./media/journey3.jpg">
                                 <div>
                                     <h4 class="">2021</h4>
                                 </div>
@@ -2258,7 +2262,7 @@
                                     </p>
                                 </div>
                             </li>
-                            <li data-image="./media/R_image-1.png">
+                            <li data-scroll data-scroll-speed="-0.89" data-scroll-direction="vertical">
                                 <div>
                                     <h4 class="">2022</h4>
                                 </div>
@@ -2275,32 +2279,260 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="Journer-container-content-col">
-                        <div class="right-img">
-                            <img class="pizza-img" src="./media/R_image-14.png" width="700" height="700"
-                                alt="Lapinonz Pizza Round Image" id="js-logo" />
+                    <div class="journey-container-content-col">
+                        <div class="right-img" data-scroll data-scroll-direction="vertical" data-scroll-speed="-0.4">
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Banner section -->
+        <section class="banner__section" data-scroll-section>
+            <div class="overlay"></div>
+            <div class="top__Bpart">
+                <div class="top__Bpart_textarea" data-scroll>
+                    <div class="first__Bpart_textarea" data-scroll="" data-scroll-speed="-1" data-scroll-delay="0.05">
+                        La
+                        Pino'z Pizza</div>
+                    <div class="second__Bpart_textarea" id="number_counter" data-scroll="" data-scroll-speed="-1.25"
+                        data-scroll-delay="0.075"></div>
+                </div>
+                <div class="banner_image_container">
+                    <img class="banner_image" data-scroll data-scale="0.5" src="./Media/banner_section_image.jpg"
+                        alt="Banner Image">
+                </div>
+            </div>
+            <div class="third__Bpart_textarea" data-scroll="" data-scroll-speed="-1.5" data-scroll-delay="0.1">Outlets
+                Across The World</div>
+        </section>
+
+        <style>
+            .banner__section {
+                width: 100%;
+                margin-inline: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-evenly;
+                position: relative;
+            }
+
+            .top__Bpart {
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                text-align: center;
+            }
+
+            .top__Bpart_textarea {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                text-align: center;
+            }
+
+            .first__Bpart_textarea,
+            .second__Bpart_textarea,
+            .third__Bpart_textarea {
+                color: transparent;
+                -webkit-text-stroke-width: 3px;
+                -webkit-text-stroke-color: #00572d;
+                color: white;
+                text-align: center;
+            }
+
+            .second__Bpart_textarea {
+                display: inline;
+            }
+
+            .banner_image {
+                animation: upDown 4s infinite;
+            }
+
+            @keyframes upDown {
+
+                0%,
+                100% {
+                    transform: translateY(0);
+                }
+
+                50% {
+                    transform: translateY(-15px);
+                }
+            }
+
+            @media (min-width: 769px) {
+                .banner__section {
+                    height: 500px;
+                }
+
+                .top__Bpart {
+                    height: 75%;
+                    width: 98%;
+                    flex-direction: row;
+
+                }
+
+                .top__Bpart_textarea {
+                    height: 90%;
+                    width: 65%;
+                    margin-block: auto;
+                    text-align: left;
+                }
+
+                .banner_image_container {
+                    height: 100%;
+                    width: 35%;
+                }
+
+                .banner_image {
+                    height: 135%;
+                    width: 100%;
+                    object-fit: contain;
+                }
+
+                .third__Bpart_textarea {
+                    height: 20%;
+                    width: 98%;
+                    z-index: 1;
+                    -webkit-text-stroke-width: 3px;
+                    -webkit-text-stroke-color: #00572d;
+                }
+
+                .first__Bpart_textarea {
+                    font-size: clamp(3rem, 10vw, 6.5rem);
+                }
+
+                .second__Bpart_textarea {
+                    font-size: clamp(3rem, 10vw, 6.5rem);
+                }
+
+                .third__Bpart_textarea {
+                    font-size: clamp(3rem, 8vw, 6.5rem);
+                }
+            }
+
+            @media (max-width: 768px) {
+                .banner__section {
+                    height: 99vh;
+                    background: url('./Media/banner_section_image.jpg') no-repeat center center;
+                    background-size: cover;
+                    justify-content: center;
+                    overflow: hidden;
+                }
+
+                .overlay {
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    background-color: rgba(0, 0, 0, 0.6);
+                }
+
+                .top__Bpart {
+                    height: fit-content;
+                    width: 100%;
+                    flex-direction: column;
+                    z-index: 1;
+                }
+
+                .top__Bpart_textarea {
+                    width: 80%;
+                }
+
+                .banner_image_container {
+                    display: none;
+                }
+
+                .third__Bpart_textarea {
+                    z-index: 1;
+                }
+
+                .first__Bpart_textarea {
+                    font-size: clamp(4rem, 15vw, 5rem);
+                    /* Adjusted to ensure it fills the section */
+                }
+
+                .second__Bpart_textarea {
+                    font-size: clamp(4rem, 12vw, 5rem);
+                    /* Adjusted to ensure it fills the section */
+                }
+
+                .third__Bpart_textarea {
+                    font-size: clamp(4rem, 10vw, 10rem);
+                    /* Adjusted to ensure it fills the section */
+                    text-align: center;
+                    width: 100%;
+                }
+            }
+        </style>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const counterElement = document.getElementById('number_counter');
+                const targetNumber = 600;
+                const interval = 20; // Increment in bunches of 50
+                const duration = 2000; // 2 seconds
+                let isAnimating = false;
+
+                // Initialize IntersectionObserver
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            if (!isAnimating) {
+                                animateCounter(counterElement, targetNumber, duration, interval);
+                            }
+                        } else {
+                            resetCounter(counterElement);
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                // Observe the section
+                const section = document.querySelector('.banner__section');
+                observer.observe(section);
+            });
+
+            function animateCounter(element, target, duration, interval) {
+                let currentNumber = 0;
+                isAnimating = true;
+                const stepTime = Math.abs(Math.floor(duration / (target / interval)));
+                const timer = setInterval(() => {
+                    currentNumber += interval;
+                    element.textContent = `Over ${currentNumber}+`;
+                    if (currentNumber >= target) {
+                        clearInterval(timer);
+                        isAnimating = false;
+                    }
+                }, stepTime);
+            }
+
+            function resetCounter(element) {
+                element.textContent = "Over 0+";
+                isAnimating = false;
+            }
+        </script>
+
         <!-- Country Scroll Section -->
-        <section class="country-scroll-section" data-scroll-section>
-            <div class="country-text-container" data-scroll data-scroll-speed="1">
-                <h1 class="scroll-text rotate-left" data-scroll data-scroll-direction="horizontal"
-                    data-scroll-speed="8">
+        <section id="country-scroll-section" class="country-scroll-section" data-scroll-section data-scroll
+            data-scroll-repeat="true" data-scroll-class="is-inview">
+            <div class="country-text-container" data-scroll-repeat="true" data-scroll data-scroll-speed="1">
+                <h1 class="scroll-text rotate-left" data-scroll-repeat="true" data-scroll
+                    data-scroll-direction="horizontal" data-scroll-speed="8" data-scroll-speed-mobile
+                    data-scroll-target="#country-scroll-section">
                     LOVED ACROSS INDIA
                 </h1>
-                <h2 class="scroll-text rotate-right" data-scroll data-scroll-direction="horizontal"
-                    data-scroll-speed="-8">
+                <h2 class="scroll-text rotate-right" data-scroll-repeat="true" data-scroll
+                    data-scroll-direction="horizontal" data-scroll-speed="-8" data-scroll-speed-mobile
+                    data-scroll-target="#country-scroll-section">
                     NOW LAUNCHING IN 10 MORE COUNTRIES
                 </h2>
             </div>
 
-            <div class="country-slider-container" data-scroll data-scroll-sticky data-scroll-target="#sticky-target">
-                <div class="country-slider-track" data-scroll data-scroll-direction="horizontal" data-scroll-speed="20"
-                    id="sticky-target">
+            <div class="country-slider-container" data-scroll-repeat="true" data-scroll data-scroll-speed="0.5">
+                <div class="country-slider-track" data-scroll-repeat="true" data-scroll
+                    data-scroll-direction="horizontal" data-scroll-speed="30" data-scroll-speed-mobile
+                    id="Country-track">
                     <div class="slide text-center">
                         <div class="slide-img">
                             <img src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/tanzania.jpg"
@@ -2379,6 +2611,9 @@
             .country-scroll-section {
                 height: 100vh;
                 position: relative;
+                /* background-color: white; */
+                color: white;
+                transition: background-color 0.5s ease;
             }
 
             .country-text-container {
@@ -2403,14 +2638,17 @@
                 text-align: center;
                 position: relative;
                 margin: 20px 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
 
             .rotate-right {
-                rotate: -20deg;
+                rotate: -15deg;
             }
 
             .rotate-left {
-                rotate: 20deg;
+                rotate: 15deg;
             }
 
             .country-slider-container {
@@ -2440,6 +2678,42 @@
                 border-radius: 5px;
                 width: 100%;
                 height: auto;
+            }
+
+            @media (max-width:900px) {
+
+                .country-scroll-section {
+                    height: fit-content;
+                }
+
+                .country-text-container {
+                    height: fit-content;
+                }
+            }
+
+            @media (max-width: 768px) {
+
+                .scroll-text {
+                    font-size: 1rem;
+                    height: 50px;
+                }
+
+                .rotate-right {
+                    rotate: 0deg;
+                }
+
+                .rotate-left {
+                    rotate: 0deg;
+                }
+
+                .slide {
+                    width: 150px;
+                }
+
+                .slide img {
+                    width: 100%;
+                    height: auto;
+                }
             }
         </style>
 
@@ -3467,229 +3741,185 @@
 
         <!-- Newly Launched Stores -->
 
-        <section class="newly-launched" data-scroll-section>
-            <div class="newly-launched-container">
-                <div class="newly-launched-upper-heading">
-                    <h3 class="newly-launched-heading">Newly Launched Stores</h3>
-                    <div class="bottom-dots">
-                        <span class="dot line-dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
+        <section class="newly-launched" data-scroll-section="">
+            <div class="newly-launched_Outlet" data-scroll="" data-scroll-repeat="true" data-scroll-call="is-inview">
+                <div class="newly-launched-container">
+                    <div class="newly-launched-upper-heading">
+                        <h3 class="newly-launched-heading">Newly Launched Stores</h3>
+                        <div class="bottom-dots">
+                            <span class="dot line-dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="newly-launched-carts">
-                <div class="newly-launched-slider">
-                    <div class="newly-launched-slick-track">
-                        <div class="store-div">
-                            <div class="store-div-top">
-                                <a href="https://lapinozpizza.in/order/lapinoz-nainital-road-haldwani">
-                                    <h4 class="store-div-heading">Nainital Road</h4>
-                                    <p class="store-div-para">Haldwani</p>
-                                </a>
-                            </div>
-                            <div class="store-div-bottom">
-                            </div>
-                            <a class="store-div-bottom-left"
-                                href="https://lapinozpizza.in/order/lapinoz-nainital-road-haldwani">
-                                <img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png"
-                                    alt="Lapinoz Logo Icon" class="lapinoz-logo-icon">
-                                <div class="store-detail">
-                                    <span>La Pino'z Pizza</span>
-                                    <!-- <span  ><i class="fas fa-angle-right"></i></span> -->
-                                </div>
+                <div class="outlet__box">
+                    <div class="outlet__card__article" style="--i: 1">
+                        <img src="./media/OutletImage-1.jpg" alt="image" class="outlet__card__img">
+                        <div class="outlet__card__data">
+                            <span class="outlet__card__description">Nainital Road</span>
+                            <h2 class="outlet__card__title">Haldwani</h2>
+                            <a href="#" class="outlet__card__button"><img
+                                    src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png"
+                                    alt="Lapinoz Logo Icon" class="" style="object-fit: contain; margin-left: px;"
+                                    height="30px" width="30px">
+                                <div style="margin-left: 5px;">L<span style="color: #ff6347;">a</span> Pino'z <span
+                                        style="color: #ff6347;">P</span>izz<span style="color: #ff6347;">a</span></div>
                             </a>
-                            <a href="tel:9528879671" class="phone-icn">
-                                <img src="https://lapinozpizza.in/assets/wla_new/lapinoz/img/new/phone-icn.png"
-                                    alt="Phone Icn">
-                            </a>
-                        </div>
 
-                        <div class="store-div">
-                            <div class="store-div-top">
-                                <a href="https://lapinozpizza.in/order/lapinoz-nainital-road-haldwani">
-                                    <h4 class="store-div-heading">Nainital Road</h4>
-                                    <p class="store-div-para">Haldwani</p>
-                                </a>
-                            </div>
-                            <div class="store-div-bottom">
-                            </div>
-                            <a class="store-div-bottom-left"
-                                href="https://lapinozpizza.in/order/lapinoz-nainital-road-haldwani">
-                                <img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png"
-                                    alt="Lapinoz Logo Icon" class="lapinoz-logo-icon">
-                                <div class="store-detail">
-                                    <span>La Pino'z Pizza</span>
-                                    <!-- <span  ><i class="fas fa-angle-right"></i></span> -->
-                                </div>
-                            </a>
-                            <a href="tel:9528879671" class="phone-icn">
-                                <img src="https://lapinozpizza.in/assets/wla_new/lapinoz/img/new/phone-icn.png"
-                                    alt="Phone Icn">
-                            </a>
+
                         </div>
-                        <div class="store-div">
-                            <div class="store-div-top">
-                                <a href="https://lapinozpizza.in/order/lapinoz-nainital-road-haldwani">
-                                    <h4 class="store-div-heading">Nainital Road</h4>
-                                    <p class="store-div-para">Haldwani</p>
-                                </a>
-                            </div>
-                            <div class="store-div-bottom">
-                            </div>
-                            <a class="store-div-bottom-left"
-                                href="https://lapinozpizza.in/order/lapinoz-nainital-road-haldwani">
-                                <img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png"
-                                    alt="Lapinoz Logo Icon" class="lapinoz-logo-icon">
-                                <div class="store-detail">
-                                    <span>La Pino'z Pizza</span>
-                                    <!-- <span  ><i class="fas fa-angle-right"></i></span> -->
-                                </div>
+                    </div>
+                    <div class="outlet__card__article" style="--i: 2">
+                        <img src="./media/OutletImage-2.jpg" alt="image" class="outlet__card__img">
+                        <div class="outlet__card__data">
+                            <span class="outlet__card__description">Malakpet</span>
+                            <h2 class="outlet__card__title">Hyderabad</h2>
+                            <a href="#" class="outlet__card__button"><img
+                                    src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png"
+                                    alt="Lapinoz Logo Icon" class="" style="object-fit: contain; margin-left: px;"
+                                    height="30px" width="30px">
+                                <div style="margin-left: 5px;">L<span style="color: #ff6347;">a</span> Pino'z <span
+                                        style="color: #ff6347;">P</span>izz<span style="color: #ff6347;">a</span></div>
                             </a>
-                            <a href="tel:9528879671" class="phone-icn">
-                                <img src="https://lapinozpizza.in/assets/wla_new/lapinoz/img/new/phone-icn.png"
-                                    alt="Phone Icn">
-                            </a>
+
+
+
                         </div>
-                        <div class="store-div">
-                            <div class="store-div-top">
-                                <a href="https://lapinozpizza.in/order/lapinoz-nainital-road-haldwani">
-                                    <h4 class="store-div-heading">Nainital Road</h4>
-                                    <p class="store-div-para">Haldwani</p>
-                                </a>
-                            </div>
-                            <div class="store-div-bottom">
-                            </div>
-                            <a class="store-div-bottom-left"
-                                href="https://lapinozpizza.in/order/lapinoz-nainital-road-haldwani">
-                                <img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png"
-                                    alt="Lapinoz Logo Icon" class="lapinoz-logo-icon">
-                                <div class="store-detail">
-                                    <span>La Pino'z Pizza</span>
-                                    <!-- <span  ><i class="fas fa-angle-right"></i></span> -->
-                                </div>
+                    </div>
+                    <div class="outlet__card__article" style="--i: 3">
+                        <img src="./media/OutletImage-3.jpg" alt="image" class="outlet__card__img">
+                        <div class="outlet__card__data">
+                            <span class="outlet__card__description">Pushraj Chauraha</span>
+                            <h2 class="outlet__card__title">Ayodhya</h2>
+                            <a href="#" class="outlet__card__button"><img
+                                    src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png"
+                                    alt="Lapinoz Logo Icon" class="" style="object-fit: contain; margin-left: px;"
+                                    height="30px" width="30px">
+                                <div style="margin-left: 5px;">L<span style="color: #ff6347;">a</span> Pino'z <span
+                                        style="color: #ff6347;">P</span>izz<span style="color: #ff6347;">a</span></div>
                             </a>
-                            <a href="tel:9528879671" class="phone-icn">
-                                <img src="https://lapinozpizza.in/assets/wla_new/lapinoz/img/new/phone-icn.png"
-                                    alt="Phone Icn">
-                            </a>
+
+
+
                         </div>
-                        <div class="store-div">
-                            <div class="store-div-top">
-                                <a href="https://lapinozpizza.in/order/lapinoz-nainital-road-haldwani">
-                                    <h4 class="store-div-heading">Nainital Road</h4>
-                                    <p class="store-div-para">Haldwani</p>
-                                </a>
-                            </div>
-                            <div class="store-div-bottom">
-                            </div>
-                            <a class="store-div-bottom-left"
-                                href="https://lapinozpizza.in/order/lapinoz-nainital-road-haldwani">
-                                <img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png"
-                                    alt="Lapinoz Logo Icon" class="lapinoz-logo-icon">
-                                <div class="store-detail">
-                                    <span>La Pino'z Pizza</span>
-                                    <!-- <span  ><i class="fas fa-angle-right"></i></span> -->
-                                </div>
+                    </div>
+                    <div class="outlet__card__article" style="--i: 4">
+                        <img src="./media/OutletImage-4.jpg" alt="image" class="outlet__card__img">
+                        <div class="outlet__card__data">
+                            <span class="outlet__card__description">Dongari Road virar west</span>
+                            <h2 class="outlet__card__title">Mumbai</h2>
+                            <a href="#" class="outlet__card__button"><img
+                                    src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png"
+                                    alt="Lapinoz Logo Icon" class="" style="object-fit: contain; margin-left: px;"
+                                    height="30px" width="30px">
+                                <div style="margin-left: 5px;">L<span style="color: #ff6347;">a</span> Pino'z <span
+                                        style="color: #ff6347;">P</span>izz<span style="color: #ff6347;">a</span></div>
                             </a>
-                            <a href="tel:9528879671" class="phone-icn">
-                                <img src="https://lapinozpizza.in/assets/wla_new/lapinoz/img/new/phone-icn.png"
-                                    alt="Phone Icn">
-                            </a>
+
+
+
                         </div>
-                        <div class="store-div">
-                            <div class="store-div-top">
-                                <a href="https://lapinozpizza.in/order/lapinoz-nainital-road-haldwani">
-                                    <h4 class="store-div-heading">Nainital Road</h4>
-                                    <p class="store-div-para">Haldwani</p>
-                                </a>
-                            </div>
-                            <div class="store-div-bottom">
-                            </div>
-                            <a class="store-div-bottom-left"
-                                href="https://lapinozpizza.in/order/lapinoz-nainital-road-haldwani">
-                                <img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png"
-                                    alt="Lapinoz Logo Icon" class="lapinoz-logo-icon">
-                                <div class="store-detail">
-                                    <span>La Pino'z Pizza</span>
-                                    <!-- <span  ><i class="fas fa-angle-right"></i></span> -->
-                                </div>
+                    </div>
+                    <div class="outlet__card__article" style="--i: 5">
+                        <img src="./media/OutletImage-5.jpg" alt="image" class="outlet__card__img">
+                        <div class="outlet__card__data">
+                            <span class="outlet__card__description">Halol Harni Road</span>
+                            <h2 class="outlet__card__title">Halol</h2>
+                            <a href="#" class="outlet__card__button"><img
+                                    src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png"
+                                    alt="Lapinoz Logo Icon" class="" style="object-fit: contain; margin-left: px;"
+                                    height="30px" width="30px">
+                                <div style="margin-left: 5px;">L<span style="color: #ff6347;">a</span> Pino'z <span
+                                        style="color: #ff6347;">P</span>izz<span style="color: #ff6347;">a</span></div>
                             </a>
-                            <a href="tel:9528879671" class="phone-icn">
-                                <img src="https://lapinozpizza.in/assets/wla_new/lapinoz/img/new/phone-icn.png"
-                                    alt="Phone Icn">
-                            </a>
+
+
+
                         </div>
-                        <div class="store-div">
-                            <div class="store-div-top">
-                                <a href="https://lapinozpizza.in/order/lapinoz-nainital-road-haldwani">
-                                    <h4 class="store-div-heading">Nainital Road</h4>
-                                    <p class="store-div-para">Haldwani</p>
-                                </a>
-                            </div>
-                            <div class="store-div-bottom">
-                            </div>
-                            <a class="store-div-bottom-left"
-                                href="https://lapinozpizza.in/order/lapinoz-nainital-road-haldwani">
-                                <img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png"
-                                    alt="Lapinoz Logo Icon" class="lapinoz-logo-icon">
-                                <div class="store-detail">
-                                    <span>La Pino'z Pizza</span>
-                                    <!-- <span  ><i class="fas fa-angle-right"></i></span> -->
-                                </div>
+                    </div>
+                    <div class="outlet__card__article" style="--i: 6">
+                        <img src="./media/OutletImage-6.jpg" alt="image" class="outlet__card__img">
+                        <div class="outlet__card__data">
+                            <span class="outlet__card__description">Civil Line</span>
+                            <h2 class="outlet__card__title">Azamgarh</h2>
+                            <a href="#" class="outlet__card__button"><img
+                                    src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png"
+                                    alt="Lapinoz Logo Icon" class="" style="object-fit: contain; margin-left: px;"
+                                    height="30px" width="30px">
+                                <div style="margin-left: 5px;">L<span style="color: #ff6347;">a</span> Pino'z <span
+                                        style="color: #ff6347;">P</span>izz<span style="color: #ff6347;">a</span></div>
                             </a>
-                            <a href="tel:9528879671" class="phone-icn">
-                                <img src="https://lapinozpizza.in/assets/wla_new/lapinoz/img/new/phone-icn.png"
-                                    alt="Phone Icn">
-                            </a>
+
+
+
                         </div>
-                        <div class="store-div">
-                            <div class="store-div-top">
-                                <a href="https://lapinozpizza.in/order/lapinoz-nainital-road-haldwani">
-                                    <h4 class="store-div-heading">Nainital Road</h4>
-                                    <p class="store-div-para">Haldwani</p>
-                                </a>
-                            </div>
-                            <div class="store-div-bottom">
-                            </div>
-                            <a class="store-div-bottom-left"
-                                href="https://lapinozpizza.in/order/lapinoz-nainital-road-haldwani">
-                                <img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png"
-                                    alt="Lapinoz Logo Icon" class="lapinoz-logo-icon">
-                                <div class="store-detail">
-                                    <span>La Pino'z Pizza</span>
-                                    <!-- <span  ><i class="fas fa-angle-right"></i></span> -->
-                                </div>
+                    </div>
+                    <div class="outlet__card__article" style="--i: 7">
+                        <img src="./media/OutletImage-7.jpg" alt="image" class="outlet__card__img">
+                        <div class="outlet__card__data">
+                            <span class="outlet__card__description">Carmelaram</span>
+                            <h2 class="outlet__card__title">Bengaluru</h2>
+                            <a href="#" class="outlet__card__button"><img
+                                    src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png"
+                                    alt="Lapinoz Logo Icon" class="" style="object-fit: contain; margin-left: px;"
+                                    height="30px" width="30px">
+                                <div style="margin-left: 5px;">L<span style="color: #ff6347;">a</span> Pino'z <span
+                                        style="color: #ff6347;">P</span>izz<span style="color: #ff6347;">a</span></div>
                             </a>
-                            <a href="tel:9528879671" class="phone-icn">
-                                <img src="https://lapinozpizza.in/assets/wla_new/lapinoz/img/new/phone-icn.png"
-                                    alt="Phone Icn">
-                            </a>
+
+
+
                         </div>
-                        <div class="store-div">
-                            <div class="store-div-top">
-                                <a href="https://lapinozpizza.in/order/lapinoz-nainital-road-haldwani">
-                                    <h4 class="store-div-heading">Nainital Road</h4>
-                                    <h5 class="store-div-para">Haldwani</h5>
-                                </a>
-                            </div>
-                            <div class="store-div-bottom">
-                            </div>
-                            <a class="store-div-bottom-left"
-                                href="https://lapinozpizza.in/order/lapinoz-nainital-road-haldwani">
-                                <img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png"
-                                    alt="Lapinoz Logo Icon" class="lapinoz-logo-icon">
-                                <div class="store-detail">
-                                    <span>La Pino'z Pizza</span>
-                                    <!-- <span  ><i class="fas fa-angle-right"></i></span> -->
-                                </div>
+                    </div>
+                    <div class="outlet__card__article" style="--i: 8">
+                        <img src="./media/OutletImage-8.jpg" alt="image" class="outlet__card__img">
+                        <div class="outlet__card__data">
+                            <span class="outlet__card__description">J P Nagar</span>
+                            <h2 class="outlet__card__title">Bengaluru</h2>
+                            <a href="#" class="outlet__card__button"><img
+                                    src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png"
+                                    alt="Lapinoz Logo Icon" class="" style="object-fit: contain; margin-left: px;"
+                                    height="30px" width="30px">
+                                <div style="margin-left: 5px;">L<span style="color: #ff6347;">a</span> Pino'z <span
+                                        style="color: #ff6347;">P</span>izz<span style="color: #ff6347;">a</span></div>
                             </a>
-                            <a href="tel:9528879671" class="phone-icn">
-                                <img src="https://lapinozpizza.in/assets/wla_new/lapinoz/img/new/phone-icn.png"
-                                    alt="Phone Icn">
+
+
+
+                        </div>
+                    </div>
+                    <div class="outlet__card__article" style="--i: 9">
+                        <img src="./media/OutletImage-9.jpg" alt="image" class="outlet__card__img">
+                        <div class="outlet__card__data">
+                            <span class="outlet__card__description">Opposite Hathi Gate</span>
+                            <h2 class="outlet__card__title">Dwarka Gujarat</h2>
+                            <a href="#" class="outlet__card__button"><img
+                                    src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png"
+                                    alt="Lapinoz Logo Icon" class="" style="object-fit: contain; margin-left: px;"
+                                    height="30px" width="30px">
+                                <div style="margin-left: 5px;">L<span style="color: #ff6347;">a</span> Pino'z <span
+                                        style="color: #ff6347;">P</span>izz<span style="color: #ff6347;">a</span></div>
                             </a>
+
+                        </div>
+                    </div>
+                    <div class="outlet__card__article" style="--i: 10">
+                        <img src="./media/OutletImage-10.jpg" alt="image" class="outlet__card__img">
+                        <div class="outlet__card__data">
+                            <span class="outlet__card__description">Red square market</span>
+                            <h2 class="outlet__card__title">Hisar</h2>
+                            <a href="#" class="outlet__card__button"><img
+                                    src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png"
+                                    alt="Lapinoz Logo Icon" class="" style="object-fit: contain; margin-left: px;"
+                                    height="30px" width="30px">
+                                <div style="margin-left: 5px;">L<span style="color: #ff6347;">a</span> Pino'z <span
+                                        style="color: #ff6347;">P</span>izz<span style="color: #ff6347;">a</span></div>
+                            </a>
+
+
                         </div>
                     </div>
                 </div>
@@ -3698,18 +3928,32 @@
 
         <style>
             .newly-launched {
-                padding: 25px 0;
+                /* margin: 20px 0; */
+                /* height: 100vh; */
+                /* overflow: hidden; */
             }
 
             .newly-launched-container {
-                width: 100%;
-                max-width: 1250px;
+                width: fit-content;
+                margin-inline: auto;
+                margin-top: 20px;
+
+                @media (max-width: 500px) {
+                    padding-inline: 10px;
+                }
+
+                /* max-width: 1250px; */
             }
 
             .newly-launched-heading {
-                font-size: 26px;
+                font-size: 40px;
                 font-weight: 600;
+                width: fit-content;
+                margin-inline: auto;
+                color: white;
+
             }
+
 
             .lapinoz-logo-icon {
                 width: 150px;
@@ -3721,11 +3965,11 @@
             }
 
             .newly-launched-upper-heading>.bottom-dots .dot.line-dot {
-                color: green;
+                color: white;
             }
 
             .newly-launched-upper-heading>.bottom-dots .dot.line-dot {
-                border-right: 40px solid green;
+                border-right: 40px solid white;
             }
 
             .newly-launched-upper-heading>.bottom-dots .dot {
@@ -3736,412 +3980,135 @@
             }
 
             .newly-launched-upper-heading>.bottom-dots .dot {
-                border-right: 3px solid green;
+                border-right: 3px solid white;
             }
 
-            .newly-launched-carts {
-                padding-right: 15px;
-                padding-left: 15px;
-                margin: 0 auto;
-                width: 100%;
-                height: 50%;
-            }
-
-            .newly-launched-slider {
-                margin-bottom: 20px;
-                height: 100%;
-                width: 100%;
-            }
-
-            .newly-launched-slick-track {
-                height: 220px;
-                max-width: 1120px;
-                /* background-color: aqua; */
-                display: flex;
-                margin-inline: auto;
-                overflow-x: scroll;
-                gap: 5px;
-                scrollbar-width: none;
-            }
-
-            /* For Webkit browsers (Chrome, Safari) */
-            .newly-launched-slick-track::-webkit-scrollbar {
-                height: 0px;
-            }
-
-            .store-div-start {
-                height: 50%;
-                padding: 10px 12px;
-            }
-
-            .store-div {
-                /* width: 250px; */
-                min-width: 220px;
-                border: 1px solid #efefef;
-                border-radius: 12px;
-                box-shadow: 0px 4px 7px rgb(0 0 0);
-                background-color: #efefef;
-                height: 100%;
+            .newly-launched_Outlet {
                 display: flex;
                 flex-direction: column;
-                overflow: hidden;
-                transition: transform 0.5s ease-out;
-            }
-
-            .store-div[data-scale="0.8"] {
-                transform: scale(0.75);
-            }
-
-            .store-div[data-scale="0.9"] {
-                transform: scale(0.85);
-            }
-
-            .store-div[data-scale="1.0"] {
-                transform: scale(0.95);
-            }
-
-            .store-div-top {
-                padding: 20px 20px;
-            }
-
-            .store-div-top a {
-                color: green;
-                text-decoration: none;
-                gap: 5px;
-                display: flex;
-                flex-direction: column;
-            }
-
-            .store-div-bottom {
-                width: 100%;
-                height: 100%;
-                /* padding: 20px 20px; */
-                border-radius: 12px;
-                background: linear-gradient(to right, rgba(0, 128, 0, 0.537), green);
-                /* background: linear-gradient(#fff 0%, #3f9366 100%); */
-                position: absolute;
-                /* top: 50%; */
-                transform: translateY(50%);
-                z-index: 0;
-                transition: all 0.25s ease-in-out;
-            }
-
-            .store-div-bottom-left {
-                position: relative;
-                display: flex;
-                align-items: start;
-                justify-content: center;
-                flex-direction: column;
-                margin-left: 20px;
-                margin-top: 10px;
-                text-decoration: none;
-            }
-
-            .phone-icn img {
-                position: relative;
-                width: 12px;
-                height: 12px;
-                max-width: 16px;
-            }
-
-            .phone-icn {
-                position: absolute;
-                background-color: white;
-                top: 40%;
-                right: 10%;
-                height: 30px;
-                width: 30px;
-                display: flex;
+                /* justify-content: space-evenly; */
+                gap: 50px;
                 align-items: center;
-                justify-content: center;
-                border-radius: 50%;
-                transition: all 0.5s ease-in-out;
+                height: 100vh;
+                max-height: 700px;
+                background: white;
+                transition: background 0.5s ease-in-out;
             }
 
-            .lapinoz-logo-icon {
-                width: 35px;
-                height: 35px;
+            .newly-launched_Outlet.is-inview {
+                background: black;
+
             }
 
-            .store-detail span {
-                text-decoration: none;
-                color: white;
-            }
-
-            .store-div:hover .store-div-bottom {
-                transform: translateY(0);
-            }
-
-            .store-div:hover .phone-icn {
-                top: 10%;
-                rotate: 360deg;
-                /* transform: rotate(360deg); */
-            }
-
-            .store-div:hover .store-div-top>a {
-                color: white;
+            .outlet__box {
                 position: relative;
-                transition: color 0.1s ease-in-out;
-                z-index: 10000;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 350px;
+                height: 300px;
+                transform-style: preserve-3d;
+                animation: animate 40s linear infinite;
+
+                @media (max-width: 768px) {
+                    width: 300px;
+                }
             }
-        </style>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const items = document.querySelectorAll('.store-div');
-                const slider = document.querySelector('.newly-launched-slick-track');
 
-                function updateItemStyles() {
-                    const sliderRect = slider.getBoundingClientRect();
-                    const sectionWidth = sliderRect.width;
-                    const partWidth = sectionWidth / 5;
-
-                    items.forEach((item, index) => {
-                        const itemRect = item.getBoundingClientRect();
-                        const itemCenter = (itemRect.left + itemRect.right) / 2;
-
-                        if (itemCenter < sliderRect.left + partWidth) {
-                            item.setAttribute('data-scale', '0.8');
-                        } else if (itemCenter < sliderRect.left + 2 * partWidth) {
-                            item.setAttribute('data-scale', '0.9');
-                        } else if (itemCenter < sliderRect.left + 3 * partWidth) {
-                            item.setAttribute('data-scale', '1.0');
-                        } else if (itemCenter < sliderRect.left + 4 * partWidth) {
-                            item.setAttribute('data-scale', '0.9');
-                        } else {
-                            item.setAttribute('data-scale', '0.8');
-                        }
-                    });
+            @keyframes animate {
+                0% {
+                    transform: perspective(3000px) rotateY(0deg);
                 }
 
-                slider.addEventListener('scroll', updateItemStyles);
-
-                // Initial call to set the correct scaling
-                updateItemStyles();
-            });
-        </script>
-
-        <!-- Banner section -->
-        <section class="banner__section" data-scroll-section>
-            <div class="overlay"></div>
-            <div class="top__Bpart">
-                <div class="top__Bpart_textarea">
-                    <div class="first__Bpart_textarea">La Pino'z Pizza</div>
-                    <div class="second__Bpart_textarea" id="number_counter"></div>
-                </div>
-                <div class="banner_image_container">
-                    <img class="banner_image" src="./Media/banner_section_image.jpg" alt="Banner Image">
-                </div>
-            </div>
-            <div class="third__Bpart_textarea">Outlets Across The World</div>
-        </section>
-
-        <style>
-            .banner__section {
-                width: 100%;
-                margin-inline: auto;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: space-evenly;
-                position: relative;
-            }
-
-            .top__Bpart {
-                display: flex;
-                align-items: center;
-                justify-content: space-evenly;
-                text-align: center;
-            }
-
-            .top__Bpart_textarea {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-around;
-                text-align: center;
-            }
-
-            .first__Bpart_textarea,
-            .second__Bpart_textarea,
-            .third__Bpart_textarea {
-                color: transparent;
-                -webkit-text-stroke-width: 3px;
-                -webkit-text-stroke-color: #00572d;
-                color: white;
-                text-align: center;
-            }
-
-            .second__Bpart_textarea {
-                display: inline;
-            }
-
-            .banner_image {
-                animation: upDown 4s infinite;
-            }
-
-            @keyframes upDown {
-
-                0%,
                 100% {
-                    transform: translateY(0);
-                }
-
-                50% {
-                    transform: translateY(-15px);
+                    transform: perspective(3000px) rotateY(360deg);
                 }
             }
 
-            @media (min-width: 769px) {
-                .banner__section {
-                    height: 500px;
-                }
+            .outlet__card__article {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                transform-origin: center;
+                transform-style: preserve-3d;
+                transform: rotateY(calc(var(--i) * 36deg)) translateZ(650px);
 
-                .top__Bpart {
-                    height: 75%;
-                    width: 98%;
-                    flex-direction: row;
-
-                }
-
-                .top__Bpart_textarea {
-                    height: 90%;
-                    width: 65%;
-                    margin-block: auto;
-                    text-align: left;
-                }
-
-                .banner_image_container {
-                    height: 100%;
-                    width: 35%;
-                }
-
-                .banner_image {
-                    height: 135%;
-                    width: 100%;
-                    object-fit: contain;
-                }
-
-                .third__Bpart_textarea {
-                    height: 20%;
-                    width: 98%;
-                    z-index: 1;
-                    -webkit-text-stroke-width: 3px;
-                    -webkit-text-stroke-color: #00572d;
-                }
-
-                .first__Bpart_textarea {
-                    font-size: clamp(3rem, 10vw, 6.5rem);
-                }
-
-                .second__Bpart_textarea {
-                    font-size: clamp(3rem, 10vw, 6.5rem);
-                }
-
-                .third__Bpart_textarea {
-                    font-size: clamp(3rem, 8vw, 6.5rem);
+                @media (max-width:768px) {
+                    transform: rotateY(calc(var(--i) * 36deg)) translateZ(550px);
                 }
             }
 
-            @media (max-width: 768px) {
-                .banner__section {
-                    height: 99vh;
-                    background: url('./Media/banner_section_image.jpg') no-repeat center center;
-                    background-size: cover;
-                    justify-content: center;
-                }
+            .outlet__card__img {
+                width: 100%;
+                /* max-height: 300px; */
+                height: 100%;
 
-                .overlay {
-                    position: absolute;
-                    height: 100%;
+                border-radius: 1.5rem;
+                object-fit: cover;
+            }
+
+            .outlet__card__data {
+                width: 80%;
+                color: #00572d;
+                font-weight: 600;
+                height: fit-content;
+                padding: 0.5rem 1rem;
+                box-shadow: 0 8px 24px hsla(0, 0%, 0%, .15);
+                border-radius: 1rem;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin-inline: auto;
+                opacity: 1;
+                transform: translateY(20px);
+                background-color: #FFE77A;
+            }
+
+            .outlet__card__description {
+                display: block;
+                font-size: var(--small-font-size);
+                margin-bottom: .25rem;
+            }
+
+            .outlet__card__title {
+                font-size: var(--h2-font-size);
+                font-weight: 500;
+                color: var(--title-color);
+                margin-bottom: .75rem;
+            }
+
+            .outlet__card__button {
+                text-decoration: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: var(--small-font-size);
+                color: var(--first-color);
+            }
+
+            @media screen and (max-width: 340px) {
+                .outlet__card__data {
+                    padding: 1rem;
+                }
+            }
+
+            @media screen and (min-width: 1120px) {
+                .outlet__card__img {
                     width: 100%;
-                    background-color: rgba(0, 0, 0, 0.6);
                 }
 
-                .top__Bpart {
-                    height: fit-content;
-                    width: 100%;
-                    flex-direction: column;
-                    z-index: 1;
-                }
-
-                .top__Bpart_textarea {
-                    width: 80%;
-                }
-
-                .banner_image_container {
-                    display: none;
-                }
-
-                .third__Bpart_textarea {
-                    z-index: 1;
-                }
-
-                .first__Bpart_textarea {
-                    font-size: clamp(4rem, 15vw, 5rem);
-                    /* Adjusted to ensure it fills the section */
-                }
-
-                .second__Bpart_textarea {
-                    font-size: clamp(4rem, 12vw, 5rem);
-                    /* Adjusted to ensure it fills the section */
-                }
-
-                .third__Bpart_textarea {
-                    font-size: clamp(4rem, 10vw, 10rem);
-                    /* Adjusted to ensure it fills the section */
-                    text-align: center;
-                    width: 100%;
+                .outlet__card__data {
+                    padding-inline: 2.5rem;
                 }
             }
         </style>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const counterElement = document.getElementById('number_counter');
-                const targetNumber = 600;
-                const interval = 20; // Increment in bunches of 50
-                const duration = 500; // 2 seconds
-                let isAnimating = false;
-
-                // Initialize IntersectionObserver
-                const observer = new IntersectionObserver(entries => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            if (!isAnimating) {
-                                animateCounter(counterElement, targetNumber, duration, interval);
-                            }
-                        } else {
-                            resetCounter(counterElement);
-                        }
-                    });
-                }, { threshold: 0.5 });
-
-                // Observe the section
-                const section = document.querySelector('.banner__section');
-                observer.observe(section);
-            });
-
-            function animateCounter(element, target, duration, interval) {
-                let currentNumber = 0;
-                isAnimating = true;
-                const stepTime = Math.abs(Math.floor(duration / (target / interval)));
-                const timer = setInterval(() => {
-                    currentNumber += interval;
-                    element.textContent = `Over ${currentNumber}+`;
-                    if (currentNumber >= target) {
-                        clearInterval(timer);
-                        isAnimating = false;
-                    }
-                }, stepTime);
-            }
-
-            function resetCounter(element) {
-                element.textContent = "Over 0+";
-                isAnimating = false;
-            }
-        </script>
 
         <!-- Reviews Section -->
-        <section class="reviews-section testimonials-sec" data-scroll-section>
+        <section class="reviews-section testimonials-sec" data-scroll="" data-scroll-repeat="true"
+            data-scroll-call="is-inview" data-scroll-section>
             <div class="reviews-section-container">
                 <h3 class="reviews-section-heading">
                     <span>Happy Customers Around the Globe</span> More than 8 Million
@@ -4329,10 +4296,14 @@
         </section>
         <style>
             .reviews-section {
-                margin: 20px 0;
-                padding: 30px 0;
+                padding: 30px 0 100px 0px;
                 height: fit-content;
-                background-color: rgba(0, 0, 0);
+                background-color: #fff;
+                transition: background 0.3s ease-in-out;
+            }
+
+            .reviews-section.is-inview {
+                background-color: #000;
             }
 
             .reviews-section-container {
@@ -4524,1681 +4495,11 @@
             });
         </script>
 
-        <section class="lapinoz-outlet" data-scroll-section>
-            <div class="lapinoz-outlet-container">
-                <div class="lapinoz-outlet-upper-heading">
-                    <h3 class="lapinoz-outlet-common-heading">FIND LA PINO'Z LOCATION NEAR YOU</h3>
-                    <div class="bottom-dots">
-                        <span class="dot line-dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                    </div>
-                </div>
-                <div class="city-name-outr">
-                    <div class="city-name-souter">
-                        <p class="city-name-s">A</p>
-                    </div>
-                    <ul class="cities-list-nw">
-                        <li>
-                            <a id="locationLink" title="Our outlets in Abohar"
-                                href="https://lapinozpizza.in/store-locator/Abohar">
-                                <i class="fas fa-map-marker-alt"></i> Abohar
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Agra"
-                                href="https://lapinozpizza.in/store-locator/Agra">
-                                <i class="fas fa-map-marker-alt"></i> Agra
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Ahmedabad"
-                                href="https://lapinozpizza.in/store-locator/Ahmedabad">
-                                <i class="fas fa-map-marker-alt"></i> Ahmedabad
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Ajmer"
-                                href="https://lapinozpizza.in/store-locator/Ajmer">
-                                <i class="fas fa-map-marker-alt"></i> Ajmer
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Alwar"
-                                href="https://lapinozpizza.in/store-locator/Alwar">
-                                <i class="fas fa-map-marker-alt"></i> Alwar
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Ambala"
-                                href="https://lapinozpizza.in/store-locator/Ambala">
-                                <i class="fas fa-map-marker-alt"></i> Ambala
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Amreli"
-                                href="https://lapinozpizza.in/store-locator/Amreli">
-                                <i class="fas fa-map-marker-alt"></i> Amreli
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Amritsar"
-                                href="https://lapinozpizza.in/store-locator/Amritsar">
-                                <i class="fas fa-map-marker-alt"></i> Amritsar
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Anand"
-                                href="https://lapinozpizza.in/store-locator/Anand">
-                                <i class="fas fa-map-marker-alt"></i> Anand
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Ankleshwar"
-                                href="https://lapinozpizza.in/store-locator/Ankleshwar">
-                                <i class="fas fa-map-marker-alt"></i> Ankleshwar
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Aurangabad"
-                                href="https://lapinozpizza.in/store-locator/Aurangabad">
-                                <i class="fas fa-map-marker-alt"></i> Aurangabad
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Ayodhya"
-                                href="https://lapinozpizza.in/store-locator/Ayodhya">
-                                <i class="fas fa-map-marker-alt"></i> Ayodhya
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Azamgarh"
-                                href="https://lapinozpizza.in/store-locator/Azamgarh">
-                                <i class="fas fa-map-marker-alt"></i> Azamgarh
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="city-name-outr">
-                    <div class="city-name-souter">
-                        <p class="city-name-s">B</p>
-                    </div>
-                    <ul class="cities-list-nw">
-                        <li>
-                            <a id="locationLink" title="Our outlets in Baddi"
-                                href="https://lapinozpizza.in/store-locator/Baddi">
-                                <i class="fas fa-map-marker-alt"></i> Baddi
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Bahadurgarh"
-                                href="https://lapinozpizza.in/store-locator/Bahadurgarh">
-                                <i class="fas fa-map-marker-alt"></i> Bahadurgarh
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Barabanki"
-                                href="https://lapinozpizza.in/store-locator/Barabanki">
-                                <i class="fas fa-map-marker-alt"></i> Barabanki
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Bareilly"
-                                href="https://lapinozpizza.in/store-locator/Bareilly">
-                                <i class="fas fa-map-marker-alt"></i> Bareilly
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Basti"
-                                href="https://lapinozpizza.in/store-locator/Basti">
-                                <i class="fas fa-map-marker-alt"></i> Basti
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Batala"
-                                href="https://lapinozpizza.in/store-locator/Batala">
-                                <i class="fas fa-map-marker-alt"></i> Batala
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Bathinda"
-                                href="https://lapinozpizza.in/store-locator/Bathinda">
-                                <i class="fas fa-map-marker-alt"></i> Bathinda
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Beawar"
-                                href="https://lapinozpizza.in/store-locator/Beawar">
-                                <i class="fas fa-map-marker-alt"></i> Beawar
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Bengaluru"
-                                href="https://lapinozpizza.in/store-locator/Bengaluru">
-                                <i class="fas fa-map-marker-alt"></i> Bengaluru
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Bettiah"
-                                href="https://lapinozpizza.in/store-locator/Bettiah">
-                                <i class="fas fa-map-marker-alt"></i> Bettiah
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Bhagalpur"
-                                href="https://lapinozpizza.in/store-locator/Bhagalpur">
-                                <i class="fas fa-map-marker-alt"></i> Bhagalpur
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Bharuch"
-                                href="https://lapinozpizza.in/store-locator/Bharuch">
-                                <i class="fas fa-map-marker-alt"></i> Bharuch
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Bhavnagar"
-                                href="https://lapinozpizza.in/store-locator/Bhavnagar">
-                                <i class="fas fa-map-marker-alt"></i> Bhavnagar
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Bhilai"
-                                href="https://lapinozpizza.in/store-locator/Bhilai">
-                                <i class="fas fa-map-marker-alt"></i> Bhilai
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Bhilwara"
-                                href="https://lapinozpizza.in/store-locator/Bhilwara">
-                                <i class="fas fa-map-marker-alt"></i> Bhilwara
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Bhopal"
-                                href="https://lapinozpizza.in/store-locator/Bhopal">
-                                <i class="fas fa-map-marker-alt"></i> Bhopal
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Bhubaneswar"
-                                href="https://lapinozpizza.in/store-locator/Bhubaneswar">
-                                <i class="fas fa-map-marker-alt"></i> Bhubaneswar
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Bhuj"
-                                href="https://lapinozpizza.in/store-locator/Bhuj">
-                                <i class="fas fa-map-marker-alt"></i> Bhuj
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Bikaner"
-                                href="https://lapinozpizza.in/store-locator/Bikaner">
-                                <i class="fas fa-map-marker-alt"></i> Bikaner
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Bilimora"
-                                href="https://lapinozpizza.in/store-locator/Bilimora">
-                                <i class="fas fa-map-marker-alt"></i> Bilimora
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Bokaro"
-                                href="https://lapinozpizza.in/store-locator/Bokaro">
-                                <i class="fas fa-map-marker-alt"></i> Bokaro
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Borsad"
-                                href="https://lapinozpizza.in/store-locator/Borsad">
-                                <i class="fas fa-map-marker-alt"></i> Borsad
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Botad"
-                                href="https://lapinozpizza.in/store-locator/Botad">
-                                <i class="fas fa-map-marker-alt"></i> Botad
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Budaun"
-                                href="https://lapinozpizza.in/store-locator/Budaun">
-                                <i class="fas fa-map-marker-alt"></i> Budaun
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="city-name-outr">
-                    <div class="city-name-souter">
-                        <p class="city-name-s">C</p>
-                    </div>
-                    <ul class="cities-list-nw">
-                        <li>
-                            <a id="locationLink" title="Our outlets in Chandigarh"
-                                href="https://lapinozpizza.in/store-locator/Chandigarh">
-                                <i class="fas fa-map-marker-alt"></i> Chandigarh
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Chennai"
-                                href="https://lapinozpizza.in/store-locator/Chennai">
-                                <i class="fas fa-map-marker-alt"></i> Chennai
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Chikhli"
-                                href="https://lapinozpizza.in/store-locator/Chikhli">
-                                <i class="fas fa-map-marker-alt"></i> Chikhli
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="city-name-outr">
-                    <div class="city-name-souter">
-                        <p class="city-name-s">D</p>
-                    </div>
-                    <ul class="cities-list-nw">
-                        <li>
-                            <a id="locationLink" title="Our outlets in Dahod"
-                                href="https://lapinozpizza.in/store-locator/Dahod">
-                                <i class="fas fa-map-marker-alt"></i> Dahod
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Daman"
-                                href="https://lapinozpizza.in/store-locator/Daman">
-                                <i class="fas fa-map-marker-alt"></i> Daman
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Dang"
-                                href="https://lapinozpizza.in/store-locator/Dang">
-                                <i class="fas fa-map-marker-alt"></i> Dang
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Deesa"
-                                href="https://lapinozpizza.in/store-locator/Deesa">
-                                <i class="fas fa-map-marker-alt"></i> Deesa
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Dehradun"
-                                href="https://lapinozpizza.in/store-locator/Dehradun">
-                                <i class="fas fa-map-marker-alt"></i> Dehradun
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Dehri"
-                                href="https://lapinozpizza.in/store-locator/Dehri">
-                                <i class="fas fa-map-marker-alt"></i> Dehri
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Delhi"
-                                href="https://lapinozpizza.in/store-locator/Delhi">
-                                <i class="fas fa-map-marker-alt"></i> Delhi
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Deoria"
-                                href="https://lapinozpizza.in/store-locator/Deoria">
-                                <i class="fas fa-map-marker-alt"></i> Deoria
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Derabassi"
-                                href="https://lapinozpizza.in/store-locator/Derabassi">
-                                <i class="fas fa-map-marker-alt"></i> Derabassi
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Dewas"
-                                href="https://lapinozpizza.in/store-locator/Dewas">
-                                <i class="fas fa-map-marker-alt"></i> Dewas
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in DHARAMSHALA"
-                                href="https://lapinozpizza.in/store-locator/DHARAMSHALA">
-                                <i class="fas fa-map-marker-alt"></i> DHARAMSHALA
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Durgapur"
-                                href="https://lapinozpizza.in/store-locator/Durgapur">
-                                <i class="fas fa-map-marker-alt"></i> Durgapur
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Dwarka Gujarat"
-                                href="https://lapinozpizza.in/store-locator/Dwarka Gujarat">
-                                <i class="fas fa-map-marker-alt"></i> Dwarka Gujarat
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="city-name-outr">
-                    <div class="city-name-souter">
-                        <p class="city-name-s">F</p>
-                    </div>
-                    <ul class="cities-list-nw">
-                        <li>
-                            <a id="locationLink" title="Our outlets in Faridabad"
-                                href="https://lapinozpizza.in/store-locator/Faridabad">
-                                <i class="fas fa-map-marker-alt"></i> Faridabad
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Fatehgarh Sahib"
-                                href="https://lapinozpizza.in/store-locator/Fatehgarh Sahib">
-                                <i class="fas fa-map-marker-alt"></i> Fatehgarh Sahib
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Firozpur"
-                                href="https://lapinozpizza.in/store-locator/Firozpur">
-                                <i class="fas fa-map-marker-alt"></i> Firozpur
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="city-name-outr">
-                    <div class="city-name-souter">
-                        <p class="city-name-s">G</p>
-                    </div>
-                    <ul class="cities-list-nw">
-                        <li>
-                            <a id="locationLink" title="Our outlets in Gandhidham"
-                                href="https://lapinozpizza.in/store-locator/Gandhidham">
-                                <i class="fas fa-map-marker-alt"></i> Gandhidham
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Gandhinagar"
-                                href="https://lapinozpizza.in/store-locator/Gandhinagar">
-                                <i class="fas fa-map-marker-alt"></i> Gandhinagar
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Gangtok"
-                                href="https://lapinozpizza.in/store-locator/Gangtok">
-                                <i class="fas fa-map-marker-alt"></i> Gangtok
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Gaya"
-                                href="https://lapinozpizza.in/store-locator/Gaya">
-                                <i class="fas fa-map-marker-alt"></i> Gaya
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Ghaziabad"
-                                href="https://lapinozpizza.in/store-locator/Ghaziabad">
-                                <i class="fas fa-map-marker-alt"></i> Ghaziabad
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Goa"
-                                href="https://lapinozpizza.in/store-locator/Goa">
-                                <i class="fas fa-map-marker-alt"></i> Goa
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Godhra"
-                                href="https://lapinozpizza.in/store-locator/Godhra">
-                                <i class="fas fa-map-marker-alt"></i> Godhra
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Gonda"
-                                href="https://lapinozpizza.in/store-locator/Gonda">
-                                <i class="fas fa-map-marker-alt"></i> Gonda
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Gondal"
-                                href="https://lapinozpizza.in/store-locator/Gondal">
-                                <i class="fas fa-map-marker-alt"></i> Gondal
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Gondia"
-                                href="https://lapinozpizza.in/store-locator/Gondia">
-                                <i class="fas fa-map-marker-alt"></i> Gondia
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Gorakhpur"
-                                href="https://lapinozpizza.in/store-locator/Gorakhpur">
-                                <i class="fas fa-map-marker-alt"></i> Gorakhpur
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Greater Noida"
-                                href="https://lapinozpizza.in/store-locator/Greater Noida">
-                                <i class="fas fa-map-marker-alt"></i> Greater Noida
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Guntur"
-                                href="https://lapinozpizza.in/store-locator/Guntur">
-                                <i class="fas fa-map-marker-alt"></i> Guntur
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Gurgaon"
-                                href="https://lapinozpizza.in/store-locator/Gurgaon">
-                                <i class="fas fa-map-marker-alt"></i> Gurgaon
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Guwahati"
-                                href="https://lapinozpizza.in/store-locator/Guwahati">
-                                <i class="fas fa-map-marker-alt"></i> Guwahati
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Gwalior"
-                                href="https://lapinozpizza.in/store-locator/Gwalior">
-                                <i class="fas fa-map-marker-alt"></i> Gwalior
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="city-name-outr">
-                    <div class="city-name-souter">
-                        <p class="city-name-s">H</p>
-                    </div>
-                    <ul class="cities-list-nw">
-                        <li>
-                            <a id="locationLink" title="Our outlets in Haldwani"
-                                href="https://lapinozpizza.in/store-locator/Haldwani">
-                                <i class="fas fa-map-marker-alt"></i> Haldwani
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Halol"
-                                href="https://lapinozpizza.in/store-locator/Halol">
-                                <i class="fas fa-map-marker-alt"></i> Halol
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Halvad"
-                                href="https://lapinozpizza.in/store-locator/Halvad">
-                                <i class="fas fa-map-marker-alt"></i> Halvad
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Himatnagar"
-                                href="https://lapinozpizza.in/store-locator/Himatnagar">
-                                <i class="fas fa-map-marker-alt"></i> Himatnagar
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Hisar"
-                                href="https://lapinozpizza.in/store-locator/Hisar">
-                                <i class="fas fa-map-marker-alt"></i> Hisar
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Hoshiarpur"
-                                href="https://lapinozpizza.in/store-locator/Hoshiarpur">
-                                <i class="fas fa-map-marker-alt"></i> Hoshiarpur
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Howrah"
-                                href="https://lapinozpizza.in/store-locator/Howrah">
-                                <i class="fas fa-map-marker-alt"></i> Howrah
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Hyderabad"
-                                href="https://lapinozpizza.in/store-locator/Hyderabad">
-                                <i class="fas fa-map-marker-alt"></i> Hyderabad
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="city-name-outr">
-                    <div class="city-name-souter">
-                        <p class="city-name-s">I</p>
-                    </div>
-                    <ul class="cities-list-nw">
-                        <li>
-                            <a id="locationLink" title="Our outlets in Indore"
-                                href="https://lapinozpizza.in/store-locator/Indore">
-                                <i class="fas fa-map-marker-alt"></i> Indore
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="city-name-outr">
-                    <div class="city-name-souter">
-                        <p class="city-name-s">J</p>
-                    </div>
-                    <ul class="cities-list-nw">
-                        <li>
-                            <a id="locationLink" title="Our outlets in Jabalpur"
-                                href="https://lapinozpizza.in/store-locator/Jabalpur">
-                                <i class="fas fa-map-marker-alt"></i> Jabalpur
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Jagraon"
-                                href="https://lapinozpizza.in/store-locator/Jagraon">
-                                <i class="fas fa-map-marker-alt"></i> Jagraon
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Jaipur"
-                                href="https://lapinozpizza.in/store-locator/Jaipur">
-                                <i class="fas fa-map-marker-alt"></i> Jaipur
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Jalandhar"
-                                href="https://lapinozpizza.in/store-locator/Jalandhar">
-                                <i class="fas fa-map-marker-alt"></i> Jalandhar
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Jalgaon"
-                                href="https://lapinozpizza.in/store-locator/Jalgaon">
-                                <i class="fas fa-map-marker-alt"></i> Jalgaon
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Jammu"
-                                href="https://lapinozpizza.in/store-locator/Jammu">
-                                <i class="fas fa-map-marker-alt"></i> Jammu
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Jamnagar"
-                                href="https://lapinozpizza.in/store-locator/Jamnagar">
-                                <i class="fas fa-map-marker-alt"></i> Jamnagar
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Jamshedpur"
-                                href="https://lapinozpizza.in/store-locator/Jamshedpur">
-                                <i class="fas fa-map-marker-alt"></i> Jamshedpur
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Jassur"
-                                href="https://lapinozpizza.in/store-locator/Jassur">
-                                <i class="fas fa-map-marker-alt"></i> Jassur
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Jaunpur"
-                                href="https://lapinozpizza.in/store-locator/Jaunpur">
-                                <i class="fas fa-map-marker-alt"></i> Jaunpur
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Jhansi"
-                                href="https://lapinozpizza.in/store-locator/Jhansi">
-                                <i class="fas fa-map-marker-alt"></i> Jhansi
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Jodhpur"
-                                href="https://lapinozpizza.in/store-locator/Jodhpur">
-                                <i class="fas fa-map-marker-alt"></i> Jodhpur
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Junagadh"
-                                href="https://lapinozpizza.in/store-locator/Junagadh">
-                                <i class="fas fa-map-marker-alt"></i> Junagadh
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="city-name-outr">
-                    <div class="city-name-souter">
-                        <p class="city-name-s">K</p>
-                    </div>
-                    <ul class="cities-list-nw">
-                        <li>
-                            <a id="locationLink" title="Our outlets in Kakinada"
-                                href="https://lapinozpizza.in/store-locator/Kakinada">
-                                <i class="fas fa-map-marker-alt"></i> Kakinada
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in kandeli"
-                                href="https://lapinozpizza.in/store-locator/kandeli">
-                                <i class="fas fa-map-marker-alt"></i> kandeli
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Kanpur"
-                                href="https://lapinozpizza.in/store-locator/Kanpur">
-                                <i class="fas fa-map-marker-alt"></i> Kanpur
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Karnal"
-                                href="https://lapinozpizza.in/store-locator/Karnal">
-                                <i class="fas fa-map-marker-alt"></i> Karnal
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Kasol"
-                                href="https://lapinozpizza.in/store-locator/Kasol">
-                                <i class="fas fa-map-marker-alt"></i> Kasol
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Kevadiya"
-                                href="https://lapinozpizza.in/store-locator/Kevadiya">
-                                <i class="fas fa-map-marker-alt"></i> Kevadiya
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Khanna"
-                                href="https://lapinozpizza.in/store-locator/Khanna">
-                                <i class="fas fa-map-marker-alt"></i> Khanna
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Kishangarh"
-                                href="https://lapinozpizza.in/store-locator/Kishangarh">
-                                <i class="fas fa-map-marker-alt"></i> Kishangarh
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Kochi"
-                                href="https://lapinozpizza.in/store-locator/Kochi">
-                                <i class="fas fa-map-marker-alt"></i> Kochi
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Kolkata"
-                                href="https://lapinozpizza.in/store-locator/Kolkata">
-                                <i class="fas fa-map-marker-alt"></i> Kolkata
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Kollam"
-                                href="https://lapinozpizza.in/store-locator/Kollam">
-                                <i class="fas fa-map-marker-alt"></i> Kollam
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Kota"
-                                href="https://lapinozpizza.in/store-locator/Kota">
-                                <i class="fas fa-map-marker-alt"></i> Kota
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Kurali"
-                                href="https://lapinozpizza.in/store-locator/Kurali">
-                                <i class="fas fa-map-marker-alt"></i> Kurali
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="city-name-outr">
-                    <div class="city-name-souter">
-                        <p class="city-name-s">L</p>
-                    </div>
-                    <ul class="cities-list-nw">
-                        <li>
-                            <a id="locationLink" title="Our outlets in Lucknow"
-                                href="https://lapinozpizza.in/store-locator/Lucknow">
-                                <i class="fas fa-map-marker-alt"></i> Lucknow
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Ludhiana"
-                                href="https://lapinozpizza.in/store-locator/Ludhiana">
-                                <i class="fas fa-map-marker-alt"></i> Ludhiana
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="city-name-outr">
-                    <div class="city-name-souter">
-                        <p class="city-name-s">M</p>
-                    </div>
-                    <ul class="cities-list-nw">
-                        <li>
-                            <a id="locationLink" title="Our outlets in Maharajganj"
-                                href="https://lapinozpizza.in/store-locator/Maharajganj">
-                                <i class="fas fa-map-marker-alt"></i> Maharajganj
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Malout"
-                                href="https://lapinozpizza.in/store-locator/Malout">
-                                <i class="fas fa-map-marker-alt"></i> Malout
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Manali"
-                                href="https://lapinozpizza.in/store-locator/Manali">
-                                <i class="fas fa-map-marker-alt"></i> Manali
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Mandi"
-                                href="https://lapinozpizza.in/store-locator/Mandi">
-                                <i class="fas fa-map-marker-alt"></i> Mandi
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Mandi Gobindgarh"
-                                href="https://lapinozpizza.in/store-locator/Mandi Gobindgarh">
-                                <i class="fas fa-map-marker-alt"></i> Mandi Gobindgarh
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Mangalore"
-                                href="https://lapinozpizza.in/store-locator/Mangalore">
-                                <i class="fas fa-map-marker-alt"></i> Mangalore
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Meerut"
-                                href="https://lapinozpizza.in/store-locator/Meerut">
-                                <i class="fas fa-map-marker-alt"></i> Meerut
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Mehsana"
-                                href="https://lapinozpizza.in/store-locator/Mehsana">
-                                <i class="fas fa-map-marker-alt"></i> Mehsana
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Mhow"
-                                href="https://lapinozpizza.in/store-locator/Mhow">
-                                <i class="fas fa-map-marker-alt"></i> Mhow
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Modasa"
-                                href="https://lapinozpizza.in/store-locator/Modasa">
-                                <i class="fas fa-map-marker-alt"></i> Modasa
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Moga"
-                                href="https://lapinozpizza.in/store-locator/Moga">
-                                <i class="fas fa-map-marker-alt"></i> Moga
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Mohali"
-                                href="https://lapinozpizza.in/store-locator/Mohali">
-                                <i class="fas fa-map-marker-alt"></i> Mohali
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Moradabad"
-                                href="https://lapinozpizza.in/store-locator/Moradabad">
-                                <i class="fas fa-map-marker-alt"></i> Moradabad
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Morbi"
-                                href="https://lapinozpizza.in/store-locator/Morbi">
-                                <i class="fas fa-map-marker-alt"></i> Morbi
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Mount Abu"
-                                href="https://lapinozpizza.in/store-locator/Mount Abu">
-                                <i class="fas fa-map-marker-alt"></i> Mount Abu
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Muktsar"
-                                href="https://lapinozpizza.in/store-locator/Muktsar">
-                                <i class="fas fa-map-marker-alt"></i> Muktsar
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Mumbai"
-                                href="https://lapinozpizza.in/store-locator/Mumbai">
-                                <i class="fas fa-map-marker-alt"></i> Mumbai
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Muzaffarpur"
-                                href="https://lapinozpizza.in/store-locator/Muzaffarpur">
-                                <i class="fas fa-map-marker-alt"></i> Muzaffarpur
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="city-name-outr">
-                    <div class="city-name-souter">
-                        <p class="city-name-s">N</p>
-                    </div>
-                    <ul class="cities-list-nw">
-                        <li>
-                            <a id="locationLink" title="Our outlets in Nabha"
-                                href="https://lapinozpizza.in/store-locator/Nabha">
-                                <i class="fas fa-map-marker-alt"></i> Nabha
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Nadiad"
-                                href="https://lapinozpizza.in/store-locator/Nadiad">
-                                <i class="fas fa-map-marker-alt"></i> Nadiad
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Nagpur"
-                                href="https://lapinozpizza.in/store-locator/Nagpur">
-                                <i class="fas fa-map-marker-alt"></i> Nagpur
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Nashik"
-                                href="https://lapinozpizza.in/store-locator/Nashik">
-                                <i class="fas fa-map-marker-alt"></i> Nashik
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Nathdwara"
-                                href="https://lapinozpizza.in/store-locator/Nathdwara">
-                                <i class="fas fa-map-marker-alt"></i> Nathdwara
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Navi Mumbai"
-                                href="https://lapinozpizza.in/store-locator/Navi Mumbai">
-                                <i class="fas fa-map-marker-alt"></i> Navi Mumbai
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Navsari"
-                                href="https://lapinozpizza.in/store-locator/Navsari">
-                                <i class="fas fa-map-marker-alt"></i> Navsari
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Nawanshahr"
-                                href="https://lapinozpizza.in/store-locator/Nawanshahr">
-                                <i class="fas fa-map-marker-alt"></i> Nawanshahr
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Noida"
-                                href="https://lapinozpizza.in/store-locator/Noida">
-                                <i class="fas fa-map-marker-alt"></i> Noida
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="city-name-outr">
-                    <div class="city-name-souter">
-                        <p class="city-name-s">P</p>
-                    </div>
-                    <ul class="cities-list-nw">
-                        <li>
-                            <a id="locationLink" title="Our outlets in Palanpur"
-                                href="https://lapinozpizza.in/store-locator/Palanpur">
-                                <i class="fas fa-map-marker-alt"></i> Palanpur
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Panchkula"
-                                href="https://lapinozpizza.in/store-locator/Panchkula">
-                                <i class="fas fa-map-marker-alt"></i> Panchkula
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Panipat"
-                                href="https://lapinozpizza.in/store-locator/Panipat">
-                                <i class="fas fa-map-marker-alt"></i> Panipat
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Patan"
-                                href="https://lapinozpizza.in/store-locator/Patan">
-                                <i class="fas fa-map-marker-alt"></i> Patan
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Pathankot"
-                                href="https://lapinozpizza.in/store-locator/Pathankot">
-                                <i class="fas fa-map-marker-alt"></i> Pathankot
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Patiala"
-                                href="https://lapinozpizza.in/store-locator/Patiala">
-                                <i class="fas fa-map-marker-alt"></i> Patiala
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Patna"
-                                href="https://lapinozpizza.in/store-locator/Patna">
-                                <i class="fas fa-map-marker-alt"></i> Patna
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in perambalur"
-                                href="https://lapinozpizza.in/store-locator/perambalur">
-                                <i class="fas fa-map-marker-alt"></i> perambalur
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Petlad"
-                                href="https://lapinozpizza.in/store-locator/Petlad">
-                                <i class="fas fa-map-marker-alt"></i> Petlad
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Porbandar"
-                                href="https://lapinozpizza.in/store-locator/Porbandar">
-                                <i class="fas fa-map-marker-alt"></i> Porbandar
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Prayagraj"
-                                href="https://lapinozpizza.in/store-locator/Prayagraj">
-                                <i class="fas fa-map-marker-alt"></i> Prayagraj
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Puducherry"
-                                href="https://lapinozpizza.in/store-locator/Puducherry">
-                                <i class="fas fa-map-marker-alt"></i> Puducherry
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Pune"
-                                href="https://lapinozpizza.in/store-locator/Pune">
-                                <i class="fas fa-map-marker-alt"></i> Pune
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="city-name-outr">
-                    <div class="city-name-souter">
-                        <p class="city-name-s">R</p>
-                    </div>
-                    <ul class="cities-list-nw">
-                        <li>
-                            <a id="locationLink" title="Our outlets in Raebareli"
-                                href="https://lapinozpizza.in/store-locator/Raebareli">
-                                <i class="fas fa-map-marker-alt"></i> Raebareli
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Raipur"
-                                href="https://lapinozpizza.in/store-locator/Raipur">
-                                <i class="fas fa-map-marker-alt"></i> Raipur
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Rajkot"
-                                href="https://lapinozpizza.in/store-locator/Rajkot">
-                                <i class="fas fa-map-marker-alt"></i> Rajkot
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Rajpura"
-                                href="https://lapinozpizza.in/store-locator/Rajpura">
-                                <i class="fas fa-map-marker-alt"></i> Rajpura
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Ranaghat"
-                                href="https://lapinozpizza.in/store-locator/Ranaghat">
-                                <i class="fas fa-map-marker-alt"></i> Ranaghat
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Ranchi"
-                                href="https://lapinozpizza.in/store-locator/Ranchi">
-                                <i class="fas fa-map-marker-alt"></i> Ranchi
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Ratlam"
-                                href="https://lapinozpizza.in/store-locator/Ratlam">
-                                <i class="fas fa-map-marker-alt"></i> Ratlam
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Rewa"
-                                href="https://lapinozpizza.in/store-locator/Rewa">
-                                <i class="fas fa-map-marker-alt"></i> Rewa
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Rourkela"
-                                href="https://lapinozpizza.in/store-locator/Rourkela">
-                                <i class="fas fa-map-marker-alt"></i> Rourkela
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Rudrapur"
-                                href="https://lapinozpizza.in/store-locator/Rudrapur">
-                                <i class="fas fa-map-marker-alt"></i> Rudrapur
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="city-name-outr">
-                    <div class="city-name-souter">
-                        <p class="city-name-s">S</p>
-                    </div>
-                    <ul class="cities-list-nw">
-                        <li>
-                            <a id="locationLink" title="Our outlets in Sagar"
-                                href="https://lapinozpizza.in/store-locator/Sagar">
-                                <i class="fas fa-map-marker-alt"></i> Sagar
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Saharanpur"
-                                href="https://lapinozpizza.in/store-locator/Saharanpur">
-                                <i class="fas fa-map-marker-alt"></i> Saharanpur
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Sangrur"
-                                href="https://lapinozpizza.in/store-locator/Sangrur">
-                                <i class="fas fa-map-marker-alt"></i> Sangrur
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Sasaram"
-                                href="https://lapinozpizza.in/store-locator/Sasaram">
-                                <i class="fas fa-map-marker-alt"></i> Sasaram
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Satna"
-                                href="https://lapinozpizza.in/store-locator/Satna">
-                                <i class="fas fa-map-marker-alt"></i> Satna
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Secunderabad"
-                                href="https://lapinozpizza.in/store-locator/Secunderabad">
-                                <i class="fas fa-map-marker-alt"></i> Secunderabad
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Shirdi"
-                                href="https://lapinozpizza.in/store-locator/Shirdi">
-                                <i class="fas fa-map-marker-alt"></i> Shirdi
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Sikar"
-                                href="https://lapinozpizza.in/store-locator/Sikar">
-                                <i class="fas fa-map-marker-alt"></i> Sikar
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Siliguri"
-                                href="https://lapinozpizza.in/store-locator/Siliguri">
-                                <i class="fas fa-map-marker-alt"></i> Siliguri
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Silvassa"
-                                href="https://lapinozpizza.in/store-locator/Silvassa">
-                                <i class="fas fa-map-marker-alt"></i> Silvassa
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Singrauli"
-                                href="https://lapinozpizza.in/store-locator/Singrauli">
-                                <i class="fas fa-map-marker-alt"></i> Singrauli
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Sirhind"
-                                href="https://lapinozpizza.in/store-locator/Sirhind">
-                                <i class="fas fa-map-marker-alt"></i> Sirhind
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Sirsi"
-                                href="https://lapinozpizza.in/store-locator/Sirsi">
-                                <i class="fas fa-map-marker-alt"></i> Sirsi
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Sitapur"
-                                href="https://lapinozpizza.in/store-locator/Sitapur">
-                                <i class="fas fa-map-marker-alt"></i> Sitapur
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Solan"
-                                href="https://lapinozpizza.in/store-locator/Solan">
-                                <i class="fas fa-map-marker-alt"></i> Solan
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Solapur"
-                                href="https://lapinozpizza.in/store-locator/Solapur">
-                                <i class="fas fa-map-marker-alt"></i> Solapur
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Sultanpur"
-                                href="https://lapinozpizza.in/store-locator/Sultanpur">
-                                <i class="fas fa-map-marker-alt"></i> Sultanpur
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Surat"
-                                href="https://lapinozpizza.in/store-locator/Surat">
-                                <i class="fas fa-map-marker-alt"></i> Surat
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Surendranagar"
-                                href="https://lapinozpizza.in/store-locator/Surendranagar">
-                                <i class="fas fa-map-marker-alt"></i> Surendranagar
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="city-name-outr">
-                    <div class="city-name-souter">
-                        <p class="city-name-s">T</p>
-                    </div>
-                    <ul class="cities-list-nw">
-                        <li>
-                            <a id="locationLink" title="Our outlets in Tarn Taran"
-                                href="https://lapinozpizza.in/store-locator/Tarn Taran">
-                                <i class="fas fa-map-marker-alt"></i> Tarn Taran
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Thane"
-                                href="https://lapinozpizza.in/store-locator/Thane">
-                                <i class="fas fa-map-marker-alt"></i> Thane
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Tumakuru"
-                                href="https://lapinozpizza.in/store-locator/Tumakuru">
-                                <i class="fas fa-map-marker-alt"></i> Tumakuru
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="city-name-outr">
-                    <div class="city-name-souter">
-                        <p class="city-name-s">U</p>
-                    </div>
-                    <ul class="cities-list-nw">
-                        <li>
-                            <a id="locationLink" title="Our outlets in Udaipur"
-                                href="https://lapinozpizza.in/store-locator/Udaipur">
-                                <i class="fas fa-map-marker-alt"></i> Udaipur
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Ujjain"
-                                href="https://lapinozpizza.in/store-locator/Ujjain">
-                                <i class="fas fa-map-marker-alt"></i> Ujjain
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Una"
-                                href="https://lapinozpizza.in/store-locator/Una">
-                                <i class="fas fa-map-marker-alt"></i> Una
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Upleta"
-                                href="https://lapinozpizza.in/store-locator/Upleta">
-                                <i class="fas fa-map-marker-alt"></i> Upleta
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="city-name-outr">
-                    <div class="city-name-souter">
-                        <p class="city-name-s">V</p>
-                    </div>
-                    <ul class="cities-list-nw">
-                        <li>
-                            <a id="locationLink" title="Our outlets in Vadodara"
-                                href="https://lapinozpizza.in/store-locator/Vadodara">
-                                <i class="fas fa-map-marker-alt"></i> Vadodara
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Valsad"
-                                href="https://lapinozpizza.in/store-locator/Valsad">
-                                <i class="fas fa-map-marker-alt"></i> Valsad
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Vapi"
-                                href="https://lapinozpizza.in/store-locator/Vapi">
-                                <i class="fas fa-map-marker-alt"></i> Vapi
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Varanasi"
-                                href="https://lapinozpizza.in/store-locator/Varanasi">
-                                <i class="fas fa-map-marker-alt"></i> Varanasi
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Veraval"
-                                href="https://lapinozpizza.in/store-locator/Veraval">
-                                <i class="fas fa-map-marker-alt"></i> Veraval
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Vijayawada"
-                                href="https://lapinozpizza.in/store-locator/Vijayawada">
-                                <i class="fas fa-map-marker-alt"></i> Vijayawada
-                            </a>
-                        </li>
-
-                        <li>
-                            <a id="locationLink" title="Our outlets in Vyara"
-                                href="https://lapinozpizza.in/store-locator/Vyara">
-                                <i class="fas fa-map-marker-alt"></i> Vyara
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="city-name-outr">
-                    <div class="city-name-souter">
-                        <p class="city-name-s">Y</p>
-                    </div>
-                    <ul class="cities-list-nw">
-                        <li>
-                            <a id="locationLink" title="Our outlets in Yamuna Nagar"
-                                href="https://lapinozpizza.in/store-locator/Yamuna Nagar">
-                                <i class="fas fa-map-marker-alt"></i> Yamuna Nagar
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="city-name-outr">
-                    <div class="city-name-souter">
-                        <p class="city-name-s">Z</p>
-                    </div>
-                    <ul class="cities-list-nw">
-                        <li>
-                            <a id="locationLink" title="Our outlets in Zirakpur"
-                                href="https://lapinozpizza.in/store-locator/Zirakpur">
-                                <i class="fas fa-map-marker-alt"></i> Zirakpur
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <style>
-            .lapinoz-outlet-container {
-                padding: 25px 0;
-            }
-
-            .lapinoz-outlet-container {
-                max-width: 1250px;
-                width: 100%;
-                padding-right: 15px;
-                padding-left: 15px;
-                margin-right: auto;
-                margin-left: auto;
-            }
-
-            .lapinoz-outlet-common-heading {
-                font-size: 26px;
-                font-weight: 600;
-            }
-
-            .lapinoz-outlet-common-heading {
-                display: flex;
-                justify-content: start;
-            }
-
-            .city-name-outr {
-                display: flex;
-                margin-bottom: 10px;
-            }
-
-            .city-name-outr .city-name-souter {
-                width: 100%;
-                max-width: 3.5%;
-            }
-
-            .city-name-outr .city-name-s {
-                font-weight: 500;
-                margin-top: 8px;
-                width: 28px;
-                line-height: 28px;
-                text-align: center;
-                border-radius: 50%;
-                box-shadow: 0px 4px 7px rgb(0 0 0 / 20%);
-            }
-
-            .city-name-outr .cities-list-nw {
-                width: 100%;
-                max-width: 99%;
-            }
-
-            .cities-list-nw {
-                margin-top: 2rem;
-                overflow: hidden;
-                height: auto;
-                display: block;
-                width: 100%;
-                padding-left: 0px;
-                margin: 0px;
-                list-style: none;
-            }
-
-            @media (max-width: 768px) {
-                .cities-list-nw {
-                    padding-left: 20px;
-                }
-            }
-
-            .cities-list-nw li {
-                width: auto;
-                padding: 7px 10px;
-                background: green;
-                border-radius: 0.5em;
-                margin: 0.3em;
-                box-shadow: 0 5px 20px -10px rgb(0 0 0 / 30%);
-                font-size: 15px;
-                display: inline-flex;
-                align-items: center;
-                font-weight: 500;
-            }
-
-            .cities-list-nw a {
-                color: #efefef;
-                text-decoration: none;
-            }
-
-            .city-name-outr ul.cities-list-nw {
-                opacity: 0;
-                transition: opacity 0.2s ease-in-out;
-            }
-
-            .city-name-outr ul.cities-list-nw.visible {
-                opacity: 1;
-            }
-
-            .city-name-outr ul.cities-list-nw.invisible {
-                opacity: 0;
-            }
-
-            .city-name-outr ul.cities-list-nw li {
-                opacity: 0;
-                transform: translateY(20px);
-                transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
-            }
-
-            .city-name-outr ul.cities-list-nw li.visible {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            .city-name-s {
-                font-weight: bold;
-                font-size: 1.5em;
-                margin-bottom: 10px;
-            }
-        </style>
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const observerOptions = {
-                    root: null,
-                    rootMargin: '0px',
-                    threshold: 0.1
-                };
-
-                const observer = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        const ulElement = entry.target.querySelector('ul.cities-list-nw');
-                        const cityItems = ulElement.querySelectorAll('li');
-                        if (entry.isIntersecting) {
-                            ulElement.classList.add('visible');
-                            ulElement.classList.remove('invisible');
-                            cityItems.forEach((li, index) => {
-                                setTimeout(() => {
-                                    li.classList.add('visible');
-                                    li.classList.remove('invisible');
-                                }, index * 200); // 200ms delay for each city item
-                            });
-                        } else {
-                            ulElement.classList.remove('visible');
-                            ulElement.classList.add('invisible');
-                            cityItems.forEach((li, index) => {
-                                setTimeout(() => {
-                                    li.classList.remove('visible');
-                                    li.classList.add('invisible');
-                                }, index * 200); // 200ms delay for each city item
-                            });
-                        }
-                    });
-                }, observerOptions);
-
-                const citySections = document.querySelectorAll('.city-name-outr');
-                citySections.forEach(section => {
-                    observer.observe(section);
-                });
-            });
-        </script>
-
         <!-- Footer -->
         <footer class="site-footer" data-scroll-section>
+            <div class="bubbles">
+                <!-- Bubbles will be inserted here dynamically by JavaScript -->
+            </div>
             <div class="footer-top">
                 <div class="footer-container">
                     <div class="footer-row">
@@ -6251,11 +4552,11 @@
                                         <span>Customer Support: </span>
                                         <a class="d-inline d-md-block" href="mailto:support@lapinozpizza.in">
                                             <svg id="Capa_1" style="
-                      enable-background: new 0 0 512 512;
-                      height: auto;
-                      width: 100%;
-                      max-width: 15px;
-                    " version="1.1" viewBox="0 0 512 512" x="0px" xml:space="preserve"
+                              enable-background: new 0 0 512 512;
+                              height: auto;
+                              width: 100%;
+                              max-width: 15px;
+                            " version="1.1" viewBox="0 0 512 512" x="0px" xml:space="preserve"
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
                                                 <g>
@@ -6272,11 +4573,11 @@
                                         <span>Franchise Enquiry: </span>
                                         <a class="d-inline d-md-block" href="mailto:info@lapinozpizza.in"><svg
                                                 id="Capa_1" style="
-                      enable-background: new 0 0 512 512;
-                      height: auto;
-                      width: 100%;
-                      max-width: 15px;
-                    " version="1.1" viewBox="0 0 512 512" x="0px" xml:space="preserve"
+                              enable-background: new 0 0 512 512;
+                              height: auto;
+                              width: 100%;
+                              max-width: 15px;
+                            " version="1.1" viewBox="0 0 512 512" x="0px" xml:space="preserve"
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
                                                 <g>
@@ -6293,27 +4594,51 @@
                             </div>
                         </div>
 
-                        <div class="Follow-Us">
-                            <div class="Follow-Us-section">
-                                <h6>Follow Us :</h6>
-                                <p>
-                                    <a href="https://www.facebook.com/LaPinozPizzaIndia" target="_blank"><img
-                                            src="https://lapinozpizza.in/assets/wla_new/img/footer/facebook.svg"
-                                            alt="La Pino'z Pizza on facebook"></a></a>
-                                    <a href="https://www.instagram.com/lapinozpizzaindia/" target="_blank"><img
-                                            src="https://lapinozpizza.in/assets/wla_new/img/footer/instagram.svg"
-                                            alt="La Pino'z Pizza on instagram"></a>
-                                    <a href="https://www.youtube.com/c/LaPinozPizzaIndia/" target="_blank"><img
-                                            src="https://lapinozpizza.in/assets/wla_new/img/footer/youtube.svg"
-                                            alt="La Pino'z Pizza on youtube"></a>
-                                    <a href="https://www.pinterest.com/LaPinozPizzaindia/" target="_blank"><img
-                                            src="https://lapinozpizza.in/assets/wla_new/img/footer/pinterest.svg"
-                                            alt="La Pino'z Pizza on pinterest"></a>
-                                    <a href="https://twitter.com/LaPinozPizzaInd" target="_blank"><img
-                                            src="https://lapinozpizza.in/assets/wla_new/img/footer/twitter.svg"
-                                            alt="La Pino'z Pizza on twitter"></a>
-                                </p>
-                            </div>
+                        <div class="Follow-Us" style="display: flex; flex-direction: column; margin-inline: 15px;">
+                            <h6 style="margin-bottom: 5px;">Follow Us :</h6>
+                            <ul class="Follow-Us-section">
+
+                                <li class="footer-social-item">
+                                    <button class="footer-Btn">
+                                        <span class="svgContainer">
+                                            <i class="fa-brands fa-facebook"></i>
+                                        </span>
+                                        <span class="footer-BG"></span>
+                                    </button>
+                                </li>
+                                <li class="footer-social-item">
+                                    <button class="footer-Btn">
+                                        <span class="svgContainer">
+                                            <i class="fa-brands fa-instagram"></i>
+                                        </span>
+                                        <span class="footer-BG"></span>
+                                    </button>
+                                </li>
+                                <li class="footer-social-item">
+                                    <button class="footer-Btn">
+                                        <span class="svgContainer">
+                                            <i class="fa-brands fa-youtube"></i>
+                                        </span>
+                                        <span class="footer-BG"></span>
+                                    </button>
+                                </li>
+                                <li class="footer-social-item">
+                                    <button class="footer-Btn">
+                                        <span class="svgContainer">
+                                            <i class="fa-brands fa-pinterest"></i>
+                                        </span>
+                                        <span class="footer-BG"></span>
+                                    </button>
+                                </li>
+                                <li class="footer-social-item">
+                                    <button class="footer-Btn">
+                                        <span class="svgContainer">
+                                            <i class="fa-brands fa-twitter"></i>
+                                        </span>
+                                        <span class="footer-BG"></span>
+                                    </button>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -6332,11 +4657,95 @@
                 </div>
             </div>
         </footer>
+        <svg style="position:fixed; bottom:0%;">
+            <defs>
+                <filter id="blob">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+                        result="blob" />
+                </filter>
+            </defs>
+        </svg>
         <style>
             .site-footer {
-                background-color: green;
+                --footer-background: #ED5565;
+                background-color: #ED5565;
                 color: rgb(255, 255, 255);
                 height: 100%;
+                z-index: 1;
+                position: relative;
+            }
+
+
+
+            ul.Follow-Us-section {
+                list-style: none;
+                display: flex;
+                gap: 20px;
+                align-items: center;
+                /* background-color: #201C1D; */
+            }
+
+            .footer-Btn {
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: none;
+                background-color: transparent;
+                position: relative;
+                /* overflow: hidden; */
+                border-radius: 7px;
+                cursor: pointer;
+                z-index: 1;
+                transition: all .3s;
+            }
+
+            .footer-text:hover {
+                /* Rotate around Y axis by 180 degrees */
+                transform: rotateX(360deg);
+                /* Smooth transition for animation */
+                transition: transform 0.5s ease;
+            }
+
+            .svgContainer {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: transparent;
+                backdrop-filter: blur(4px);
+                letter-spacing: 0.8px;
+                border-radius: 10px;
+                transition: all .3s;
+                border: 1px solid rgba(156, 156, 156, 0.466);
+            }
+
+            .footer-BG {
+                position: absolute;
+                content: "";
+                width: 100%;
+                height: 100%;
+                background-color: #ffe77a;
+                /* background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); */
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f09433', endColorstr='#bc1888', GradientType=1);
+                z-index: -1;
+                border-radius: 9px;
+                pointer-events: none;
+                transition: all .3s;
+            }
+
+            .footer-Btn:hover .footer-BG {
+                transform: rotate(35deg);
+                transform-origin: bottom;
+            }
+
+            .footer-Btn:hover .svgContainer {
+                background-color: rgba(156, 156, 156, 0.466);
             }
 
             .footer-top {
@@ -6450,10 +4859,56 @@
                 color: white;
                 border-radius: 50%;
             }
+
+            @keyframes bubble-size {
+
+                0%,
+                75% {
+                    width: var(--size, 4rem);
+                    height: var(--size, 4rem);
+                }
+
+                100% {
+                    width: 0rem;
+                    height: 0rem;
+                }
+            }
+
+            @keyframes bubble-move {
+                0% {
+                    bottom: 0rem;
+                }
+
+                100% {
+                    bottom: var(--distance, 6rem);
+                }
+            }
+
+            .site-footer .bubbles {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 1rem;
+                background: var(--footer-background);
+                filter: url("#blob");
+                z-index: -1;
+            }
+
+            .site-footer .bubbles .bubble {
+                position: absolute;
+                left: var(--position, 50%);
+                background: var(--footer-background);
+                border-radius: 100%;
+                animation: bubble-size var(--time, 4s) ease-in infinite var(--delay, 0s),
+                    bubble-move var(--time, 4s) ease-in infinite var(--delay, 0s);
+                transform: translate(-50%, 100%);
+            }
         </style>
 
         <script src="./script.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 </body>
 

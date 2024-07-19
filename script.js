@@ -16,21 +16,73 @@
 
 // Locomotive
 document.addEventListener('DOMContentLoaded', () => {
-    const scrollContainer = document.querySelector("[data-scroll-container]");
+    const scrollContainer = document.querySelector("#main");
 
     const scroll = new LocomotiveScroll({
         el: scrollContainer,
         smooth: true,
         lerp: 0.1,
-        multiplier: 0.5,
+        reloadOnContextChange: true,
+        touchMultiplier: 2,
+        smoothMobile: 0,
         smartphone: {
-            smooth: true
+            smooth: !0,
+            breakpoint: 767
         },
         tablet: {
-            smooth: true
+            smooth: !1,
+            breakpoint: 1024
         },
 
     });
+
+    function updateScrollSpeed() {
+        // For responsive scroll speed
+        const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+        // country scroller
+        const countrytrack = document.querySelector('#Country-track');
+        const defaultScrollSpeed = countrytrack.getAttribute('data-scroll-speed');
+
+        // text scroller
+        const rotateLeft = document.querySelector('.rotate-left');
+        const rotateDefaultspeedLeft = rotateLeft.getAttribute('data-scroll-speed');
+
+        const rotateRight = document.querySelector('.rotate-right');
+        const rotateDefaultspeedRight = rotateRight.getAttribute('data-scroll-speed');
+
+        const hero__content_left = document.querySelector(".hero__content_left");
+        const defaultHeroTextSpeed = hero__content_left.getAttribute('data-scroll-speed');
+
+        if (hero__content_left.hasAttribute('data-scroll-speed-mobile')) {
+            const scrollSpeed = isMobile ? -0.1 : defaultHeroTextSpeed;
+            hero__content_left.setAttribute('data-scroll-speed', scrollSpeed);
+        }
+
+        if (rotateLeft.hasAttribute('data-scroll-speed-mobile')) {
+
+            const scrollSpeed = isMobile ? 2 : rotateDefaultspeedLeft;
+            rotateLeft.setAttribute('data-scroll-speed', scrollSpeed);
+        }
+
+        if (rotateRight.hasAttribute('data-scroll-speed-mobile')) {
+            const scrollSpeed = isMobile ? -2 : rotateDefaultspeedRight;
+            rotateRight.setAttribute('data-scroll-speed', scrollSpeed);
+        }
+
+
+        if (countrytrack.hasAttribute('data-scroll-speed-mobile')) {
+            const scrollSpeed = isMobile ? 5 : defaultScrollSpeed;
+            countrytrack.setAttribute('data-scroll-speed', scrollSpeed);
+        }
+
+        scroll.update();
+    }
+
+    // Initial update
+    updateScrollSpeed();
+    // Update on resize
+    window.addEventListener('resize', updateScrollSpeed);
 
     // Hero section animations
     gsap.from('.hero-section .text', {
@@ -148,11 +200,76 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // for Journey section 
 document.addEventListener('DOMContentLoaded', () => {
+
     const timelineItems = document.querySelectorAll('.timeline-ul li');
     const imgElementContainer = document.querySelector('.right-img');
-    let currentImgElement = null;
+    let currentImgIndex = 0;
 
-    // Initialize IntersectionObserver
+    // Function to handle the animation of timeline items
+    // const animateTimelineItemsImage = () => {
+    //     const imgElements = [];
+    //     timelineItems.forEach(item => {
+    //         if (item.dataset.image) {
+    //             const newImgElement = document.createElement('img');
+    //             newImgElement.src = item.dataset.image;
+    //             newImgElement.className = 'pizza-img';
+    //             imgElements.push(newImgElement);
+    //             imgElementContainer.appendChild(newImgElement);
+    //         }
+    //     });
+
+    //     const displayImages = () => {
+    //         imgElements.forEach((img, index) => {
+    //             if (index === currentImgIndex) {
+    //                 img.classList.add('active');
+    //                 img.classList.remove('hidden');
+    //             } else {
+    //                 img.classList.remove('active');
+    //                 img.classList.add('hidden');
+    //             }
+    //         });
+    //         currentImgIndex = (currentImgIndex + 1) % imgElements.length;
+    //     };
+
+    //     displayImages(); // Initial display
+    //     setInterval(displayImages, 3000); // Rotate every 3 seconds
+    // };
+    const animateTimelineItemsImage = () => {
+        const imgElements = [];
+        // const imgElementContainer = document.querySelector('.right-img');
+        // const timelineItems = document.querySelectorAll('.timeline-ul li');
+        let currentImgIndex = 0;
+    
+        timelineItems.forEach(item => {
+            if (item.dataset.image) {
+                const newImgElement = document.createElement('img');
+                newImgElement.src = item.dataset.image;
+                newImgElement.className = 'pizza-img hidden';
+                imgElements.push(newImgElement);
+                imgElementContainer.appendChild(newImgElement);
+            }
+        });
+    
+        const displayImages = () => {
+            imgElements.forEach((img, index) => {
+                if (index === currentImgIndex) {
+                    img.classList.add('active');
+                    img.classList.remove('hidden');
+                } else {
+                    img.classList.remove('active');
+                    img.classList.add('hidden');
+                }
+            });
+            currentImgIndex = (currentImgIndex + 1) % imgElements.length;
+        };
+    
+        displayImages(); // Initial display
+        setInterval(displayImages, 3000); // Rotate every 3 seconds
+    };
+
+    animateTimelineItemsImage();
+
+    // // Initialize IntersectionObserver
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -166,26 +283,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.5 });
 
 
-    // Animation for Journey Section
+    // // Animation for Journey Section
     const section = document.querySelector('.Journey');
     observer.observe(section);
 
-    // Function to handle the animation of timeline items
+    // // Function to handle the animation of timeline items
     const animateTimelineItems = () => {
         timelineItems.forEach((item, index) => {
             setTimeout(() => {
                 item.classList.add('show');
-                const newImgElement = document.createElement('img');
-                newImgElement.src = item.dataset.image;
-                newImgElement.className = 'pizza-img active';
-                imgElementContainer.appendChild(newImgElement);
-                if (currentImgElement) {
-                    currentImgElement.classList.add('hidden');
-                    setTimeout(() => {
-                        currentImgElement.remove();
-                    }, 2500); // Match the duration of CSS transition
-                }
-                currentImgElement = newImgElement;
             }, index * 500); // Delay each item's activation by 0.3 seconds
         });
     };
@@ -195,15 +301,79 @@ document.addEventListener('DOMContentLoaded', () => {
         timelineItems.forEach((item) => {
             item.classList.remove('show');
         });
-        const images = imgElementContainer.querySelectorAll('.pizza-img');
-        images.forEach((img) => {
-            img.classList.add('hidden');
-            setTimeout(() => {
-                img.remove();
-            }, 1000); // Match the duration of CSS transition
-        });
+        // const images = imgElementContainer.querySelectorAll('.pizza-img');
+        // images.forEach((img) => {
+        //     img.classList.add('hidden');
+        //     setTimeout(() => {
+        //         img.remove();
+        //     }, 1000); // Match the duration of CSS transition
+        // });
         currentImgElement = null;
     };
+
+    // Countries section
+    const options = {
+        threshold: 0.1
+    };
+
+    const CustomObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            } else {
+                entry.target.classList.remove('show');
+            }
+        });
+    }, options);
+    const CountriesSection = document.querySelector(".country-scroll-section");
+    CustomObserver.observe(CountriesSection);
+
+    scroll.on('call', (func, direction, obj) => {
+        if (func === 'toggleBgColor' && direction === 'enter') {
+            document.querySelector('.country-scroll-section').style.backgroundColor = 'black';
+        } else if (func === 'toggleBgColor' && direction === 'leave') {
+            document.querySelector('.country-scroll-section').style.backgroundColor = 'white';
+        }
+    });
+
+    // Register scroll callbacks
+    scroll.on('scroll', (obj, way, value) => {
+        if (obj.el.classList.contains('country-scroll-section')) {
+            if (way === 'enter') {
+                document.body.classList.add('dark-bg');
+            } else {
+                document.body.classList.remove('dark-bg');
+            }
+        }
+        if (obj.currentElements['.country-scroll-section']) {
+            const section = obj.currentElements['.country-scroll-section'];
+            if (section.progress > 0.1 && section.progress < 0.9) {
+                document.querySelector('.country-scroll-section').style.backgroundColor = 'black';
+            } else {
+                document.querySelector('.country-scroll-section').style.backgroundColor = 'white';
+            }
+        }
+    });
+    // scroll.on('call', (func, direction, obj) => {
+    //     if (func === 'toggleBgColor' && direction === 'enter') {
+    //         document.body.classList.add('is-inview');
+    //     } else if (func === 'toggleBgColor' && direction === 'leave') {
+    //         document.body.classList.remove('is-inview');
+    //     }
+    // });
+
+    // // Register scroll callbacks
+    // scroll.on('scroll', (obj) => {
+    //     if (obj.currentElements['country-scroll-section']) {
+    //         const section = obj.currentElements['country-scroll-section'];
+    //         if (section.progress > 0.1 && section.progress < 0.9) {
+    //             document.body.classList.add('is-inview');
+    //         } else {
+    //             document.body.classList.remove('is-inview');
+    //         }
+    //     }
+    // });
+
 });
 
 
@@ -321,3 +491,16 @@ container.addEventListener('mouseleave', () => {
     targetY = 0;
     animate();  // Smoothly return to the center
 });
+
+// Footer
+const bubblesContainer = document.querySelector('.site-footer .bubbles');
+        for (let i = 0; i < 128; i++) {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.style.setProperty('--size', `${2 + Math.random() * 4}rem`);
+            bubble.style.setProperty('--distance', `${6 + Math.random() * 4}rem`);
+            bubble.style.setProperty('--position', `${-5 + Math.random() * 110}%`);
+            bubble.style.setProperty('--time', `${2 + Math.random() * 2}s`);
+            bubble.style.setProperty('--delay', `${-1 * (2 + Math.random() * 2)}s`);
+            bubblesContainer.appendChild(bubble);
+        }

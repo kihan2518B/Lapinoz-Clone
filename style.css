@@ -5,8 +5,7 @@
 }
 
 #main {
-    height: auto;
-    width: auto;
+    display: block;
 }
 
 body {
