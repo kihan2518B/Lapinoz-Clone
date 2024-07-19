@@ -16,24 +16,913 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhZGOUhnHTM_W5YHmBKkZ5Gu5u6cZDhfw&callback=initMap" async defer></script>
 </head>
 
 <body>
-    <section class="hero-section">
+    
         <!-- <div class="img">
             <img src="./Media/lapinoz-logo.png" alt="">
         </div> -->
         <!-- <nav>
             <ul>
-                <li><a class="active" href="#"><i class="fa-solid fa-people-carry-box"></i>Home</a></li>
-                <li><a href="#"><i class="ri-order-play-line"></i> Order online</a></li>
-                <li><a href="#"><i class="ri-map-pin-line"></i> Store Locator</a></li>
-                <li><a href="#"><i class="ri-customer-service-line"></i> Franchise Enquiry</a></li>
-                <li><a href="#"><i class="ri-hourglass-2-line"></i> Our Story</a></li>
-                <li><a href="#"><i class="ri-contacts-line"></i> Contact Us</a></li>
+                <li><a class="active cube" href="#"><i class="fa-solid fa-people-carry-box"></i>Home</a></li>
+                <li><a href="#" class="cube"><i class="ri-order-play-line"></i> Order online</a></li>
+                <li><a href="#" class="cube"><i class="ri-map-pin-line"></i> Store Locator</a></li>
+                <li><a href="#" class="cube"><i class="ri-customer-service-line"></i> Franchise Enquiry</a></li>
+                <li><a href="#" class="cube"><i class="ri-hourglass-2-line"></i> Our Story</a></li>
+                <li><a href="#" class="cube"><i class="ri-contacts-line"></i> Contact Us</a></li>
             </ul>
         </nav> -->
+
+        <!-- <style>
+
+nav {
+    perspective: 1000px; /* Add perspective to the parent element */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+}
+
+li {
+    position: relative;
+    width: 120px;
+    height: 40px;
+    transform-style: preserve-3d;
+    /* transform: rotateX(0deg) rotateY(0deg); */
+    transition: transform 0.3s ease-in-out;
+}
+
+li a {
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: black;
+    text-decoration: none;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    backface-visibility: hidden; /* Hides the back face of the element */
+    transform-style: preserve-3d; /* Ensure the a element preserves 3D transformation */
+    /* position: relative; Needed for absolute positioning of pseudo-elements */
+}
+
+li a i {
+    margin-right: 0.5rem;
+}
+
+li::before, li::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    backface-visibility: hidden; /* Hides the back face of the element */
+}
+
+li::before {
+    transform: rotateX(90deg) translateZ(-20px);
+}
+
+li::after {
+    transform: rotateX(-90deg) translateZ(-20px);
+}
+
+li:hover {
+    transform: rotateX(90deg);
+}
+
+li:hover::before, li:hover::after {
+    transform: rotateX(0deg) translateZ(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+        </style> -->
+
+        <section class="hero-section" data-scroll-section data-scroll>
+            <img class="green_bg" src="./Media/Ellipse 1Hero_BG.svg" alt="">
+            <div class="nav__container">
+                <img class="logo" src="./Media/lapinoz_logo.png" alt="">
+                <div class="nav_elements">
+                    <nav>
+                        <ul class="navbar__button-list">
+                            <li><a class="active" href="#">Home</a></li>
+                            <li><a href="#">Order online</a></li>
+                            <li><a href="#"> Store Locator</a></li>
+                            <li><a href="#">Franchise Enquiry</a></li>
+                            <li><a href="#">Our Story</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Login</a></li>
+                        </ul>
+                    </nav>
+                    <button class="close"><span class="bar"></span></button>
+
+                </div>
+
+            </div>
+
+            <div class="hero__content">
+                <div class="hero__content_left">
+                    <div class="text">
+                        The <br> Giant <br>
+                        <span> PIZZA SLICE</span>
+                    </div>
+                </div>
+                <div class="hero__content_right">
+                    <div class="hero_img_container">
+                        <img class="hero_img" src="./Media/—Pngtree—italian pizza slice cheese sausage_13137251.png"
+                            alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="outside">
+                <div class="inside">
+                    <img class="logo" src="./Media/lapinoz_logo.png" alt="">
+
+                    <ul class="menu">
+                        <li><a class="active" href="#">Home</a></li>
+                        <li><a href="#">Order online</a></li>
+                        <li><a href="#"> Store Locator</a></li>
+                        <li><a href="#">Franchise Enquiry</a></li>
+                        <li><a href="#">Our Story</a></li>
+                        <li class="hideformobile"><a href="#">Contact Us</a></li>
+                        <li class="hideformobile"><a href="#">Login</a></li>
+                        <div class="showformobile">
+                            <div>
+                                <i class="ri-contacts-line"></i>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-right-to-bracket"></i>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            document.querySelectorAll('.navbar__button-list a').forEach(link => {
+                        let textContent = link.textContent.trim();
+                        let spans = textContent.split('').map((char, i) => `<span style="transition-delay: ${i * 0.05}s;">${char}</span>`).join('');
+                        link.innerHTML = `<div>${spans}</div>`;
+                    });
+        </script>
+        <style>
+            @media (max-width: 768px) {
+            .navbar__button-list {
+                padding-left: 20px;
+            }
+        }
+
+        .navbar__button-list  {
+            margin: 0.3em;
+            font-size: 15px;
+            display: inline-flex;
+            align-items: center;
+            font-weight: 500;
+        }
+
+       
+
+        .navbar__button-list a {
+            /* --background: #00572d; */
+            --text: black;
+            --font-size: 15px;
+            --duration: .44s;
+            --move-hover: -4px;
+            /* --shadow: 0 2px 8px -1px #00572da5;
+            --shadow-hover: 0 4px 20px -2px #00572da2; */
+            --font-shadow: var(--font-size);
+            /* background-color: #00572d; */
+            padding: 12px 20px;
+            font-family: 'Roboto';
+            font-weight: 500;
+            line-height: var(--font-size);
+            border-radius: 24px;
+            display: block;
+            outline: none;
+            appearance: none;
+            border: none;
+            margin: 5px 7px;
+            text-decoration: none;
+            font-size: var(--font-size);
+            letter-spacing: .5px;
+            background: var(--background);
+            color: var(--text);
+            box-shadow: var(--shadow);
+            transform: translateY(var(--y)) translateZ(0);
+            transition: transform var(--duration) ease, box-shadow var(--duration) ease;
+        }
+
+        .navbar__button-list a div {
+            display: flex;
+            overflow: hidden;
+            text-shadow: 0 var(--font-shadow) 0 var(--text);
+        }
+
+        .navbar__button-list a div span {
+            display: block;
+            backface-visibility: hidden;
+            padding: 0.5px;
+            font-style: normal;
+            transition: transform var(--duration) ease;
+            transform: translateY(var(--m)) translateZ(0);
+        }
+
+        .navbar__button-list a:hover {
+            --y: var(--move-hover);
+            --shadow: var(--shadow-hover);
+        }
+
+        .navbar__button-list a:hover span {
+            --m: calc(var(--font-size) * -1);
+        }
+
+        .navbar__button-list a.reverse {
+            --font-shadow: calc(var(--font-size) * -1);
+        }
+
+        .navbar__button-list a.reverse:hover span {
+            --m: calc(var(--font-size));
+        }
+
+        ul.navbar__button-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        } 
+
+
+    
+
+
+            .showformobile {
+                display: none;
+                width: 100%;
+                justify-content: space-around;
+                align-items: center;
+                height: 100%;
+            }
+
+            .showformobile>div {
+                color: #00572d;
+                background-color: #fff;
+                height: 25px;
+                width: 25px;
+                display: grid;
+                place-content: center;
+                border-radius: 5px;
+            }
+
+            .hero-section.show {
+                opacity: 1;
+            }
+
+            .hero-section {
+                position: relative;
+                height: fit-content;
+                width: 100%;
+                overflow-y: visible;
+                padding-bottom: 30px;
+                transform: translate(0px);
+
+                @media screen and (max-width: 1413px) {
+                    max-height: 100vh;
+                }
+
+            }
+
+            .hero-section::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-image: url(./Media/lapinoz_logo.png);
+                background-repeat: no-repeat;
+                background-position: 50% 100px;
+                opacity: 0.1;
+                z-index: -1;
+            }
+
+            body::-webkit-scrollbar {
+                height: 0;
+                width: 0;
+                display: none;
+            }
+
+            nav {
+                z-index: 999;
+                position: relative;
+                border-radius: 30px 30px 30px 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                /* background-color: #33333380; */
+                backdrop-filter: blur(90px);
+                background-color: #f7f7f730;
+                color: white;
+                height: 40px;
+            }
+
+            .nav__container {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                height: 6rem;
+                justify-content: space-around;
+            }
+
+            nav a {
+                color: #000;
+                text-decoration: none;
+                padding: 5px 10px;
+                cursor: pointer;
+                position: relative;
+            }
+
+            nav ul {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            nav ul li {
+                display: flex;
+                justify-self: center;
+                align-items: center;
+            }
+
+            .active {
+                position: relative;
+                color: #ff6347;
+                transition: color 0.5s ease-in-out;
+            }
+
+            nav a::after {
+                content: "";
+                position: absolute;
+                bottom: 3px;
+                left: 50%;
+                transform: translateX(-50%);
+                height: 2px;
+                width: 0%;
+                background-color: #ff6347;
+                transition: width 0.5s ease;
+            }
+
+            .opacity50 {
+                opacity: 50%;
+            }
+
+            nav a.active::after {
+                width: 90%;
+            }
+
+
+            .nav_elements {
+                width: 90%;
+                flex-shrink: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                max-width: 1200px;
+                margin: 0 5px;
+            }
+
+            .logo {
+                max-width: 100px;
+                width: 15%;
+                margin-top: 5px;
+                height: auto;
+                object-fit: contain;
+            }
+
+            .login_btn>p {
+                color: #00572D;
+                background-color: #FFE77A;
+                padding: 12px 30px;
+                border-radius: 14px;
+                font-weight: 300;
+            }
+
+            .green_bg {
+                position: absolute;
+                top: 0;
+                right: 0;
+                z-index: -10;
+                width: 35%;
+                object-fit: contain;
+            }
+
+            .hero__content {
+                width: 100%;
+                height: calc(100% - 60px);
+                display: flex;
+                justify-content: center;
+                overflow: visible;
+                position: relative;
+            }
+
+            .hero__content_left {
+                position: relative;
+                flex-grow: 0;
+                width: 50%;
+                height: 100%;
+                padding-left: 30px;
+                overflow: visible;
+                text-align: left;
+            }
+
+            .text {
+                color: #ff6347;
+                position: relative;
+                height: 100%;
+                width: 100%;
+                white-space: nowrap;
+                overflow: visible;
+                font-size: 7rem;
+                font-weight: normal;
+                line-height: 1;
+                mix-blend-mode: color-burn;
+                font-family: 'Irish Grover';
+            }
+
+            .text>span {
+                font-family: 'Irish Grover';
+
+                color: #00572D;
+                mix-blend-mode: initial;
+            }
+
+            .hero__content_right {
+                position: relative;
+                width: 50%;
+                height: 100%;
+                overflow: visible;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                /* Added to center content vertically */
+            }
+
+            .hero_img_container {
+                top: -7%;
+                right: 15%;
+                position: absolute;
+                height: 90%;
+                width: 75%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                z-index: 1;
+                animation: upDown 5s infinite ease-in-out;
+            }
+
+            .hero_img {
+                position: relative;
+                object-fit: contain;
+                width: 90%;
+                z-index: 1;
+                transition: transform 0.1s ease-out;
+                /* height: 100%; */
+                /* Ensuring the image scales correctly */
+            }
+
+
+            /* Burger Menu */
+            .close {
+                display: none;
+                position: absolute;
+                top: 0;
+                right: 0;
+                background-color: #ffe77a;
+                border: 0;
+                padding: 20px;
+                z-index: 10;
+                border-radius: 20px;
+            }
+
+            /* Icon */
+            .bar {
+                position: relative;
+            }
+
+            .bar:before,
+            .bar:after {
+                content: "";
+                position: absolute;
+            }
+
+            .bar:before,
+            .bar:after,
+            .bar {
+                width: 24px;
+                height: 3px;
+                background: black;
+                margin: 3px 0;
+                display: block;
+            }
+
+            .bar:before {
+                bottom: 100%;
+            }
+
+            .bar:after {
+                top: 100%;
+            }
+
+            .bar.active:after {
+                top: 0;
+            }
+
+            .bar.active:before {
+                bottom: -200%;
+            }
+
+            .bar.active {
+                background-color: transparent;
+            }
+
+            .bar,
+            .bar:before,
+            .bar:after {
+                transition: all .25s linear !important;
+            }
+
+            .bar.active:before,
+            .bar.active:after {
+                transition-delay: .15s !important;
+            }
+
+            .bar.active:before {
+                transform: rotate(45deg);
+            }
+
+            .bar.active:after {
+                transform: rotate(-45deg);
+            }
+
+            .outside {
+                z-index: 999;
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                width: 20%;
+                border-radius: 10px;
+                min-width: 200px;
+                max-width: 250px;
+                height: 95vh;
+                transform: translateX(-101%);
+                transition: all .5s cubic-bezier(0, 0.05, 0, 1.3);
+                overflow: hidden;
+            }
+
+            .in {
+                transform: translateX(0);
+            }
+
+            .inside {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                display: none;
+                width: 100%;
+                height: 100%;
+                background: #ffe77a;
+                border-right: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 0 100% 100% 0;
+                transition: all .25s cubic-bezier(1, 0.05, 1, 1.5);
+                transition-delay: .5s;
+
+            }
+
+            .in .inside {
+                border-radius: 0;
+                transition-delay: 0s;
+
+            }
+
+            /* material animation */
+            .inside:before {
+                content: "";
+                width: 2100px;
+                height: 2100px;
+                display: block;
+                background-color: #00572d;
+                position: absolute;
+                top: -50%;
+                left: -100%;
+                z-index: -1;
+                transition: all .75s linear;
+                transition-delay: .15s;
+                transform: scale(0);
+                transform-origin: top right;
+                border-radius: 1000px;
+            }
+
+            .outside.in .inside:before {
+                transform: scale(1);
+
+            }
+
+            /* Menu */
+            ul.menu {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                line-height: 0.5;
+            }
+
+            .menu li {
+                background: #ffffff;
+                border-radius: 5px 0px 0px 5px;
+                opacity: 0;
+                padding: 12px 22px;
+                border-bottom: 1px solid rgba(255, 255, 255, .5);
+                transition: all .25s linear;
+            }
+
+            .menu li a {
+                text-decoration: none;
+                color: #00572d;
+            }
+
+            .in .menu li {
+                transform: translateX(0%);
+                opacity: 1;
+            }
+
+            .in .menu li:nth-child(1) {
+                transition-delay: 1s;
+            }
+
+            .in .menu li:nth-child(2) {
+                transition-delay: 1.15s;
+            }
+
+            .in .menu li:nth-child(3) {
+                transition-delay: 1.25s;
+            }
+
+            .in .menu li:nth-child(4) {
+                transition-delay: 1.35s;
+            }
+
+            .in .menu li:nth-child(5) {
+                transition-delay: 1.45s;
+            }
+
+            .in .menu li:nth-child(6) {
+                transition-delay: 1.55s;
+            }
+
+            .in .menu li:nth-child(7) {
+                transition-delay: 1.65s;
+            }
+
+            .inside>.logo {
+                max-width: 100px;
+                width: 15%;
+                margin-top: 5px;
+                height: auto;
+                object-fit: contain;
+            }
+
+            @media (min-width:1440px) {
+                .hero__content {
+                    height: calc(100vh - 200px);
+
+                }
+
+                nav {
+                    width: 100%;
+                }
+
+                .text {
+                    font-size: 11rem;
+                }
+
+                .hero_img_container {
+                    height: 100%;
+                    width: 95%;
+                    right: 5%;
+                }
+            }
+
+            @media (max-width:950px) {
+                .hero_img_container {
+                    top: -20%;
+                }
+
+                nav {
+                    display: none;
+                }
+
+                .inside {
+                    display: block;
+                }
+
+                .close {
+                    display: block;
+                }
+
+                .nav__container {
+                    justify-content: start;
+                }
+            }
+
+            @media only screen and (max-width: 446px) {
+                .outside {
+                    height: 30vh;
+                }
+
+                .close {
+                    padding: 15px;
+                }
+
+                .showformobile {
+                    display: flex;
+                }
+
+                .hideformobile {
+                    display: none;
+                }
+
+                .inside:before {
+                    width: 1200px;
+                    height: 1200px;
+                    transform-origin: center;
+                    top: -10%;
+                }
+            }
+
+            @media only screen and (min-width: 446px) and (max-width: 600px) {
+                .outside {
+                    height: 70vh;
+                }
+
+                .inside:before {
+                    width: 1200px;
+                    height: 1200px;
+                    transform-origin: center;
+                }
+            }
+
+            @media only screen and (max-width: 331px) {
+                .text {
+                    font-size: 2.5rem;
+                }
+
+
+                .hero__content {
+                    height: 30vh;
+                }
+            }
+
+            @media only screen and (min-width: 331px) and (max-width: 431px) {
+                .text {
+                    font-size: 3.3rem;
+                }
+
+                .hero__content {
+                    height: 25vh;
+                }
+            }
+
+            @media only screen and (min-width: 431px) and (max-width: 518px) {
+                .text {
+                    font-size: 4rem;
+                }
+
+                .hero__content {
+                    height: 40vh;
+                }
+            }
+
+            @media only screen and (min-width: 519px) and (max-width: 599px) {
+                .text {
+                    font-size: 5rem;
+                }
+
+                .hero__content {
+                    height: 50vh;
+                }
+
+                .hero_img_container {
+                    width: 100%;
+                }
+            }
+
+            @media only screen and (min-width: 600px) and (max-width: 768px) {
+
+                /* Styles for screens smaller than 768px */
+                .hero__content_left,
+                .hero__content_right {
+                    padding: 10px;
+                }
+
+                .text {
+                    font-size: 6rem;
+                    /* Adjust font size for better readability */
+                }
+
+                .green_bg {
+                    width: 40%;
+                }
+
+                .hero_img_container {
+                    width: 85%;
+                    right: 30%;
+                    /* Reduce image size */
+                    height: auto;
+                    /* Allow image to adapt to height */
+                }
+
+                .hero_img {
+                    width: 100%;
+                    /* Image takes full width of container */
+
+                }
+            }
+
+
+
+            @media only screen and (max-height: 1390px) {
+                .hero-section {
+                    height: 40vh;
+                }
+
+                .outside {
+                    height: 26vh;
+                }
+            }
+
+            @media only screen and (max-height: 1025px) {
+                .hero-section {
+                    height: 45vh;
+                }
+
+                .outside {
+                    height: 30vh;
+                }
+            }
+
+            @media only screen and (max-height: 917px) {
+                .hero-section {
+                    height: 30vh;
+                }
+
+
+            }
+
+            @media only screen and (max-height: 741px) {
+                .outside {
+                    height: 40vh;
+                }
+
+                .hero-section {
+                    height: 40vh;
+                }
+            }
+
+            @media only screen and (max-height: 721px) {
+                .outside {
+                    height: 45vh;
+                }
+
+                .hero-section {
+                    height: 50vh;
+                }
+            }
+
+            @media (min-width:1000px) {
+                .hero-section {
+                    min-height: 550px;
+                }
+            }
+        </style>
 
         <style>
             .delivrySection_container {
@@ -282,128 +1171,442 @@
             }
             
         </style>
-        <section class="delivrySection_container">
-            <div class="delivrySection">
-                <div class="delivrySection__header" style="color:#f7f7f7; border-bottom: 2px solid #f7f7f7;">
-                    <i class="ri-riding-line" style="font-weight: lighter"></i>
-                    <p>Delivery</p>
-                </div>
-                <div class="delivrySection__textArea">
-                    <p style="color: #f7f7f7">Let's Get Ordering On La Pino'z Pizza</p>
-                    <p style="color: #f7f7f7">Select Your Nearest Outlet</p>
-                </div>
-                <div class="SelectButtons">
-                    <div class="location_button">
-                        <i class="ri-map-pin-line" style="color: #00572d;"></i>
-                        Use my current location
+        <section class="second-section" data-scroll-section>
+            <style>
+                * {
+                    font-family: 'Poppins', sans-serif;
+                }
+
+                .second-section {
+                    background-color: #f0f0f0;
+                    /* font-family: ; */
+                    margin: 0;
+                    padding: 10px 10px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100dvh;
+                    background-image: url(./Media/home-background.jpeg);
+                    background-size: cover;
+                }
+
+                .delivrySection_container {
+                    height: 350px;
+                    width: 50dvw;
+                    display: flex;
+                    justify-content: left;
+                    position: relative;
+                }
+
+                .delivrySection {
+                    height: 350px;
+                    width: 100%;
+                    border-radius: 10px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    position: absolute;
+                    /* top: 0; */
+                    cursor: pointer;
+                    transition: all 0.3s ease-out;
+                    background-color: #00572dd0;
+                    z-index: 20;
+                }
+
+                .PickUp {
+                    height: 350px;
+                    width: 100%;
+                    border-radius: 10px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    /* background-color: #f7f7f7f3; */
+                    position: absolute;
+                    cursor: pointer;
+                    left: 35px;
+                    z-index: 10;
+                }
+
+                .bg-color-white {
+                    background-color: #f7f7f7f3;
+                }
+
+                .delivrySection__header {
+                    height: 40px;
+                    width: 20%;
+                    font-size: x-large;
+                    font-weight: bold;
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    transition: opacity 500ms ease-in-out;
+                }
+
+                .delivrySection__textArea {
+                    height: 25%;
+                    width: 95%;
+                    font-weight: 900;
+                    /* font-family: 'Arial Narrow', Arial, sans-serif; */
+                    margin-left: 15px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    transition: opacity 500ms ease-in-out;
+                }
+
+                .delivrySection__textArea p {
+                    height: 40px;
+                    width: 100%;
+                    font-size: x-large;
+                    display: flex;
+                    align-items: center;
+                    text-align: start;
+                    margin: 0;
+                }
+
+                .SelectButtons {
+                    height: 30%;
+                    width: 95%;
+                    display: flex;
+                    align-items: center;
+                    font-size: larger;
+                    margin-left: 15px;
+                    transition: opacity 500ms ease-in-out;
+                }
+
+                .location_button {
+                    height: 48px;
+                    width: 35%;
+                    border-radius: 5px;
+                    border: 2px solid #00572d;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    background-color: rgb(247, 247, 247);
+                }
+
+                .OR {
+                    height: 50px;
+                    width: 70px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .Select_buttons {
+                    height: 50px;
+                    width: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+
+                .city_buttons {
+                    height: 100%;
+                    width: 45%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-evenly;
+                    text-align: center;
+                    border-radius: 5px;
+                    border: 2px solid #00572d;
+                    background-color: rgb(247, 247, 247);
+                }
+
+                .containt_section {
+                    width: 100%;
+                    height: 90%;
+                    display: flex;
+                    align-items: center;
+                }
+
+                .bag_image {
+                    height: 100px;
+                    width: 120px;
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                }
+
+                .text_section {
+                    height: 95%;
+                    width: 85%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-evenly;
+                    align-items: center;
+                }
+
+                .pickup_text {
+                    height: 30%;
+                    width: 89%;
+                    font-size: larger;
+                    border-radius: 10px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    color: #00572d;
+                }
+
+                .pickup_buttons {
+                    height: 30%;
+                    width: 95%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-evenly;
+                }
+
+                .pickup_button {
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 45%;
+                    border-radius: 10px;
+                    text-align: center;
+                }
+
+                @media (max-width: 1300px) {
+                    .SelectButtons {
+                        font-size: medium;
+                    }
+
+                    .delivrySection__textArea p {
+                        font-size: x-large;
+                    }
+
+                    .text_section {
+                        font-size: medium;
+                    }
+                }
+
+                @media (max-width: 1050px) {
+                    .delivrySection__header {
+                        width: 32%;
+                    }
+
+                    .SelectButtons {
+                        height: 45%;
+                        font-size: larger;
+                        flex-direction: column;
+                    }
+
+                    .delivrySection_container {
+                        width: 70%;
+                    }
+
+                    .delivrySection,
+                    .PickUp {
+                        width: 100%;
+                    }
+
+                    .Select_buttons {
+                        width: 70%;
+                    }
+
+                    .location_button {
+                        width: 70%;
+                    }
+
+                    .pickup_buttons {
+                        height: 35%;
+                        flex-direction: column;
+                        justify-content: space-between;
+                    }
+
+                    .pickup_button {
+                        height: 45%;
+                        width: 93.5%;
+                    }
+                }
+
+                @media (max-width:768px) {
+                    .delivrySection__header {
+                        font-size: larger;
+                        width: 40%;
+                    }
+
+                    .delivrySection_container {
+                        width: 80%;
+                    }
+
+                    .Select_buttons {
+                        width: 100%;
+                    }
+
+                    .location_button {
+                        width: 100%;
+                    }
+                }
+
+                @media (max-width:600px) {
+                    .delivrySection__header {
+                        width: 50%;
+                    }
+
+                    .delivrySection__textArea p {
+                        width: 90%;
+                        font-size: larger;
+                    }
+
+                    .SelectButtons {
+                        width: 90%;
+                    }
+
+                    .city_buttons {
+                        width: 50%;
+                    }
+                }
+
+                @media (max-width:470px) {
+                    .delivrySection__header {
+                        width: 70%;
+                    }
+
+                    .SelectButtons {
+                        font-size: large;
+                    }
+                }
+            </style>
+            <section class="delivrySection_container" data-scroll="">
+                <div class="delivrySection" data-scroll="">
+                    <div class="delivrySection__header" style="color:#f7f7f7; border-bottom: 2px solid #f7f7f7;">
+                        <i class="ri-riding-line" style="font-weight: lighter"></i>
+                        <p>Delivery</p>
                     </div>
-                    <p class="OR" style="color: rgb(58, 58, 58);">OR</p>
-                    <div class="Select_buttons">
-                        <div class="city_buttons">
-                            <p>Select City</p>
-                            <i class="fa-solid fa-angle-down"></i>
-                        </div>
-                        <div class="city_buttons">
-                            <p>Select Outlet</p>
-                            <i class="fa-solid fa-angle-down"></i>
-                        </div>
+                    <div class="delivrySection__textArea">
+                        <p style="color: #f7f7f7">Let's Get Ordering On La Pino'z Pizza</p>
+                        <p style="color: #f7f7f7">Select Your Nearest Outlet</p>
                     </div>
-                </div>
-            </div>
-            <div class="PickUp">
-                <div class="delivrySection__header" style="color: #00572d; border-bottom: 2px solid #00572d;">
-                    <i class="fa-solid fa-people-carry-box"></i>
-                    <p>Pick Up</p>
-                </div>
-                <div class="containt_section hidden">
-                    <div class="bag_image">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;max-width: 100px;" xml:space="preserve">
-                            <path class="st0" d="M472.4,0h-18.6c-10.8,0.8-19.5,9-21.1,19.6H276.7c-16.3,0-32.3,4.1-46.6,11.8l-63.7,34.3H65.6  c-17.4,0-31.4,14.1-31.4,31.4v9.4c0,12.8,7.8,24.3,19.6,29.1c-7.8,31.6-38.4,113.1-36.3,145.4l0,202.8c0,15.5,12.5,28,28,28l353,0.1  c5.1-0.1,9.3-4.3,9.4-9.4V267.7c0-0.9-0.1-1.8-0.4-2.6l-36.8-124.4c20.3-3.6,36.2-19.4,40.1-39.6h20.9c-0.6,13,9.1,24.3,22,25.7  h18.6c12.5,0,22.2-12.3,22.2-28V28C494.6,12.3,484.8,0,472.4,0L472.4,0z M52.8,106.6v-9.4c0-7.1,5.7-12.8,12.8-12.8h223.6l-34.9,35  H65.6C58.5,119.4,52.8,113.7,52.8,106.6z M36.2,483.9c1.9-30.4-5.3-217.6,5.8-242.7l30.6-103.2h169c-6.6,20.3,4.5,42.1,24.8,48.7  c12,3.9,25.1,1.7,35.2-5.8l32.4-24.7l-28.1,104.5c-0.2,4.4-0.5,228.5-0.3,232.5l-259.9,0C40.4,493.3,36.2,489.1,36.2,483.9  L36.2,483.9z M356.6,473.9l19.4,19.4h-38.7L356.6,473.9z M389.2,269v211.1L366,456.9V279.1c-0.1-5.2-4.4-9.2-9.5-9.1  c-5,0.1-9,4.1-9.1,9.1v177.7L324.1,480V264.4l30.4-112.9L389.2,269z M431.6,82.3h-29.2c-5.2,0-9.3,4.2-9.3,9.3  c0,17.2-13.9,31.1-31.1,31.1c-0.8,0.1-12.8-0.2-13.2,0.2c-0.5-2.8-57.1,42.7-58.7,43.2c-8.9,6.6-21.4,4.7-28-4.1  c-5.8-7.9-5.1-18.8,1.7-25.9l54.4-54.5c3.6-3.7,3.5-9.7-0.2-13.3c-1.7-1.7-4-2.6-6.4-2.6H205.8c20.3-10.3,47.1-29.1,71-27.4l154.8,0  L431.6,82.3z M475.9,98.7c0.4,3.5-0.9,7-3.6,9.3l-18.5,0c-2.7-2.3-4-5.8-3.6-9.3V29.1c-0.5-5,2.6-10.7,3.6-10.5l18.5,0  c2.7,2.3,4,5.8,3.6,9.3L475.9,98.7z"></path>
-                            <g>
-                                <path class="st0" d="M107.8,223.5c-27.9,0-50.6,26-50.6,57.9c-0.5,21.4,10.6,41.3,28.9,52.2v85.2c0,12,9.7,21.7,21.7,21.7   c12,0,21.7-9.7,21.7-21.7v-85.2c18.4-10.9,29.4-30.9,28.9-52.2C158.4,249.5,135.7,223.5,107.8,223.5z M119.5,322.4   c-2.7,1.1-4.5,3.8-4.5,6.7v89.7c0,4-3.2,7.2-7.2,7.2c-4,0-7.2-3.2-7.2-7.2V329c0-2.9-1.8-5.6-4.5-6.7c-15.6-7.6-25.2-23.7-24.5-41   c0-23.9,16.2-43.4,36.2-43.4c19.9,0,36.2,19.5,36.2,43.4C144.6,298.7,135,314.8,119.5,322.4z"></path>
-                                <path class="st0" d="M266.9,223.5c-4,0-7.2,3.2-7.2,7.2v72.3c0,12-9.7,21.7-21.7,21.7c-4,0-7.2,3.2-7.2,7.2v86.8   c0,4-3.2,7.2-7.2,7.2c-4,0-7.2-3.2-7.2-7.2V332c0-4-3.2-7.2-7.2-7.2c-12,0-21.7-9.7-21.7-21.7v-72.3c0-4-3.2-7.2-7.2-7.2   c-4,0-7.2,3.2-7.2,7.2v72.3c0,17.2,12.1,32,28.9,35.4v80.3c0,12,9.7,21.7,21.7,21.7c12,0,21.7-9.7,21.7-21.7v-80.3   c16.8-3.5,28.9-18.3,28.9-35.4v-72.3C274.1,226.7,270.8,223.5,266.9,223.5z"></path>
-                                <path class="st0" d="M209,310.3c4,0,7.2-3.2,7.2-7.2v-72.3c0-4-3.2-7.2-7.2-7.2s-7.2,3.2-7.2,7.2v72.3   C201.8,307,205,310.3,209,310.3z"></path>
-                                <path class="st0" d="M237.9,310.3c4,0,7.2-3.2,7.2-7.2v-72.3c0-4-3.2-7.2-7.2-7.2c-4,0-7.2,3.2-7.2,7.2v72.3   C230.7,307,233.9,310.3,237.9,310.3z"></path>
-                            </g>
-                        </svg>
-                    </div>
-                    <div class="text_section">
-                        <div class="pickup_text" style="border: 1px solid rgb(58, 58, 58);">
-                            <p>You have to collect the order from the outlet.</p>
+                    <div class="SelectButtons">
+                        <div class="location_button">
+                            <i class="ri-map-pin-line" style="color: #00572d;"></i>
+                            Use my current location
                         </div>
-                        <div class="pickup_text" style="border: 1px solid rgb(58, 58, 58);">
-                            <p>Delivery partners are not assigned for pickup orders.</p>
-                        </div>
-                        <div class="pickup_buttons">
-                            <div class="pickup_button" style="background-color: #00572d;">
-                                <p>GET DELIVERY INSTEAD</p>
+                        <p class="OR" style="color: rgb(58, 58, 58);">OR</p>
+                        <div class="Select_buttons">
+                            <div class="city_buttons">
+                                <p>Select City</p>
+                                <i class="fa-solid fa-angle-down"></i>
                             </div>
-                            <div class="pickup_button" style="background-color: pink;">
-                                <p>YES, I WILL PICK UP</p>
-                            </div>                     
+                            <div class="city_buttons">
+                                <p>Select Outlet</p>
+                                <i class="fa-solid fa-angle-down"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-            </div>
+                <div class="PickUp">
+                    <div class="delivrySection__header" style="color: #00572d; border-bottom: 2px solid #00572d;">
+                        <i class="fa-solid fa-people-carry-box"></i>
+                        <p>Pick Up</p>
+                    </div>
+                    <div class="containt_section hidden">
+                        <div class="bag_image">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                version="1.0" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512"
+                                style="enable-background:new 0 0 512 512;max-width: 100px;" xml:space="preserve">
+                                <path class="st0"
+                                    d="M472.4,0h-18.6c-10.8,0.8-19.5,9-21.1,19.6H276.7c-16.3,0-32.3,4.1-46.6,11.8l-63.7,34.3H65.6  c-17.4,0-31.4,14.1-31.4,31.4v9.4c0,12.8,7.8,24.3,19.6,29.1c-7.8,31.6-38.4,113.1-36.3,145.4l0,202.8c0,15.5,12.5,28,28,28l353,0.1  c5.1-0.1,9.3-4.3,9.4-9.4V267.7c0-0.9-0.1-1.8-0.4-2.6l-36.8-124.4c20.3-3.6,36.2-19.4,40.1-39.6h20.9c-0.6,13,9.1,24.3,22,25.7  h18.6c12.5,0,22.2-12.3,22.2-28V28C494.6,12.3,484.8,0,472.4,0L472.4,0z M52.8,106.6v-9.4c0-7.1,5.7-12.8,12.8-12.8h223.6l-34.9,35  H65.6C58.5,119.4,52.8,113.7,52.8,106.6z M36.2,483.9c1.9-30.4-5.3-217.6,5.8-242.7l30.6-103.2h169c-6.6,20.3,4.5,42.1,24.8,48.7  c12,3.9,25.1,1.7,35.2-5.8l32.4-24.7l-28.1,104.5c-0.2,4.4-0.5,228.5-0.3,232.5l-259.9,0C40.4,493.3,36.2,489.1,36.2,483.9  L36.2,483.9z M356.6,473.9l19.4,19.4h-38.7L356.6,473.9z M389.2,269v211.1L366,456.9V279.1c-0.1-5.2-4.4-9.2-9.5-9.1  c-5,0.1-9,4.1-9.1,9.1v177.7L324.1,480V264.4l30.4-112.9L389.2,269z M431.6,82.3h-29.2c-5.2,0-9.3,4.2-9.3,9.3  c0,17.2-13.9,31.1-31.1,31.1c-0.8,0.1-12.8-0.2-13.2,0.2c-0.5-2.8-57.1,42.7-58.7,43.2c-8.9,6.6-21.4,4.7-28-4.1  c-5.8-7.9-5.1-18.8,1.7-25.9l54.4-54.5c3.6-3.7,3.5-9.7-0.2-13.3c-1.7-1.7-4-2.6-6.4-2.6H205.8c20.3-10.3,47.1-29.1,71-27.4l154.8,0  L431.6,82.3z M475.9,98.7c0.4,3.5-0.9,7-3.6,9.3l-18.5,0c-2.7-2.3-4-5.8-3.6-9.3V29.1c-0.5-5,2.6-10.7,3.6-10.5l18.5,0  c2.7,2.3,4,5.8,3.6,9.3L475.9,98.7z">
+                                </path>
+                                <g>
+                                    <path class="st0"
+                                        d="M107.8,223.5c-27.9,0-50.6,26-50.6,57.9c-0.5,21.4,10.6,41.3,28.9,52.2v85.2c0,12,9.7,21.7,21.7,21.7   c12,0,21.7-9.7,21.7-21.7v-85.2c18.4-10.9,29.4-30.9,28.9-52.2C158.4,249.5,135.7,223.5,107.8,223.5z M119.5,322.4   c-2.7,1.1-4.5,3.8-4.5,6.7v89.7c0,4-3.2,7.2-7.2,7.2c-4,0-7.2-3.2-7.2-7.2V329c0-2.9-1.8-5.6-4.5-6.7c-15.6-7.6-25.2-23.7-24.5-41   c0-23.9,16.2-43.4,36.2-43.4c19.9,0,36.2,19.5,36.2,43.4C144.6,298.7,135,314.8,119.5,322.4z">
+                                    </path>
+                                    <path class="st0"
+                                        d="M266.9,223.5c-4,0-7.2,3.2-7.2,7.2v72.3c0,12-9.7,21.7-21.7,21.7c-4,0-7.2,3.2-7.2,7.2v86.8   c0,4-3.2,7.2-7.2,7.2c-4,0-7.2-3.2-7.2-7.2V332c0-4-3.2-7.2-7.2-7.2c-12,0-21.7-9.7-21.7-21.7v-72.3c0-4-3.2-7.2-7.2-7.2   c-4,0-7.2,3.2-7.2,7.2v72.3c0,17.2,12.1,32,28.9,35.4v80.3c0,12,9.7,21.7,21.7,21.7c12,0,21.7-9.7,21.7-21.7v-80.3   c16.8-3.5,28.9-18.3,28.9-35.4v-72.3C274.1,226.7,270.8,223.5,266.9,223.5z">
+                                    </path>
+                                    <path class="st0"
+                                        d="M209,310.3c4,0,7.2-3.2,7.2-7.2v-72.3c0-4-3.2-7.2-7.2-7.2s-7.2,3.2-7.2,7.2v72.3   C201.8,307,205,310.3,209,310.3z">
+                                    </path>
+                                    <path class="st0"
+                                        d="M237.9,310.3c4,0,7.2-3.2,7.2-7.2v-72.3c0-4-3.2-7.2-7.2-7.2c-4,0-7.2,3.2-7.2,7.2v72.3   C230.7,307,233.9,310.3,237.9,310.3z">
+                                    </path>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="text_section">
+                            <div class="pickup_text" style="border: 1px solid rgb(58, 58, 58);">
+                                <p>You have to collect the order from the outlet.</p>
+                            </div>
+                            <div class="pickup_text" style="border: 1px solid rgb(58, 58, 58);">
+                                <p>Delivery partners are not assigned for pickup orders.</p>
+                            </div>
+                            <div class="pickup_buttons">
+                                <div class="pickup_button" style="background-color: #00572d;">
+                                    <p>GET DELIVERY INSTEAD</p>
+                                </div>
+                                <div class="pickup_button" style="background-color: pink;">
+                                    <p>YES, I WILL PICK UP</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const pickUpSection = document.querySelector('.PickUp');
+                    const deliverySection = document.querySelector('.delivrySection');
+                    const deliveryContent = deliverySection.querySelectorAll('.delivrySection__textArea, .delivrySection__header, .SelectButtons'); // Select all content elements
+
+                    const pickUpContent = pickUpSection.querySelectorAll('.delivrySection__header, .containt_section, .PickUp'); // Select all content elements for PickUp
+
+                    // Initially hide PickUp content
+                    pickUpContent.forEach(element => element.style.opacity = 0);
+
+                    function swapSections() {
+                        const isDeliveryHidden = deliverySection.classList.contains('hidden'); // Check if deliverySection is hidden
+
+                        if (isDeliveryHidden) {
+                            // Reverse animation (PickUp to front)
+                            gsap.to(pickUpSection, {
+                                duration: 1.5,
+                                zIndex: 10,
+                                onComplete: () => {
+                                    deliverySection.classList.remove('hidden'); // Show deliverySection content
+                                    pickUpSection.classList.remove('bg-color-white')
+
+                                    deliveryContent.forEach(element => element.style.opacity = 1);
+                                    pickUpContent.forEach(element => element.style.opacity = 0); // Hide PickUp content
+                                }
+                            });
+
+                            gsap.to(deliverySection, {
+                                duration: 1.5,
+                                width: '100%', // Restore initial width
+                            });
+                        } else {
+                            // Hide content before animation
+                            deliveryContent.forEach(element => element.style.opacity = 0);
+                            gsap.to(deliverySection, {
+                                duration: 1.5,
+                                width: '35px',
+                                onComplete: () => {
+                                    deliverySection.classList.add('hidden'); // Hide deliverySection content after animation
+                                    pickUpContent.forEach(element => element.style.opacity = 1); // Show PickUp content
+                                    pickUpSection.classList.add('bg-color-white')
+                                }
+                            });
+
+                            gsap.to(pickUpSection, {
+                                duration: 1.5,
+                                zIndex: 10,
+                            });
+                        }
+                    }
+
+                    deliverySection.addEventListener('click', swapSections);
+                    pickUpSection.addEventListener('click', swapSections);
+                });
+
+
+            </script>
+
         </section>
-        <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const pickUpSection = document.querySelector('.PickUp');
-    const deliverySection = document.querySelector('.delivrySection');
-    const deliveryContent = deliverySection.querySelectorAll('.delivrySection__textArea, .delivrySection__header, .SelectButtons'); // Select all content elements
-
-    const pickUpContent = pickUpSection.querySelectorAll('.delivrySection__header, .containt_section, .PickUp'); // Select all content elements for PickUp
-
-    // Initially hide PickUp content
-    pickUpContent.forEach(element => element.style.opacity = 0);
-
-    function swapSections() {
-        const isDeliveryHidden = deliverySection.classList.contains('hidden'); // Check if deliverySection is hidden
-
-        if (isDeliveryHidden) {
-            // Reverse animation (PickUp to front)
-            gsap.to(pickUpSection, {
-                duration: 1.5,
-                zIndex: 10,
-                onComplete: () => {
-                    deliverySection.classList.remove('hidden'); // Show deliverySection content
-                    pickUpSection.classList.remove('bg-color-white')
-
-                    deliveryContent.forEach(element => element.style.opacity = 1);                        
-                    pickUpContent.forEach(element => element.style.opacity = 0); // Hide PickUp content
-                }
-            });
-
-            gsap.to(deliverySection, {
-                duration: 1.5,
-                width: '100%', // Restore initial width
-            });
-        } else {
-            // Hide content before animation
-            deliveryContent.forEach(element => element.style.opacity = 0);
-            gsap.to(deliverySection, {
-                duration: 1.5,
-                width: '35px',
-                onComplete: () => {
-                    deliverySection.classList.add('hidden'); // Hide deliverySection content after animation
-                    pickUpContent.forEach(element => element.style.opacity = 1); // Show PickUp content
-                    pickUpSection.classList.add('bg-color-white')
-                }
-            });
-
-            gsap.to(pickUpSection, {
-                duration: 1.5,
-                zIndex: 10,
-            });
-        }
-    }
-
-    deliverySection.addEventListener('click', swapSections);
-    pickUpSection.addEventListener('click', swapSections);
-});
-</script>
-    </section>
 
 
     <section class="deals-section">
@@ -2379,7 +3582,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     <!-- Newly Launched Stores -->
     <section class="newly-launched">
-        <div class="newly-launched-container">
+        <!-- <div class="newly-launched-container">
             <div class="newly-launched-upper-heading">
                 <h3 class="newly-launched-heading">Newly Launched Stores</h3>
                 <div class="bottom-dots">
@@ -2389,9 +3592,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     <span class="dot"></span>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div class="newly-launched-carts">
+        <!-- <div class="newly-launched-carts">
             <div class="newly-launched-slider">
                 <div class="newly-launched-slick-track">
                     <div class="store-div">
@@ -2407,7 +3610,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             <img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png" alt="Lapinoz Logo Icon" class="lapinoz-logo-icon">
                             <div class="store-detail">
                                 <span>La Pino'z Pizza</span>
-                                <!-- <span  ><i class="fas fa-angle-right"></i></span> -->
                             </div>
                         </a>
                         <a href="tel:9528879671" class="phone-icn">
@@ -2428,7 +3630,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             <img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png" alt="Lapinoz Logo Icon" class="lapinoz-logo-icon">
                             <div class="store-detail">
                                 <span>La Pino'z Pizza</span>
-                                <!-- <span  ><i class="fas fa-angle-right"></i></span> -->
                             </div>
                         </a>
                         <a href="tel:9528879671" class="phone-icn">
@@ -2448,7 +3649,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             <img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png" alt="Lapinoz Logo Icon" class="lapinoz-logo-icon">
                             <div class="store-detail">
                                 <span>La Pino'z Pizza</span>
-                                <!-- <span  ><i class="fas fa-angle-right"></i></span> -->
                             </div>
                         </a>
                         <a href="tel:9528879671" class="phone-icn">
@@ -2468,7 +3668,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             <img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png" alt="Lapinoz Logo Icon" class="lapinoz-logo-icon">
                             <div class="store-detail">
                                 <span>La Pino'z Pizza</span>
-                                <!-- <span  ><i class="fas fa-angle-right"></i></span> -->
                             </div>
                         </a>
                         <a href="tel:9528879671" class="phone-icn">
@@ -2488,7 +3687,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             <img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png" alt="Lapinoz Logo Icon" class="lapinoz-logo-icon">
                             <div class="store-detail">
                                 <span>La Pino'z Pizza</span>
-                                <!-- <span  ><i class="fas fa-angle-right"></i></span> -->
                             </div>
                         </a>
                         <a href="tel:9528879671" class="phone-icn">
@@ -2508,7 +3706,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             <img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png" alt="Lapinoz Logo Icon" class="lapinoz-logo-icon">
                             <div class="store-detail">
                                 <span>La Pino'z Pizza</span>
-                                <!-- <span  ><i class="fas fa-angle-right"></i></span> -->
                             </div>
                         </a>
                         <a href="tel:9528879671" class="phone-icn">
@@ -2528,7 +3725,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             <img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png" alt="Lapinoz Logo Icon" class="lapinoz-logo-icon">
                             <div class="store-detail">
                                 <span>La Pino'z Pizza</span>
-                                <!-- <span  ><i class="fas fa-angle-right"></i></span> -->
                             </div>
                         </a>
                         <a href="tel:9528879671" class="phone-icn">
@@ -2548,7 +3744,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             <img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png" alt="Lapinoz Logo Icon" class="lapinoz-logo-icon">
                             <div class="store-detail">
                                 <span>La Pino'z Pizza</span>
-                                <!-- <span  ><i class="fas fa-angle-right"></i></span> -->
                             </div>
                         </a>
                         <a href="tel:9528879671" class="phone-icn">
@@ -2568,7 +3763,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             <img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png" alt="Lapinoz Logo Icon" class="lapinoz-logo-icon">
                             <div class="store-detail">
                                 <span>La Pino'z Pizza</span>
-                                <!-- <span  ><i class="fas fa-angle-right"></i></span> -->
                             </div>
                         </a>
                         <a href="tel:9528879671" class="phone-icn">
@@ -2577,23 +3771,158 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
+
+        <div class="newly-launched_Outlet">
+            <div class="newly-launched-container">
+                <div class="newly-launched-upper-heading">
+                    <h3 class="newly-launched-heading">Newly Launched Stores</h3>
+                    <div class="bottom-dots">
+                        <span class="dot line-dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="outlet__box">
+              <div class="outlet__card__article" style="--i: 1">
+                  <img src="./media/OutletImage-1.jpg" alt="image" class="outlet__card__img">
+                  <div class="outlet__card__data">
+                      <span class="outlet__card__description">Nainital Road</span>
+                      <h2 class="outlet__card__title">Haldwani</h2>
+                      <a href="#" class="outlet__card__button"><img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png" alt="Lapinoz Logo Icon" class="" style="object-fit: contain; margin-left: px;" height="30px" width="30px"><div style="margin-left: 5px;">L<span style="color: #ff6347;">a</span> Pino'z <span style="color: #ff6347;">P</span>izz<span style="color: #ff6347;">a</span></div></a>
+
+
+                  </div>
+              </div>
+              <div class="outlet__card__article" style="--i: 2">
+              <img src="./media/OutletImage-2.jpg" alt="image" class="outlet__card__img">
+                <div class="outlet__card__data">
+                    <span class="outlet__card__description">Malakpet</span>
+                    <h2 class="outlet__card__title">Hyderabad</h2>
+                    <a href="#" class="outlet__card__button"><img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png" alt="Lapinoz Logo Icon" class="" style="object-fit: contain; margin-left: px;" height="30px" width="30px"><div style="margin-left: 5px;">L<span style="color: #ff6347;">a</span> Pino'z <span style="color: #ff6347;">P</span>izz<span style="color: #ff6347;">a</span></div></a>
+
+
+
+                </div>
+            </div>
+            <div class="outlet__card__article" style="--i: 3">
+              <img src="./media/OutletImage-3.jpg" alt="image" class="outlet__card__img">
+              <div class="outlet__card__data">
+                  <span class="outlet__card__description">Pushraj Chauraha</span>
+                  <h2 class="outlet__card__title">Ayodhya</h2>
+                  <a href="#" class="outlet__card__button"><img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png" alt="Lapinoz Logo Icon" class="" style="object-fit: contain; margin-left: px;" height="30px" width="30px"><div style="margin-left: 5px;">L<span style="color: #ff6347;">a</span> Pino'z <span style="color: #ff6347;">P</span>izz<span style="color: #ff6347;">a</span></div></a>
+
+
+
+              </div>
+          </div>
+          <div class="outlet__card__article" style="--i: 4">
+            <img src="./media/OutletImage-4.jpg" alt="image" class="outlet__card__img">
+            <div class="outlet__card__data">
+                <span class="outlet__card__description">Dongari Road virar west</span>
+                <h2 class="outlet__card__title">Mumbai</h2>
+                <a href="#" class="outlet__card__button"><img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png" alt="Lapinoz Logo Icon" class="" style="object-fit: contain; margin-left: px;" height="30px" width="30px"><div style="margin-left: 5px;">L<span style="color: #ff6347;">a</span> Pino'z <span style="color: #ff6347;">P</span>izz<span style="color: #ff6347;">a</span></div></a>
+
+
+
+            </div>
+          </div>
+          <div class="outlet__card__article" style="--i: 5">
+            <img src="./media/OutletImage-5.jpg" alt="image" class="outlet__card__img">
+            <div class="outlet__card__data">
+                <span class="outlet__card__description">Halol Harni Road</span>
+                <h2 class="outlet__card__title">Halol</h2>
+                <a href="#" class="outlet__card__button"><img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png" alt="Lapinoz Logo Icon" class="" style="object-fit: contain; margin-left: px;" height="30px" width="30px"><div style="margin-left: 5px;">L<span style="color: #ff6347;">a</span> Pino'z <span style="color: #ff6347;">P</span>izz<span style="color: #ff6347;">a</span></div></a>
+
+
+
+            </div>
+          </div>
+          <div class="outlet__card__article" style="--i: 6">
+            <img src="./media/OutletImage-6.jpg" alt="image" class="outlet__card__img">
+            <div class="outlet__card__data">
+                <span class="outlet__card__description">Civil Line</span>
+                <h2 class="outlet__card__title">Azamgarh</h2>
+                <a href="#" class="outlet__card__button"><img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png" alt="Lapinoz Logo Icon" class="" style="object-fit: contain; margin-left: px;" height="30px" width="30px"><div style="margin-left: 5px;">L<span style="color: #ff6347;">a</span> Pino'z <span style="color: #ff6347;">P</span>izz<span style="color: #ff6347;">a</span></div></a>
+
+
+
+            </div>
+          </div>
+          <div class="outlet__card__article" style="--i: 7">
+            <img src="./media/OutletImage-7.jpg" alt="image" class="outlet__card__img">
+            <div class="outlet__card__data">
+                <span class="outlet__card__description">Carmelaram</span>
+                <h2 class="outlet__card__title">Bengaluru</h2>
+                <a href="#" class="outlet__card__button"><img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png" alt="Lapinoz Logo Icon" class="" style="object-fit: contain; margin-left: px;" height="30px" width="30px"><div style="margin-left: 5px;">L<span style="color: #ff6347;">a</span> Pino'z <span style="color: #ff6347;">P</span>izz<span style="color: #ff6347;">a</span></div></a>
+
+
+
+            </div>
+          </div>
+          <div class="outlet__card__article" style="--i: 8">
+            <img src="./media/OutletImage-8.jpg" alt="image" class="outlet__card__img">
+            <div class="outlet__card__data">
+                <span class="outlet__card__description">J P Nagar</span>
+                <h2 class="outlet__card__title">Bengaluru</h2>
+                <a href="#" class="outlet__card__button"><img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png" alt="Lapinoz Logo Icon" class="" style="object-fit: contain; margin-left: px;" height="30px" width="30px"><div style="margin-left: 5px;">L<span style="color: #ff6347;">a</span> Pino'z <span style="color: #ff6347;">P</span>izz<span style="color: #ff6347;">a</span></div></a>
+
+
+
+            </div>
+          </div>
+          <div class="outlet__card__article" style="--i: 9">
+            <img src="./media/OutletImage-9.jpg" alt="image" class="outlet__card__img">
+            <div class="outlet__card__data">
+                <span class="outlet__card__description">Opposite Hathi Gate</span>
+                <h2 class="outlet__card__title">Dwarka Gujarat</h2>
+                <a href="#" class="outlet__card__button"><img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png" alt="Lapinoz Logo Icon" class="" style="object-fit: contain; margin-left: px;" height="30px" width="30px"><div style="margin-left: 5px;">L<span style="color: #ff6347;">a</span> Pino'z <span style="color: #ff6347;">P</span>izz<span style="color: #ff6347;">a</span></div></a>
+
+            </div>
+          </div>
+          <div class="outlet__card__article" style="--i: 10">
+            <img src="./media/OutletImage-10.jpg" alt="image" class="outlet__card__img">
+            <div class="outlet__card__data">
+                <span class="outlet__card__description">Red square market</span>
+                <h2 class="outlet__card__title">Hisar</h2>
+                <a href="#" class="outlet__card__button"><img src="https://www.uengage.in/images/addo/logos/logo-5-1600769708.png" alt="Lapinoz Logo Icon" class="" style="object-fit: contain; margin-left: px;" height="30px" width="30px"><div style="margin-left: 5px;">L<span style="color: #ff6347;">a</span> Pino'z <span style="color: #ff6347;">P</span>izz<span style="color: #ff6347;">a</span></div></a>
+
+
+            </div>
+          </div>
+          </div>
+          </div>
     </section>
 
     <style>
         .newly-launched {
-            padding: 25px 0;
+            margin: 20px 0;
+            /* height: 100vh; */
+            overflow: hidden;
         }
 
         .newly-launched-container {
-            width: 100%;
-            max-width: 1250px;
+            width: fit-content;
+            margin-inline: auto;
+            margin-top: 20px;
+            @media (max-width: 500px) {
+                padding-inline: 10px;
+            }
+            /* max-width: 1250px; */
         }
 
         .newly-launched-heading {
-            font-size: 26px;
+            font-size: 40px;
             font-weight: 600;
+            width: fit-content;
+            margin-inline: auto;
+            color: white;
+            
         }
+
 
         .lapinoz-logo-icon {
             width: 150px;
@@ -2605,11 +3934,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         .newly-launched-upper-heading>.bottom-dots .dot.line-dot {
-            color: green;
+            color: white;
         }
 
         .newly-launched-upper-heading>.bottom-dots .dot.line-dot {
-            border-right: 40px solid green;
+            border-right: 40px solid white;
         }
 
         .newly-launched-upper-heading>.bottom-dots .dot {
@@ -2620,157 +3949,126 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         .newly-launched-upper-heading>.bottom-dots .dot {
-            border-right: 3px solid green;
+            border-right: 3px solid white;
         }
 
-        .newly-launched-carts {
-            padding-right: 15px;
-            padding-left: 15px;
-            margin: 0 auto;
-            width: 100%;
-            height: 50%;
-        }
-
-        .newly-launched-slider {
-            margin-bottom: 20px;
-            height: 100%;
-            width: 100%;
-        }
-
-        .newly-launched-slick-track {
-            height: 220px;
-            max-width: 1120px;
-            /* background-color: aqua; */
-            display: flex;
-            margin-inline: auto;
-            overflow-x: scroll;
-            gap: 5px;
-            scrollbar-width: none;
-        }
+        .newly-launched_Outlet{
+      display: flex;
+      flex-direction: column;
+      /* justify-content: space-evenly; */
+      gap: 50px;
+      align-items: center;
+      height: 100vh;
+      max-height: 700px;
+      background: black;
+      @media (m) {
         
-        /* For Webkit browsers (Chrome, Safari) */
-        .newly-launched-slick-track::-webkit-scrollbar {
-            height: 0px;
-        }
+      }
+    }
 
-        .store-div-start {
-            height: 50%;
-            padding: 10px 12px;
-        }
+    .outlet__box {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
+  height: 300px;
+  transform-style: preserve-3d;
+  animation: animate 40s linear infinite;
+  @media (max-width: 768px) {
+    width: 300px;
+  }
+}
 
-        .store-div {
-            /* width: 250px; */
-            min-width: 220px;
-            border: 1px solid #efefef;
-            border-radius: 12px;
-            box-shadow: 0px 4px 7px rgb(0 0 0);
-            background-color: #efefef;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            transition: transform 0.5s ease-out;
-        }
+@keyframes animate {
+  0% {
+    transform: perspective(3000px) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(3000px) rotateY(360deg);
+  }
+}
 
-        .store-div[data-scale="0.8"] {
-            transform: scale(0.75);
-        }
+.outlet__card__article {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: center;
+  transform-style: preserve-3d;
+  transform: rotateY(calc(var(--i) * 36deg)) translateZ(650px); 
+  -webkit-box-reflect: below 0px linear-gradient(transparent, transparent, #0004);
+  @media (max-width:768px) {
+    transform: rotateY(calc(var(--i) * 36deg)) translateZ(550px);  
+  }
+}
 
-        .store-div[data-scale="0.9"] {
-            transform: scale(0.85);
-        }
+.outlet__card__img {
+  width: 100%;
+  /* max-height: 300px; */
+  height: 100%;
 
-        .store-div[data-scale="1.0"] {
-            transform: scale(0.95);
-        }
+  border-radius: 1.5rem;
+  object-fit: cover;
+}
 
-        .store-div-top {
-            padding: 20px 20px;
-            color: green;
-        }
+.outlet__card__data {
+  width: 80%;
+  color: #00572d;
+  font-weight: 600;
+  height: fit-content;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 8px 24px hsla(0, 0%, 0%, .15);
+  border-radius: 1rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  opacity: 1;
+  transform: translateY(20px); 
+  background-color: #FFE77A;
+}
 
-        .store-div-top a {
-            color: green;
-            text-decoration: none;
-            gap: 5px;
-            display: flex;
-            flex-direction: column;
-        }
+.outlet__card__description {
+  display: block;
+  font-size: var(--small-font-size);
+  margin-bottom: .25rem;
+}
 
-        .store-div-bottom {
-            width: 100%;
-            height: 100%;
-            /* padding: 20px 20px; */
-            border-radius: 12px;
-            background: linear-gradient(to right, rgba(0, 128, 0, 0.150), green);
-            /* background: linear-gradient(#fff 0%, #3f9366 100%); */
-            position: absolute;
-            /* top: 50%; */
-            transform: translateY(50%);
-            z-index: 0;
-            transition: all 0.5s ease-in-out;
-        }
+.outlet__card__title {
+  font-size: var(--h2-font-size);
+  font-weight: 500;
+  color: var(--title-color);
+  margin-bottom: .75rem;
+}
 
-        .store-div-bottom-left {
-            position: relative;
-            display: flex;
-            align-items: start;
-            justify-content: center;
-            flex-direction: column;
-            margin-left: 20px;
-            margin-top: 10px;
-            text-decoration: none;
-        }
+.outlet__card__button {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--small-font-size);
+  color: var(--first-color);
+}
 
-        .phone-icn img {
-            position: relative;
-            width: 12px;
-            height: 12px;
-            max-width: 16px;
-        }
+@media screen and (max-width: 340px) {
+  .outlet__card__data {
+    padding: 1rem;
+  }
+}
 
-        .phone-icn {
-            position: absolute;
-            background-color: white;
-            top: 40%;
-            right: 10%;
-            height: 30px;
-            width: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.5s ease-in-out;
-        }
-
-        .lapinoz-logo-icon {
-            width: 35px;
-            height: 35px;
-        }
-
-        .store-detail span {
-            text-decoration: none;
-            color: white;
-        }
-
-        .store-div:hover .store-div-bottom {
-            transform: translateY(0);
-        }
-
-        .store-div:hover .phone-icn {
-            top: 10%;
-            rotate: 360deg;
-            /* transform: rotate(360deg); */
-        }
-
-        .store-div:hover .store-div-top a {
-            color: white;
-            position: relative;
-            transition: all 0.5s ease-in-out;
-            z-index: 10000;
-        }
+@media screen and (min-width: 1120px) {
+  .outlet__card__img {
+    width: 100%;
+  }
+  .outlet__card__data {
+    padding-inline: 2.5rem;
+  }
+}
     </style>
-    <script>
+    <!-- <script>
         document.addEventListener('DOMContentLoaded', function () {
             const items = document.querySelectorAll('.store-div');
             const slider = document.querySelector('.newly-launched-slick-track');
@@ -2803,7 +4101,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Initial call to set the correct scaling
             updateItemStyles();
         });
-      </script>  
+      </script>   -->
 
     <section class="banner__section" data-scroll-section>
         <div class="overlay"></div>
@@ -2898,7 +4196,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     .banner_image {
         height: 135%;
-        width: 105%;
+        width: 100%;
         object-fit: contain;
     }
 
@@ -3503,11 +4801,84 @@ document.addEventListener('DOMContentLoaded', function () {
     // Scroll the bottom container continuously
     setInterval(scrollBottomContainer, bottomScrollInterval);
 });
-
-
-
-
 </script>
+
+    <!-- <div id="map"></div>
+<style>
+  #map {
+    height: 400px;
+    width: 600px;
+    margin-inline: auto;
+  }
+</style>
+<script>
+  let map;
+
+  // Specify the locations and their corresponding coordinates
+  const locations = [
+  { name: "Abohar", coordinates: { lat: 29.9100, lng: 75.1600 } },
+  { name: "Agra", coordinates: { lat: 27.1700, lng: 78.0400 } },
+  { name: "Ahmedabad", coordinates: { lat: 22.5700, lng: 72.5800 } },
+  { name: "Ajmer", coordinates: { lat: 26.4500, lng: 74.6300 } },
+  { name: "Alwar", coordinates: { lat: 27.5900, lng: 76.1300 } },
+  { name: "Ambala", coordinates: { lat: 30.9200, lng: 76.7700 } },
+  { name: "Amreli", coordinates: { lat: 21.1200, lng: 71.2400 } },
+  { name: "Amritsar", coordinates: { lat: 31.6200, lng: 74.8600 } },
+  { name: "Anand", coordinates: { lat: 22.2300, lng: 73.0000 } },
+  { name: "Ankleshwar", coordinates: { lat: 21.7400, lng: 73.0300 } },
+  { name: "Aurangabad", coordinates: { lat: 18.0700, lng: 75.3300 } },
+  { name: "Ayodhya", coordinates: { lat: 26.8900, lng: 82.6200 } },
+  { name: "Azamgarh", coordinates: { lat: 26.0200, lng: 83.1200 } },
+  { name: "Baddi", coordinates: { lat: 30.5700, lng: 76.8400 } },
+  { name: "Bahadurgarh", coordinates: { lat: 28.7200, lng: 76.9200 } },
+  { name: "Barabanki", coordinates: { lat: 26.7200, lng: 81.0200 } },
+  { name: "Bareilly", coordinates: { lat: 28.3600, lng: 78.8300 } },
+  { name: "Basti", coordinates: { lat: 26.5900, lng: 82.9600 } },
+  { name: "Batala", coordinates: { lat: 31.6000, lng: 75.5400 } },
+  { name: "Bathinda", coordinates: { lat: 30.1600, lng: 74.9500 } },
+  { name: "Beawar", coordinates: { lat: 26.3900, lng: 74.6200 } },
+  { name: "Bengaluru", coordinates: { lat: 13.1300, lng: 77.5600 } },
+  { name: "Bettiah", coordinates: { lat: 26.7200, lng: 84.6800 } },
+  { name: "Bhagalpur", coordinates: { lat: 25.2700, lng: 86.5300 } },
+  { name: "Bharuch", coordinates: { lat: 21.7500, lng: 72.6300 } },
+  { name: "Bhavnagar", coordinates: { lat: 22.2500, lng: 72.1700 } },
+  { name: "Bhilai", coordinates: { lat: 21.1200, lng: 81.9800 } },
+  { name: "Bhilwara", coordinates: { lat: 25.4100, lng: 74.6400} },
+    // ... Add more locations as needed
+  ];
+
+  function initMap() {
+    // Set India as the map center and adjust zoom level
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: { lat: 23.0000, lng: 78.0000 }, // Centered on India
+      zoom: 5,
+      mapTypeId: 'terrain' // 2D map view
+    });
+
+    const markers = []; // Array to store markers
+
+    locations.forEach(location => {
+      const marker = new google.maps.Marker({
+        position: location.coordinates,
+        map: map,
+        title: location.name
+      });
+
+      // Add marker to the markers array for later reference
+      markers.push(marker);
+    });
+
+    // Optional: Set a fit-to-bounds view to show all markers
+    const bounds = new google.maps.LatLngBounds();
+    markers.forEach(marker => {
+      bounds.extend(marker.getPosition());
+    });
+    map.fitBounds(bounds);
+  }
+
+  window.addEventListener('load', initMap);
+</script> -->
+
 
     <section class="lapinoz-outlet">
         <div class="lapinoz-outlet-container">
@@ -3524,18 +4895,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="city-name-souter">
                     <p class="city-name-s">A</p>
                 </div>
-                <ul class="cities-list-nw">
+                <ul class="button-list">
                     <li>
-                        <a id="locationLink" title="Our outlets in Abohar"
-                            href="https://lapinozpizza.in/store-locator/Abohar">
-                            <i class="fas fa-map-marker-alt"></i> Abohar
+                        <a id="locationLink" title="Our outlets in Agra"
+                            href="https://lapinozpizza.in/store-locator/Agra">
+                             Agra
                         </a>
                     </li>
 
                     <li>
                         <a id="locationLink" title="Our outlets in Agra"
                             href="https://lapinozpizza.in/store-locator/Agra">
-                            <i class="fas fa-map-marker-alt"></i> Agra
+                             Agra
                         </a>
                     </li>
 
@@ -3622,7 +4993,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="city-name-souter">
                     <p class="city-name-s">B</p>
                 </div>
-                <ul class="cities-list-nw">
+                <ul class="button-list">
                     <li>
                         <a id="locationLink" title="Our outlets in Baddi"
                             href="https://lapinozpizza.in/store-locator/Baddi">
@@ -3797,7 +5168,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="city-name-souter">
                     <p class="city-name-s">C</p>
                 </div>
-                <ul class="cities-list-nw">
+                <ul class="button-list">
                     <li>
                         <a id="locationLink" title="Our outlets in Chandigarh"
                             href="https://lapinozpizza.in/store-locator/Chandigarh">
@@ -3825,7 +5196,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="city-name-souter">
                     <p class="city-name-s">D</p>
                 </div>
-                <ul class="cities-list-nw">
+                <ul class="button-list">
                     <li>
                         <a id="locationLink" title="Our outlets in Dahod"
                             href="https://lapinozpizza.in/store-locator/Dahod">
@@ -3899,7 +5270,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <li>
                         <a id="locationLink" title="Our outlets in DHARAMSHALA"
                             href="https://lapinozpizza.in/store-locator/DHARAMSHALA">
-                            <i class="fas fa-map-marker-alt"></i> DHARAMSHALA
+                            <i class="fas fa-map-marker-alt"></i> Dharamashala
                         </a>
                     </li>
 
@@ -3923,7 +5294,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="city-name-souter">
                     <p class="city-name-s">F</p>
                 </div>
-                <ul class="cities-list-nw">
+                <ul class="button-list">
                     <li>
                         <a id="locationLink" title="Our outlets in Faridabad"
                             href="https://lapinozpizza.in/store-locator/Faridabad">
@@ -3951,7 +5322,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="city-name-souter">
                     <p class="city-name-s">G</p>
                 </div>
-                <ul class="cities-list-nw">
+                <ul class="button-list">
                     <li>
                         <a id="locationLink" title="Our outlets in Gandhidham"
                             href="https://lapinozpizza.in/store-locator/Gandhidham">
@@ -4070,7 +5441,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="city-name-souter">
                     <p class="city-name-s">H</p>
                 </div>
-                <ul class="cities-list-nw">
+                <ul class="button-list">
                     <li>
                         <a id="locationLink" title="Our outlets in Haldwani"
                             href="https://lapinozpizza.in/store-locator/Haldwani">
@@ -4133,7 +5504,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="city-name-souter">
                     <p class="city-name-s">I</p>
                 </div>
-                <ul class="cities-list-nw">
+                <ul class="button-list">
                     <li>
                         <a id="locationLink" title="Our outlets in Indore"
                             href="https://lapinozpizza.in/store-locator/Indore">
@@ -4147,7 +5518,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="city-name-souter">
                     <p class="city-name-s">J</p>
                 </div>
-                <ul class="cities-list-nw">
+                <ul class="button-list">
                     <li>
                         <a id="locationLink" title="Our outlets in Jabalpur"
                             href="https://lapinozpizza.in/store-locator/Jabalpur">
@@ -4245,7 +5616,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="city-name-souter">
                     <p class="city-name-s">K</p>
                 </div>
-                <ul class="cities-list-nw">
+                <ul class="button-list">
                     <li>
                         <a id="locationLink" title="Our outlets in Kakinada"
                             href="https://lapinozpizza.in/store-locator/Kakinada">
@@ -4343,7 +5714,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="city-name-souter">
                     <p class="city-name-s">L</p>
                 </div>
-                <ul class="cities-list-nw">
+                <ul class="button-list">
                     <li>
                         <a id="locationLink" title="Our outlets in Lucknow"
                             href="https://lapinozpizza.in/store-locator/Lucknow">
@@ -4364,7 +5735,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="city-name-souter">
                     <p class="city-name-s">M</p>
                 </div>
-                <ul class="cities-list-nw">
+                <ul class="button-list">
                     <li>
                         <a id="locationLink" title="Our outlets in Maharajganj"
                             href="https://lapinozpizza.in/store-locator/Maharajganj">
@@ -4497,7 +5868,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="city-name-souter">
                     <p class="city-name-s">N</p>
                 </div>
-                <ul class="cities-list-nw">
+                <ul class="button-list">
                     <li>
                         <a id="locationLink" title="Our outlets in Nabha"
                             href="https://lapinozpizza.in/store-locator/Nabha">
@@ -4567,7 +5938,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="city-name-souter">
                     <p class="city-name-s">P</p>
                 </div>
-                <ul class="cities-list-nw">
+                <ul class="button-list">
                     <li>
                         <a id="locationLink" title="Our outlets in Palanpur"
                             href="https://lapinozpizza.in/store-locator/Palanpur">
@@ -4665,7 +6036,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="city-name-souter">
                     <p class="city-name-s">R</p>
                 </div>
-                <ul class="cities-list-nw">
+                <ul class="button-list">
                     <li>
                         <a id="locationLink" title="Our outlets in Raebareli"
                             href="https://lapinozpizza.in/store-locator/Raebareli">
@@ -4742,7 +6113,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="city-name-souter">
                     <p class="city-name-s">S</p>
                 </div>
-                <ul class="cities-list-nw">
+                <ul class="button-list">
                     <li>
                         <a id="locationLink" title="Our outlets in Sagar"
                             href="https://lapinozpizza.in/store-locator/Sagar">
@@ -4882,7 +6253,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="city-name-souter">
                     <p class="city-name-s">T</p>
                 </div>
-                <ul class="cities-list-nw">
+                <ul class="button-list">
                     <li>
                         <a id="locationLink" title="Our outlets in Tarn Taran"
                             href="https://lapinozpizza.in/store-locator/Tarn Taran">
@@ -4910,7 +6281,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="city-name-souter">
                     <p class="city-name-s">U</p>
                 </div>
-                <ul class="cities-list-nw">
+                <ul class="button-list">
                     <li>
                         <a id="locationLink" title="Our outlets in Udaipur"
                             href="https://lapinozpizza.in/store-locator/Udaipur">
@@ -4945,7 +6316,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="city-name-souter">
                     <p class="city-name-s">V</p>
                 </div>
-                <ul class="cities-list-nw">
+                <ul class="button-list">
                     <li>
                         <a id="locationLink" title="Our outlets in Vadodara"
                             href="https://lapinozpizza.in/store-locator/Vadodara">
@@ -5001,11 +6372,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="city-name-souter">
                     <p class="city-name-s">Y</p>
                 </div>
-                <ul class="cities-list-nw">
+                <ul class="button-list">
                     <li>
-                        <a id="locationLink" title="Our outlets in Yamuna Nagar"
-                            href="https://lapinozpizza.in/store-locator/Yamuna Nagar">
-                            <i class="fas fa-map-marker-alt"></i> Yamuna Nagar
+                        <a id="locationLink" title="Our outlets in Vijayawada" href="https://lapinozpizza.in/store-locator/Vijayawada">
+                            <div><span>Vijayawada</span></div>
                         </a>
                     </li>
                 </ul>
@@ -5015,13 +6385,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="city-name-souter">
                     <p class="city-name-s">Z</p>
                 </div>
-                <ul class="cities-list-nw">
+                <ul class="button-list">
                     <li>
-                        <a id="locationLink" title="Our outlets in Zirakpur"
-                            href="https://lapinozpizza.in/store-locator/Zirakpur">
-                            <i class="fas fa-map-marker-alt"></i> Zirakpur
+                        <a id="locationLink" title="Our outlets in Veraval" href="https://lapinozpizza.in/store-locator/Veraval">
+                            <div><span>Veraval</span></div>
                         </a>
                     </li>
+                    
                 </ul>
             </div>
         </div>
@@ -5057,13 +6427,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         .city-name-outr .city-name-souter {
-            width: 100%;
-            max-width: 3.5%;
+            min-width: 30px;
         }
 
         .city-name-outr .city-name-s {
             font-weight: 500;
             margin-top: 8px;
+            margin-right: 5px;
             width: 28px;
             line-height: 28px;
             text-align: center;
@@ -5071,78 +6441,108 @@ document.addEventListener('DOMContentLoaded', function () {
             box-shadow: 0px 4px 7px rgb(0 0 0 / 20%);
         }
 
-        .city-name-outr .cities-list-nw {
-            width: 100%;
-            max-width: 99%;
-        }
-
-        .cities-list-nw {
-            margin-top: 2rem;
-            overflow: hidden;
-            height: auto;
-            display: block;
-            width: 100%;
-            padding-left: 0px;
-            margin: 0px;
-            list-style: none;
-        }
-        
         @media (max-width: 768px) {
-            .cities-list-nw {
+            .button-list {
                 padding-left: 20px;
             }
         }
 
-        .cities-list-nw li {
-            width: auto;
-            padding: 7px 10px;
-            background: green;
-            border-radius: 0.5em;
+        .button-list  {
             margin: 0.3em;
-            box-shadow: 0 5px 20px -10px rgb(0 0 0 / 30%);
             font-size: 15px;
             display: inline-flex;
             align-items: center;
             font-weight: 500;
         }
 
-        .cities-list-nw a {
-            color: #efefef;
+       
+
+        .button-list a {
+            --background: #00572d;
+            --text: white;
+            --font-size: 15px;
+            --duration: .44s;
+            --move-hover: -4px;
+            --shadow: 0 2px 8px -1px #00572da5;
+            --shadow-hover: 0 4px 20px -2px #00572da2;
+            --font-shadow: var(--font-size);
+            /* background-color: #00572d; */
+            padding: 12px 20px;
+            font-family: 'Roboto';
+            font-weight: 500;
+            line-height: var(--font-size);
+            border-radius: 24px;
+            display: block;
+            outline: none;
+            appearance: none;
+            border: none;
+            margin: 5px 7px;
             text-decoration: none;
+            font-size: var(--font-size);
+            letter-spacing: .5px;
+            background: var(--background);
+            color: var(--text);
+            box-shadow: var(--shadow);
+            transform: translateY(var(--y)) translateZ(0);
+            transition: transform var(--duration) ease, box-shadow var(--duration) ease;
         }
 
-        .city-name-outr ul.cities-list-nw {
-            opacity: 0;
-            transition: opacity 0.2s ease-in-out;
+        .button-list a div {
+            display: flex;
+            overflow: hidden;
+            text-shadow: 0 var(--font-shadow) 0 var(--text);
         }
 
-        .city-name-outr ul.cities-list-nw.visible {
-            opacity: 1;
+        .button-list a div span {
+            display: block;
+            backface-visibility: hidden;
+            padding: 0.5px;
+            font-style: normal;
+            transition: transform var(--duration) ease;
+            transform: translateY(var(--m)) translateZ(0);
         }
 
-        .city-name-outr ul.cities-list-nw.invisible {
-            opacity: 0;
+        .button-list a:hover {
+            --y: var(--move-hover);
+            --shadow: var(--shadow-hover);
         }
 
-        .city-name-outr ul.cities-list-nw li {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+        .button-list a:hover span {
+            --m: calc(var(--font-size) * -1);
         }
 
-        .city-name-outr ul.cities-list-nw li.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .button-list a.reverse {
+            --font-shadow: calc(var(--font-size) * -1);
         }
 
-        .city-name-s {
-            font-weight: bold;
-            font-size: 1.5em;
-            margin-bottom: 10px;
+        .button-list a.reverse:hover span {
+            --m: calc(var(--font-size));
         }
+
+
+        .button-list {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        ul.button-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
 
     </style>
     <script>
+
+document.querySelectorAll('.button-list a').forEach(link => {
+            let textContent = link.textContent.trim();
+            let spans = textContent.split('').map((char, i) => `<span style="transition-delay: ${i * 0.05}s;">${char}</span>`).join('');
+            link.innerHTML = `<div>${spans}</div>`;
+        });
+
+
+
         document.addEventListener("DOMContentLoaded", function () {
             const observerOptions = {
                 root: null,

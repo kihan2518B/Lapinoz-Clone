@@ -33,7 +33,7 @@
   margin: 0;
 }
 
-body {
+/* body {
   font-family: var(--body-font);
   background-color: var(--body-color);
   color: var(--text-color);
@@ -43,9 +43,9 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
-}
+} */
 
-.container {
+/* .container {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -56,9 +56,9 @@ img {
 .card__container {
   display: grid;
   row-gap: 3.5rem;
-}
+} */
 
-.card__article {
+/* .card__article {
   position: relative;
   overflow: hidden;
 }
@@ -195,14 +195,112 @@ img {
     width: 280px;
     padding-inline: 2.5rem;
   }
+} */
+
+.card__article {
+  position: relative;
+  /* overflow: hidden; */
 }
+
+.card__img {
+  width: 328px;
+  border-radius: 1.5rem;
+  z-index: -1;
+}
+
+.card__data {
+  width: 280px;
+  z-index: 10;
+  background-color: var(--container-color);
+  padding: 1.5rem 2rem;
+  box-shadow: 0 8px 24px hsla(0, 0%, 0%, .15);
+  border-radius: 1rem;
+  position: absolute;
+  bottom: 0; /* Changed from -9rem to 0 */
+  left: 0;
+  /* top:70%; */
+  right: 0;
+  margin-inline: auto;
+  opacity: 1; /* Changed from 0 to 1 */
+  transform: translateY(50px); /* Ensure it stays in place */
+  /* transition: opacity 1s, transform 1s; Combined transition for opacity and transform */
+}
+
+.card__description {
+  display: block;
+  font-size: var(--small-font-size);
+  margin-bottom: .25rem;
+}
+
+.card__title {
+  font-size: var(--h2-font-size);
+  font-weight: 500;
+  color: var(--title-color);
+  margin-bottom: .75rem;
+}
+
+.card__button {
+  text-decoration: none;
+  font-size: var(--small-font-size);
+  font-weight: 500;
+  color: var(--first-color);
+}
+
+.card__button:hover {
+  text-decoration: underline;
+}
+
+@keyframes show-data {
+  50% {
+    transform: translateY(-10rem);
+  }
+  100% {
+    transform: translateY(-7rem);
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .container {
+    margin-inline: 1rem;
+  }
+
+  .card__data {
+    width: 250px;
+    padding: 1rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .card__container {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1120px) {
+  .container {
+    height: 100vh;
+  }
+
+  .card__container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .card__img {
+    width: 300px;
+  }
+  .card__data {
+    width: 280px;
+    padding-inline: 2.5rem;
+  }
+}
+
       </style>
    </head>
    <body>
       <div class="container">
          <div class="card__container">
             <article class="card__article">
-               <img src="./public/images/sanam-kapoor.jpg" alt="image" class="card__img">
+               <img src="./media/sanam-kapoor.jpg" alt="image" class="card__img">
 
                <div class="card__data">
                   <span class="card__description">Vancouver Mountains, Canada</span>
@@ -212,7 +310,7 @@ img {
             </article>
 
             <article class="card__article ">
-               <img src="./public/images/sanam-kapoor.jpg" alt="image" class="card__img">
+               <img src="./media/sanam-kapoor.jpg" alt="image" class="card__img">
 
                <div class="card__data">
                   <span class="card__description">Poon Hill, Nepal</span>
@@ -222,7 +320,7 @@ img {
             </article>
 
             <article class="card__article">
-               <img src="./public/images/sanam-kapoor.jpg" alt="image" class="card__img">
+               <img src="./media/sanam-kapoor.jpg" alt="image" class="card__img">
 
                <div class="card__data">
                   <span class="card__description">Bojcin Forest, Serbia</span>
@@ -232,7 +330,7 @@ img {
             </article>
 
             <article class="card__article">
-              <img src="./public/images/sanam-kapoor.jpg" alt="image" class="card__img">
+              <img src="./media/sanam-kapoor.jpg" alt="image" class="card__img">
 
               <div class="card__data">
                  <span class="card__description">Bojcin Forest, Serbia</span>
@@ -242,7 +340,7 @@ img {
            </article>
 
            <article class="card__article">
-            <img src="./public/images/sanam-kapoor.jpg" alt="image" class="card__img">
+            <img src="./media/sanam-kapoor.jpg" alt="image" class="card__img">
 
             <div class="card__data">
                <span class="card__description">Bojcin Forest, Serbia</span>
@@ -252,7 +350,7 @@ img {
          </article>
 
          <article class="card__article">
-          <img src="./public/images/sanam-kapoor.jpg" alt="image" class="card__img">
+          <img src="./media/sanam-kapoor.jpg" alt="image" class="card__img">
 
           <div class="card__data">
              <span class="card__description">Bojcin Forest, Serbia</span>
@@ -262,7 +360,7 @@ img {
        </article>
 
        <article class="card__article">
-        <img src="./public/images/sanam-kapoor.jpg" alt="image" class="card__img">
+        <img src="./media/sanam-kapoor.jpg" alt="image" class="card__img">
 
         <div class="card__data">
            <span class="card__description">Bojcin Forest, Serbia</span>
@@ -272,7 +370,7 @@ img {
      </article>
 
      <article class="card__article">
-      <img src="./public/images/sanam-kapoor.jpg" alt="image" class="card__img">
+      <img src="./media/sanam-kapoor.jpg" alt="image" class="card__img">
 
       <div class="card__data">
          <span class="card__description">Bojcin Forest, Serbia</span>
@@ -282,7 +380,7 @@ img {
    </article>
 
    <article class="card__article">
-    <img src="./public/images/sanam-kapoor.jpg" alt="image" class="card__img">
+    <img src="./media/sanam-kapoor.jpg" alt="image" class="card__img">
 
     <div class="card__data">
        <span class="card__description">Bojcin Forest, Serbia</span>
@@ -292,7 +390,7 @@ img {
  </article>
 
  <article class="card__article">
-  <img src="./public/images/sanam-kapoor.jpg" alt="image" class="card__img">
+  <img src="./media/sanam-kapoor.jpg" alt="image" class="card__img">
 
   <div class="card__data">
      <span class="card__description">Bojcin Forest, Serbia</span>
