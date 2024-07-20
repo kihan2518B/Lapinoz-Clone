@@ -4,14 +4,18 @@
     box-sizing: border-box;
 }
 
+
 #main {
-    display: block;
+    display: none;
 }
 
 body {
-    background-color: #fff;
+    margin: 0;
+    overflow: hidden;
+    background: #fff;
     color: #000;
 }
+
 
 
 /* Animations */
