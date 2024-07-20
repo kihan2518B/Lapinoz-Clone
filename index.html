@@ -415,7 +415,7 @@
                     <img class="logo" src="./Media/lapinoz_logo.png" alt="">
                     <div class="nav_elements">
                         <nav>
-                            <ul>
+                            <ul class="navbar__button-list">
                                 <li><a class="active" href="#">Home</a></li>
                                 <li><a href="#">Order online</a></li>
                                 <li><a href="#"> Store Locator</a></li>
@@ -853,6 +853,91 @@
                 }
 
                 /* Menu */
+                @media (max-width: 768px) {
+                    .navbar__button-list {
+                        padding-left: 20px;
+                    }
+                }
+
+                .navbar__button-list {
+                    margin: 0.3em;
+                    font-size: 15px;
+                    display: inline-flex;
+                    align-items: center;
+                    font-weight: 500;
+                }
+
+
+
+                .navbar__button-list a {
+                    /* --background: #00572d; */
+                    --text: black;
+                    --font-size: 20px;
+                    --duration: .44s;
+                    --move-hover: -4px;
+                    /* --shadow: 0 2px 8px -1px #00572da5;
+            --shadow-hover: 0 4px 20px -2px #00572da2; */
+                    --font-shadow: var(--font-size);
+                    /* background-color: #00572d; */
+                    padding: 10px 15px;
+                    font-family: 'Roboto';
+                    font-weight: 500;
+                    line-height: var(--font-size);
+                    border-radius: 24px;
+                    display: block;
+                    outline: none;
+                    appearance: none;
+                    border: none;
+                    text-decoration: none;
+                    font-size: var(--font-size);
+                    letter-spacing: .5px;
+                    background: var(--background);
+                    color: var(--text);
+                    box-shadow: var(--shadow);
+                    transform: translateY(var(--y)) translateZ(0);
+                    transition: transform var(--duration) ease, box-shadow var(--duration) ease;
+                }
+
+                .navbar__button-list a div {
+                    display: flex;
+                    overflow: hidden;
+                    text-shadow: 0 var(--font-shadow) 0 var(--text);
+                }
+
+                .navbar__button-list a:hover span {
+                    --m: calc(var(--font-size) * -1);
+                }
+
+                .navbar__button-list a div span {
+                    display: block;
+                    backface-visibility: hidden;
+                    padding: 0.5px;
+                    font-style: normal;
+                    transition: transform var(--duration) ease;
+                    transform: translateY(var(--m)) translateZ(0);
+                }
+
+                .navbar__button-list a:hover {
+                    --y: var(--move-hover);
+                    --shadow: var(--shadow-hover);
+                }
+
+
+
+                .navbar__button-list a.reverse {
+                    --font-shadow: calc(var(--font-size) * -1);
+                }
+
+                .navbar__button-list a.reverse:hover span {
+                    --m: calc(var(--font-size));
+                }
+
+                ul.navbar__button-list {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                }
+
                 ul.menu {
                     display: flex;
                     flex-direction: column;
@@ -1141,12 +1226,54 @@
                     }
                 }
             </style>
+
             <!-- Second section -->
             <section class="second-section" data-scroll-section>
                 <style>
-                    * {
-                        font-family: 'Poppins', sans-serif;
+                    .delivrySection__heading__button {
+                        position: relative;
+                        cursor: pointer;
                     }
+
+                    .delivrySection__heading__button::after {
+                        content: attr(data-tooltip);
+                        position: absolute;
+                        bottom: 130%;
+                        /* Position above the button */
+                        left: 50%;
+                        transform: translateX(-58%);
+                        background-color: #f7f7f7;
+                        color: #00572D;
+                        padding: 10px 15px;
+                        border-radius: 8px;
+                        white-space: nowrap;
+                        opacity: 0;
+                        visibility: hidden;
+                        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+                        font-size: 15px;
+                        z-index: 10;
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                        /* Add shadow for depth */
+                    }
+
+                    .delivrySection__heading__button::before {
+                        content: '';
+                        position: absolute;
+                        transform: translateX(-58%);
+                        border-width: 6px;
+                        opacity: 0;
+                        visibility: hidden;
+                        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+                        z-index: 9;
+                    }
+
+                    .delivrySection__heading__button:hover::after,
+                    .delivrySection__heading__button:hover::before {
+                        opacity: 1;
+                        visibility: visible;
+                        transform: translateX(-58%) translateY(-3px);
+                    }
+
 
                     .second-section {
                         background-color: #f0f0f0;
@@ -1157,8 +1284,10 @@
                         justify-content: center;
                         align-items: center;
                         height: 100dvh;
-                        background-image: url(./Media/home-background.jpeg);
+                        max-height: 600px;
+                        background-image: url(./Media/lapinoz-background.jpg);
                         background-size: cover;
+                        background-position: center;
                     }
 
                     .delivrySection_container {
@@ -1204,24 +1333,25 @@
 
                     .delivrySection__header {
                         height: 40px;
-                        width: 20%;
+                        width: 90%;
                         font-size: x-large;
                         font-weight: bold;
                         display: flex;
-                        justify-content: space-evenly;
+                        justify-content: space-between;
                         align-items: center;
+                        margin-left: 25px;
                         transition: opacity 500ms ease-in-out;
                     }
 
                     .delivrySection__textArea {
-                        height: 25%;
+                        height: 30%;
                         width: 95%;
                         font-weight: 900;
                         /* font-family: 'Arial Narrow', Arial, sans-serif; */
-                        margin-left: 15px;
+                        margin-left: 25px;
                         display: flex;
                         flex-direction: column;
-                        justify-content: center;
+                        justify-content: space-evenly;
                         transition: opacity 500ms ease-in-out;
                     }
 
@@ -1241,7 +1371,7 @@
                         display: flex;
                         align-items: center;
                         font-size: larger;
-                        margin-left: 15px;
+                        margin-left: 25px;
                         transition: opacity 500ms ease-in-out;
                     }
 
@@ -1249,6 +1379,7 @@
                         height: 48px;
                         width: 35%;
                         border-radius: 5px;
+                        font-size: large;
                         border: 2px solid #00572d;
                         display: flex;
                         align-items: center;
@@ -1277,6 +1408,7 @@
                         height: 100%;
                         width: 45%;
                         display: flex;
+                        font-size: large;
                         align-items: center;
                         justify-content: space-evenly;
                         text-align: center;
@@ -1312,7 +1444,7 @@
                     .pickup_text {
                         height: 30%;
                         width: 89%;
-                        font-size: larger;
+                        font-size: x-large;
                         border-radius: 10px;
                         display: flex;
                         align-items: center;
@@ -1330,7 +1462,9 @@
                     }
 
                     .pickup_button {
-                        height: 100%;
+                        height: 60%;
+                        background-color: #00572d;
+                        color: #f7f7f7;
                         display: flex;
                         justify-content: center;
                         align-items: center;
@@ -1351,12 +1485,10 @@
                         .text_section {
                             font-size: medium;
                         }
+
                     }
 
                     @media (max-width: 1050px) {
-                        .delivrySection__header {
-                            width: 32%;
-                        }
 
                         .SelectButtons {
                             height: 45%;
@@ -1396,7 +1528,7 @@
                     @media (max-width:768px) {
                         .delivrySection__header {
                             font-size: larger;
-                            width: 40%;
+                            margin-left: 15px;
                         }
 
                         .delivrySection_container {
@@ -1410,13 +1542,17 @@
                         .location_button {
                             width: 100%;
                         }
+
+                        .delivrySection__textArea {
+                            margin-left: 15px;
+                        }
+
+                        .SelectButtons {
+                            margin-left: 15px;
+                        }
                     }
 
                     @media (max-width:600px) {
-                        .delivrySection__header {
-                            width: 50%;
-                        }
-
                         .delivrySection__textArea p {
                             width: 90%;
                             font-size: larger;
@@ -1429,23 +1565,48 @@
                         .city_buttons {
                             width: 50%;
                         }
+
+                        .pickup_text {
+                            font-size: larger;
+                        }
+
+                        .delivrySection__heading__button:hover::after,
+                        .delivrySection__heading__button:hover::before {
+                            transform: translateX(-65%);
+                        }
                     }
 
                     @media (max-width:470px) {
-                        .delivrySection__header {
-                            width: 70%;
-                        }
-
                         .SelectButtons {
                             font-size: large;
+                        }
+
+                        .delivrySection__textArea p {
+                            font-size: large;
+                        }
+
+                        .pickup_button {
+                            font-size: small;
+                        }
+
+                        .delivrySection__heading__button:hover::after,
+                        .delivrySection__heading__button:hover::before {
+                            transform: translateX(-70%);
                         }
                     }
                 </style>
                 <section class="delivrySection_container" data-scroll data-scroll-speed="-1">
                     <div class="delivrySection" data-scroll="">
-                        <div class="delivrySection__header" style="color:#f7f7f7; border-bottom: 2px solid #f7f7f7;">
-                            <i class="ri-riding-line" style="font-weight: lighter"></i>
-                            <p>Delivery</p>
+                        <div class="delivrySection__header" style="color:#f7f7f7; ">
+                            <div class="delivrySection__heading"
+                                style="display: flex; border-bottom: 2px solid #f7f7f7;">
+                                <i class="ri-riding-line" style="font-weight: lighter; padding-right: 10px;"></i>
+                                <p>Delivery</p>
+                            </div>
+                            <div class="delivrySection__heading__button" data-tooltip="Switch to Self Pickup"
+                                style="height: 110%; width: 50px; display: flex; justify-content: center; align-items: center; border-radius: 50%; background-color: #f7f7f7; color: #00572d; object-fit: contain;">
+                                <i class="fa-solid fa-people-carry-box"></i>
+                            </div>
                         </div>
                         <div class="delivrySection__textArea">
                             <p style="color: #f7f7f7">Let's Get Ordering On La Pino'z Pizza</p>
@@ -1456,7 +1617,7 @@
                                 <i class="ri-map-pin-line" style="color: #00572d;"></i>
                                 Use my current location
                             </div>
-                            <p class="OR" style="color: rgb(58, 58, 58);">OR</p>
+                            <p class="OR" style="color: #f7f7f7;">OR</p>
                             <div class="Select_buttons">
                                 <div class="city_buttons">
                                     <p>Select City</p>
@@ -1470,9 +1631,16 @@
                         </div>
                     </div>
                     <div class="PickUp">
-                        <div class="delivrySection__header" style="color: #00572d; border-bottom: 2px solid #00572d;">
-                            <i class="fa-solid fa-people-carry-box"></i>
-                            <p>Pick Up</p>
+                        <div class="delivrySection__header" style="color:#00572d; margin-top: 10px;">
+                            <div class="delivrySection__heading"
+                                style="display: flex; border-bottom: 2px solid #00572d;">
+                                <i class="fa-solid fa-people-carry-box" style="padding-right: 10px;"></i>
+                                <p>Pick Up</p>
+                            </div>
+                            <div class="delivrySection__heading__button" data-tooltip="Switch to Delivery"
+                                style="height: 110%; width: 50px; display: flex; justify-content: center; align-items: center; border-radius: 50%; color: #f7f7f7; background-color: #00572d; object-fit: contain;">
+                                <i class="ri-riding-line" style="font-weight: lighter"></i>
+                            </div>
                         </div>
                         <div class="containt_section hidden">
                             <div class="bag_image">
@@ -1499,17 +1667,17 @@
                                 </svg>
                             </div>
                             <div class="text_section">
-                                <div class="pickup_text" style="border: 1px solid rgb(58, 58, 58);">
+                                <div class="pickup_text">
                                     <p>You have to collect the order from the outlet.</p>
                                 </div>
-                                <div class="pickup_text" style="border: 1px solid rgb(58, 58, 58);">
+                                <div class="pickup_text">
                                     <p>Delivery partners are not assigned for pickup orders.</p>
                                 </div>
                                 <div class="pickup_buttons">
-                                    <div class="pickup_button" style="background-color: #00572d;">
+                                    <div class="pickup_button">
                                         <p>GET DELIVERY INSTEAD</p>
                                     </div>
-                                    <div class="pickup_button" style="background-color: pink;">
+                                    <div class="pickup_button">
                                         <p>YES, I WILL PICK UP</p>
                                     </div>
                                 </div>
@@ -1523,8 +1691,9 @@
                         const pickUpSection = document.querySelector('.PickUp');
                         const deliverySection = document.querySelector('.delivrySection');
                         const deliveryContent = deliverySection.querySelectorAll('.delivrySection__textArea, .delivrySection__header, .SelectButtons'); // Select all content elements
-
                         const pickUpContent = pickUpSection.querySelectorAll('.delivrySection__header, .containt_section, .PickUp'); // Select all content elements for PickUp
+
+                        const deliveryButtons = document.querySelectorAll('.delivrySection__heading__button'); // Select all delivery buttons
 
                         // Initially hide PickUp content
                         pickUpContent.forEach(element => element.style.opacity = 0);
@@ -1570,14 +1739,12 @@
                             }
                         }
 
-                        deliverySection.addEventListener('click', swapSections);
-                        pickUpSection.addEventListener('click', swapSections);
+                        deliveryButtons.forEach(button => button.addEventListener('click', swapSections)); // Attach event listener to all buttons
                     });
-
-
                 </script>
 
             </section>
+
 
             <!-- Deals Section -->
             <section class="deals-section" data-scroll-section>
@@ -4314,12 +4481,6 @@
             </section>
 
             <style>
-                .newly-launched {
-                    /* margin: 20px 0; */
-                    /* height: 100vh; */
-                    /* overflow: hidden; */
-                }
-
                 .newly-launched-container {
                     width: fit-content;
                     margin-inline: auto;

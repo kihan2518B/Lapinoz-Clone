@@ -1,79 +1,15 @@
-// gsap.timeline()
-//     .to(".loader1wrapper, .loader2", {
-//         duration: 10, // Increased duration for fade-out
-//         opacity: 0,
-//         ease: "power2.inOut"
-//     })
-//     .set(".loader1wrapper, .loader2", { display: "none" }) // Ensure they are not visible
-//     .set("#main", { display: "block" }) // Show the main content
-//     .to(".loader3container", {
-//         duration: 1,
-//         opacity: 1,
-//         display: "flex",
-//         delay: 0, // Delay for loader3 to appear after loader1 and 2 fade out
-//         ease: "power2.inOut"
-//     })
-//     .to(".message-box", {
-//         duration: 0.5,
-//         opacity: 1,
-//         stagger: 1.5,
-//         delay: 5.5, // Adjusted delay to match the total time before messages appear
-//         ease: "power2.inOut"
-//     });
 
-
-// gsap.from('.hero-section .text', {
-//     opacity: 0,
-//     x: -50,
-//     duration: 1.5,
-//     ease: 'power4.out',
-//     delay: 1
-// });
-
-// gsap.from('.nav__container', {
-//     opacity: 0,
-//     y: -50,
-//     duration: 1.5,
-//     ease: 'power4.out',
-//     delay: 1.2
-// });
-
-// gsap.from('.hero_img', {
-//     opacity: 0,
-//     scale: 0.9,
-//     duration: 1.5,
-//     ease: 'power4.out',
-//     delay: 1.8
-// });
-// gsap.from('.green_bg', {
-//     opacity: 0,
-//     scale: 0.9,
-//     duration: 1.5,
-//     ease: 'power4.out',
-//     delay: 0
-// });
+// Navbar Animation
+document.querySelectorAll('.navbar__button-list a').forEach(link => {
+    let textContent = link.textContent.trim();
+    let spans = textContent.split('').map((char, i) => `<span style="transition-delay: ${i * 0.05}s;">${char}</span>`).join('');
+    link.innerHTML = `<div>${spans}</div>`;
+});
 
 
 // Locomotive
 document.addEventListener('DOMContentLoaded', () => {
-    // const scrollContainer = document.querySelector("#main");
 
-    // const scroll = new LocomotiveScroll({
-    //     el: scrollContainer,
-    //     smooth: true,
-    //     lerp: 0.08,
-    //     multiplier: 1,
-    //     smoothMobile: 0,
-    //     smartphone: {
-    //         smooth: !0,
-    //         breakpoint: 767
-    //     },
-    //     tablet: {
-    //         smooth: !1,
-    //         breakpoint: 1024
-    //     },
-
-    // });
 
     const scrollContainer = document.querySelector('.scroll-container');
     const scroll = new LocomotiveScroll({
@@ -92,40 +28,14 @@ document.addEventListener('DOMContentLoaded', () => {
             breakpoint: 1024
         }
     });
-    // Loader animations and hero animation
 
-    // gsap.timeline()
-    //     .to(".loader1wrapper, .loader2", {
-    //         duration: 4, // Duration for fade-out
-    //         opacity: 0,
-    //         ease: "power2.inOut",
-    //         onComplete: () => {
-    //             // Hide loader1wrapper and loader2, show loader3
-    //             gsap.set(".loader1wrapper, .loader2", { display: "none" });
-
-    //             gsap.to(".loader3container", {
-    //                 duration: 1,
-    //                 opacity: 1,
-    //                 display: "flex",
-    //                 ease: "power2.inOut"
-    //             });
-    //         }
-    //     })
-    //     .to(".loader3container", {
-    //         duration: 6,
-    //         display: "flex",
-    //         ease: "power2.inOut",
-    //         onComplete: () => {
-    //             gsap.set("#main", { display: "block" });
-    //             gsap.set(".wholeLoader", { display: "none", opacity: 0 });
-
-
+    // Hero Animation
     gsap.from('.hero-section .text', {
         opacity: 0,
         x: -50,
         duration: 1.5,
         ease: 'power4.out',
-        delay: 12
+        delay: 11.5
     });
 
     gsap.from('.nav__container', {
@@ -133,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         y: -50,
         duration: 1.5,
         ease: 'power4.out',
-        delay: 12.2
+        delay: 11.7
     });
 
     gsap.from('.hero_img', {
@@ -141,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         scale: 0.9,
         duration: 1.5,
         ease: 'power4.out',
-        delay: 12.4
+        delay: 11.9
     });
 
     gsap.from('.green_bg', {
@@ -149,12 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
         scale: 0.9,
         duration: 1.5,
         ease: 'power4.out',
-        delay: 12.3
+        delay: 11.8
     });
-    //         }
-    //     });
 
 
+    // Hidding loaders
     function fadeOutLoaders() {
         const loader1Wrapper = document.querySelector(".loader1wrapper");
         // const loader2 = document.querySelector(".loader2");
@@ -248,42 +157,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Hero section animations
 
 
-
-    const timelineItems = document.querySelectorAll('.timeline-ul li');
-    const imgElementContainer = document.querySelector('.right-img');
-    let currentImgElement = null;
-
-    // scroll.on('scroll', (instance) => {
-    //     timelineItems.forEach((item, index) => {
-    //         if (isInViewport(item)) {
-    //             setTimeout(() => {
-    //                 item.classList.add('show');
-    //                 const newImgElement = document.createElement('img');
-    //                 newImgElement.src = item.dataset.image;
-    //                 newImgElement.className = 'pizza-img active';
-    //                 imgElementContainer.appendChild(newImgElement);
-    //                 if (currentImgElement) {
-    //                     currentImgElement.classList.add('hidden');
-    //                     setTimeout(() => {
-    //                         currentImgElement.remove();
-    //                     }, 2500); // Match the duration of CSS transition
-    //                 }
-    //                 currentImgElement = newImgElement;
-    //             }, index * 500); // Delay each item's activation by 0.3 seconds
-    //         } else {
-    //             item.classList.remove('show');
-    //             const images = imgElementContainer.querySelectorAll('.pizza-img');
-    //             images.forEach((img) => {
-    //                 img.classList.add('hidden');
-    //                 setTimeout(() => {
-    //                     img.remove();
-    //                 }, 1000); // Match the duration of CSS transition
-    //             });
-    //             currentImgElement = null;
-    //         }
-    //     });
-    // });
-
     scroll.on('scroll', (args) => {
         const elements = args.currentElements;
         const pizzaImages = document.querySelectorAll('.right-img img');
@@ -329,7 +202,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-
 // for Journey section 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -337,35 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const imgElementContainer = document.querySelector('.right-img');
     let currentImgIndex = 0;
 
-    // Function to handle the animation of timeline items
-    // const animateTimelineItemsImage = () => {
-    //     const imgElements = [];
-    //     timelineItems.forEach(item => {
-    //         if (item.dataset.image) {
-    //             const newImgElement = document.createElement('img');
-    //             newImgElement.src = item.dataset.image;
-    //             newImgElement.className = 'pizza-img';
-    //             imgElements.push(newImgElement);
-    //             imgElementContainer.appendChild(newImgElement);
-    //         }
-    //     });
-
-    //     const displayImages = () => {
-    //         imgElements.forEach((img, index) => {
-    //             if (index === currentImgIndex) {
-    //                 img.classList.add('active');
-    //                 img.classList.remove('hidden');
-    //             } else {
-    //                 img.classList.remove('active');
-    //                 img.classList.add('hidden');
-    //             }
-    //         });
-    //         currentImgIndex = (currentImgIndex + 1) % imgElements.length;
-    //     };
-
-    //     displayImages(); // Initial display
-    //     setInterval(displayImages, 3000); // Rotate every 3 seconds
-    // };
     const animateTimelineItemsImage = () => {
         const imgElements = [];
         // const imgElementContainer = document.querySelector('.right-img');
@@ -433,13 +276,6 @@ document.addEventListener('DOMContentLoaded', () => {
         timelineItems.forEach((item) => {
             item.classList.remove('show');
         });
-        // const images = imgElementContainer.querySelectorAll('.pizza-img');
-        // images.forEach((img) => {
-        //     img.classList.add('hidden');
-        //     setTimeout(() => {
-        //         img.remove();
-        //     }, 1000); // Match the duration of CSS transition
-        // });
         currentImgElement = null;
     };
 
@@ -486,26 +322,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-    // scroll.on('call', (func, direction, obj) => {
-    //     if (func === 'toggleBgColor' && direction === 'enter') {
-    //         document.body.classList.add('is-inview');
-    //     } else if (func === 'toggleBgColor' && direction === 'leave') {
-    //         document.body.classList.remove('is-inview');
-    //     }
-    // });
-
-    // // Register scroll callbacks
-    // scroll.on('scroll', (obj) => {
-    //     if (obj.currentElements['country-scroll-section']) {
-    //         const section = obj.currentElements['country-scroll-section'];
-    //         if (section.progress > 0.1 && section.progress < 0.9) {
-    //             document.body.classList.add('is-inview');
-    //         } else {
-    //             document.body.classList.remove('is-inview');
-    //         }
-    //     }
-    // });
-
 });
 
 
