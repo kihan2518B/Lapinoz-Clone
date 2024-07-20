@@ -1,404 +1,274 @@
 <!DOCTYPE html>
-   <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
 
-      <title>Landscape responsive card - Bedimcode</title>
-      <style>
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pug to HTML Conversion</title>
+    <style>
+        body {
+            display: grid;
+            grid-template-rows: 1fr 10rem auto;
+            grid-template-areas: "main" "." "footer";
+            overflow-x: hidden;
+            background: #F5F7FA;
+            min-height: 100vh;
+            font-family: 'Open Sans', sans-serif;
+        }
 
-:root {
-  --first-color: hsl(82, 60%, 28%);
-  --title-color: hsl(0, 0%, 15%);
-  --text-color: hsl(0, 0%, 35%);
-  --body-color: hsl(0, 0%, 95%);
-  --container-color: hsl(0, 0%, 100%);
+        .footer {
+            z-index: 1;
+            --footer-background: #ED5565;
+            display: grid;
+            position: relative;
+            grid-area: footer;
+            min-height: 12rem;
+            min-width: 100vw;
+        }
 
-  --body-font: "Poppins", sans-serif;
-  --h2-font-size: 1.25rem;
-  --small-font-size: .813rem;
-}
+        .footer .bubbles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1rem;
+            background: var(--footer-background);
+            filter: url("#blob");
+        }
 
-@media screen and (min-width: 1120px) {
-  :root {
-    --h2-font-size: 1.5rem;
-    --small-font-size: .875rem;
-  }
-}
+        .footer .bubbles .bubble {
+            position: absolute;
+            left: var(--position, 50%);
+            background: var(--footer-background);
+            border-radius: 100%;
+            animation: bubble-size var(--time, 4s) ease-in infinite var(--delay, 0s),
+                bubble-move var(--time, 4s) ease-in infinite var(--delay, 0s);
+            transform: translate(-50%, 100%);
+        }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
+        .footer .content {
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            grid-gap: 4rem;
+            padding: 2rem;
+            background: var(--footer-background);
+        }
 
-/* body {
-  font-family: var(--body-font);
-  background-color: var(--body-color);
-  color: var(--text-color);
-}
 
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-} */
 
-/* .container {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-inline: 1.5rem;
-  padding-block: 5rem;
-}
+        @keyframes bubble-size {
 
-.card__container {
-  display: grid;
-  row-gap: 3.5rem;
-} */
+            0%,
+            75% {
+                width: var(--size, 4rem);
+                height: var(--size, 4rem);
+            }
 
-/* .card__article {
-  position: relative;
-  overflow: hidden;
-}
+            100% {
+                width: 0rem;
+                height: 0rem;
+            }
+        }
 
-.card__img {
-  width: 328px;
-  border-radius: 1.5rem;
-}
+        @keyframes bubble-move {
+            0% {
+                bottom: -4rem;
+            }
 
-.card__data {
-  width: 280px;
-  background-color: var(--container-color);
-  padding: 1.5rem 2rem;
-  box-shadow: 0 8px 24px hsla(0, 0%, 0%, .15);
-  border-radius: 1rem;
-  position: absolute;
-  bottom: -9rem;
-  left: 0;
-  right: 0;
-  margin-inline: auto;
-  opacity: 0;
-  transition: opacity 1s 1s;
-}
+            100% {
+                bottom: var(--distance, 10rem);
+            }
+        }
+    </style>
+</head>
 
-.card__description {
-  display: block;
-  font-size: var(--small-font-size);
-  margin-bottom: .25rem;
-}
-
-.card__title {
-  font-size: var(--h2-font-size);
-  font-weight: 500;
-  color: var(--title-color);
-  margin-bottom: .75rem;
-}
-
-.card__button {
-  text-decoration: none;
-  font-size: var(--small-font-size);
-  font-weight: 500;
-  color: var(--first-color);
-}
-
-.card__button:hover {
-  text-decoration: underline;
-}
-
-.card__article:hover .card__data {
-  animation: show-data 1s forwards;
-  opacity: 1;
-  transition: opacity .3s;
-}
-
-.card__article:hover {
-  animation: remove-overflow 2s forwards;
-}
-
-.card__article:not(:hover) {
-  animation: show-overflow 2s forwards;
-}
-
-.card__article:not(:hover) .card__data {
-  animation: remove-data 1s forwards;
-}
-
-@keyframes show-data {
-  50% {
-    transform: translateY(-10rem);
-  }
-  100% {
-    transform: translateY(-7rem);
-  }
-}
-
-@keyframes remove-overflow {
-  to {
-    overflow: initial;
-  }
-}
-
-@keyframes remove-data {
-  0% {
-    transform: translateY(-7rem);
-  }
-  50% {
-    transform: translateY(-10rem);
-  }
-  100% {
-    transform: translateY(.5rem);
-  }
-}
-
-@keyframes show-overflow {
-  0% {
-    overflow: initial;
-    pointer-events: none;
-  }
-  50% {
-    overflow: hidden;
-  }
-}
-
-@media screen and (max-width: 340px) {
-  .container {
-    margin-inline: 1rem;
-  }
-
-  .card__data {
-    width: 250px;
-    padding: 1rem;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .card__container {
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 1.5rem;
-  }
-}
-
-@media screen and (min-width: 1120px) {
-  .container {
-    height: 100vh;
-  }
-
-  .card__container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .card__img {
-    width: 300px;
-  }
-  .card__data {
-    width: 280px;
-    padding-inline: 2.5rem;
-  }
-} */
-
-.card__article {
-  position: relative;
-  /* overflow: hidden; */
-}
-
-.card__img {
-  width: 328px;
-  border-radius: 1.5rem;
-  z-index: -1;
-}
-
-.card__data {
-  width: 280px;
-  z-index: 10;
-  background-color: var(--container-color);
-  padding: 1.5rem 2rem;
-  box-shadow: 0 8px 24px hsla(0, 0%, 0%, .15);
-  border-radius: 1rem;
-  position: absolute;
-  bottom: 0; /* Changed from -9rem to 0 */
-  left: 0;
-  /* top:70%; */
-  right: 0;
-  margin-inline: auto;
-  opacity: 1; /* Changed from 0 to 1 */
-  transform: translateY(50px); /* Ensure it stays in place */
-  /* transition: opacity 1s, transform 1s; Combined transition for opacity and transform */
-}
-
-.card__description {
-  display: block;
-  font-size: var(--small-font-size);
-  margin-bottom: .25rem;
-}
-
-.card__title {
-  font-size: var(--h2-font-size);
-  font-weight: 500;
-  color: var(--title-color);
-  margin-bottom: .75rem;
-}
-
-.card__button {
-  text-decoration: none;
-  font-size: var(--small-font-size);
-  font-weight: 500;
-  color: var(--first-color);
-}
-
-.card__button:hover {
-  text-decoration: underline;
-}
-
-@keyframes show-data {
-  50% {
-    transform: translateY(-10rem);
-  }
-  100% {
-    transform: translateY(-7rem);
-  }
-}
-
-@media screen and (max-width: 340px) {
-  .container {
-    margin-inline: 1rem;
-  }
-
-  .card__data {
-    width: 250px;
-    padding: 1rem;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .card__container {
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 1.5rem;
-  }
-}
-
-@media screen and (min-width: 1120px) {
-  .container {
-    height: 100vh;
-  }
-
-  .card__container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .card__img {
-    width: 300px;
-  }
-  .card__data {
-    width: 280px;
-    padding-inline: 2.5rem;
-  }
-}
-
-      </style>
-   </head>
-   <body>
-      <div class="container">
-         <div class="card__container">
-            <article class="card__article">
-               <img src="./media/sanam-kapoor.jpg" alt="image" class="card__img">
-
-               <div class="card__data">
-                  <span class="card__description">Vancouver Mountains, Canada</span>
-                  <h2 class="card__title">The Great Path</h2>
-                  <a href="#" class="card__button">Read More</a>
-               </div>
-            </article>
-
-            <article class="card__article ">
-               <img src="./media/sanam-kapoor.jpg" alt="image" class="card__img">
-
-               <div class="card__data">
-                  <span class="card__description">Poon Hill, Nepal</span>
-                  <h2 class="card__title">Starry Night</h2>
-                  <a href="#" class="card__button">Read More</a>
-               </div>
-            </article>
-
-            <article class="card__article">
-               <img src="./media/sanam-kapoor.jpg" alt="image" class="card__img">
-
-               <div class="card__data">
-                  <span class="card__description">Bojcin Forest, Serbia</span>
-                  <h2 class="card__title">Path Of Peace</h2>
-                  <a href="#" class="card__button">Read More</a>
-               </div>
-            </article>
-
-            <article class="card__article">
-              <img src="./media/sanam-kapoor.jpg" alt="image" class="card__img">
-
-              <div class="card__data">
-                 <span class="card__description">Bojcin Forest, Serbia</span>
-                 <h2 class="card__title">Path Of Peace</h2>
-                 <a href="#" class="card__button">Read More</a>
-              </div>
-           </article>
-
-           <article class="card__article">
-            <img src="./media/sanam-kapoor.jpg" alt="image" class="card__img">
-
-            <div class="card__data">
-               <span class="card__description">Bojcin Forest, Serbia</span>
-               <h2 class="card__title">Path Of Peace</h2>
-               <a href="#" class="card__button">Read More</a>
-            </div>
-         </article>
-
-         <article class="card__article">
-          <img src="./media/sanam-kapoor.jpg" alt="image" class="card__img">
-
-          <div class="card__data">
-             <span class="card__description">Bojcin Forest, Serbia</span>
-             <h2 class="card__title">Path Of Peace</h2>
-             <a href="#" class="card__button">Read More</a>
-          </div>
-       </article>
-
-       <article class="card__article">
-        <img src="./media/sanam-kapoor.jpg" alt="image" class="card__img">
-
-        <div class="card__data">
-           <span class="card__description">Bojcin Forest, Serbia</span>
-           <h2 class="card__title">Path Of Peace</h2>
-           <a href="#" class="card__button">Read More</a>
+<body>
+    <div class="main"></div>
+    <div class="footer">
+        <div class="bubbles">
+            <!-- Bubbles will be inserted here dynamically by JavaScript -->
         </div>
-     </article>
-
-     <article class="card__article">
-      <img src="./media/sanam-kapoor.jpg" alt="image" class="card__img">
-
-      <div class="card__data">
-         <span class="card__description">Bojcin Forest, Serbia</span>
-         <h2 class="card__title">Path Of Peace</h2>
-         <a href="#" class="card__button">Read More</a>
-      </div>
-   </article>
-
-   <article class="card__article">
-    <img src="./media/sanam-kapoor.jpg" alt="image" class="card__img">
-
-    <div class="card__data">
-       <span class="card__description">Bojcin Forest, Serbia</span>
-       <h2 class="card__title">Path Of Peace</h2>
-       <a href="#" class="card__button">Read More</a>
+        <div class="content">
+            <div class="footer-top">
+                <div class="footer-container">
+                    <div class="footer-row">
+                        <div class="Useful-Links-section">
+                            <h6>Useful Links</h6>
+                            <ul class="anker-list">
+                                <li>
+                                    <a href="https://lapinozpizza.in/shipping-policy">Shipping Policy</a>
+                                </li>
+                                <li>
+                                    <a href="https://lapinozpizza.in/refund-policy">Refund Policy</a>
+                                </li>
+                                <li>
+                                    <a href="https://lapinozpizza.in/terms-and-conditions">Terms &amp; Conditions</a>
+                                </li>
+                                <li>
+                                    <a href="https://lapinozpizza.in/privacy-policy">Privacy Policy</a>
+                                </li>
+                                <li>
+                                    <a href="https://lapinozpizza.in/promo-codes">Promo Codes</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="Payment-Methods-section">
+                            <h6>Payment Methods</h6>
+    
+                            <ul class="payments-ul">
+                                <li>
+                                    <img src="https://lapinozpizza.in/assets/wla_new/img/footer/cash-svg.svg"
+                                        alt="cash icon" />
+                                    <img src="https://lapinozpizza.in/assets/wla_new/img/footer/mastercard-svg.svg"
+                                        alt="Master Card" />
+                                    <img src="https://lapinozpizza.in/assets/wla_new/img/footer/gpay-svg.svg"
+                                        alt="Google Pay" />
+    
+                                    <img src="https://lapinozpizza.in/assets/wla_new/img/footer/paytm-svg.svg"
+                                        alt="Paytm" />
+                                    <img src="https://lapinozpizza.in/assets/wla_new/img/footer/visa-svg.svg" alt="Visa" />
+                                    <img src="https://lapinozpizza.in/assets/wla_new/img/footer/upi-icon.svg" alt="UPI" />
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="Contact-Us-section">
+                            <div class="">
+                                <h6>Contact Us</h6>
+                                <ul class="anker-list">
+                                    <li>
+                                        <span>Customer Support: </span>
+                                        <a class="d-inline d-md-block" href="mailto:support@lapinozpizza.in">
+                                            <svg id="Capa_1" style="
+                              enable-background: new 0 0 512 512;
+                              height: auto;
+                              width: 100%;
+                              max-width: 15px;
+                            " version="1.1" viewBox="0 0 512 512" x="0px" xml:space="preserve"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
+                                                <g>
+                                                    <g>
+                                                        <path
+                                                            d="M467,76H45C20.137,76,0,96.262,0,121v270c0,24.885,20.285,45,45,45h422c24.655,0,45-20.03,45-45V121    C512,96.306,491.943,76,467,76z M460.698,106c-9.194,9.145-167.415,166.533-172.878,171.967c-8.5,8.5-19.8,13.18-31.82,13.18    s-23.32-4.681-31.848-13.208C220.478,274.284,64.003,118.634,51.302,106H460.698z M30,384.894V127.125L159.638,256.08L30,384.894z     M51.321,406l129.587-128.763l22.059,21.943c14.166,14.166,33,21.967,53.033,21.967c20.033,0,38.867-7.801,53.005-21.939    l22.087-21.971L460.679,406H51.321z M482,384.894L352.362,256.08L482,127.125V384.894z">
+                                                        </path>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                            support@lapinozpizza.in</a>
+                                    </li>
+                                    <li>
+                                        <span>Franchise Enquiry: </span>
+                                        <a class="d-inline d-md-block" href="mailto:info@lapinozpizza.in"><svg id="Capa_1"
+                                                style="
+                              enable-background: new 0 0 512 512;
+                              height: auto;
+                              width: 100%;
+                              max-width: 15px;
+                            " version="1.1" viewBox="0 0 512 512" x="0px" xml:space="preserve"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
+                                                <g>
+                                                    <g>
+                                                        <path
+                                                            d="M467,76H45C20.137,76,0,96.262,0,121v270c0,24.885,20.285,45,45,45h422c24.655,0,45-20.03,45-45V121    C512,96.306,491.943,76,467,76z M460.698,106c-9.194,9.145-167.415,166.533-172.878,171.967c-8.5,8.5-19.8,13.18-31.82,13.18    s-23.32-4.681-31.848-13.208C220.478,274.284,64.003,118.634,51.302,106H460.698z M30,384.894V127.125L159.638,256.08L30,384.894z     M51.321,406l129.587-128.763l22.059,21.943c14.166,14.166,33,21.967,53.033,21.967c20.033,0,38.867-7.801,53.005-21.939    l22.087-21.971L460.679,406H51.321z M482,384.894L352.362,256.08L482,127.125V384.894z">
+                                                        </path>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                            info@lapinozpizza.in</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+    
+                        <div class="Follow-Us" style="display: flex; flex-direction: column; margin-inline: 15px;">
+                            <h6 style="margin-bottom: 5px;">Follow Us :</h6>
+                            <ul class="Follow-Us-section">
+                                
+                                <li class="footer-social-item">
+                                    <button class="footer-Btn">
+                                        <span class="svgContainer">
+                                            <i class="fa-brands fa-facebook"></i>
+                                        </span>
+                                        <span class="footer-BG"></span>
+                                    </button>
+                                </li>
+                                    <li class="footer-social-item">
+                                        <button class="footer-Btn">
+                                            <span class="svgContainer">
+                                                <i class="fa-brands fa-instagram"></i>
+                                            </span>
+                                            <span class="footer-BG"></span>
+                                        </button>
+                                    </li>
+                                    <li class="footer-social-item">
+                                        <button class="footer-Btn">
+                                            <span class="svgContainer">
+                                                <i class="fa-brands fa-youtube"></i>
+                                            </span>
+                                            <span class="footer-BG"></span>
+                                        </button>
+                                    </li>
+                                    <li class="footer-social-item">
+                                        <button class="footer-Btn">
+                                            <span class="svgContainer">
+                                                <i class="fa-brands fa-pinterest"></i>
+                                            </span>
+                                            <span class="footer-BG"></span>
+                                        </button>
+                                    </li>
+                                    <li class="footer-social-item">
+                                        <button class="footer-Btn">
+                                            <span class="svgContainer">
+                                                <i class="fa-brands fa-twitter"></i>
+                                            </span>
+                                            <span class="footer-BG"></span>
+                                        </button>
+                                    </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-container">
+                    <div>
+                        <a href="https://www.uengage.in/" target="_blank">Powered By </a>
+                        <img src="https://www.uengage.in/assets/uen/img/ue-logo-2022.jpg" alt="Uengage Logo New" />
+                    </div>
+    
+                    <div>
+                        <div class="c-icon">C</div>
+                        Copyright. All Rights Reserved
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
- </article>
+    <svg style="position:fixed; bottom:0%;">
+        <defs>
+            <filter id="blob">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+                    result="blob" />
+            </filter>
+        </defs>
+    </svg>
+    <script>
+        // Generate bubbles dynamically
+        const bubblesContainer = document.querySelector('.footer .bubbles');
+        for (let i = 0; i < 128; i++) {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.style.setProperty('--size', `${2 + Math.random() * 4}rem`);
+            bubble.style.setProperty('--distance', `${6 + Math.random() * 4}rem`);
+            bubble.style.setProperty('--position', `${-5 + Math.random() * 110}%`);
+            bubble.style.setProperty('--time', `${2 + Math.random() * 2}s`);
+            bubble.style.setProperty('--delay', `${-1 * (2 + Math.random() * 2)}s`);
+            bubblesContainer.appendChild(bubble);
+        }
+    </script>
+</body>
 
- <article class="card__article">
-  <img src="./media/sanam-kapoor.jpg" alt="image" class="card__img">
-
-  <div class="card__data">
-     <span class="card__description">Bojcin Forest, Serbia</span>
-     <h2 class="card__title">Path Of Peace</h2>
-     <a href="#" class="card__button">Read More</a>
-  </div>
-</article>
-         </div>
-      </div>
-   </body>
 </html>
