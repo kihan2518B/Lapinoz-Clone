@@ -1177,6 +1177,51 @@ li:hover::before, li:hover::after {
                     font-family: 'Poppins', sans-serif;
                 }
 
+               
+
+                .delivrySection__heading__button {
+                    position: relative;
+                    cursor: pointer; 
+                }
+
+                .delivrySection__heading__button::after {
+                    content: attr(data-tooltip);
+                    position: absolute;
+                    bottom: 130%; /* Position above the button */
+                    left: 50%;
+                    transform: translateX(-58%);
+                    background-color:#f7f7f7;
+                    color: #00572D;
+                    padding: 10px 15px;
+                    border-radius: 8px;
+                    white-space: nowrap;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+                    font-size: 15px;
+                    z-index: 10;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+                }
+
+                .delivrySection__heading__button::before {
+                    content: '';
+                    position: absolute;
+                    transform: translateX(-58%);
+                    border-width: 6px;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+                    z-index: 9;
+                }
+
+                .delivrySection__heading__button:hover::after,
+                .delivrySection__heading__button:hover::before {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateX(-58%) translateY(-3px); 
+                }
+
+
                 .second-section {
                     background-color: #f0f0f0;
                     /* font-family: ; */
@@ -1186,8 +1231,10 @@ li:hover::before, li:hover::after {
                     justify-content: center;
                     align-items: center;
                     height: 100dvh;
-                    background-image: url(./Media/home-background.jpeg);
+                    max-height: 600px;
+                    background-image: url(./Media/lapinoz-background.jpg);
                     background-size: cover;
+                    background-position: center;
                 }
 
                 .delivrySection_container {
@@ -1233,24 +1280,25 @@ li:hover::before, li:hover::after {
 
                 .delivrySection__header {
                     height: 40px;
-                    width: 20%;
+                    width: 90%;
                     font-size: x-large;
                     font-weight: bold;
                     display: flex;
-                    justify-content: space-evenly;
+                    justify-content: space-between;
                     align-items: center;
+                    margin-left: 25px;
                     transition: opacity 500ms ease-in-out;
                 }
 
                 .delivrySection__textArea {
-                    height: 25%;
+                    height: 30%;
                     width: 95%;
                     font-weight: 900;
                     /* font-family: 'Arial Narrow', Arial, sans-serif; */
-                    margin-left: 15px;
+                    margin-left: 25px;
                     display: flex;
                     flex-direction: column;
-                    justify-content: center;
+                    justify-content: space-evenly;
                     transition: opacity 500ms ease-in-out;
                 }
 
@@ -1270,7 +1318,7 @@ li:hover::before, li:hover::after {
                     display: flex;
                     align-items: center;
                     font-size: larger;
-                    margin-left: 15px;
+                    margin-left: 25px;
                     transition: opacity 500ms ease-in-out;
                 }
 
@@ -1278,6 +1326,7 @@ li:hover::before, li:hover::after {
                     height: 48px;
                     width: 35%;
                     border-radius: 5px;
+                    font-size: large;
                     border: 2px solid #00572d;
                     display: flex;
                     align-items: center;
@@ -1306,6 +1355,7 @@ li:hover::before, li:hover::after {
                     height: 100%;
                     width: 45%;
                     display: flex;
+                    font-size: large;
                     align-items: center;
                     justify-content: space-evenly;
                     text-align: center;
@@ -1341,7 +1391,7 @@ li:hover::before, li:hover::after {
                 .pickup_text {
                     height: 30%;
                     width: 89%;
-                    font-size: larger;
+                    font-size: x-large;
                     border-radius: 10px;
                     display: flex;
                     align-items: center;
@@ -1359,7 +1409,9 @@ li:hover::before, li:hover::after {
                 }
 
                 .pickup_button {
-                    height: 100%;
+                    height: 60%;
+                    background-color: #00572d;
+                    color: #f7f7f7;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -1380,12 +1432,10 @@ li:hover::before, li:hover::after {
                     .text_section {
                         font-size: medium;
                     }
+
                 }
 
                 @media (max-width: 1050px) {
-                    .delivrySection__header {
-                        width: 32%;
-                    }
 
                     .SelectButtons {
                         height: 45%;
@@ -1425,7 +1475,7 @@ li:hover::before, li:hover::after {
                 @media (max-width:768px) {
                     .delivrySection__header {
                         font-size: larger;
-                        width: 40%;
+                        margin-left: 15px;
                     }
 
                     .delivrySection_container {
@@ -1439,13 +1489,17 @@ li:hover::before, li:hover::after {
                     .location_button {
                         width: 100%;
                     }
+
+                    .delivrySection__textArea {
+                        margin-left: 15px;
+                    }
+
+                    .SelectButtons {
+                        margin-left: 15px;
+                    }
                 }
 
                 @media (max-width:600px) {
-                    .delivrySection__header {
-                        width: 50%;
-                    }
-
                     .delivrySection__textArea p {
                         width: 90%;
                         font-size: larger;
@@ -1458,23 +1512,42 @@ li:hover::before, li:hover::after {
                     .city_buttons {
                         width: 50%;
                     }
+                    .pickup_text {
+                        font-size: larger;
+                    }
+                    .delivrySection__heading__button:hover::after,
+                    .delivrySection__heading__button:hover::before {
+                        transform: translateX(-65%); 
+                    }
                 }
 
                 @media (max-width:470px) {
-                    .delivrySection__header {
-                        width: 70%;
-                    }
-
                     .SelectButtons {
                         font-size: large;
+                    }
+
+                    .delivrySection__textArea p {
+                        font-size: large;
+                    }
+                    .pickup_button{
+                     font-size: small;   
+                    }
+                    .delivrySection__heading__button:hover::after,
+                    .delivrySection__heading__button:hover::before {
+                        transform: translateX(-70%); 
                     }
                 }
             </style>
             <section class="delivrySection_container" data-scroll="">
                 <div class="delivrySection" data-scroll="">
-                    <div class="delivrySection__header" style="color:#f7f7f7; border-bottom: 2px solid #f7f7f7;">
-                        <i class="ri-riding-line" style="font-weight: lighter"></i>
-                        <p>Delivery</p>
+                    <div class="delivrySection__header" style="color:#f7f7f7; ">
+                        <div class="delivrySection__heading" style="display: flex; border-bottom: 2px solid #f7f7f7;">
+                            <i class="ri-riding-line" style="font-weight: lighter; padding-right: 10px;"></i>
+                            <p>Delivery</p>
+                        </div>
+                        <div class="delivrySection__heading__button" data-tooltip="Switch to Self Pickup" style="height: 110%; width: 50px; display: flex; justify-content: center; align-items: center; border-radius: 50%; background-color: #f7f7f7; color: #00572d; object-fit: contain;">
+                            <i class="fa-solid fa-people-carry-box"></i>
+                        </div>
                     </div>
                     <div class="delivrySection__textArea">
                         <p style="color: #f7f7f7">Let's Get Ordering On La Pino'z Pizza</p>
@@ -1485,7 +1558,7 @@ li:hover::before, li:hover::after {
                             <i class="ri-map-pin-line" style="color: #00572d;"></i>
                             Use my current location
                         </div>
-                        <p class="OR" style="color: rgb(58, 58, 58);">OR</p>
+                        <p class="OR" style="color: #f7f7f7;">OR</p>
                         <div class="Select_buttons">
                             <div class="city_buttons">
                                 <p>Select City</p>
@@ -1499,9 +1572,14 @@ li:hover::before, li:hover::after {
                     </div>
                 </div>
                 <div class="PickUp">
-                    <div class="delivrySection__header" style="color: #00572d; border-bottom: 2px solid #00572d;">
-                        <i class="fa-solid fa-people-carry-box"></i>
-                        <p>Pick Up</p>
+                    <div class="delivrySection__header" style="color:#00572d; margin-top: 10px;">
+                        <div class="delivrySection__heading" style="display: flex; border-bottom: 2px solid #00572d;">
+                            <i class="fa-solid fa-people-carry-box" style="padding-right: 10px;"></i>
+                            <p>Pick Up</p>
+                        </div>
+                        <div class="delivrySection__heading__button" data-tooltip="Switch to Delivery" style="height: 110%; width: 50px; display: flex; justify-content: center; align-items: center; border-radius: 50%; color: #f7f7f7; background-color: #00572d; object-fit: contain;">
+                            <i class="ri-riding-line" style="font-weight: lighter"></i>
+                        </div>
                     </div>
                     <div class="containt_section hidden">
                         <div class="bag_image">
@@ -1528,17 +1606,17 @@ li:hover::before, li:hover::after {
                             </svg>
                         </div>
                         <div class="text_section">
-                            <div class="pickup_text" style="border: 1px solid rgb(58, 58, 58);">
+                            <div class="pickup_text">
                                 <p>You have to collect the order from the outlet.</p>
                             </div>
-                            <div class="pickup_text" style="border: 1px solid rgb(58, 58, 58);">
+                            <div class="pickup_text">
                                 <p>Delivery partners are not assigned for pickup orders.</p>
                             </div>
                             <div class="pickup_buttons">
-                                <div class="pickup_button" style="background-color: #00572d;">
+                                <div class="pickup_button">
                                     <p>GET DELIVERY INSTEAD</p>
                                 </div>
-                                <div class="pickup_button" style="background-color: pink;">
+                                <div class="pickup_button">
                                     <p>YES, I WILL PICK UP</p>
                                 </div>
                             </div>
@@ -1549,62 +1627,60 @@ li:hover::before, li:hover::after {
             </section>
             <script>
                 document.addEventListener('DOMContentLoaded', function () {
-                    const pickUpSection = document.querySelector('.PickUp');
-                    const deliverySection = document.querySelector('.delivrySection');
-                    const deliveryContent = deliverySection.querySelectorAll('.delivrySection__textArea, .delivrySection__header, .SelectButtons'); // Select all content elements
+                const pickUpSection = document.querySelector('.PickUp');
+                const deliverySection = document.querySelector('.delivrySection');
+                const deliveryContent = deliverySection.querySelectorAll('.delivrySection__textArea, .delivrySection__header, .SelectButtons'); // Select all content elements
+                const pickUpContent = pickUpSection.querySelectorAll('.delivrySection__header, .containt_section, .PickUp'); // Select all content elements for PickUp
 
-                    const pickUpContent = pickUpSection.querySelectorAll('.delivrySection__header, .containt_section, .PickUp'); // Select all content elements for PickUp
+                const deliveryButtons = document.querySelectorAll('.delivrySection__heading__button'); // Select all delivery buttons
 
-                    // Initially hide PickUp content
-                    pickUpContent.forEach(element => element.style.opacity = 0);
+                // Initially hide PickUp content
+                pickUpContent.forEach(element => element.style.opacity = 0);
 
-                    function swapSections() {
-                        const isDeliveryHidden = deliverySection.classList.contains('hidden'); // Check if deliverySection is hidden
+                function swapSections() {
+                    const isDeliveryHidden = deliverySection.classList.contains('hidden'); // Check if deliverySection is hidden
 
-                        if (isDeliveryHidden) {
-                            // Reverse animation (PickUp to front)
-                            gsap.to(pickUpSection, {
-                                duration: 1.5,
-                                zIndex: 10,
-                                onComplete: () => {
-                                    deliverySection.classList.remove('hidden'); // Show deliverySection content
-                                    pickUpSection.classList.remove('bg-color-white')
+                    if (isDeliveryHidden) {
+                        // Reverse animation (PickUp to front)
+                        gsap.to(pickUpSection, {
+                            duration: 1.5,
+                            zIndex: 10,
+                            onComplete: () => {
+                                deliverySection.classList.remove('hidden'); // Show deliverySection content
+                                pickUpSection.classList.remove('bg-color-white')
 
-                                    deliveryContent.forEach(element => element.style.opacity = 1);
-                                    pickUpContent.forEach(element => element.style.opacity = 0); // Hide PickUp content
-                                }
-                            });
+                                deliveryContent.forEach(element => element.style.opacity = 1);
+                                pickUpContent.forEach(element => element.style.opacity = 0); // Hide PickUp content
+                            }
+                        });
 
-                            gsap.to(deliverySection, {
-                                duration: 1.5,
-                                width: '100%', // Restore initial width
-                            });
-                        } else {
-                            // Hide content before animation
-                            deliveryContent.forEach(element => element.style.opacity = 0);
-                            gsap.to(deliverySection, {
-                                duration: 1.5,
-                                width: '35px',
-                                onComplete: () => {
-                                    deliverySection.classList.add('hidden'); // Hide deliverySection content after animation
-                                    pickUpContent.forEach(element => element.style.opacity = 1); // Show PickUp content
-                                    pickUpSection.classList.add('bg-color-white')
-                                }
-                            });
+                        gsap.to(deliverySection, {
+                            duration: 1.5,
+                            width: '100%', // Restore initial width
+                        });
+                    } else {
+                        // Hide content before animation
+                        deliveryContent.forEach(element => element.style.opacity = 0);
+                        gsap.to(deliverySection, {
+                            duration: 1.5,
+                            width: '35px',
+                            onComplete: () => {
+                                deliverySection.classList.add('hidden'); // Hide deliverySection content after animation
+                                pickUpContent.forEach(element => element.style.opacity = 1); // Show PickUp content
+                                pickUpSection.classList.add('bg-color-white')
+                            }
+                        });
 
-                            gsap.to(pickUpSection, {
-                                duration: 1.5,
-                                zIndex: 10,
-                            });
-                        }
+                        gsap.to(pickUpSection, {
+                            duration: 1.5,
+                            zIndex: 10,
+                        });
                     }
+                }
 
-                    deliverySection.addEventListener('click', swapSections);
-                    pickUpSection.addEventListener('click', swapSections);
-                });
-
-
-            </script>
+                deliveryButtons.forEach(button => button.addEventListener('click', swapSections)); // Attach event listener to all buttons
+            });
+        </script>
 
         </section>
 
@@ -4880,6 +4956,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     <!-- Footer -->
     <footer class="site-footer">
+        <div class="bubbles"></div>
         <div class="footer-top">
             <div class="footer-container">
                 <div class="footer-row">
@@ -5034,8 +5111,31 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
             </div>
         </div>
+        <svg style="position:fixed; bottom:0%;">
+            <defs>
+                <filter id="blob">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+                        result="blob" />
+                </filter>
+            </defs>
+        </svg>
     </footer>
 
+    <script>
+        // Generate bubbles dynamically
+        const bubblesContainer = document.querySelector('.site-footer .bubbles');
+        for (let i = 0; i < 128; i++) {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.style.setProperty('--size', `${2 + Math.random() * 4}rem`);
+            bubble.style.setProperty('--distance', `${6 + Math.random() * 4}rem`);
+            bubble.style.setProperty('--position', `${-5 + Math.random() * 110}%`);
+            bubble.style.setProperty('--time', `${2 + Math.random() * 2}s`);
+            bubble.style.setProperty('--delay', `${-1 * (2 + Math.random() * 2)}s`);
+            bubblesContainer.appendChild(bubble);
+        }
+    </script>
 
 
 
@@ -5044,10 +5144,54 @@ document.addEventListener('DOMContentLoaded', function () {
             background-color: #ED5565;
             color: rgb(255, 255, 255);
             height: 100%;
-            z-index: 1;
+            z-index: 0;
             position: relative;
+            --footer-background: #ED5565;
+            
         }
 
+       
+
+        .site-footer .bubbles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1rem;
+            z-index: -1;
+            background: var(--footer-background);
+            filter: url("#blob");
+        }
+
+        .site-footer .bubbles .bubble {
+            position: absolute;
+            left: var(--position, 50%);
+            background: var(--footer-background);
+            border-radius: 100%;
+            animation: bubble-size var(--time, 4s) ease-in infinite var(--delay, 0s),
+                bubble-move var(--time, 4s) ease-in infinite var(--delay, 0s);
+            transform: translate(-50%, 100%);
+        }
+
+        @keyframes bubble-size {
+            0%, 75% {
+                width: var(--size, 4rem);
+                height: var(--size, 4rem);
+            }
+            100% {
+                width: 0rem;
+                height: 0rem;
+            }
+        }
+
+        @keyframes bubble-move {
+            0% {
+                bottom: 1rem;
+            }
+            100% {
+                bottom: var(--distance, 10rem);
+            }
+        }
 
 
        ul.Follow-Us-section {
