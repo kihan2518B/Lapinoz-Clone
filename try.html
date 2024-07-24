@@ -2,273 +2,284 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pug to HTML Conversion</title>
-    <style>
-        body {
-            display: grid;
-            grid-template-rows: 1fr 10rem auto;
-            grid-template-areas: "main" "." "footer";
-            overflow-x: hidden;
-            background: #F5F7FA;
-            min-height: 100vh;
-            font-family: 'Open Sans', sans-serif;
-        }
-
-        .footer {
-            z-index: 1;
-            --footer-background: #ED5565;
-            display: grid;
-            position: relative;
-            grid-area: footer;
-            min-height: 12rem;
-            min-width: 100vw;
-        }
-
-        .footer .bubbles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1rem;
-            background: var(--footer-background);
-            filter: url("#blob");
-        }
-
-        .footer .bubbles .bubble {
-            position: absolute;
-            left: var(--position, 50%);
-            background: var(--footer-background);
-            border-radius: 100%;
-            animation: bubble-size var(--time, 4s) ease-in infinite var(--delay, 0s),
-                bubble-move var(--time, 4s) ease-in infinite var(--delay, 0s);
-            transform: translate(-50%, 100%);
-        }
-
-        .footer .content {
-            z-index: 2;
-            display: grid;
-            grid-template-columns: 1fr auto;
-            grid-gap: 4rem;
-            padding: 2rem;
-            background: var(--footer-background);
-        }
-
-
-
-        @keyframes bubble-size {
-
-            0%,
-            75% {
-                width: var(--size, 4rem);
-                height: var(--size, 4rem);
-            }
-
-            100% {
-                width: 0rem;
-                height: 0rem;
-            }
-        }
-
-        @keyframes bubble-move {
-            0% {
-                bottom: -4rem;
-            }
-
-            100% {
-                bottom: var(--distance, 10rem);
-            }
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Timeline Design | upCoding</title>
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <!-- Stylesheet -->
 </head>
 
 <body>
-    <div class="main"></div>
-    <div class="footer">
-        <div class="bubbles">
-            <!-- Bubbles will be inserted here dynamically by JavaScript -->
-        </div>
-        <div class="content">
-            <div class="footer-top">
-                <div class="footer-container">
-                    <div class="footer-row">
-                        <div class="Useful-Links-section">
-                            <h6>Useful Links</h6>
-                            <ul class="anker-list">
-                                <li>
-                                    <a href="https://lapinozpizza.in/shipping-policy">Shipping Policy</a>
-                                </li>
-                                <li>
-                                    <a href="https://lapinozpizza.in/refund-policy">Refund Policy</a>
-                                </li>
-                                <li>
-                                    <a href="https://lapinozpizza.in/terms-and-conditions">Terms &amp; Conditions</a>
-                                </li>
-                                <li>
-                                    <a href="https://lapinozpizza.in/privacy-policy">Privacy Policy</a>
-                                </li>
-                                <li>
-                                    <a href="https://lapinozpizza.in/promo-codes">Promo Codes</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="Payment-Methods-section">
-                            <h6>Payment Methods</h6>
-    
-                            <ul class="payments-ul">
-                                <li>
-                                    <img src="https://lapinozpizza.in/assets/wla_new/img/footer/cash-svg.svg"
-                                        alt="cash icon" />
-                                    <img src="https://lapinozpizza.in/assets/wla_new/img/footer/mastercard-svg.svg"
-                                        alt="Master Card" />
-                                    <img src="https://lapinozpizza.in/assets/wla_new/img/footer/gpay-svg.svg"
-                                        alt="Google Pay" />
-    
-                                    <img src="https://lapinozpizza.in/assets/wla_new/img/footer/paytm-svg.svg"
-                                        alt="Paytm" />
-                                    <img src="https://lapinozpizza.in/assets/wla_new/img/footer/visa-svg.svg" alt="Visa" />
-                                    <img src="https://lapinozpizza.in/assets/wla_new/img/footer/upi-icon.svg" alt="UPI" />
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="Contact-Us-section">
-                            <div class="">
-                                <h6>Contact Us</h6>
-                                <ul class="anker-list">
-                                    <li>
-                                        <span>Customer Support: </span>
-                                        <a class="d-inline d-md-block" href="mailto:support@lapinozpizza.in">
-                                            <svg id="Capa_1" style="
-                              enable-background: new 0 0 512 512;
-                              height: auto;
-                              width: 100%;
-                              max-width: 15px;
-                            " version="1.1" viewBox="0 0 512 512" x="0px" xml:space="preserve"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
-                                                <g>
-                                                    <g>
-                                                        <path
-                                                            d="M467,76H45C20.137,76,0,96.262,0,121v270c0,24.885,20.285,45,45,45h422c24.655,0,45-20.03,45-45V121    C512,96.306,491.943,76,467,76z M460.698,106c-9.194,9.145-167.415,166.533-172.878,171.967c-8.5,8.5-19.8,13.18-31.82,13.18    s-23.32-4.681-31.848-13.208C220.478,274.284,64.003,118.634,51.302,106H460.698z M30,384.894V127.125L159.638,256.08L30,384.894z     M51.321,406l129.587-128.763l22.059,21.943c14.166,14.166,33,21.967,53.033,21.967c20.033,0,38.867-7.801,53.005-21.939    l22.087-21.971L460.679,406H51.321z M482,384.894L352.362,256.08L482,127.125V384.894z">
-                                                        </path>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                            support@lapinozpizza.in</a>
-                                    </li>
-                                    <li>
-                                        <span>Franchise Enquiry: </span>
-                                        <a class="d-inline d-md-block" href="mailto:info@lapinozpizza.in"><svg id="Capa_1"
-                                                style="
-                              enable-background: new 0 0 512 512;
-                              height: auto;
-                              width: 100%;
-                              max-width: 15px;
-                            " version="1.1" viewBox="0 0 512 512" x="0px" xml:space="preserve"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
-                                                <g>
-                                                    <g>
-                                                        <path
-                                                            d="M467,76H45C20.137,76,0,96.262,0,121v270c0,24.885,20.285,45,45,45h422c24.655,0,45-20.03,45-45V121    C512,96.306,491.943,76,467,76z M460.698,106c-9.194,9.145-167.415,166.533-172.878,171.967c-8.5,8.5-19.8,13.18-31.82,13.18    s-23.32-4.681-31.848-13.208C220.478,274.284,64.003,118.634,51.302,106H460.698z M30,384.894V127.125L159.638,256.08L30,384.894z     M51.321,406l129.587-128.763l22.059,21.943c14.166,14.166,33,21.967,53.033,21.967c20.033,0,38.867-7.801,53.005-21.939    l22.087-21.971L460.679,406H51.321z M482,384.894L352.362,256.08L482,127.125V384.894z">
-                                                        </path>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                            info@lapinozpizza.in</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-    
-                        <div class="Follow-Us" style="display: flex; flex-direction: column; margin-inline: 15px;">
-                            <h6 style="margin-bottom: 5px;">Follow Us :</h6>
-                            <ul class="Follow-Us-section">
-                                
-                                <li class="footer-social-item">
-                                    <button class="footer-Btn">
-                                        <span class="svgContainer">
-                                            <i class="fa-brands fa-facebook"></i>
-                                        </span>
-                                        <span class="footer-BG"></span>
-                                    </button>
-                                </li>
-                                    <li class="footer-social-item">
-                                        <button class="footer-Btn">
-                                            <span class="svgContainer">
-                                                <i class="fa-brands fa-instagram"></i>
-                                            </span>
-                                            <span class="footer-BG"></span>
-                                        </button>
-                                    </li>
-                                    <li class="footer-social-item">
-                                        <button class="footer-Btn">
-                                            <span class="svgContainer">
-                                                <i class="fa-brands fa-youtube"></i>
-                                            </span>
-                                            <span class="footer-BG"></span>
-                                        </button>
-                                    </li>
-                                    <li class="footer-social-item">
-                                        <button class="footer-Btn">
-                                            <span class="svgContainer">
-                                                <i class="fa-brands fa-pinterest"></i>
-                                            </span>
-                                            <span class="footer-BG"></span>
-                                        </button>
-                                    </li>
-                                    <li class="footer-social-item">
-                                        <button class="footer-Btn">
-                                            <span class="svgContainer">
-                                                <i class="fa-brands fa-twitter"></i>
-                                            </span>
-                                            <span class="footer-BG"></span>
-                                        </button>
-                                    </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+    <style>
+        /* Import Google Font "Poppins" */
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background-color: var(--primary);
+        }
+
+        .journey_section {
+            position: relative;
+            max-width: 1200px;
+            height: fit-content;
+            margin: 80px auto;
+        }
+
+        .journey_box {
+            position: relative;
+            width: 50%;
+            padding: 1rem 3rem;
+            opacity: 0;
+            animation: animateBox 1s linear forwards;
+        }
+
+        @keyframes animateBox {
+            0% {
+                opacity: 1;
+                transform: translateY(-25px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .journey_box:nth-child(2) {
+            animation-delay: 0s;
+        }
+
+        .journey_box:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .journey_box:nth-child(4) {
+            animation-delay: 2s;
+        }
+
+        .journey_box:nth-child(5) {
+            animation-delay: 3s;
+        }
+
+        .journey_box:nth-child(6) {
+            animation-delay: 4s;
+        }
+
+        .journey_box:nth-child(7) {
+            animation-delay: 5s;
+        }
+
+        .journey_box-left {
+            left: 0;
+        }
+
+        .journey_box-right {
+            left: 50%;
+        }
+
+        .journey_box img {
+            position: absolute;
+            background-color: #00572d;
+            top: 30px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            border-radius: 50%;
+            right: -25px;
+            z-index: 10;
+        }
+
+        .journey_box-right img {
+            left: -25px;
+        }
+
+        .info {
+            position: relative;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            background-color: #00572d71;
+        }
+
+        .info h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .info p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .info::after {
+            content: "";
+            position: absolute;
+            top: 25px;
+            width: 0;
+            height: 0;
+            border-top: 14px solid transparent;
+            border-bottom: 14px solid transparent;
+            border-left: 14px solid #00572d71;
+            right: -14px;
+            z-index: 10;
+        }
+
+        .journey_box-right .info::after {
+            border-left: 0;
+            border-right: 14px solid #00572d71;
+            left: -14px;
+        }
+
+        .vertical-line {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 6px;
+            height: 100%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+            background-color: #00572d;
+            animation: animateLine 6s linear forwards;
+        }
+
+        @keyframes animateLine {
+            0% {
+                height: 0;
+            }
+
+            100% {
+                height: 100%;
+            }
+        }
+
+        @media screen and (max-width: 775px) {
+            .journey_section {
+                margin: 40px auto;
+            }
+
+            .vertical-line {
+                left: 60px;
+            }
+
+            .journey_box {
+                width: 100%;
+                /* padding-right: 1.5rem; */
+                padding-left: 109px;
+            }
+
+            .journey_box-left,
+            .journey_box-right {
+                left: 0;
+            }
+
+            .journey_box img {
+                left: 35px;
+            }
+
+            .info::after {
+                left: -16px;
+            }
+
+            .journey_box-left .info::after {
+                border-left: 0;
+                border-right: 14px solid white;
+                left: -14px;
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            .vertical-line {
+                left: 40px;
+            }
+
+            .journey_box {
+                width: 100%;
+                padding-right: 1.5rem;
+                padding-left: 85px;
+            }
+
+            .journey_box img {
+                left: 15px;
+            }
+        }
+    </style>
+    <!-- journey_section -->
+    <div class="journey_section" data-scroll-section>
+        <!-- Vertical line -->
+        <div class="vertical-line"></div>
+        <!-- Box -->
+        <div class="journey_box journey_box-left">
+            <img class="timeline-icon y2011" src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-one.svg"
+                alt="Timeline One" />
+            <div class="info">
+                <h2>2011</h2>
+                <p>
+                    Launched the 1st Outlet in Chandigarh
+                </p>
             </div>
-            <div class="footer-bottom">
-                <div class="footer-bottom-container">
-                    <div>
-                        <a href="https://www.uengage.in/" target="_blank">Powered By </a>
-                        <img src="https://www.uengage.in/assets/uen/img/ue-logo-2022.jpg" alt="Uengage Logo New" />
-                    </div>
-    
-                    <div>
-                        <div class="c-icon">C</div>
-                        Copyright. All Rights Reserved
-                    </div>
-                </div>
+        </div>
+        <div class="journey_box journey_box-right">
+            <img class="timeline-icon" src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-two.svg"
+                alt="Timeline One" width="25" height="25" />
+            <div class="info">
+                <h2>2013</h2>
+                <p>
+                    Launched the 1st Franchise Outlet
+                </p>
+            </div>
+        </div>
+        <div class="journey_box journey_box-left">
+            <img class="timeline-icon" src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-three.svg"
+                alt="Timeline One" width="25" height="25" />
+            <div class="info">
+                <h2>2017</h2>
+                <p>
+                    Crossed 100 Outlets All Over India
+                </p>
+            </div>
+        </div>
+        <div class="journey_box journey_box-right">
+            <img class="timeline-icon" src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-four.svg"
+                alt="Timeline One" width="25" height="25" />
+            <div class="info">
+                <h2>2019</h2>
+                <p>
+                    Crossed 200 Outlets All Over India
+                </p>
+            </div>
+        </div>
+        <div class="journey_box journey_box-left">
+            <img class="timeline-icon" src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-five.svg"
+                alt="Timeline One" width="25" height="25" />
+            <div class="info">
+                <h2>2021</h2>
+                <p>
+                    Crossed 300 Outlets All Over India
+                </p>
+            </div>
+        </div>
+        <div class="journey_box journey_box-right">
+            <img class="timeline-icon" src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-six.svg"
+                alt="Timeline One" width="25" height="25" />
+            <div class="info">
+                <h2>2022</h2>
+                <p>
+                    La Pino’z Goes International
+                </p>
             </div>
         </div>
     </div>
-    <svg style="position:fixed; bottom:0%;">
-        <defs>
-            <filter id="blob">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-                    result="blob" />
-            </filter>
-        </defs>
-    </svg>
-    <script>
-        // Generate bubbles dynamically
-        const bubblesContainer = document.querySelector('.footer .bubbles');
-        for (let i = 0; i < 128; i++) {
-            const bubble = document.createElement('div');
-            bubble.className = 'bubble';
-            bubble.style.setProperty('--size', `${2 + Math.random() * 4}rem`);
-            bubble.style.setProperty('--distance', `${6 + Math.random() * 4}rem`);
-            bubble.style.setProperty('--position', `${-5 + Math.random() * 110}%`);
-            bubble.style.setProperty('--time', `${2 + Math.random() * 2}s`);
-            bubble.style.setProperty('--delay', `${-1 * (2 + Math.random() * 2)}s`);
-            bubblesContainer.appendChild(bubble);
-        }
-    </script>
 </body>
 
 </html>

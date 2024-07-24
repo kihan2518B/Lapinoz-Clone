@@ -13,20 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const scrollContainer = document.querySelector('.scroll-container');
     const scroll = new LocomotiveScroll({
-        el: scrollContainer,
+        el: document.querySelector('.scroll-container'),
         smooth: true,
         lerp: 0.12,
         reloadOnContextChange: true,
-        touchMultiplier: 2,
-        smoothMobile: 0,
-        smartphone: {
-            smooth: true,
-            breakpoint: 767
-        },
-        tablet: {
-            smooth: false,
-            breakpoint: 1024
-        }
+        tablet: { smooth: true, breakpoint: 1024 },
+        smartphone: { smooth: true, breakpoint: 767 }
     });
 
     // Hero Animation
@@ -200,50 +192,6 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     }
 
-});
-
-// for Journey section 
-document.addEventListener('DOMContentLoaded', () => {
-
-    const timelineItems = document.querySelectorAll('.timeline-ul li');
-    const imgElementContainer = document.querySelector('.right-img');
-    let currentImgIndex = 0;
-
-    const animateTimelineItemsImage = () => {
-        const imgElements = [];
-        // const imgElementContainer = document.querySelector('.right-img');
-        // const timelineItems = document.querySelectorAll('.timeline-ul li');
-        let currentImgIndex = 0;
-
-        timelineItems.forEach(item => {
-            if (item.dataset.image) {
-                const newImgElement = document.createElement('img');
-                newImgElement.src = item.dataset.image;
-                newImgElement.className = 'pizza-img hidden';
-                imgElements.push(newImgElement);
-                imgElementContainer.appendChild(newImgElement);
-            }
-        });
-
-        const displayImages = () => {
-            imgElements.forEach((img, index) => {
-                if (index === currentImgIndex) {
-                    img.classList.add('active');
-                    img.classList.remove('hidden');
-                } else {
-                    img.classList.remove('active');
-                    img.classList.add('hidden');
-                }
-            });
-            currentImgIndex = (currentImgIndex + 1) % imgElements.length;
-        };
-
-        displayImages(); // Initial display
-        setInterval(displayImages, 3000); // Rotate every 3 seconds
-    };
-
-    animateTimelineItemsImage();
-
     // // Initialize IntersectionObserver
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -256,11 +204,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, { threshold: 0.5 });
-
-
-    // // Animation for Journey Section
-    const section = document.querySelector('.Journey');
-    observer.observe(section);
 
     // // Function to handle the animation of timeline items
     const animateTimelineItems = () => {
@@ -304,24 +247,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Register scroll callbacks
-    scroll.on('scroll', (obj, way, value) => {
-        if (obj.el.classList.contains('country-scroll-section')) {
-            if (way === 'enter') {
-                document.body.classList.add('dark-bg');
-            } else {
-                document.body.classList.remove('dark-bg');
-            }
-        }
-        if (obj.currentElements['.country-scroll-section']) {
-            const section = obj.currentElements['.country-scroll-section'];
-            if (section.progress > 0.1 && section.progress < 0.9) {
-                document.querySelector('.country-scroll-section').style.backgroundColor = 'black';
-            } else {
-                document.querySelector('.country-scroll-section').style.backgroundColor = 'white';
-            }
-        }
-    });
 });
 
 

@@ -2484,39 +2484,111 @@
             </style>
 
             <!-- Journey section -->
-
             <style>
-                .Journey {
-                    padding: 30px 0;
-                    display: block;
-                    overflow: hidden;
-                }
+                /* Import Google Font "Poppins" */
+                @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
 
-                .journey>.journey-container {
-                    max-width: 1250px;
-                    width: 100%;
-                    padding-right: 15px;
-                    padding-left: 15px;
-                    margin-right: auto;
-                    margin-left: auto;
-                }
-
-                .journey-container-content {
-                    display: flex;
-                    flex-direction: column;
-                    width: 100%;
-                    flex-wrap: wrap;
-                    margin-right: -15px;
-                    margin-left: -15px;
-                    align-items: center;
-                }
-
-                .journey-container-content-col {
-                    flex: 0 0 50%;
-                    max-width: 100%;
+                .journey_section {
                     position: relative;
-                    width: 100%;
-                    font-weight: 400;
+                    max-width: 1200px;
+                    height: fit-content;
+                }
+
+                .journey_box {
+                    position: relative;
+                    width: 50%;
+                    padding: 1rem 3rem;
+                    opacity: 0;
+                }
+
+                .journey_section.is-inview .journey_box {
+                    animation: animateBox 1s linear forwards;
+
+                }
+
+                @keyframes animateBox {
+                    0% {
+                        opacity: 1;
+                        transform: translateY(-25px);
+                    }
+
+                    100% {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+
+                .journey_section.is-inview .journey_box:nth-child(2) {
+                    animation-delay: 0s;
+                }
+
+                .journey_section.is-inview .journey_box:nth-child(3) {
+                    animation-delay: 1s;
+                }
+
+                .journey_section.is-inview .journey_box:nth-child(4) {
+                    animation-delay: 2s;
+                }
+
+                .journey_section.is-inview .journey_box:nth-child(5) {
+                    animation-delay: 3s;
+                }
+
+                .journey_section.is-inview .journey_box:nth-child(6) {
+                    animation-delay: 4s;
+                }
+
+                .journey_section.is-inview .journey_box:nth-child(7) {
+                    animation-delay: 5s;
+                }
+
+                .journey_section.is-inview .journey_box:nth-child(8) {
+                    animation-delay: 6s;
+                }
+
+                .journey_box-left {
+                    left: 0;
+                }
+
+                .journey_box-right {
+                    left: 50%;
+                }
+
+                .journey_box img {
+                    position: absolute;
+                    background-color: #d8bd8e;
+                    top: 30px;
+                    width: 50px;
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 25px;
+                    border-radius: 50%;
+                    right: -25px;
+                    z-index: 10;
+                }
+
+                .journey_box-right img {
+                    left: -25px;
+                }
+
+                .info {
+                    position: relative;
+                    padding: 1rem 1.5rem;
+                    border-radius: 10px;
+                    background-color: #d8bd8e;
+                }
+
+                .info h2 {
+                    font-size: 1.4rem;
+                    font-weight: 600;
+                    margin-bottom: 10px;
+                }
+
+                .info p {
+                    font-size: 14px;
+                    margin-bottom: 10px;
                 }
 
                 .Journey-heading {
@@ -2530,298 +2602,192 @@
                     margin-inline-end: 0px;
                 }
 
-                @media (max-width:500px) {
-                    .Journey-heading {
-                        font-size: 1.5em;
-                        margin-inline-start: 18px;
-                    }
-                }
-
-                .timeline-ul {
-                    margin-top: 2rem;
-                    position: relative;
-                    padding: 0;
-                    display: block;
-                    list-style-type: disc;
-                    margin-block-start: 1em;
-                    margin-block-end: 1em;
-                    margin-inline-start: 0px;
-                    margin-inline-end: 0px;
-                    padding-inline-start: 40px;
-                }
-
-                .timeline-ul li {
-                    display: flex;
-                    align-items: center;
-                    padding: 20px 0px;
-                    position: relative;
-                }
-
-                .timeline-icon {
-                    position: relative;
-                    z-index: 1;
-                }
-
-                .timeline-ul li>div:nth-child(2) {
-                    width: 100%;
-                    max-width: 50px;
-                    text-align: center;
-                }
-
-                .timeline-ul li>div:first-child {
-                    margin-left: 0px;
-                    width: 100%;
-                    max-width: 40px;
-                }
-
-                .timeline-ul li>div:last-child {
-                    margin-right: 0px;
-                    width: 100%;
-                    max-width: 329px;
-                }
-
-                .timeline-ul li>div {
-                    margin: 0 10px;
-                }
-
-                .position-relative {
-                    position: relative;
-                }
-
-                .timeline-ul li .common-para::before {
-                    content: '';
+                .info::after {
+                    content: "";
                     position: absolute;
-                    top: 14px;
-                    right: 100%;
-                    height: 0;
+                    top: 25px;
                     width: 0;
-                    border: 0.5rem solid transparent;
-                    border-right: 0.5rem solid #e3e3e3;
+                    height: 0;
+                    border-top: 14px solid transparent;
+                    border-bottom: 14px solid transparent;
+                    border-left: 14px solid #d8bd8e;
+                    right: -14px;
+                    z-index: 10;
                 }
 
-                .right-img {
-                    max-width: 600px;
-                    height: auto;
-                    width: 100%;
-                    height: 350px;
-                    margin: 0 auto;
-                    position: relative;
-
-                    @media (max-width:768px) {
-                        display: none;
-                    }
+                .journey_box-right .info::after {
+                    border-left: 0;
+                    border-right: 14px solid #d8bd8e;
+                    left: -14px;
                 }
 
-
-                .right-img .pizza-img {
-                    position: absolute;
-                    top: 50px;
-                    left: 0;
-                    right: 0;
-                    margin: auto;
-                    vertical-align: middle;
-                    height: 100%;
-                    width: 100%;
-                    opacity: 0;
-                    transform: translateY(30px);
-                    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-                    z-index: 0;
-                    border-radius: 10px;
-                }
-
-                .right-img .pizza-img.active {
-                    opacity: 1;
-                    transform: translateY(0);
-                    z-index: 1;
-                }
-
-                .right-img .pizza-img.hidden {
-                    opacity: 0;
-                    transform: translateY(30px);
-                    z-index: 0;
-                }
-
-                @media (min-width: 768px) {
-                    .journey-container-content-col {
-                        max-width: 50%;
-                    }
-
-                    .journey-container-content {
-                        flex-direction: row;
-                    }
-
-                    .Journey {
-                        padding-bottom: 1rem !important;
-                    }
-
-                    .journey>.journey-container {
-                        max-width: 720px;
-                    }
-                }
-
-                @media (min-width: 992px) {
-                    .journey>.journey-container {
-                        max-width: 960px;
-                    }
-                }
-
-                @media (min-width: 1200px) {
-                    .journey>.journey-container {
-                        max-width: 1140px;
-                    }
-                }
-
-                @media (min-width:576px) {
-                    .journey>.journey-container {
-                        max-width: 540px;
-                    }
-                }
-
-                .timeline-ul li .common-para {
-                    font-weight: 600;
-                    background: #e3e3e3;
-                    padding: 10px 15px;
-                    border-radius: 5px;
-                    position: relative;
-                    font-size: 15px;
-                    opacity: 0;
-                    transform: translateY(20px);
-                    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-                }
-
-                .timeline-ul li.show .common-para {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-
-                .timeline-ul>li::before {
-                    content: '';
+                .vertical-line {
                     position: absolute;
                     top: 0;
-                    left: 83px;
-                    z-index: 0;
+                    left: 50%;
+                    width: 6px;
                     height: 100%;
-                    width: 4px;
-                    background: #e3e3e3;
-                    transition: background-color 1s ease-in-out;
+                    transform: translateX(-50%);
+                    border-radius: 2px;
+                    background-color: #d8bd8e;
                 }
 
-                .timeline-ul li.show::before {
-                    background: #00572d;
+                .vertical-line.is-inview {
+
+                    animation: animateLine 6s linear forwards;
+                }
+
+                .journey_container {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                @keyframes animateLine {
+                    0% {
+                        height: 0;
+                    }
+
+                    100% {
+                        height: 100%;
+                    }
+                }
+
+                @media screen and (max-width: 775px) {
+                    .journey_section {
+                        margin: 40px auto;
+                    }
+
+                    .vertical-line {
+                        left: 60px;
+                    }
+
+                    .journey_box {
+                        width: 100%;
+                        /* padding-right: 1.5rem; */
+                        padding-left: 109px;
+                    }
+
+                    .journey_box-left .info::after {
+                        border-left: 0;
+                        border-right: 14px solid #d8bd8e;
+                        left: -14px;
+                    }
+
+                    .journey_box-left,
+                    .journey_box-right {
+                        left: 0;
+                    }
+
+                    .journey_box img {
+                        left: 35px;
+                    }
+
+                    .info::after {
+                        left: -16px;
+                    }
+
+                    .journey_box-left .info::after {
+                        border-left: 0;
+                        left: -14px;
+                    }
+                }
+
+                @media screen and (max-width: 500px) {
+                    .vertical-line {
+                        left: 40px;
+                    }
+
+                    .journey_box {
+                        width: 100%;
+                        padding-right: 1.5rem;
+                        padding-left: 85px;
+                    }
+
+                    .journey_box img {
+                        left: 15px;
+                    }
                 }
             </style>
+            <div class="journey_section" data-scroll data-scroll-section>
+                <div class="Journey-heading">
+                    <div style="color:#00572d;">La Pino'z Pizza </div>
+                    Growth Journey
+                </div>
+                <div class="journey_container">
 
-            <section class="Journey" data-scroll-section>
-                <div class="journey-container" data-scroll-speed="-1" data-scroll>
-                    <div class="journey-container-content">
-                        <div class="journey-container-content-col">
-                            <h3 class="Journey-heading" data-scroll data-scroll-direction="vertical"
-                                data-scroll-speed="0.5">
-                                <div style="color:#00572d;">La Pino'z Pizza</div>
-                                Growth Journey
-                            </h3>
-
-                            <ul class="timeline-ul" data-scroll data-scroll-direction="vertical"
-                                data-scroll-speed="1.5">
-                                <li data-scroll data-scroll-speed="-0.89" data-scroll-direction="vertical"
-                                    data-image="./media/journey10.png">
-                                    <div>
-                                        <h4 class="">2011</h4>
-                                    </div>
-                                    <div>
-                                        <img class="timeline-icon"
-                                            src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-one.svg"
-                                            alt="Timeline One" width="25" height="25" />
-                                    </div>
-                                    <div class="position-relative">
-                                        <p class="common-para mb-0 bg-para">Launched the 1st Outlet in Chandigarh</p>
-                                    </div>
-                                </li>
-                                <li data-scroll data-scroll-speed="-1" data-scroll-direction="vertical" data-image="">
-                                    <div>
-                                        <h4 class="">2013</h4>
-                                    </div>
-                                    <div>
-                                        <img class="timeline-icon"
-                                            src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-two.svg"
-                                            alt="Timeline One" width="25" height="25" />
-                                    </div>
-                                    <div class="position-relative">
-                                        <p class="common-para mb-0 bg-para">Launched the 1st Franchise Outlet</p>
-                                    </div>
-                                </li>
-                                <li data-scroll data-scroll-speed="-1.2" data-scroll-direction="vertical"
-                                    data-image="./media/journey2.png">
-                                    <div>
-                                        <h4 class="">2017</h4>
-                                    </div>
-                                    <div>
-                                        <img class="timeline-icon"
-                                            src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-three.svg"
-                                            alt="Timeline One" width="25" height="25" />
-                                    </div>
-                                    <div class="position-relative">
-                                        <p class="common-para mb-0 bg-para">
-                                            Crossed 100 Outlets All Over India
-                                        </p>
-                                    </div>
-                                </li>
-                                <li data-scroll data-scroll-speed="-1.4" data-scroll-direction="vertical">
-                                    <div>
-                                        <h4 class="">2019</h4>
-                                    </div>
-                                    <div>
-                                        <img class="timeline-icon"
-                                            src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-four.svg"
-                                            alt="Timeline One" width="25" height="25" />
-                                    </div>
-                                    <div class="position-relative">
-                                        <p class="common-para mb-0 bg-para">
-                                            Crossed 200 Outlets All Over India
-                                        </p>
-                                    </div>
-                                </li>
-                                <li data-scroll data-scroll-speed="-1.6" data-scroll-direction="vertical"
-                                    data-image="./media/journey3.jpg">
-                                    <div>
-                                        <h4 class="">2021</h4>
-                                    </div>
-                                    <div>
-                                        <img class="timeline-icon"
-                                            src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-five.svg"
-                                            alt="Timeline One" width="25" height="25" />
-                                    </div>
-                                    <div class="position-relative">
-                                        <p class="common-para mb-0 bg-para">
-                                            Crossed 300 Outlets All Over India
-                                        </p>
-                                    </div>
-                                </li>
-                                <li data-scroll data-scroll-speed="-1.8" data-scroll-direction="vertical">
-                                    <div>
-                                        <h4 class="">2022</h4>
-                                    </div>
-                                    <div>
-                                        <img class="timeline-icon"
-                                            src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-six.svg"
-                                            alt="Timeline One" width="25" height="25" />
-                                    </div>
-                                    <div class="position-relative">
-                                        <p class="common-para mb-0 bg-para">
-                                            La Pino’z Goes International
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
+                    <!-- Vertical line -->
+                    <div class="vertical-line" data-scroll=""></div>
+                    <!-- Box -->
+                    <div class="journey_box journey_box-left" data-scroll="">
+                        <img class="timeline-icon y2011"
+                            src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-one.svg"
+                            alt="Timeline One" />
+                        <div class="info">
+                            <h2>2011</h2>
+                            <p>
+                                Launched the 1st Outlet in Chandigarh
+                            </p>
                         </div>
-                        <div class="journey-container-content-col">
-                            <div class="right-img" data-scroll data-scroll-direction="vertical"
-                                data-scroll-speed="-0.01">
-                            </div>
+                    </div>
+                    <div class="journey_box journey_box-right" data-scroll="">
+                        <img class="timeline-icon"
+                            src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-two.svg"
+                            alt="Timeline One" />
+                        <div class="info">
+                            <h2>2013</h2>
+                            <p>
+                                Launched the 1st Franchise Outlet
+                            </p>
+                        </div>
+                    </div>
+                    <div class="journey_box journey_box-left" data-scroll="">
+                        <img class="timeline-icon"
+                            src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-three.svg"
+                            alt="Timeline One" />
+                        <div class="info">
+                            <h2>2017</h2>
+                            <p>
+                                Crossed 100 Outlets All Over India
+                            </p>
+                        </div>
+                    </div>
+                    <div class="journey_box journey_box-right" data-scroll="">
+                        <img class="timeline-icon"
+                            src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-four.svg"
+                            alt="Timeline One" />
+                        <div class="info">
+                            <h2>2019</h2>
+                            <p>
+                                Crossed 200 Outlets All Over India
+                            </p>
+                        </div>
+                    </div>
+                    <div class="journey_box journey_box-left" data-scroll="">
+                        <img class="timeline-icon"
+                            src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-five.svg"
+                            alt="Timeline One" />
+                        <div class="info">
+                            <h2>2021</h2>
+                            <p>
+                                Crossed 300 Outlets All Over India
+                            </p>
+                        </div>
+                    </div>
+                    <div class="journey_box journey_box-right" data-scroll="">
+                        <img class="timeline-icon"
+                            src="https://lapinoz.ca/assets/wla_new/lapinoz/ca/images/timeline-six.svg"
+                            alt="Timeline One" />
+                        <div class="info">
+                            <h2>2022</h2>
+                            <p>
+                                La Pino’z Goes International
+                            </p>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+
 
             <!-- Banner section -->
             <section class="banner__section" data-scroll-section>
@@ -2854,7 +2820,6 @@
                     align-items: center;
                     justify-content: space-evenly;
                     position: relative;
-                    font-family: 'Poppins', sans-serif;
                 }
 
                 .top__Bpart {
@@ -2897,7 +2862,7 @@
                     }
 
                     50% {
-                        transform: translateY(-15px);
+                        transform: translateY(-35px);
                     }
                 }
 
@@ -2927,7 +2892,7 @@
 
                     .banner_image {
                         height: 135%;
-                        width: 100%;
+                        width: 105%;
                         object-fit: contain;
                     }
 
@@ -2958,7 +2923,6 @@
                         background: url('./Media/banner_section_image.jpg') no-repeat center center;
                         background-size: cover;
                         justify-content: center;
-                        overflow: hidden;
                     }
 
                     .overlay {
