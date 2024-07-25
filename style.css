@@ -2263,6 +2263,8 @@ picture>a>img {
 @media (min-width: 769px) {
     .banner__section {
         height: 500px;
+        /* font-family: 'Poppins'; */
+
     }
 
     .top__Bpart {
@@ -2311,12 +2313,14 @@ picture>a>img {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 769px) {
     .banner__section {
         height: 99vh;
         background: url('./Media/banner_section_image.jpg') no-repeat center center;
         background-size: cover;
         justify-content: center;
+        font-family: 'Poppins', sans-serif;
+
     }
 
     .overlay {
@@ -2389,14 +2393,20 @@ picture>a>img {
     color: #fff;
     -webkit-text-stroke: 2px #201C1D;
     background-color: #f4f4f4;
-    height: 70px;
-    width: 100%;
+    height: 87px;
+    width: max-content;
     text-align: center;
     position: relative;
     margin: 20px 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Poppins';
+
+    @media (max-width:768px) {
+        font-size: 1rem;
+        height: 50px;
+    }
 }
 
 .rotate-right {
@@ -2447,12 +2457,7 @@ picture>a>img {
     }
 }
 
-@media (max-width: 768px) {
-
-    .scroll-text {
-        font-size: 1rem;
-        height: 50px;
-    }
+@media (max-width: 769px) {
 
     .rotate-right {
         rotate: 0deg;
