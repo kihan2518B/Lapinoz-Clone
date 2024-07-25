@@ -1986,6 +1986,7 @@ picture>a>img {
 .journey_section {
     position: relative;
     max-width: 1200px;
+    margin-inline: auto;
     height: fit-content;
 }
 
@@ -3609,6 +3610,7 @@ footer ul {
 .Contact-Us-section a {
     display: flex;
     align-items: center;
+    gap: 5px;
 }
 
 .footer-bottom-container {
