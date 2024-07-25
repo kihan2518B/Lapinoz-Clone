@@ -11,7 +11,6 @@ document.querySelectorAll('.navbar__button-list a').forEach(link => {
 document.addEventListener('DOMContentLoaded', () => {
 
 
-    const scrollContainer = document.querySelector('.scroll-container');
     const scroll = new LocomotiveScroll({
         el: document.querySelector('.scroll-container'),
         smooth: true,
@@ -204,6 +203,302 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, { threshold: 0.5 });
+
+    // Delivery section
+    const pickUpSection = document.querySelector('.PickUp');
+    const deliverySection = document.querySelector('.delivrySection');
+    const deliveryContent = deliverySection.querySelectorAll('.delivrySection__textArea, .delivrySection__header, .SelectButtons'); // Select all content elements
+    const pickUpContent = pickUpSection.querySelectorAll('.delivrySection__header, .containt_section, .PickUp'); // Select all content elements for PickUp
+
+    const deliveryButtons = document.querySelectorAll('.delivrySection__heading__button'); // Select all delivery buttons
+
+    // Initially hide PickUp content
+    pickUpContent.forEach(element => element.style.opacity = 0);
+
+    function swapSections() {
+        const isDeliveryHidden = deliverySection.classList.contains('hidden'); // Check if deliverySection is hidden
+
+        if (isDeliveryHidden) {
+            // Reverse animation (PickUp to front)
+            gsap.to(pickUpSection, {
+                duration: 1.5,
+                zIndex: 10,
+                onComplete: () => {
+                    deliverySection.classList.remove('hidden'); // Show deliverySection content
+                    pickUpSection.classList.remove('bg-color-white')
+
+                    deliveryContent.forEach(element => element.style.opacity = 1);
+                    pickUpContent.forEach(element => element.style.opacity = 0); // Hide PickUp content
+                }
+            });
+
+            gsap.to(deliverySection, {
+                duration: 1.5,
+                width: '100%', // Restore initial width
+            });
+        } else {
+            // Hide content before animation
+            deliveryContent.forEach(element => element.style.opacity = 0);
+            gsap.to(deliverySection, {
+                duration: 1.5,
+                width: '35px',
+                onComplete: () => {
+                    deliverySection.classList.add('hidden'); // Hide deliverySection content after animation
+                    pickUpContent.forEach(element => element.style.opacity = 1); // Show PickUp content
+                    pickUpSection.classList.add('bg-color-white')
+                }
+            });
+
+            gsap.to(pickUpSection, {
+                duration: 1.5,
+                zIndex: 10,
+            });
+        }
+    }
+
+    deliveryButtons.forEach(button => button.addEventListener('click', swapSections));
+
+    // Deals section
+    const getCodes = document.querySelectorAll(".card-hover__link");
+    const cardHovers = document.querySelectorAll(".card-hover");
+
+    if (getCodes.length && cardHovers.length) {
+        getCodes.forEach((getCode, index) => {
+            const cardHoverExtra = cardHovers[index].querySelector(".card-hover__extra");
+
+            getCode.addEventListener("click", () => {
+                if (cardHoverExtra.classList.contains("clicked")) {
+                    cardHoverExtra.classList.remove("clicked");
+                } else {
+                    cardHoverExtra.classList.add("clicked");
+                }
+            });
+
+            cardHovers[index].addEventListener("mouseleave", () => {
+                cardHoverExtra.classList.remove("clicked");
+            });
+        });
+    } else {
+        console.error("One or more elements were not found.");
+    }
+
+
+    const copyIcons = document.querySelectorAll(".copy-icon");
+
+    const flashMessage = document.getElementById("flash-message");
+
+    copyIcons.forEach(icon => {
+        icon.addEventListener("click", () => {
+            const discountCode = icon.parentElement.textContent.trim();
+            navigator.clipboard.writeText(discountCode).then(() => {
+                flashMessage.style.opacity = 1;
+                setTimeout(() => {
+                    flashMessage.style.opacity = 0;
+                }, 2000); // Hide message after 2 seconds
+            }).catch(err => {
+                console.error("Failed to copy: ", err);
+            });
+        });
+    });
+
+    const container = document.querySelector('.deals__container');
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    container.addEventListener('mousedown', (e) => {
+        isDown = true;
+        container.classList.add('active');
+        startX = e.pageX - container.offsetLeft;
+        scrollLeft = container.scrollLeft;
+    });
+
+    container.addEventListener('mouseleave', () => {
+        isDown = false;
+        container.classList.remove('active');
+    });
+
+    container.addEventListener('mouseup', () => {
+        isDown = false;
+        container.classList.remove('active');
+    });
+
+    container.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - container.offsetLeft;
+        const walk = (x - startX) * 3; //scroll-fast
+        container.scrollLeft = scrollLeft - walk;
+    });
+
+
+    // Number counter
+    const counterElement = document.getElementById('number_counter');
+    const targetNumber = 600;
+    const interval = 20; // Increment in bunches of 50
+    const duration = 1500; // 2 seconds
+    let isAnimating = false;
+
+    // Initialize IntersectionObserver
+    const numberobserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (!isAnimating) {
+                    animateCounter(counterElement, targetNumber, duration, interval);
+                }
+            } else {
+                resetCounter(counterElement);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    // Observe the section
+    const section = document.querySelector('.banner__section');
+    numberobserver.observe(section);
+
+    function animateCounter(element, target, duration, interval) {
+        let currentNumber = 0;
+        isAnimating = true;
+        const stepTime = Math.abs(Math.floor(duration / (target / interval)));
+        const timer = setInterval(() => {
+            currentNumber += interval;
+            element.textContent = `Over ${currentNumber}+`;
+            if (currentNumber >= target) {
+                clearInterval(timer);
+                isAnimating = false;
+            }
+        }, stepTime);
+    }
+
+    function resetCounter(element) {
+        element.textContent = "Over 0+";
+        isAnimating = false;
+    }
+
+    // Three card
+    const cards = document.querySelectorAll('.three-cards-inner');
+
+    const threecardsObserverOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const threecardsobserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.transitionDelay = '0s';
+                entry.target.classList.remove('reverse-animate');
+
+                // Apply different animations based on the card's index
+                const cardIndex = Array.from(cards).indexOf(entry.target);
+                if (cardIndex % 3 === 0) { // Left card
+                    entry.target.classList.add('animate-up');
+                } else if (cardIndex % 3 === 1) { // Middle card
+                    entry.target.classList.add('animate-down');
+                } else if (cardIndex % 3 === 2) { // Right card
+                    entry.target.classList.add('animate-up');
+                }
+            } else {
+                entry.target.style.transitionDelay = '0s';
+                entry.target.classList.remove('animate-up', 'animate-down');
+                entry.target.classList.add('reverse-animate');
+            }
+        });
+    }, threecardsObserverOptions);
+
+    cards.forEach(card => {
+        threecardsobserver.observe(card);
+    });
+
+    // Explore section
+    const menuItems = document.querySelectorAll('.explore-menu-ul div');
+
+    const explore_menuObserver = new IntersectionObserver(entries => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, index * 250); // Staggered effect
+            } else {
+                entry.target.classList.remove('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    menuItems.forEach(item => {
+        explore_menuObserver.observe(item);
+    });
+
+    // Best seller
+    const bestsellerSection = document.querySelector('.bestseller-section');
+    const bestsellerCards = document.querySelector('.bestseller_cards');
+    const BestsellerCard = bestsellerCards.querySelectorAll('li');
+
+    function updateBackgroundImage() {
+        const cardWidth = BestsellerCard[0].offsetWidth;
+        const scrollLeft = bestsellerCards.scrollLeft;
+        const secondCardIndex = Math.floor(scrollLeft / cardWidth) + 1;
+
+        if (secondCardIndex >= 0 && secondCardIndex < BestsellerCard.length) {
+            const secondCardImage = BestsellerCard[secondCardIndex].querySelector('.bestseller__card__image').src;
+
+            // Remove previous background classes
+            bestsellerSection.className = 'bestseller-section';
+
+            // Add new background class
+            bestsellerSection.style.backgroundImage = `url(${secondCardImage})`;
+        }
+    }
+
+    // Attach the scroll event listener
+    bestsellerCards.addEventListener('scroll', updateBackgroundImage);
+
+    // Initial call to set the background image on page load
+    updateBackgroundImage();
+
+    // reviews
+    const topContainer = document.querySelector('.reviews__top__slider');
+    const bottomContainer = document.querySelector('.reviews__bottom__slider');
+    const reviewsCard = document.querySelectorAll('.reviews__top__card');
+
+    const topScrollInterval = 10; // Interval for the top container
+    const bottomScrollInterval = 19; // Interval for the bottom container (adjust as needed)
+    const scrollStep = 1; // Number of pixels to scroll in each step
+
+    // Clone cards and append them to both containers to create the illusion of an infinite scroll
+    reviewsCard.forEach(card => {
+        const topClone = card.cloneNode(true);
+        topContainer.appendChild(topClone);
+
+        const bottomClone = card.cloneNode(true);
+        bottomContainer.appendChild(bottomClone);
+    });
+
+    function scrollTopContainer() {
+        topContainer.scrollLeft += scrollStep;
+
+        // When the original set of cards has fully scrolled, reset to the start
+        if (topContainer.scrollLeft >= topContainer.scrollWidth / 2) {
+            topContainer.scrollLeft = 0;
+        }
+    }
+
+    function scrollBottomContainer() {
+        bottomContainer.scrollLeft -= scrollStep;
+
+        // When the bottom container has fully scrolled back to the start, reset its position
+        if (bottomContainer.scrollLeft <= 0) {
+            bottomContainer.scrollLeft = bottomContainer.scrollWidth / 2;
+        }
+    }
+
+    // Scroll the top container continuously
+    setInterval(scrollTopContainer, topScrollInterval);
+
+    // Scroll the bottom container continuously
+    setInterval(scrollBottomContainer, bottomScrollInterval);
 
     // // Function to handle the animation of timeline items
     const animateTimelineItems = () => {
